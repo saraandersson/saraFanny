@@ -3,7 +3,6 @@
 var express = require('express');
 var http = require('http');
 var Sim = require('./simulator.js');
-var index = require('./index.html');
 var app = express();
 var PORT = 3000;
 
