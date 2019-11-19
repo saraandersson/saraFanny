@@ -22,6 +22,16 @@ app.listen(PORT, function() {
     console.log('Server is running on PORT:',PORT);
 });
 
+app.route('/login.html')
+    .get((req,res)=>{
+        res.redirect('website/login.html');
+        });
+
+app.route('/market.html')
+    .get((req,res)=>{
+        res.redirect('website/market.html');
+        });
+
 
 /*
 app.get('/', function(req, res) {
