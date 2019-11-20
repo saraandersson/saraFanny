@@ -12,6 +12,9 @@
     "url": "git+https://github.com/saraandersson/saraFanny.git"
   },
   "author": "",
+  "dependencies":{
+    "mysql": "2.x.x"
+  }
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/saraandersson/saraFanny/issues"
