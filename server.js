@@ -55,12 +55,12 @@ app.get('/', function(req, res) {
 
 	var test = db_user.selectUser(1, (err, db_user) => {
                     //send_(err, db_user, res)
-                    if(db_user.rowCount > 0){
-                    	var getArea = db_user.rows[0].area;
+                    //if(db_user.rowCount > 0){
+                    	//var getArea = db_user.rows[0].area;
                     	console.log(db_user);
-                    }else{
-                    	console.log("Dont exist");
-                    }
+                    //}else{
+                    	//console.log("Dont exist");
+                    //}
                     
                 });
 
