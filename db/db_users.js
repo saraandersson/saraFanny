@@ -1,4 +1,4 @@
-var mysql = require('mysql');
+var mysql = require('/node_modules/mysql');
 
 var con = mysql.createConnection({
   host: "127.0.0.1",
