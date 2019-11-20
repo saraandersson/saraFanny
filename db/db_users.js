@@ -30,7 +30,7 @@ class Db_user{
 	}
 	addUser(role_id, online, firstname, lastname, email, password, img, area, buffert, consumption){
 		var addSql = `INSERT INTO users (role_id, online, firstname, lastname, email, password, img, area, buffert, consumption) VALUES (${role_id},${online},${firstname},${lastname}, ${email}, ${password},${img}, ${area},${buffert}, ${consumption})`;
-		client.query(addSql, function(err, result){
+		con.query(addSql, function(err, result){
 			if(err){
 				throw err;
 			}else{
@@ -41,7 +41,7 @@ class Db_user{
 
 	selectUser(id, callback){
 		var getSql = `SELECT * FROM users WHERE id = ${id}`;
-		client.query(getSql, function(err, result){
+		con.query(getSql, function(err, result){
 			if(err){
 				callback(err, null);
 			}else{
@@ -54,7 +54,7 @@ class Db_user{
 
 	deleteUser(id){
 		var deleteSql = `DELETE FROM users WHERE id = ${id}`;
-		client.query(deleteSql, function(err, result){
+		con.query(deleteSql, function(err, result){
 			if(err){
 				throw err;
 			}else{
