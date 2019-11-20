@@ -29,9 +29,10 @@ class Db_user{
 
 	}
 	addUser(role_id, online, firstname, lastname, email, password, img, area, buffert, consumption){
-		var addSql = `INSERT INTO users (role_id, online, firstname, lastname, email, password, img, area, buffert, consumption) VALUES ('+role_id+','+online+','+firstname+','+lastname+','+email+','+password+','+img+','+area+','+buffert+','+consumption+')`;
+		var addSql = `INSERT INTO users (role_id, online, firstname, lastname, email, password, img, area, buffert, consumption) VALUES (?,?,?,?,?,?,?,?,?,?)`;
 		console.log(role_id + "," + online + "," + firstname + "," + lastname + "," + email + "," + password + "," + img + "," + area + "," + buffert + "," + consumption);
-		con.query(addSql, function(err, result){
+		
+		con.query(addSql,[role_id, online, firstname, lastname, email, password, img, area, buffert, consumption ] , function(err, result){
 			if(err){
 				throw err;
 			}else{
