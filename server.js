@@ -57,7 +57,7 @@ app.get('/', function(req, res) {
                     //send_(err, db_user, res)
                     //if(db_user.rowCount > 0){
                     	//var getArea = db_user.rows[0].area;
-                    	console.log(db_user.RowDataPacket.firstname);
+                    	console.log(db_user[0].firstname);
                     //}else{
                     	//console.log("Dont exist");
                     //}
@@ -68,6 +68,5 @@ app.get('/', function(req, res) {
 
    res.status(200).send("KLAR");
 });
-
 
 
