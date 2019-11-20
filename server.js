@@ -7,10 +7,14 @@ var app = express();
 var PORT = 3000;
 
 app.use('/website',express.static('website'));
+
+/*
 app.route('/')
     .get((req,res)=>{
         res.redirect('website/index.html');
         });
+
+        */
 
 
 var server = http.createServer(function(req, res) {
@@ -46,10 +50,10 @@ app.get('/', function(req, res) {
 //Send kw/day for X m^2
 const sim = new Sim(36,300);
 
-/*app.get('/', function(req, res) {
-	db_user.addUser(300,20);
+app.get('/', function(req, res) {
+	db_user.addUser(1,1,"Sara","Andersson", "sara@hotmail.com","hejsan","minbild",300,0,20);
 
-	var test = db_user.selectUser(16, (err, db_user) => {
+	var test = db_user.selectUser(1, (err, db_user) => {
                     //send_(err, db_user, res)
                     if(db_user.rowCount > 0){
                     	var getArea = db_user.rows[0].area;
@@ -60,10 +64,10 @@ const sim = new Sim(36,300);
                     
                 });
 
-	db_user.deleteUser(16);
+	db_user.deleteUser(1);
 
    res.status(200).send("KLAR");
-});*/
+});
 
 
 

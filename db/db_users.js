@@ -1,19 +1,35 @@
+var mysql = require('mysql');
+
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "sarafanny"
+});
+
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
+
+
+/*
+
 const{Pool,Client} = require('pg')
 const connectionString = 'postgres://fannysara:fannysara@localhost:5432/fannySara'
 
 const client = new Client({
 	connectionString:connectionString
-})
+})*/
 
-client.connect()
+//client.connect()
 
 class Db_user{
 
 	consturctor(){
 
 	}
-	addUser(area, consumption){
-		var addSql = `INSERT INTO users (area, consumption) VALUES (${area}, ${consumption})`;
+	addUser(role_id, online, firstname, lastname, email, password, img, area, buffert, consumption){
+		var addSql = `INSERT INTO users (role_id, online, firstname, lastname, email, password, img, area, buffert, consumption) VALUES (${role_id},${online},${firstname},${lastname}, ${email}, ${password},${img}, ${area},${buffert}, ${consumption})`;
 		client.query(addSql, function(err, result){
 			if(err){
 				throw err;
