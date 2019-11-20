@@ -43,9 +43,9 @@ app.get('/', function(req, res) {
 });
 */
 
-//const Db_user = require('./db/db_users.js');
+const Db_user = require('./db/db_users.js');
 
-//const db_user = new Db_user();
+const db_user = new Db_user();
 
 //Send kw/day for X m^2
 const sim = new Sim(36,300);
