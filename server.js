@@ -57,7 +57,7 @@ app.get('/', function(req, res) {
                     //send_(err, db_user, res)
                     if(db_user.rowCount > 0){
                     	var getArea = db_user.rows[0].area;
-                    	console.log(getArea);
+                    	console.log(db_user.rows[0]);
                     }else{
                     	console.log("Dont exist");
                     }
