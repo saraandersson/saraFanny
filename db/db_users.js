@@ -31,8 +31,7 @@ class Db_user{
 	}
 	addUser(role_id, online, firstname, lastname, email, password, img, area, buffert, consumption){
 		var addSql = `INSERT INTO users (role_id, online, firstname, lastname, email, password, img, area, buffert, consumption) VALUES (?,?,?,?,?,?,?,?,?,?)`;
-		console.log(role_id + "," + online + "," + firstname + "," + lastname + "," + email + "," + password + "," + img + "," + area + "," + buffert + "," + consumption);
-		
+		//console.log(role_id + "," + online + "," + firstname + "," + lastname + "," + email + "," + password + "," + img + "," + area + "," + buffert + "," + consumption);
 		con.query(addSql,[role_id, online, firstname, lastname, email, password, img, area, buffert, consumption ] , function(err, result){
 			if(err){
 				throw err;
@@ -43,8 +42,8 @@ class Db_user{
 	}
 
 	selectUser(id, callback){
-		var getSql = `SELECT * FROM users WHERE id = '+id+'`;
-		con.query(getSql, function(err, result){
+		var getSql = `SELECT * FROM users WHERE id = ?`;
+		con.query(getSql, [id], function(err, result){
 			if(err){
 				callback(err, null);
 			}else{
@@ -56,8 +55,8 @@ class Db_user{
 
 
 	deleteUser(id){
-		var deleteSql = `DELETE FROM users WHERE id = '+id+'`;
-		con.query(deleteSql, function(err, result){
+		var deleteSql = `DELETE FROM users WHERE id = ?`;
+		con.query(deleteSql,[id], function(err, result){
 			if(err){
 				throw err;
 			}else{

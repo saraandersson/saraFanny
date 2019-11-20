@@ -51,7 +51,7 @@ const db_user = new Db_user();
 const sim = new Sim(36,300);
 
 app.get('/', function(req, res) {
-	db_user.addUser(1,1,'Sara','Andersson','sara@hotmail.com','hejsan','minbild',300,0,20);
+	db_user.addUser(1,1,'sarafanny','Andersson','sara@hotmail.com','hejsan','minbild',300,0,20);
 
 	var test = db_user.selectUser(1, (err, db_user) => {
                     //send_(err, db_user, res)
@@ -64,7 +64,7 @@ app.get('/', function(req, res) {
                     
                 });
 
-	db_user.deleteUser(1);
+	db_user.deleteUser(3);
 
    res.status(200).send("KLAR");
 });
