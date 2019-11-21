@@ -74,3 +74,11 @@ app.get('/getUserFirstname', function(req,res){
   });
 
 
+function send_(err, data, res) {
+    if (err) {
+      console.error(err.stack);
+      res.sendStatus(400);
+    } else {
+      res.send(data);
+    }
+  }
