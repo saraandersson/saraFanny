@@ -23,9 +23,6 @@ var server = http.createServer(function(req, res) {
     res.end("Hello world\n");
 });
 
-app.listen(PORT, function() {
-    console.log('Server is running on PORT:',PORT);
-});
 
 app.route('/login.html')
     .get((req,res)=>{
