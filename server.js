@@ -7,6 +7,7 @@ var app = express();
 var PORT = 3000;
 
 app.use('/website',express.static('website'));
+app.use('/intermediary',express.static('intermediary'));
 
 /*
 app.route('/')
@@ -37,19 +38,14 @@ app.route('/market.html')
         });
 
 
-/*
-app.get('/', function(req, res) {
-    res.status(200).send('Hello world');
-});
-*/
-
 const Db_user = require('./db/db_users.js');
 
 const db_user = new Db_user();
 
 //Send kw/day for X m^2
-const sim = new Sim(36,300);
+//const sim = new Sim(36,300);
 
+/*
 app.get('/', function(req, res) {
 	db_user.addUser(1,1,'sarafanny','Andersson','sara@hotmail.com','hejsan','minbild',300,0,20);
 
@@ -68,5 +64,12 @@ app.get('/', function(req, res) {
 
    res.status(200).send("KLAR");
 });
+*/
+
+app.post('/getUserFirstname', function(req,res){
+     db_user.selectUser(req.body.user_id,(err,result) =>{
+        send_(err, result[0].firstname, res);
+    });
+  });
 
 

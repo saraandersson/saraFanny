@@ -36,6 +36,21 @@
 </head>
 <body>
 
+<script type="text/javascript">
+    window.addEventListener("load", function () {
+      getUserFirstname(1);
+    
+       getFirstname(function(arr){
+                    
+         String firstname = arr; 
+
+          $('#test').html(firstname);
+        }
+      
+    }
+      </script>
+
+
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -49,7 +64,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Home</a></li>
-        <li><a href="/market.html">Market</a></li>
+        <li id = 'test'><a href="/market.html">Market:</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
