@@ -12,10 +12,10 @@ function getUserFirstname(user_id, callback){
       var arr = JSON.parse(xhttp.responseText);
       
         console.log(arr);
-      if (arr.length > 0) {
+      
 
           callback(null, arr);  
-      }
+      
     }
   }
 
