@@ -9,13 +9,13 @@ var PORT = 3000;
 app.use('/website',express.static('website'));
 app.use('/intermediary',express.static('intermediary'));
 
-/*
+
 app.route('/')
     .get((req,res)=>{
         res.redirect('website/index.html');
         });
 
-        */
+        
 
 
 var server = http.createServer(function(req, res) {
