@@ -69,7 +69,7 @@ app.get('/', function(req, res) {
 app.get('/getUserFirstname', function(req,res){
 
      db_user.selectUser(1,(err,result) =>{
-        send_(err, result[0].firstname, res);
+        send_(err, result, res);
     });
   });
 
