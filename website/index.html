@@ -39,7 +39,7 @@
 
 <script type="text/javascript">
     window.addEventListener("load", function () {
-      getUserFirstname(1);
+    
     
        getFirstname(function(arr){
                     
@@ -49,8 +49,16 @@
 
           $('#test').html(firstname);
         });
+
+
       
     });
+
+    async function getFirstname(fn){
+          getUserFirstname(1,(err,result) =>{
+          fn(result);
+          });
+      }
       </script>
 
 
