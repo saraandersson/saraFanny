@@ -9,12 +9,13 @@ function getUserFirstname(user_id, callback){
     if (this.readyState == 4 && this.status == 200) {
            // Typical action to be performed when the document is ready:
            //alert(xhttp.responseText);
-      var arr = json_encode(xhttp.responseText);
+      var arr = JSON.parse(xhttp.responseText);
       
+        console.log(arr);
+      if (arr.length > 0) {
 
-      
           callback(null, arr);  
-      
+      }
     }
   }
 
