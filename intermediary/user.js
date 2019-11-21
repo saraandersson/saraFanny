@@ -12,9 +12,9 @@ function getUserFirstname(user_id, callback){
       var arr = xhttp.responseText;
       
 
-      if (arr.length > 0) {
+      
           callback(null, arr);  
-      }
+      
     }
   }
 
