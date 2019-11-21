@@ -3,7 +3,7 @@
 function getUserFirstname(user_id, callback){
   var xhttp = new XMLHttpRequest();
   var id_val = user_id;
-  xhttp.open("POST", "/", true);
+  xhttp.open("GET", "/getUserFirstname", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
