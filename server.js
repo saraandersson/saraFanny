@@ -81,6 +81,40 @@ const Db_user = require('./db/db_users.js');
 
 const db_user = new Db_user();
 
+app.post('/createUser', function(req,res){
+
+  db_user.emailAvailable(req.body.username,(err,result) =>{
+        if(err){
+          console.error(err);
+        }else{
+          if(result.rowCount == "0"){
+            db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, req.body.password, req.body.img, req.body.area, 0, req.body.consumption);
+            res.send('{"text": "Användare skapad."}');
+          }else{
+            res.send('{"text": "Användarnamnet är upptaget."}');
+          }
+        }
+    })
+
+  });
+
+app.post('/loginUser',function(req,res){
+      db_user.checkLogin(req.body.username,req.body.password,(err,result) =>{
+        if(err){
+          console.error(err);
+        }else{
+          if(result.rowCount == "1" && (result.rows[0].role_id == 0||result.rows[0].role_id == 1)){
+            req.session.role_id = result.rows[0].role_id;
+            req.session.Users = result.rows[0].id; 
+            res.send('{"resp": "1"}');
+          }else{
+            res.send('{"resp":"Användarnamn eller lösenord är felaktigt."}');
+          }
+        }
+      })
+
+  });
+
 
 app.post('/getUserFirstname', function(req,res){
         console.log(req.body.id);

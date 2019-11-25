@@ -77,6 +77,18 @@ class Db_user{
 		});
 	}
 
+	usernameAvailable(email, callback){
+		var checksql = `SELECT * FROM users WHERE email = ?`;
+		con.query(checksql, [email], function(err, result){
+			if(err){
+				callback(err, null);
+			}else{
+				console.log("Email is checked");
+				callback(err, result);
+			}
+		});
+	}
+
 
 }
 
