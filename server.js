@@ -9,6 +9,7 @@ var PORT = 3000;
 
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+const handlebars = require('express-handlebars');
 
 
 app.use('/website',express.static('website'));
