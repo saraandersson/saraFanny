@@ -103,7 +103,7 @@ app.post('/loginUser',function(req,res){
         if(err){
           console.error(err);
         }else{
-          console("SIZE:" + result.size);
+          console.log("SIZE:" + result.size);
           if(result.size > 0 && (result.rows[0].role_id == 0||result.rows[0].role_id == 1)){
             req.session.role_id = result.rows[0].role_id;
             req.session.Users = result.rows[0].id; 
