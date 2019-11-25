@@ -1,6 +1,7 @@
 // server.js
 
 var express = require('express');
+const bodyParser = require('body-parser');
 var http = require('http');
 var Sim = require('./simulator.js');
 var app = express();
