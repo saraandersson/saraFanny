@@ -10,11 +10,7 @@ function getUserFirstname(user_id, callback){
            // Typical action to be performed when the document is ready:
            //alert(xhttp.responseText);
       var arr = JSON.parse(xhttp.responseText);
-      
-        console.log(arr);
-      
-
-          callback(null, arr);  
+      callback(null, arr);  
       
     }
   }
