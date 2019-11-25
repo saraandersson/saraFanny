@@ -46,7 +46,7 @@ document.getElementById("submit").addEventListener("click", sendValues());
   function sendValues(){
     //var email = document.getElementsByName("email");
     //var password = document.getElementsByName("password");
-    checkLogin(sara@hotmail.com, hejsan);
+    checkLogin("sara@hotmail.com", "hejsan");
   }
 
 
@@ -77,14 +77,14 @@ document.getElementById("submit").addEventListener("click", sendValues());
         <form class="col-sm-offset-4 col-md-offset-4">
             <div class="form-group">
                 <label class="control-label">Email</label>
-                <input type="text" placeholder="Enter Email" name="email" maxlength="255" class="form-control text-box single-line" required>
+                <input type="text" placeholder="Enter Email" name="email" maxlength="255" class="form-control text-box single-line">
             </div>
             <div class="form-group">
                 <label class="control-label">Password</label>
-                <input type="password" placeholder="Enter Password" name="password" maxlength="255" class="form-control text-box single-line" required>
+                <input type="password" placeholder="Enter Password" name="password" maxlength="255" class="form-control text-box single-line">
             </div>
             <div class="form-group">
-                <button class="btn btn-default" type="submit" name="submit" id ="submit">Sign in</button>
+                <button class="btn btn-default" name="submit" id ="submit">Sign in</button>
             </div>    
             <p id="errorMsg" style="color:red"></p>
             <div class="form-group">
