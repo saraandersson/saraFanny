@@ -4,7 +4,7 @@ function getUserFirstname(user_id, callback){
   var xhttp = new XMLHttpRequest();
   var id_val = user_id;
   console.log(id_val);
-  xhttp.open("GET", "/getUserFirstname", true);
+  xhttp.open("POST", "/getUserFirstname", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -18,8 +18,8 @@ function getUserFirstname(user_id, callback){
 
   var data = {user_id: id_val};
   
-    console.log(data);
-  xhttp.send(1);
+
+  xhttp.send(JSON.stringify(data));
   
   
 

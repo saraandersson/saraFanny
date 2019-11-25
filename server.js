@@ -67,7 +67,7 @@ app.get('/', function(req, res) {
 });
 */
 
-app.get('/getUserFirstname', function(req,res){
+app.post('/getUserFirstname', function(req,res){
         console.log("HEJ:" + req.user_id);
      db_user.selectUser(1,(err,result) =>{
         send_(err, result, res);
