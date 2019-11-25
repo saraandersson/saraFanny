@@ -18,10 +18,13 @@ app.route('/')
 
         
 
-
 var server = http.createServer(function(req, res) {
     res.writeHead(200, { "Content-type": "text/plain" });
     res.end("Hello world\n");
+});
+
+app.listen(PORT, function() {
+    console.log('Server is running on PORT:',PORT);
 });
 
 
