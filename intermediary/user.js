@@ -43,8 +43,6 @@ function checkLogin(email, password){
     }
   }
 
-  window.alert(email_val);
-  window.alert(password_val);
 
   var data = {email: email_val, password: password_val};
   
