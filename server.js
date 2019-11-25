@@ -9,7 +9,8 @@ var PORT = 3000;
 
 app.use('/website',express.static('website'));
 app.use('/intermediary',express.static('intermediary'));
-
+app.use(bodyParser.json({type: 'application/json'}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.route('/')
     .get((req,res)=>{
