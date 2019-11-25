@@ -108,7 +108,7 @@ app.post('/loginUser',function(req,res){
             req.session.Users = result.rows[0].id; 
             send_(err, "1", res);
           }else{
-            res.send(err,"Användarnamn eller lösenord är felaktigt", res);
+            send_(err,"Användarnamn eller lösenord är felaktigt", res);
           }
         }
       })
