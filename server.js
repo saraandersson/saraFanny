@@ -106,9 +106,9 @@ app.post('/loginUser',function(req,res){
           if(result.rowCount == "1" && (result.rows[0].role_id == 0||result.rows[0].role_id == 1)){
             req.session.role_id = result.rows[0].role_id;
             req.session.Users = result.rows[0].id; 
-            res.send('{"resp": "1"}');
+            send_(err, "1", res);
           }else{
-            res.send('{"resp":"Användarnamn eller lösenord är felaktigt."}');
+            res.send(err,"Användarnamn eller lösenord är felaktigt", res);
           }
         }
       })
@@ -118,7 +118,7 @@ app.post('/loginUser',function(req,res){
 
 app.post('/getUserFirstname', function(req,res){
         console.log(req.body.id);
-     db_user.selectUser(1,(err,result) =>{
+     db_user.selectUser(req.body.id,(err,result) =>{
         send_(err, result, res);
     });
   });
