@@ -18,8 +18,8 @@ function getUserFirstname(user_id, callback){
 
   var data = {user_id: id_val};
   
-
-  xhttp.send(data);
+    console.log(data);
+  xhttp.send(1);
   
   
 
