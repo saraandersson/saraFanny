@@ -66,7 +66,7 @@ app.get('/', function(req, res) {
    res.status(200).send("KLAR");
 });
 */
-/*
+
 app.get('/getUserFirstname', function(req,res){
         console.log("HEJ:" + req.user_id);
      db_user.selectUser(1,(err,result) =>{
@@ -74,7 +74,7 @@ app.get('/getUserFirstname', function(req,res){
     });
   });
 
-  */
+  
 
 
 function send_(err, data, res) {
