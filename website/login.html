@@ -40,10 +40,8 @@
 <body>
 
 <script type="text/javascript">
-var el = document.getElementById("submit");
-if(el){
-    el.addEventListener("click", sendValues());
-  }
+    document.getElementById("submit").addEventListener("click", sendValues());
+
 
   function sendValues(){
     //var email = document.getElementsByName("email");
