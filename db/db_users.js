@@ -71,7 +71,7 @@ class Db_user{
 			if(err){
 				callback(err, null);
 			}else{
-				console.log("Password is checked");
+				console.log("Från databas: " + result);
 				callback(err, result);
 			}
 		});
