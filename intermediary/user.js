@@ -34,7 +34,7 @@ function checkLogin(email, password){
            // Typical action to be performed when the document is ready:
            //alert(xhttp.responseText);
       var arr = JSON.parse(xhttp.responseText);
-      console.log(arr);
+      window.alert(arr);
 
       if (arr==1){
         window.location.replace("../website/index_customer.html");
@@ -43,8 +43,8 @@ function checkLogin(email, password){
     }
   }
 
-  console.log(email_val);
-  console.log(password_val);
+  window.alert(email_val);
+  window.alert(password_val);
 
   var data = {email: email_val, password: password_val};
   
