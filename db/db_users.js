@@ -65,6 +65,18 @@ class Db_user{
 		});
 	}
 
+	checkLogin(email, password, callback){
+		var checksql = `SELECT * FROM users WHERE email = ? AND password = ?`;
+		con.query(checksql, [email,password], function(err, result){
+			if(err){
+				callback(err, null);
+			}else{
+				console.log("Password is checked");
+				callback(err, result);
+			}
+		});
+	}
+
 
 }
 
