@@ -1,5 +1,5 @@
 
-
+/*
 function getUserFirstname(user_id, callback){
   var xhttp = new XMLHttpRequest();
   var id_val = user_id;
@@ -26,3 +26,4 @@ function getUserFirstname(user_id, callback){
   
 
 }
+*/
