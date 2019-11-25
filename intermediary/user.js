@@ -3,24 +3,22 @@
 function getUserFirstname(user_id, callback){
   var xhttp = new XMLHttpRequest();
   var id_val = user_id;
-  xhttp.open("GET", "/getUserFirstname", true);
+  console.log(id_val);
+  xhttp.open("POST", "/getUserFirstname", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
            // Typical action to be performed when the document is ready:
            //alert(xhttp.responseText);
       var arr = JSON.parse(xhttp.responseText);
-      
-        console.log(arr);
-      
-
-          callback(null, arr);  
+      callback(null, arr);  
       
     }
   }
 
-  var data = {user_id: id_val};
+  var data = {id: id_val};
   
+
   xhttp.send(JSON.stringify(data));
   
   
