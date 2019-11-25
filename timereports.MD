@@ -9,6 +9,7 @@
 | 2019-11-19  | 8       | Setting up database on a new ubuntu server, a lot of struggle with the database, Niklas helped  |
 | 2019-11-20  | 8       | Finished database and start feteching values from values  |
 | 2019-11-21  | 8       | Meeting with Joo Chan Kim, working with sending data between website and database, lecture with Omegapoint |
+| 2019-11-25  | 9       | Struggled with server and start working with website |
 
 
 
@@ -25,5 +26,5 @@
 | 2019-11-19  | 8       | Setting up database on a new ubuntu server, a lot of struggle with the database, Niklas helped  |
 | 2019-11-20  | 8       | Finished database and start feteching values from values  |
 | 2019-11-21  | 8       | Meeting with Joo Chan Kim, working with sending data between website and database, lecture with Omegapoint |
-
+| 2019-11-25  | 9       | Struggled with server and start working with website |
 
