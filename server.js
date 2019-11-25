@@ -106,9 +106,9 @@ app.post('/loginUser',function(req,res){
           if(result.rowCount == "1" && (result.rows[0].role_id == 0||result.rows[0].role_id == 1)){
             req.session.role_id = result.rows[0].role_id;
             req.session.Users = result.rows[0].id; 
-            res.send(1);
+            send_(err, result, res);
           }else{
-            res.send(2);
+            send_(err, result, res);
           }
         }
       })

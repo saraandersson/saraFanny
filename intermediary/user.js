@@ -36,7 +36,7 @@ function checkLogin(email, password){
       var arr = JSON.parse(xhttp.responseText);
       window.alert(arr);
 
-      if (arr==1){
+      if (arr.rowCount > 0){
         window.location.replace("../website/index_customer.html");
       } 
       
