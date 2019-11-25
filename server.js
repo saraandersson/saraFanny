@@ -4,7 +4,8 @@ var express = require('express');
 var http = require('http');
 var Sim = require('./simulator.js');
 var app = express();
-var PORT = 3000;
+//var PORT = 3000;
+var PORT = 80;
 
 app.use('/website',express.static('website'));
 app.use('/intermediary',express.static('intermediary'));
