@@ -43,6 +43,9 @@ function checkLogin(email, password){
     }
   }
 
+  console.log(email_val);
+  console.log(password_val);
+
   var data = {email: email_val, password: password_val};
   
 
