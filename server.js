@@ -7,15 +7,49 @@ var Sim = require('./simulator.js');
 var app = express();
 var PORT = 3000;
 
+var cookieParser = require('cookie-parser');
+
 
 app.use('/website',express.static('website'));
 app.use('/intermediary',express.static('intermediary'));
+
 app.use(bodyParser.json({type: 'application/json'}));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// initialize cookie-parser to allow us access the cookies stored in the browser. 
+app.use(cookieParser());
+
+// initialize express-session to allow us track the logged-in user across sessions.
+app.use(session({
+    key: 'user_id',
+    secret: 'somerandonstuffs',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        expires: 600000000
+    }
+}));
+
+// This middleware will check if user's cookie is still saved in browser and user is not set, then automatically log the user out.
+// This usually happens when you stop your express server after login, your cookie still remains saved in the browser.
+app.use((req, res, next) => {
+    if (req.cookies.user_id && !req.session.Users) {
+        res.clearCookie('user_id');        
+    }
+    next();
+});
+
 app.route('/')
     .get((req,res)=>{
-        res.redirect('website/index.html');
+       if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
+            res.redirect('website/index.html');
+        }
+        else if(req.session.Users && req.cookies.user_id && req.session.role_id == 1){
+            res.redirect('/website/index.html');
+          } 
+        else {
+             res.redirect('/website/index.html');
+          }
         });
 
         
@@ -45,29 +79,6 @@ const Db_user = require('./db/db_users.js');
 
 const db_user = new Db_user();
 
-//Send kw/day for X m^2
-//const sim = new Sim(36,300);
-
-/*
-app.get('/', function(req, res) {
-	db_user.addUser(1,1,'sarafanny','Andersson','sara@hotmail.com','hejsan','minbild',300,0,20);
-
-	var test = db_user.selectUser(1, (err, db_user) => {
-                    //send_(err, db_user, res)
-                    //if(db_user.rowCount > 0){
-                    	//var getArea = db_user.rows[0].area;
-                    	console.log(db_user[0].firstname);
-                    //}else{
-                    	//console.log("Dont exist");
-                    //}
-                    
-                });
-
-	db_user.deleteUser(3);
-
-   res.status(200).send("KLAR");
-});
-*/
 
 app.post('/getUserFirstname', function(req,res){
         console.log(req.body.id);
