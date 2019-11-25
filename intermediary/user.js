@@ -46,6 +46,7 @@ function checkLogin(email, password){
 
   var data = {email: email_val, password: password_val};
   
+  window.alert(data);
 
   xhttp.send(JSON.stringify(data));
 }

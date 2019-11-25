@@ -99,7 +99,7 @@ app.post('/createUser', function(req,res){
   });
 
 app.post('/loginUser',function(req,res){
-      db_user.checkLogin(req.body.username,req.body.password,(err,result) =>{
+      db_user.checkLogin(req.body.email,req.body.password,(err,result) =>{
         if(err){
           console.error(err);
         }else{
