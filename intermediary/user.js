@@ -37,7 +37,7 @@ function checkLogin(email, password){
       console.log(arr);
 
       if (arr==1){
-        window.location.replace("../website/index_customer");
+        window.location.replace("../website/index_customer.html");
       } 
       
     }
