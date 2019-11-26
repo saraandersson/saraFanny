@@ -164,6 +164,7 @@ function getUser(callback){
     xhttp.send(JSON.stringify(data));
 }
 
+/*
 
 function changePassword(old_password, new_password){
   var xhttp = new XMLHttpRequest();
@@ -187,3 +188,4 @@ function changePassword(old_password, new_password){
 
 }
 
+*/
