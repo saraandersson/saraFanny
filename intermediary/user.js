@@ -52,12 +52,13 @@ function checkLogin(email, password){
 }
 
 
-function createUser(firstname, lastname, email, password, area, consumption){
+function createUser(firstname, lastname, email, password, img, area, consumption){
   var xhttp = new XMLHttpRequest();
   var firstname_val = firstname;
   var lastname_val = lastname;
   var email_val = email;
   var password_val = password;
+  var img_val = img;
   var area_val = area;
   var consumption_val = consumption;
   xhttp.open("POST", "/createUser", true);
@@ -69,15 +70,18 @@ function createUser(firstname, lastname, email, password, area, consumption){
       var arr = JSON.parse(xhttp.responseText);
       window.alert(arr);
 
-      if (arr.length > 0){
+      if (arr.length == 0){
+        //Konto har skapats.
         window.location.replace("../");
-      } 
+      }else{
+        //Felmeddelande: E-mail upptaget. 
+      }
       
     }
   }
 
 
-  var data = {firstname: firstname_val, lastname: lastname_val, email: email_val, password: password_val, area: area_val, consumption: consumption_val};
+  var data = {firstname: firstname_val, lastname: lastname_val, email: email_val, password: password_val, img: img_val,area: area_val, consumption: consumption_val};
   
   xhttp.send(JSON.stringify(data));
 }

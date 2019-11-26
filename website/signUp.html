@@ -46,9 +46,10 @@
     var lastname = document.getElementById("lastname");
     var email = document.getElementById("email");
     var password = document.getElementById("password");
+    var img = document.getElementById("image");
     var area = document.getElementById("area");
     var consumption = document.getElementById("consumption");
-    createUser(firstname.value, lastname.value, email.value, password.value, area.value, consumption.value);
+    createUser(firstname.value, lastname.value, email.value, password.value, img.value, area.value, consumption.value);
   }
 
 
@@ -96,6 +97,10 @@
             <div class="form-group">
                 <label class="control-label">Password</label>
                 <input type="password" placeholder="Enter Password" name="password" maxlength="255" class="form-control text-box single-line" id = "password">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Image:</label>
+                <input type="text" placeholder="Select an image of you" name="consumption" maxlength="255" class="form-control text-box single-line" id = "image">
             </div>
               <div class="form-group">
                 <label class="control-label">House area</label>
