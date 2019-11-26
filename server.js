@@ -87,7 +87,7 @@ app.post('/createUser', function(req,res){
         if(err){
           console.error(err);
         }else{
-          if(result.rowCount == "0"){
+          if(result.length == 0){
             db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, req.body.password, req.body.img, req.body.area, 0, req.body.consumption);
             res.send('{"text": "Användare skapad."}');
           }else{
@@ -103,8 +103,8 @@ app.post('/loginUser',function(req,res){
         if(err){
           console.error(err);
         }else{
-          console.log("SIZE:" + result.size);
-          if(result.size > 0 && (result.rows[0].role_id == 0||result.rows[0].role_id == 1)){
+          console.log("SIZE:" + result.length);
+          if(result.length > 0 && (result.rows[0].role_id == 0||result.rows[0].role_id == 1)){
             req.session.role_id = result.rows[0].role_id;
             req.session.Users = result.rows[0].id; 
             console.log(result);
