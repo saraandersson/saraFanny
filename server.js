@@ -104,9 +104,9 @@ app.post('/loginUser',function(req,res){
           console.error(err);
         }else{
           console.log("SIZE:" + result.length);
-          if(result.length > 0 && (result.rows[0].role_id == 0||result.rows[0].role_id == 1)){
-            req.session.role_id = result.rows[0].role_id;
-            req.session.Users = result.rows[0].id; 
+          if(result.length > 0 && (result[0].role_id == 0||result[0].role_id == 1)){
+            req.session.role_id = result[0].role_id;
+            req.session.Users = result[0].id; 
             console.log("RESULTAT OK:" + result);
             send_(err, result, res);
           }else{
