@@ -44,10 +44,10 @@ app.use((req, res, next) => {
 app.route('/')
     .get((req,res)=>{
        if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
-            res.redirect('website/index.html');
+            res.redirect('website/index_customer.html');
         }
         else if(req.session.Users && req.cookies.user_id && req.session.role_id == 1){
-            res.redirect('/website/index.html');
+            res.redirect('/website/index_admin.html');
           } 
         else {
              res.redirect('/website/index.html');
@@ -94,9 +94,9 @@ app.post('/createUser', function(req,res){
         }else{
           if(result.length == 0){
             db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, req.body.password, req.body.img, req.body.area, 0, req.body.consumption);
-            res.send('{"text": "Användare skapad."}');
+            send_(err, result, res);
           }else{
-            res.send('{"text": "Användarnamnet är upptaget."}');
+            send_(err, result, res);
           }
         }
     })

@@ -37,8 +37,8 @@ function checkLogin(email, password){
       window.alert(arr.length);
 
       if (arr.length > 0){
-        window.location.replace("../website/index_customer.html");
-      } 
+        window.location.replace("../");
+      }
       
     }
   }
@@ -70,7 +70,7 @@ function createUser(firstname, lastname, email, password, area, consumption){
       window.alert(arr);
 
       if (arr.length > 0){
-        window.location.replace("../website/index_customer.html");
+        window.location.replace("../");
       } 
       
     }
