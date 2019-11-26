@@ -54,7 +54,7 @@ app.route('/')
           }
         });
 
-//Denna verkar inte funka, fixa
+//Dessa funkar inte om man ändrar i webbadressen, men via länkar funkar detta
 
 app.route('/index.html')
     .get((req,res)=>{
@@ -134,7 +134,13 @@ app.route('/login.html')
 
 app.route('/market.html')
     .get((req,res)=>{
-        res.redirect('website/market.html');
+        if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
+          res.redirect('website/market_customer.html');
+        }else if(req.session.Users && req.cookies.user_id && req.session.role_id == 1){
+          res.redirect('website/market_admin.html');
+        }else{
+          res.redirect('website/market.html');
+        }
         });
 
 
