@@ -41,7 +41,7 @@ class Db_user{
 		});
 	}
 
-	selectUser(id, callback){
+	getUser(id, callback){
 		var getSql = `SELECT * FROM users WHERE id = ?`;
 		con.query(getSql, [id], function(err, result){
 			if(err){

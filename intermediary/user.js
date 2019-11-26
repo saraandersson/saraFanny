@@ -140,10 +140,9 @@ function editProfile(){
 
 }
 
-function getUser(id){
+function getUser(callback){
   var xhttp = new XMLHttpRequest();
-  var id_val = id;
-  xhttp.open("POST", "/getEnergy", true);
+  xhttp.open("POST", "/getUser", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -154,7 +153,7 @@ function getUser(id){
       
   }
 }
-    var data = {id: id_val};
+    var data = {};
   
     xhttp.send(JSON.stringify(data));
 }
