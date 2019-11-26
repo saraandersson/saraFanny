@@ -71,6 +71,11 @@ app.route('/login.html')
         res.redirect('website/login.html');
         });
 
+  app.route('/signUp.html')
+  .get((req,res)=>{
+      res.redirect('website/signUp.html');
+      });
+
 app.route('/market.html')
     .get((req,res)=>{
         res.redirect('website/market.html');
