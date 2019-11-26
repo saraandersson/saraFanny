@@ -171,6 +171,7 @@ function changePassword(old_password, new_password){
   var new_password_val = new_password;
   xhttp.open("POST", "/changePassword", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
+  window.alert(old_password + "---" + new_password);
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
 
@@ -181,7 +182,7 @@ function changePassword(old_password, new_password){
     }
   }
 
-   var data = {old_password: old_password_val,new_password: new_password_val};
+   var data = {old_password: old_password_val, new_password: new_password_val};
 
   xhttp.send(JSON.stringify(data));
 
