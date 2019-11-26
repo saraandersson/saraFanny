@@ -34,7 +34,7 @@ function checkLogin(email, password){
            // Typical action to be performed when the document is ready:
            //alert(xhttp.responseText);
       var arr = JSON.parse(xhttp.responseText);
-      window.alert(arr);
+      window.alert(arr.length);
 
       if (arr.length > 0){
         window.location.replace("../website/index_customer.html");
@@ -45,8 +45,5 @@ function checkLogin(email, password){
 
 
   var data = {email: email_val, password: password_val};
-  
-  window.alert(data);
-
   xhttp.send(JSON.stringify(data));
 }
