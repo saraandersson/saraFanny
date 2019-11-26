@@ -262,6 +262,7 @@ app.post('/getUser', function(req,res){
 
 app.post('/changePassword', (req, res) => {
   db_user.getUser(req.session.Users,(err,result) =>{
+    console.log(result[0].password);
     if(req.body.old_password == result[0].password){
       console.log(result[0].password);
         db_user.changePassword(req.session.Users, req.body.new_password);
