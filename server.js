@@ -259,7 +259,6 @@ app.post('/getUser', function(req,res){
   });
 
 
-/*
 
 app.post('/changePassword', (req, res) => {
   db_user.getUser(req.session.Users,(err,result) =>{
@@ -274,7 +273,7 @@ app.post('/changePassword', (req, res) => {
   
 });
 
-  */
+  
 
 
 function send_(err, data, res) {
