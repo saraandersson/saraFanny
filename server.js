@@ -246,7 +246,7 @@ app.post('/logout', (req, res) => {
 });
 
 app.post('/updateProfile', (req, res) => {
-    db_user.updateProfile(req.session.Users, req.body.area, req.body.consumption, req.body.img);
+    db_user.updateProfile(req.session.Users, req.body.firstname, req.body.lastname, req.body.area, req.body.consumption, req.body.img);
     res.send("{}");
 });
 

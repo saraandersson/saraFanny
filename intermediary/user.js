@@ -123,8 +123,14 @@ function getUserEnergyValues(id){
     xhttp.send(JSON.stringify(data));
 }
 
-function editProfile(){
+/*Lägga till ändra lösenord? Kanske separat?*/
+function editProfile(firstname, lastname, area, consumption, img){
   var xhttp = new XMLHttpRequest();
+  var firstname_val = firstname;
+  var lastname_val = lastname;
+  var img_val = img;
+  var area_val = area;
+  var consumption_val = consumption;
   xhttp.open("POST", "/updateProfile", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
@@ -134,7 +140,7 @@ function editProfile(){
     }
   }
 
-  var data = {};
+   var data = {firstname: firstname_val,lastname: lastname_val,img: img_val, area: area_val,consumption: consumption_val};
 
   xhttp.send(JSON.stringify(data));
 

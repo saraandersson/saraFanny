@@ -56,15 +56,15 @@
       
 
       function updateUser(){
-        document.getElementById("firstname").placeholder=document.getElementById("firstname").value
-        document.getElementById("lastname").placeholder= document.getElementById("lastname").value;
-        document.getElementById("area").placeholder= document.getElementById("area").value;
-        document.getElementById("consumption").placeholder=document.getElementById("consumption").value;
-        document.getElementById("house").placeholder=document.getElementById("house").value;
+        var firstname = document.getElementById("firstname").placeholder=document.getElementById("firstname").value
+        var lastname = document.getElementById("lastname").placeholder= document.getElementById("lastname").value;
+        var area = document.getElementById("area").placeholder= document.getElementById("area").value;
+        var consumption = document.getElementById("consumption").placeholder=document.getElementById("consumption").value;
+        var img = document.getElementById("house").placeholder=document.getElementById("house").value;
 
         /*Kalla på funktion som skickar in de värden som ska uppdateras till databasen*/
 
-        editProfile();
+        editProfile(firstname, lastname, area, consumption, img);
 
       }
 
