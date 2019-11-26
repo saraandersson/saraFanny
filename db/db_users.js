@@ -100,6 +100,16 @@ class Db_user{
 
 		}
 
+	updateProfile(id, area, consumption, img){
+		var setsql=`UPDATE users SET area = ?, consumption = ?, img = ? WHERE id = ?`;
+		con.query(setsql, [area, consumption, img, id], function(err, result){
+				if(err){
+				}else{
+					console.log("Profile updated");
+				}
+			});
+	}
+
 
 }
 

@@ -223,6 +223,12 @@ app.post('/logout', (req, res) => {
     }
 });
 
+app.post('/updateProfile', (req, res) => {
+    db_user.updateProfile(req.session.Users, req.body.area, req.body.consumption, req.body.img);
+    res.send("{}");
+});
+
+
 
 
   

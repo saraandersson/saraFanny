@@ -104,3 +104,21 @@ function logOut(){
 
   xhttp.send(JSON.stringify(data));
 }
+
+function editProfile(){
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "/updateProfile", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        window.location.replace("../website/profile_customer.html");
+    }
+  }
+
+
+  var data = {};
+
+  
+
+  xhttp.send(JSON.stringify(data));
+}
