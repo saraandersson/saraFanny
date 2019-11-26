@@ -45,8 +45,7 @@ function checkLogin(email, password){
 
 
   var data = {email: email_val, password: password_val};
-<<<<<<< HEAD
-=======
+
   
 
   xhttp.send(JSON.stringify(data));
@@ -70,7 +69,7 @@ function createUser(firstname, lastname, email, password, area, consumption){
       var arr = JSON.parse(xhttp.responseText);
       window.alert(arr);
 
-      if (arr.size > 0){
+      if (arr.length > 0){
         window.location.replace("../website/index_customer.html");
       } 
       
@@ -80,7 +79,5 @@ function createUser(firstname, lastname, email, password, area, consumption){
 
   var data = {firstname: firstname_val, lastname: lastname_val, email: email_val, password: password_val, area: area_val, consumption: consumption_val};
   
-
->>>>>>> 6e2a599d83143b26e686a2ea99f1a3780a8219e2
   xhttp.send(JSON.stringify(data));
 }
