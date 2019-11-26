@@ -181,7 +181,7 @@ function changePassword(old_password, new_password){
     }
   }
 
-   var data = {old_password: old_password_val,lastname: lastname_val};
+   var data = {old_password: old_password_val,new_password: new_password_val};
 
   xhttp.send(JSON.stringify(data));
 
