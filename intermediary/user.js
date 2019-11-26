@@ -34,7 +34,6 @@ function checkLogin(email, password){
            // Typical action to be performed when the document is ready:
            //alert(xhttp.responseText);
       var arr = JSON.parse(xhttp.responseText);
-      window.alert(arr.length);
 
       if (arr.length > 0){
         window.location.replace("../");
@@ -68,7 +67,6 @@ function createUser(firstname, lastname, email, password, img, area, consumption
            // Typical action to be performed when the document is ready:
            //alert(xhttp.responseText);
       var arr = JSON.parse(xhttp.responseText);
-      window.alert(arr);
 
       if (arr.length == 0){
         //Konto har skapats.
@@ -98,7 +96,6 @@ function logOut(){
     }
   }
 
-
   var data = {};
 
   
@@ -119,12 +116,26 @@ function getUserEnergyValues(id){
       var arr = JSON.parse(xhttp.responseText);
       callback(null, arr); 
       
+  }
+}
+    var data = {id: id_val};
+  
+    xhttp.send(JSON.stringify(data));
+}
+
+function editProfile(){
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "/updateProfile", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        window.location.replace("../website/profile_customer.html");
+
     }
   }
 
+  var data = {};
 
-  var data = {id: id_val};
-  
   xhttp.send(JSON.stringify(data));
 
 }
