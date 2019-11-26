@@ -113,6 +113,10 @@ function logout(){
                 <label class="control-label">Lastname</label>
                 <input type="text" placeholder="" name="lastname" maxlength="255" class="form-control text-box single-line" id = "lastname">
             </div>
+              <div class="form-group">
+                <label class="control-label">Email</label>
+                <input type="text" placeholder="" name="email" maxlength="255" class="form-control text-box single-line" id = "email">
+            </div>
              <div class="form-group">
                 <label class="control-label">House Area</label>
                 <input type="text" placeholder="" name="area" maxlength="255" class="form-control text-box single-line" id = "area">
@@ -126,9 +130,8 @@ function logout(){
                 <input type="text" placeholder="" name="house" maxlength="255" class="form-control text-box single-line" id = "house">
             </div>
             <div class="form-group">
-              <form action="edit_profile.html"
-                <button class="btn btn-default" type="submit" name="submit">Edit profile</button> 
-              </form>
+                <button class="btn btn-default" type="submit" name="submit" onclick = "updateUser()">Save</button> 
+               
             </div> 
         </div>
     </div>

@@ -38,7 +38,6 @@
         //console.log(arr);
         document.getElementById("firstname").placeholder= arr[0].firstname;
         document.getElementById("lastname").placeholder= arr[0].lastname;
-        document.getElementById("email").placeholder=arr[0].email;
         document.getElementById("area").placeholder= arr[0].area;
         document.getElementById("consumption").placeholder=arr[0].consumption;
         document.getElementById("house").placeholder=arr[0].img;  
@@ -59,12 +58,13 @@
       function updateUser(){
         document.getElementById("firstname").placeholder=document.getElementById("firstname").value
         document.getElementById("lastname").placeholder= document.getElementById("lastname").value;
-        document.getElementById("email").placeholder=document.getElementById("email").value;
         document.getElementById("area").placeholder= document.getElementById("area").value;
         document.getElementById("consumption").placeholder=document.getElementById("consumption").value;
         document.getElementById("house").placeholder=document.getElementById("house").value;
 
         /*Kalla på funktion som skickar in de värden som ska uppdateras till databasen*/
+
+        editProfile();
 
       }
 
