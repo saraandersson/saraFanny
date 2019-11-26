@@ -9,6 +9,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <style>
+
+    .card {
+      margin: 0 auto; /* Added */
+      float: none; /* Added */
+      margin-bottom: 10px; /* Added */
+    }
     /* Remove the navbar's default margin-bottom and rounded borders hej*/ 
     .navbar {
       margin-bottom: 0;
@@ -21,23 +27,34 @@
       padding: 25px;
     }
     
-  .carousel-inner img {
-      width: 100%; /* Set width to 100% */
-      margin: auto;
-      min-height:200px;
-  }
-
-  /* Hide the carousel text when the screen is less than 600 pixels wide */
-  @media (max-width: 600px) {
-    .carousel-caption {
-      display: none; 
-    }
-  }
   </style>
 </head>
 <body>
 
 <script type="text/javascript">
+      window.addEventListener("load", function () {
+
+       getEnergyValues(function(arr){
+        console.log(arr);
+
+        /*Consumption finns i en annan tabell så den ska ha ett annat värde*/
+
+        document.getElementById("wind").placeholder= arr[0].wind + " m/s";
+        document.getElementById("production").placeholder= arr[0].production + " kWh";
+        document.getElementById("consumption").placeholder=arr[0].consumption + " kWh";
+        document.getElementById("netProduction").placeholder= arr[0].production - arr[0].consumption + " kWh";
+        document.getElementById("buffert").placeholder=arr[0].buffert + " kWh";
+        document.getElementById("elPrice").placeholder=arr[0].price + " kr/kWh";  
+        });      
+    });
+
+
+    async function getEnergyValues(fn){
+          //var id = cookievärdet som finns i browsern  
+          getUserEnergyValues(id,(err,result) =>{
+          fn(result);
+          });
+      }
 
 function logout(){
   logOut();
@@ -68,6 +85,43 @@ function logout(){
     </div>
   </div>
 </nav>
+
+
+<div class='card-body'>
+    <div class='card-title'><h2 align = "center"> Your Wind Production </h2></div>
+  <div class="container body-content">
+        <div class="col-sm-offset-4 col-md-offset-4">
+            <div class="form-group">
+                <label class="control-label">Current Wind</label>
+                <input type="text" placeholder="" name="wind" id = "wind" maxlength="255" class="form-control text-box single-line">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Current Production</label>
+                <input type="text" placeholder="" name="production" maxlength="255" class="form-control text-box single-line" id = "production">
+            </div>
+              <div class="form-group">
+                <label class="control-label">Current Consumption</label>
+                <input type="text" placeholder="" name="consumption" maxlength="255" class="form-control text-box single-line" id = "consumption">
+            </div>
+             <div class="form-group">
+                <label class="control-label">Net Production</label>
+                <input type="text" placeholder="" name="netProduction" maxlength="255" class="form-control text-box single-line" id = "netProduction">
+            </div>
+              <div class="form-group">
+                <label class="control-label">Buffert</label>
+                <input type="text" placeholder="" name="buffert" maxlength="255" class="form-control text-box single-line" id = "buffert">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Electricity Price</label>
+                <input type="text" placeholder="" name="elPrice" maxlength="255" class="form-control text-box single-line" id = "elPrice">
+            </div>
+        </div>
+    </div>
+  </div>
+  <br>
+
+<footer class="container-fluid text-center">
+</footer>
 
 
 </body>
