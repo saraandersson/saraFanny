@@ -104,9 +104,8 @@ function logOut(){
 }
 
 
-function getUserEnergyValues(id){
+function getUserEnergyValues(){
   var xhttp = new XMLHttpRequest();
-  var id_val = id;
   xhttp.open("POST", "/getEnergy", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
@@ -118,7 +117,7 @@ function getUserEnergyValues(id){
       
   }
 }
-    var data = {id: id_val};
+    var data = {};
   
     xhttp.send(JSON.stringify(data));
 }

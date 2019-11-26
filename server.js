@@ -273,6 +273,12 @@ app.post('/changePassword', (req, res) => {
   
 });
 
+app.post('/getEnergy', function(req,res){
+     db_user.getEnergy(req.session.Users,(err,result) =>{
+        send_(err, result, res);
+    });
+  });
+
   
 
 
