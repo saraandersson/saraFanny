@@ -85,3 +85,22 @@ function createUser(firstname, lastname, email, password, img, area, consumption
   
   xhttp.send(JSON.stringify(data));
 }
+
+
+function logOut(){
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "/logout", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        window.location.replace("../");
+    }
+  }
+
+
+  var data = {};
+
+  
+
+  xhttp.send(JSON.stringify(data));
+}

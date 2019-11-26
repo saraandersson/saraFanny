@@ -158,6 +158,7 @@ app.post('/createUser', function(req,res){
             db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, req.body.password, req.body.img, req.body.area, 0, req.body.consumption);
             req.session.role_id = result[0].role_id;
             req.session.Users = result[0].id; 
+            db_user.setOnline(req.body.id, 1);
             send_(err, result, res);
           }else{
             send_(err, result, res);
@@ -177,6 +178,9 @@ app.post('/loginUser',function(req,res){
             req.session.role_id = result[0].role_id;
             req.session.Users = result[0].id; 
             console.log("RESULTAT OK:" + result);
+
+            db_user.setOnline(req.body.id, 1);
+
             send_(err, result, res);
           }else{
             console.log("RESULTAT EJ OK:" + result);
@@ -194,6 +198,19 @@ app.post('/getUserFirstname', function(req,res){
         send_(err, result, res);
     });
   });
+
+
+app.post('/logout', (req, res) => {
+    if (req.session.Users && req.cookies.user_id) {
+        res.clearCookie('user_id');
+        db_user.setOnline(req.session.Users, 0);
+        res.send("{}");
+    } else {
+      res.send("{}");
+    }
+});
+
+
 
   
 

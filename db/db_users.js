@@ -89,6 +89,17 @@ class Db_user{
 		});
 	}
 
+	setOnline(id, online){
+		var setsql=`UPDATE users SET online = ? WHERE id = ?`;
+		con.query(setsql, [online, id], function(err, result){
+				if(err){
+				}else{
+					console.log("Set online/offline");
+				}
+			});
+
+		}
+
 
 }
 
