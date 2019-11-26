@@ -110,6 +110,20 @@ class Db_user{
 			});
 	}
 
+		changePassword(id, password){
+		var setsql=`UPDATE users SET password = ? WHERE id = ?`;
+		con.query(setsql, [password, id], function(err, result){
+				if(err){
+				}else{
+					console.log("Lösenord ändrat");
+				}
+			});
+	}
+
+	
+
+
+
 
 }
 

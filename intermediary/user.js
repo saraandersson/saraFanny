@@ -163,3 +163,27 @@ function getUser(callback){
   
     xhttp.send(JSON.stringify(data));
 }
+
+
+function changePassword(old_password, new_password){
+  var xhttp = new XMLHttpRequest();
+  var old_password_val = old_password;
+  var new_password_val = new_password;
+  xhttp.open("POST", "/changePassword", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+
+      //IF success
+        window.location.replace("../website/profile_customer.html");
+      //Else error message
+
+    }
+  }
+
+   var data = {old_password: old_password_val,lastname: lastname_val};
+
+  xhttp.send(JSON.stringify(data));
+
+}
+
