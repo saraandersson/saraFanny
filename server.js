@@ -54,6 +54,8 @@ app.route('/')
           }
         });
 
+//Denna verkar inte funka, fixa
+
 app.route('/index.html')
     .get((req,res)=>{
        if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
@@ -67,18 +69,33 @@ app.route('/index.html')
           }
         });
 
-app.route('website/')
-    .get((req,res)=>{
-       if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
-            res.redirect('website/index_customer.html');
+  app.route('/index_customer.html')
+  .get((req,res)=>{
+     if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
+          res.redirect('website/index_customer.html');
+      }
+      else if(req.session.Users && req.cookies.user_id && req.session.role_id == 1){
+          res.redirect('/website/index_admin.html');
+        } 
+      else {
+           res.redirect('/website/index.html');
         }
-        else if(req.session.Users && req.cookies.user_id && req.session.role_id == 1){
-            res.redirect('/website/index_admin.html');
-          } 
-        else {
-             res.redirect('/website/index.html');
-          }
-        });
+      });
+
+    app.route('/index_admin.html')
+  .get((req,res)=>{
+     if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
+          res.redirect('website/index_customer.html');
+      }
+      else if(req.session.Users && req.cookies.user_id && req.session.role_id == 1){
+          res.redirect('/website/index_admin.html');
+        } 
+      else {
+           res.redirect('/website/index.html');
+        }
+      });
+
+
 
         
 
