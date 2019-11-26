@@ -68,12 +68,25 @@ app.listen(PORT, function() {
 
 app.route('/login.html')
     .get((req,res)=>{
+      if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
+        res.redirect('website/index_customer.html');
+      }else if(req.session.Users && req.cookies.user_id && req.session.role_id == 1){
+        res.redirect('website/index_admin.html');
+      }else{
         res.redirect('website/login.html');
+      }
         });
+      
 
   app.route('/signUp.html')
   .get((req,res)=>{
-      res.redirect('website/signUp.html');
+      if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
+        res.redirect('website/index_customer.html');
+      }else if(req.session.Users && req.cookies.user_id && req.session.role_id == 1){
+        res.redirect('website/index_admin.html');
+      }else{
+        res.redirect('website/signUp.html');
+      }
       });
 
 app.route('/market.html')
@@ -94,6 +107,8 @@ app.post('/createUser', function(req,res){
         }else{
           if(result.length == 0){
             db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, req.body.password, req.body.img, req.body.area, 0, req.body.consumption);
+            req.session.role_id = result[0].role_id;
+            req.session.Users = result[0].id; 
             send_(err, result, res);
           }else{
             send_(err, result, res);
