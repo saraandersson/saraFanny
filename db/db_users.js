@@ -110,7 +110,7 @@ class Db_user{
 			});
 	}
 
-		changePassword(id, password){
+	changePassword(id, password){
 		var setsql=`UPDATE users SET password = ? WHERE id = ?`;
 		con.query(setsql, [password, id], function(err, result){
 				if(err){
@@ -120,7 +120,19 @@ class Db_user{
 			});
 	}
 
-	
+	getEnergy(id, callback){
+		var getSql = `SELECT * FROM production WHERE id = ?`;
+		con.query(getSql, [id], function(err, result){
+			if(err){
+				callback(err, null);
+			}else{
+				console.log("User is fetched");
+				callback(err, result);
+			}
+		});
+	}
+
+
 
 
 

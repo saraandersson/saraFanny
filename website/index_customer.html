@@ -41,9 +41,9 @@
 
         document.getElementById("wind").placeholder= arr[0].wind + " m/s";
         document.getElementById("production").placeholder= arr[0].production + " kWh";
-        document.getElementById("consumption").placeholder=arr[0].consumption + " kWh";
-        document.getElementById("netProduction").placeholder= arr[0].production - arr[0].consumption + " kWh";
-        document.getElementById("buffert").placeholder=arr[0].buffert + " kWh";
+        //document.getElementById("consumption").placeholder=arr[0].consumption + " kWh";
+        //document.getElementById("netProduction").placeholder= arr[0].production - arr[0].consumption + " kWh";
+        //document.getElementById("buffert").placeholder=arr[0].buffert + " kWh";
         document.getElementById("elPrice").placeholder=arr[0].price + " kr/kWh";  
         });      
     });
@@ -51,7 +51,7 @@
 
     async function getEnergyValues(fn){
           //var id = cookievärdet som finns i browsern  
-          getUserEnergyValues(id,(err,result) =>{
+          getUserEnergyValues((err,result) =>{
           fn(result);
           });
       }
