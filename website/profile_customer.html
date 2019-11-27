@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Myprofile</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -10,11 +10,36 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <style>
 
-    .card {
+
+    #card {
       margin: 0 auto; /* Added */
       float: none; /* Added */
       margin-bottom: 10px; /* Added */
     }
+
+    .form-group_2{
+      width: 300px;
+     /* position: relative;
+      margin-left: auto;
+      margin-right: auto;*/
+    }
+
+    #changePasswordButton{ 
+      width: 49%;
+      position: relative; 
+      float:left;
+      display:inline-block;
+      margin-left: 1%;
+    }
+
+    #editProfileButton{ 
+      width: 49%;
+      position: relative; 
+      float:left;
+      display:inline-block;
+    }
+    
+
     /* Remove the navbar's default margin-bottom and rounded borders hej*/ 
     .navbar {
       margin-bottom: 0;
@@ -24,8 +49,13 @@
     /* Add a gray background color and some padding to the footer */
     footer {
       background-color: #f2f2f2;
-      padding: 25px;
+      position: relative;
+      bottom:0;
+      width: 100%;
+      height: 50px;
+
     }
+
     
   </style>
 </head>
@@ -36,12 +66,12 @@
 
        getUserValues(function(arr){
         //console.log(arr);
-        document.getElementById("firstname").innerHTML= "Firstname: "+ arr[0].firstname;
-        document.getElementById("lastname").innerHTML= "Lastname: "+ arr[0].lastname;
-        document.getElementById("email").innerHTML="E-mail: " + arr[0].email;
-        document.getElementById("area").innerHTML= "House area: " + arr[0].area;
-        document.getElementById("consumption").innerHTML="Daily consumption: " + arr[0].consumption;
-        document.getElementById("house").innerHTML="Your house: " + arr[0].img;  
+        document.getElementById("firstname").innerHTML= arr[0].firstname;
+        document.getElementById("lastname").innerHTML= arr[0].lastname;
+        document.getElementById("email").innerHTML=arr[0].email;
+        document.getElementById("area").innerHTML= arr[0].area;
+        document.getElementById("consumption").innerHTML=arr[0].consumption;
+        document.getElementById("house").innerHTML=arr[0].img;  
        });      
     });
 
@@ -62,7 +92,6 @@
       
 </script>
 
-
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -71,15 +100,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Logo</a>
+      <a class="navbar-brand" href="#">F&amp;S</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Home</a></li>
         <li id = 'test'><a href="/market.html">Market</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/profile_customer.html">My profile</a></li>
+        <li class="active"><a href="/profile_customer.html">My profile</a></li>
         <li><a href="javascript:logout()"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
       </ul>
     </div>
@@ -89,20 +118,45 @@
 
 <div class='card-body'>
     <div class='card-title'><h2 align = "center"> Your profile</h2></div>
-    <!-- DETTA MÅSTE SÄTTAS STIL PÅ-->
-    <p id= "firstname"></p>
-    <p id= "lastname"></p>
-    <p id= "email"></p>
-    <p id= "area"></p>
-    <p id= "consumption"></p>
-    <p id= "house"></p>
-
-    <form action="../website/change_password.html" class="inline">
-        <button class="btn btn-default">Change password</button>
-    </form>
-    <form action="../website/edit_profile.html" class="inline">
-        <button class="btn btn-default">Edit profile</button>
-    </form>
+    <div class="container body-content">
+        <div class="col-sm-offset-4 col-md-offset-4">
+            <div class="form-group">
+                <label class="control-label">Firstname</label>
+                <input type="text" placeholder="" name="firstname" id = "firstname" maxlength="255" class="form-control text-box single-line">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Lastname</label>
+                <input type="text" placeholder="" name="lastname" maxlength="255" class="form-control text-box single-line" id = "lastname">
+            </div>
+              <div class="form-group">
+                <label class="control-label">Email</label>
+                <input type="text" placeholder="" name="email" maxlength="255" class="form-control text-box single-line" id = "email">
+            </div>
+             <div class="form-group">
+                <label class="control-label">House Area</label>
+                <input type="text" placeholder="" name="area" maxlength="255" class="form-control text-box single-line" id = "area">
+            </div>
+              <div class="form-group">
+                <label class="control-label">Daily Consumption</label>
+                <input type="text" placeholder="" name="consumption" maxlength="255" class="form-control text-box single-line" id = "consumption">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Your House</label>
+                <input type="text" placeholder="" name="house" maxlength="255" class="form-control text-box single-line" id = "house">
+            </div>
+            <div class="form-group_2">
+              <div id = "changePasswordButton">
+                <form action="../website/change_password.html" class="inline">
+                  <button class="btn btn-default">Change password</button>
+                </form>
+              </div>
+              <div id = "editProfileButton">
+                <form action="../website/edit_profile.html" class="inline">
+                  <button class="btn btn-default">Edit profile</button>
+              </form>
+            </div>
+            </div>
+        </div>
     
   </div>
   <br>

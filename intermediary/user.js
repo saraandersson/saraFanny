@@ -187,3 +187,82 @@ function changePassword(old_password, new_password){
 
 }
 
+/*Ska hämta värden från databasen gällande en prosumers buffert */
+function getProduction(callback){
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "/getProduction", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+           // Typical action to be performed when the document is ready:
+           //alert(xhttp.responseText);
+      var arr = JSON.parse(xhttp.responseText);
+      callback(null, arr); 
+      
+  }
+}
+    var data = {};
+  
+    xhttp.send(JSON.stringify(data));
+}
+
+/*Om prosumern har ändrat sin buffert/market procent så uppdateras detta*/
+function updateUserProduction(buffert, market){
+  var xhttp = new XMLHttpRequest();
+  var buffert_val = buffert;
+  var market_val = market;
+  xhttp.open("POST", "/updateUserProduction", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+
+      //IF success
+        //window.location.replace("../website/profile_customer.html");
+      //Else error message
+
+    }
+  }
+
+   var data = {buffert: buffert_val, market: market_val};
+
+  xhttp.send(JSON.stringify(data));
+
+}
+
+function getAdmin(){
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "/getUser", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+           // Typical action to be performed when the document is ready:
+           //alert(xhttp.responseText);
+      var arr = JSON.parse(xhttp.responseText);
+      callback(null, arr); 
+      
+  }
+}
+    var data = {};
+  
+    xhttp.send(JSON.stringify(data));
+}
+
+function getAllProsumers(){
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "/getAllProsumers", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+           // Typical action to be performed when the document is ready:
+           //alert(xhttp.responseText);
+      var arr = JSON.parse(xhttp.responseText);
+      callback(null, arr); 
+      
+  }
+}
+    var data = {};
+  
+    xhttp.send(JSON.stringify(data));
+}
+
+

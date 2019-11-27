@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Market</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="../intermediary/user.js" type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders hej*/ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+    
+  </style>
+</head>
+<body>
+
+<script type="text/javascript">
+
+  
+    window.addEventListener("load", function () {
+    
+    
+       getFirstname(function(arr){
+        console.log(arr);
+         var firstname = arr[0].firstname; 
+
+         console.log(arr);
+
+          $('#test').html(firstname);
+        });
+
+
+      
+    });
+
+    async function getFirstname(fn){
+          getUserFirstname(1,(err,result) =>{
+          fn(result);
+          });
+      }
+
+      
+      </script>
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">F&amp;S</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="/index.html">Home</a></li>
+        <li class="active"><a href="/market.html">Market</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="/signUp.html"> Sign up</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<footer class="container-fluid text-center">
+</footer>
+
+</body>
+</html>
