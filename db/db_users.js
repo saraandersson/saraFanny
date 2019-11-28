@@ -133,7 +133,7 @@ class Db_user{
 	}
 
 getAllProsumers(callback){
-	var getSql = `SELECT * FROM [users] JOIN blocked ON [users].id = blocked.users_id`;
+	var getSql = `SELECT user.id, user.firstname, user.lastname, user.email, user.onlie, blocked.blocked FROM users JOIN blocked ON users.id = blocked.users_id`;
 	con.query(getSql, [] , function(err, result){
 		if(err){
 			callback(err, null);
