@@ -74,17 +74,12 @@ window.addEventListener("load", function () {
 
         getUsersValues(function(arr){
          
-         var obj_blocked = 0;
-
-         getUserBlocked(function(arr_blocked){
-              obj_blocked = arr_blocked;
-         });
 
           var obj = arr; 
           var x, txt=""; 
 
           for (x in obj){
-           txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online + "</td><td>" + obj_blocked[x].blocked + " "+ "<button class='btn btn-default' id = 'block' onclick='blockProsumer()'>Block Prosumer</button>" + "</td><td>" + "<button class='btn btn-default' id = 'info' onclick='viewProsumerProduction()'>View Prosumer Production</button>" + "</tr></td>";
+           txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online + "</td><td>" + obj[x].blocked + " "+ "<button class='btn btn-default' id = 'block' onclick='blockProsumer()'>Block Prosumer</button>" + "</td><td>" + "<button class='btn btn-default' id = 'info' onclick='viewProsumerProduction()'>View Prosumer Production</button>" + "</tr></td>";
           }
           $('#myTable tbody').html(txt); 
 
@@ -99,11 +94,6 @@ window.addEventListener("load", function () {
               });
           }
 
-      async function getUserBlocked(fn){
-          getBlocked((err,result) =>{
-          fn(result);
-          });
-      }
 
   
 

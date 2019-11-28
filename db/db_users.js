@@ -133,7 +133,7 @@ class Db_user{
 	}
 
 getAllProsumers(callback){
-	var getSql = `SELECT * FROM users`;
+	var getSql = `SELECT * FROM [users] JOIN blocked ON [users].id = blocked.user_id`;
 	con.query(getSql, [] , function(err, result){
 		if(err){
 			callback(err, null);
@@ -143,6 +143,10 @@ getAllProsumers(callback){
 		}
 	});
 }
+
+SELECT OrderNumber, TotalAmount, FirstName, LastName, City, Country
+  FROM [Order] JOIN Customer
+    ON [Order].CustomerId = Customer.Id
 
 addBlocked(user_id, blocked, time){
 	var addSql = `INSERT INTO blocked (user_id, blocked, time) VALUES (?,?,?)`;

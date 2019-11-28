@@ -286,11 +286,6 @@ app.post('/getAllProsumers', function(req,res){
     });
   });
 
-app.post('/getAllBlocked', function(req,res){
-     db_user.getBlocked((err,result) =>{
-        send_(err, result, res);
-    });
-  });
 
 
 
