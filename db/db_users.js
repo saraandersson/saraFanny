@@ -144,9 +144,7 @@ getAllProsumers(callback){
 	});
 }
 
-SELECT OrderNumber, TotalAmount, FirstName, LastName, City, Country
-  FROM [Order] JOIN Customer
-    ON [Order].CustomerId = Customer.Id
+
 
 addBlocked(user_id, blocked, time){
 	var addSql = `INSERT INTO blocked (user_id, blocked, time) VALUES (?,?,?)`;
