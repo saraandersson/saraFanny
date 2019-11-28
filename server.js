@@ -289,7 +289,9 @@ app.post('/getAllProsumers', function(req,res){
     });
   });
 
-
+app.post('/callSimulator', function(req,res){
+        
+  });
 
 
 function send_(err, data, res) {

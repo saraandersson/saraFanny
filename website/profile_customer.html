@@ -56,6 +56,8 @@
 
     }
 
+
+
     
   </style>
 </head>
@@ -65,7 +67,6 @@
       window.addEventListener("load", function () {
 
        getUserValues(function(arr){
-        //console.log(arr);
         document.getElementById("firstname").innerHTML= arr[0].firstname;
         document.getElementById("lastname").innerHTML= arr[0].lastname;
         document.getElementById("email").innerHTML=arr[0].email;
@@ -77,9 +78,7 @@
 
 
 
-    async function getUserValues(fn){
-          /*Hämta värden från databasen*/
-          //var id = cookievärdet som finns i browsern  
+    async function getUserValues(fn){ 
           getUser((err,result) =>{
           fn(result);
           });
@@ -122,27 +121,27 @@
         <div class="col-sm-offset-4 col-md-offset-4">
             <div class="form-group">
                 <label class="control-label">Firstname</label>
-                <input type="text" placeholder="" name="firstname" id = "firstname" maxlength="255" class="form-control text-box single-line">
+                <p id = "firstname" style="font-size:15px;"></p>
             </div>
             <div class="form-group">
                 <label class="control-label">Lastname</label>
-                <input type="text" placeholder="" name="lastname" maxlength="255" class="form-control text-box single-line" id = "lastname">
+                <p id = "lastname" style="font-size:15px;"> </p>
             </div>
               <div class="form-group">
                 <label class="control-label">Email</label>
-                <input type="text" placeholder="" name="email" maxlength="255" class="form-control text-box single-line" id = "email">
+                <p id = "email" style="font-size:15px;"> </p>
             </div>
              <div class="form-group">
                 <label class="control-label">House Area</label>
-                <input type="text" placeholder="" name="area" maxlength="255" class="form-control text-box single-line" id = "area">
+                <p id = "area" style="font-size:15px;"> </p>
             </div>
               <div class="form-group">
                 <label class="control-label">Daily Consumption</label>
-                <input type="text" placeholder="" name="consumption" maxlength="255" class="form-control text-box single-line" id = "consumption">
+                <p id = "consumption" style="font-size:15px;"> </p>
             </div>
             <div class="form-group">
                 <label class="control-label">Your House</label>
-                <input type="text" placeholder="" name="house" maxlength="255" class="form-control text-box single-line" id = "house">
+                <p id = "house" style="font-size:15px;"> </p>
             </div>
             <div class="form-group_2">
               <div id = "changePasswordButton">
@@ -161,8 +160,7 @@
   </div>
   <br>
 
-<footer class="container-fluid text-center">
-</footer>
+
 
 
 </body>
