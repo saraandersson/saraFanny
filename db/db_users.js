@@ -159,7 +159,7 @@ addBlocked(user_id, blocked, time){
 }
 
 getUserId(email, password, callback){
-	var getSql = `SELECT id FROM users WHERE email = ?, password = ?`;
+	var getSql = `SELECT * FROM users WHERE email = ? AND password = ?`;
 	con.query(getSql, [email, password] , function(err, result){
 		if(err){
 			callback(err, null);
