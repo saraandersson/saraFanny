@@ -74,12 +74,12 @@ window.addEventListener("load", function () {
 
         getUsersValues(function(arr){
          
-
+          console.log(arr);
           var obj = arr; 
           var x, txt=""; 
 
           for (x in obj){
-           txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online + "</td><td>" + obj[x].blocked + " "+ "<button class='btn btn-default' id = 'block' onclick='blockProsumer()'>Block Prosumer</button>" + "</td><td>" + "<button class='btn btn-default' id = 'info' onclick='viewProsumerProduction()'>View Prosumer Production</button>" + "</tr></td>";
+           txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].users.firstname + "</td><td>"  + obj[x].users.lastname+ "</td><td>" + obj[x].users.email + "</td><td>"  + obj[x].users.online + "</td><td>" + obj[x].blocked.blocked + " "+ "<button class='btn btn-default' id = 'block' onclick='blockProsumer()'>Block Prosumer</button>" + "</td><td>" + "<button class='btn btn-default' id = 'info' onclick='viewProsumerProduction()'>View Prosumer Production</button>" + "</tr></td>";
           }
           $('#myTable tbody').html(txt); 
 
