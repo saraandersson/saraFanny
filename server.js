@@ -200,7 +200,8 @@ app.post('/createUser', function(req,res){
             db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, req.body.password, req.body.img, req.body.area, 0, req.body.consumption);
             req.session.role_id = result[0].role_id;
             req.session.Users = result[0].id; 
-            db_user.setOnline(req.body.id, 1);
+            db_user.setOnline(req.session.Users, 1);
+            db_user.addBlocked(req.session.Users, 0, 0);
             send_(err, result, res);
           }else{
             send_(err, result, res);
@@ -281,6 +282,12 @@ app.post('/getEnergy', function(req,res){
 
 app.post('/getAllProsumers', function(req,res){
      db_user.getAllProsumers((err,result) =>{
+        send_(err, result, res);
+    });
+  });
+
+app.post('/getAllBlocked', function(req,res){
+     db_user.getBlocked((err,result) =>{
         send_(err, result, res);
     });
   });

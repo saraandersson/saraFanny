@@ -132,7 +132,7 @@ class Db_user{
 		});
 	}
 
-	getAllProsumers(callback){
+getAllProsumers(callback){
 	var getSql = `SELECT * FROM users`;
 	con.query(getSql, [] , function(err, result){
 		if(err){
@@ -143,6 +143,32 @@ class Db_user{
 		}
 	});
 }
+
+addBlocked(user_id, blocked, time){
+	var addSql = `INSERT INTO blocked (user_id, blocked, time) VALUES (?,?,?)`;
+	//console.log(role_id + "," + online + "," + firstname + "," + lastname + "," + email + "," + password + "," + img + "," + area + "," + buffert + "," + consumption);
+	con.query(addSql,[user_id, blocked, time] , function(err, result){
+		if(err){
+			throw err;
+		}else{
+			console.log("Blocked table is added");
+		}
+	});
+}
+
+getBlocked(callback){
+	var getSql = `SELECT * FROM blocked`;
+	con.query(getSql, [] , function(err, result){
+		if(err){
+			callback(err, null);
+		}else{
+			console.log("Blocked is fetched");
+			callback(err, result);
+		}
+	});
+}
+
+
 
 
 
