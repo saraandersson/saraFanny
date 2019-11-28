@@ -132,6 +132,17 @@ class Db_user{
 		});
 	}
 
+	getAllProsumers(callback){
+	var getSql = `SELECT * FROM users`;
+	con.query(getSql, [] , function(err, result){
+		if(err){
+			callback(err, null);
+		}else{
+			console.log("Users is fetched");
+			callback(err, result);
+		}
+	});
+}
 
 
 

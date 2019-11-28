@@ -279,7 +279,12 @@ app.post('/getEnergy', function(req,res){
     });
   });
 
-  
+app.post('/getAllProsumers', function(req,res){
+     db_user.getAllProsumers((err,result) =>{
+        send_(err, result, res);
+    });
+  });
+
 
 
 function send_(err, data, res) {

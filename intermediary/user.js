@@ -246,7 +246,7 @@ function getAdmin(){
     xhttp.send(JSON.stringify(data));
 }
 
-function getAllProsumers(){
+function getAllProsumers(callback){
   var xhttp = new XMLHttpRequest();
   xhttp.open("POST", "/getAllProsumers", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
