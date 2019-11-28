@@ -11,7 +11,8 @@
 | 2019-11-21  | 8       | Meeting with Joo Chan Kim, working with sending data between website and database, lecture with Omegapoint |
 | 2019-11-25  | 9       | Struggled with server and start working with website |
 | 2019-11-26  | 8       | Working with functions from database to website. Log in, log out, edit profile, change password and cookies |
-
+| 2019-11-28  | 8       | Meeting with Niklas, working with simulator values to website and database|
+ 
 
 
 
@@ -29,5 +30,6 @@
 | 2019-11-21  | 8       | Meeting with Joo Chan Kim, working with sending data between website and database, lecture with Omegapoint |
 | 2019-11-25  | 9       | Struggled with server and start working with website |
 | 2019-11-26  | 4       | Working with Prosumers profile page, index page and update profile page |
-| 2019-11-26  | 5       | Working with Prosumers market page, admin market page, admin profile page, admin prosumer page, prosumer profile page  |
+| 2019-11-27  | 5       | Working with Prosumers market page, admin market page, admin profile page, admin prosumer page, prosumer profile page  |
+| 2019-11-28  | 8       | Meeting with Niklas, working with simulator values to website and database|
 
