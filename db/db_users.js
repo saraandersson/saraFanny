@@ -147,7 +147,7 @@ getAllProsumers(callback){
 
 
 addBlocked(user_id, blocked, time){
-	var addSql = `INSERT INTO blocked (user_id, blocked, time) VALUES (?,?,?)`;
+	var addSql = `INSERT INTO blocked (users_id, blocked, time) VALUES (?,?,?)`;
 	//console.log(role_id + "," + online + "," + firstname + "," + lastname + "," + email + "," + password + "," + img + "," + area + "," + buffert + "," + consumption);
 	con.query(addSql,[user_id, blocked, time] , function(err, result){
 		if(err){
