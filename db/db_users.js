@@ -158,13 +158,13 @@ addBlocked(user_id, blocked, time){
 	});
 }
 
-getBlocked(callback){
-	var getSql = `SELECT * FROM blocked`;
-	con.query(getSql, [] , function(err, result){
+getUserId(email, password, callback){
+	var getSql = `SELECT id FROM users WHERE email = ?, password`;
+	con.query(getSql, [email, password] , function(err, result){
 		if(err){
 			callback(err, null);
 		}else{
-			console.log("Blocked is fetched");
+			console.log("Id is fetched");
 			callback(err, result);
 		}
 	});
