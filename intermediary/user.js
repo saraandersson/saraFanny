@@ -254,7 +254,9 @@ function getAllProsumers(callback){
     if (this.readyState == 4 && this.status == 200) {
            // Typical action to be performed when the document is ready:
            //alert(xhttp.responseText);
+
       var arr = JSON.parse(xhttp.responseText);
+      window.alert(arr);
       callback(null, arr); 
       
   }
