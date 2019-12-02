@@ -27,6 +27,31 @@
       padding: 25px;
     }
     
+    .form-group_2{
+      width: 300px;
+     /* position: relative;
+      margin-left: auto;
+      margin-right: auto;*/
+    }
+
+  #saveButton{ 
+      width: 49%;
+      position: relative; 
+      float:left;
+      display:inline-block;
+    
+    }
+
+    #backButton{ 
+      width: 49%;
+      position: relative; 
+      float:left;
+      display:inline-block;
+      margin-left: 100px; 
+      margin-top: -33px;
+        }
+
+
   </style>
 </head>
 <body>
@@ -119,23 +144,24 @@ function logout(){
                 <label class="control-label">Daily Consumption</label>
                 <input type="text" placeholder="" name="consumption" maxlength="255" class="form-control text-box single-line" id = "consumption">
             </div>
+            
             <div class="form-group">
                 <label class="control-label">Your House</label>
                 <input type="text" placeholder="" name="house" maxlength="255" class="form-control text-box single-line" id = "house">
             </div>
-            <div class="form-group">
+          <div class="form-group_2">
+              <div id = "saveButton">
                 <button class="btn btn-default" type="submit" name="submit" onclick = "updateUser()">Save</button> 
+              </div>
+              <div id = "backButton">
                   <form action="../website/profile_customer.html" class="inline">
-                      <button class="btn btn-default">Back</button>
-                  </form>
-            </div> 
+                  <button class="btn btn-default" >Back</button>
+                </div>
+            </div>   
         </div>
     </div>
   </div>
   <br>
-
-<footer class="container-fluid text-center">
-</footer>
 
 
 </body>

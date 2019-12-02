@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Market</title>
+  <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -53,61 +53,11 @@
       width: 100%;
     }
 
-  .slideContainer {
-  width: 100%;
-  margin-top: 50px;
-  align-self: center; 
-}
-
-.slider {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 20px;
-  background: linear-gradient(90deg, rgb(117, 252, 117) 5%, rgb(214, 214, 214) 0%);
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
-  border-radius: 12px;
-  box-shadow: 0px 1px 10px 1px black;
-  }
-  
-  .slider:hover {
-    opacity: 1;
-  }
-  
-  .slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 40px;
-  height: 40px;
-  background: white;
-  cursor: pointer;
-  border-radius: 50%;
-  }
-  
-  .slider::-moz-range-thumb {
-  width: 40px;
-  height: 40px;
-  background: white;
-  cursor: pointer;
-  border-radius: 50%;
-  }
-
-
 p{
   margin-top: 25px;
   opacity: 0.7;
 }
 
-#market{
-  width: 15%;
-  position: relative; 
-  float:right;
-  display:inline-block;
-  margin-top: -60px; 
-  
-}
 
 #updateButton {
       width: 49%;
@@ -115,6 +65,8 @@ p{
       float:middle;
       display:inline-block;
       margin-left: 40%;
+}
+
 }
     
   </style>
@@ -124,21 +76,16 @@ p{
 <script type="text/javascript">
 
 window.addEventListener("load", function () {
-     getUserProductionValues(function(arr){ 
+     getMarket(function(arr){ 
+       document.getElementById("market").innerHTML= arr[0] + " m/s";
+       document.getElementById("marketprice").innerHTML= arr[1] + " m/s";
 
-     document.getElementById("myRange").value = arr[0].buffert;
-     document.getElementById("buffert").innerHTML = arr[0].buffert; 
-     document.getElementById("marketValue").innerHTML = 100 - arr[0].buffert; 
-
-    x = arr[0].buffert;
-    color = 'linear-gradient(90deg, rgb(117, 252, 117)' + x + '% , rgb(214, 214, 214)' + x + '%)';
-    slider.style.background = color;
- 
+  
     });
   });
 
-  async function getUserProduction(fn){
-    getProduction((err,result) =>{
+  async function getMarket(fn){
+    getCurrentMarket((err,result) =>{
       fn(result);
         });
       } 
@@ -150,20 +97,10 @@ function logout(){
 
 }
 
-function updateMarket(){
-    document.getElementById("buffert_final").innerHTML =  document.getElementById("buffert").innerHTML;
-    document.getElementById("marketValue_final").innerHTML = document.getElementById("marketValue").innerHTML;
-}
 
-function updateMarketToDatabase(){
-    var buffert = document.getElementById("buffert_final").innerHTML;
-    var market = document.getElementById("marketValue_final").innerHTML; 
-    updateUserProduction(buffert, market);
-}
 
       
 </script>
-
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -177,74 +114,36 @@ function updateMarketToDatabase(){
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="/index_customer.html">Home</a></li>
-        <li class="active"><a href="/market_customer.html">Market</a></li>
+        <li><a href="/index_customer.html">Current Production</a></li>
+        <li><a href="/production_settings_customer.html">Production Settings</a></li>
+        <li class = "active"><a href="/market.html">Market</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/profile_customer.html">My profile</a></li>
         <li><a href="javascript:logout()"><span class="glyphicon glyphicon-log-in"></span> Log out</a></li>
       </ul>
     </div>
-      </div>
+  </div>
 </nav>
 
 
-    <div class='card-body'>
-    <div class='card-title'><h2 align = "center">Daily Market </h2></div>
+<div class='card-body'>
+    <div class='card-title'><h2 align = "center"> Current Market </h2></div>
   <div class="container body-content">
-          <h3 align = "center"> Your Net Production: 10</h3>
-          <h3 align = "center"> Current Market: någon slags statistik och en fråga om man vill köpa från marknaden</h3>
-          <h3 align = "center"> Your Current Production Partition: </h3>
-          <div class="slideContainer">
-          <input type="range" class="slider" id="myRange">
-          <p>Buffert: <span id="buffert"></span>%</p>
-          <div id = "market">
-          <p>Market: <span id = "marketValue"></span>%</p>
-        </div>
-         <div id = "updateButton">
-          <button class="btn btn-default" name="submit" onclick = "updateMarket()">Update Values</button> 
-        </div>
-        <div id = "updateBuffert">
-          <h5> Would you like to update your production partition with following values: </h5>
-          <h5>Market: <span id = "marketValue_final"></span>%</h5>
-          <h5>Buffert: <span id="buffert_final"></span>%</h5>
-          <div class="form-group_2">
-            <div id = "yesButton">
-              <button class="btn btn-default" type="submit" name="submit" onclick = "updateMarketToDatabase()">Yes</button> 
+        <div class="col-sm-offset-4 col-md-offset-4">
+            <div class="form-group">
+                <h3>Availability On Market: </h3>
+                 <div class="well" id = "market"></div>
             </div>
-            </div> 
-          </div>
-        </div>
-
-    <script>
-    var slider = document.getElementById("myRange");
-    var output = document.getElementById("buffert");
-    var outputMarket = document.getElementById("marketValue");
-
-
-    output.innerHTML = slider.value;
-    outputMarket.innerHTML = 100-slider.value;
-
-    slider.oninput = function() {
-    output.innerHTML = this.value;
-    outputMarket.innerHTML = 100-this.value;
-    }
-
-    var start_value = slider.getAttribute("buffert");
-
-      var x = start_value;
-      var color = 'linear-gradient(90deg, rgb(117, 252, 117)' + x + '% , rgb(214, 214, 214)' + x + '%)';
-      slider.style.background = color;
-
-      slider.addEventListener("mousemove", function() {
-      x = slider.value;
-      color = 'linear-gradient(90deg, rgb(117, 252, 117)' + x + '% , rgb(214, 214, 214)' + x + '%)';
-      slider.style.background = color;
-      });
-
-      </script>
-      </div>
+             <div class="form-group">
+                <h3>Market Price: </h3>
+                 <div class="well" id = "marketprice"></div>
+            </div>
     </div>
+  </div>
+
+
+
   </div>
   </body>
   </html>

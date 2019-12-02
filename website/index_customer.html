@@ -52,44 +52,14 @@
   function test(){
 
     fetchUserWindData(function(arr){
-          document.getElementById("wind").placeholder= arr[0] + " m/s";
-          document.getElementById("production").placeholder= arr[1] + " kWh";
-          document.getElementById("netProduction").placeholder=arr[2] + " kWh"; 
-          document.getElementById("consumption").placeholder=arr[3] + " kWh"; 
+          document.getElementById("wind").innerHTML= arr[0] + " m/s";
+          document.getElementById("production").innerHTML= arr[1] + " kWh";
+          document.getElementById("netProduction").innerHTML=arr[2] + " kWh"; 
+          document.getElementById("consumption").innerHTML=arr[3] + " kWh"; 
 
         });
 
   }
-/*function fetchWindData(){
- $.ajax({
-  url: '../server.js',
-  type: 'POST',
-  data: {function: "/callSimulator"},
-  success: function(data){
-   // Perform operation on return value
-   //alert(data);
-    document.getElementById("wind").placeholder= data[0] + " m/s";
-    document.getElementById("production").placeholder= data[1] + " kWh";
-    document.getElementById("elPrice").placeholder=data[2] + " kr/kWh"; 
-  },
-  complete:function(data){
-   setTimeout(fetchdata,10000);
-  }
-  error: function(data) {
-        console.log("Error: " + data);
-      }
-
- });
-}*/
-
-/*$(document).ready(function(){
- setTimeout(fetchdata,10000);
-});*/
-
-
-
-
-
 
 function logout(){
   logOut();
@@ -113,7 +83,8 @@ function logout(){
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+        <li class="active"><a href="/index_customer.html">Current Production</a></li>
+        <li><a href="/production_settings_customer.html">Production Settings</a></li>
         <li id = 'test'><a href="/market.html">Market</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -131,27 +102,23 @@ function logout(){
         <div class="col-sm-offset-4 col-md-offset-4">
             <div class="form-group">
                 <label class="control-label">Current Wind</label>
-                <input type="text" placeholder="" name="wind" id = "wind" maxlength="255" class="form-control text-box single-line">
+                <p id = "wind" style="font-size:15px;"></p>
             </div>
             <div class="form-group">
                 <label class="control-label">Current Production</label>
-                <input type="text" placeholder="" name="production" maxlength="255" class="form-control text-box single-line" id = "production">
+               <p id = "production" style="font-size:15px;"></p>
             </div>
               <div class="form-group">
                 <label class="control-label">Current Consumption</label>
-                <input type="text" placeholder="" name="consumption" maxlength="255" class="form-control text-box single-line" id = "consumption">
+                <p id = "consumption" style="font-size:15px;"></p>
             </div>
              <div class="form-group">
                 <label class="control-label">Net Production</label>
-                <input type="text" placeholder="" name="netProduction" maxlength="255" class="form-control text-box single-line" id = "netProduction">
+                <p id = "netProduction" style="font-size:15px;"></p>
             </div>
               <div class="form-group">
                 <label class="control-label">Buffert</label>
-                <input type="text" placeholder="" name="buffert" maxlength="255" class="form-control text-box single-line" id = "buffert">
-            </div>
-            <div class="form-group">
-                <label class="control-label">Electricity Price</label>
-                <input type="text" placeholder="" name="elPrice" maxlength="255" class="form-control text-box single-line" id = "elPrice">
+                <p id = "buffert" style="font-size:15px;"></p>
             </div>
         </div>
     </div>

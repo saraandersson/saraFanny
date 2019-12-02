@@ -68,10 +68,6 @@ function logout(){
 /*Nedan är endast för testning av design, ska ändras sen när vi vet hur 
 vi ska göra med blockerade användare osv*/
 window.addEventListener("load", function () {
-
-
-        
-
         getUsersValues(function(arr){
          
 
@@ -79,15 +75,19 @@ window.addEventListener("load", function () {
           var x, txt=""; 
 
           for (x in obj){
-           txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online + "</td><td>" + obj[x].blocked + " "+ "<button class='btn btn-default' id = 'block' onclick='blockProsumer()'>Block Prosumer</button>" + "</td><td>" + "<button class='btn btn-default' id = 'info' onclick='viewProsumerProduction()'>View Prosumer Production</button>" + "</tr></td>";
+           txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online + "</td><td>" + obj[x].blocked + " "+ "<button class='btn btn-default' id =" + obj[x].id + " onclick='blockProsumer()'>Block Prosumer</button>" + "</td><td>" + "<button class='btn btn-default' id = 'info' onclick='viewProsumerProduction()'>View Prosumer Production</button>" + "</tr></td>";
           }
           $('#myTable tbody').html(txt); 
+
+        for(x in obj){
+          if(obj[x].blocked==1){
+            blockButton(obj[x].id);
+          }
+        }
 
        }); 
 
       });
-
-
       async function getUsersValues(fn){
               getAllProsumers((err,result) =>{
               fn(result);
@@ -95,10 +95,20 @@ window.addEventListener("load", function () {
           }
 
 
-  
+  function blockButton(id){
+    document.getElementById(id).innerText = "Unblock Prosumer";
+    document.getElementById(id).onclick = unblockProsumer(id); 
+
+}
+
+function unblockProsumer(id){
+    window.alert("funkar!");
+}
 
 
-
+function logout(){
+  logOut();
+}
       
 </script>
 
