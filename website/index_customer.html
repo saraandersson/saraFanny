@@ -45,9 +45,9 @@ function fetchWindData(){
   success: function(data){
    // Perform operation on return value
    //alert(data);
-    document.getElementById("wind").placeholder= data[0].wind + " m/s";
-    document.getElementById("production").placeholder= data[0].production + " kWh";
-    document.getElementById("elPrice").placeholder=data[0].price + " kr/kWh"; 
+    document.getElementById("wind").placeholder= data[0] + " m/s";
+    document.getElementById("production").placeholder= data[1] + " kWh";
+    document.getElementById("elPrice").placeholder=data[2] + " kr/kWh"; 
   },
   /*complete:function(data){
    setTimeout(fetchdata,10000);
