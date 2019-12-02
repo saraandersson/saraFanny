@@ -174,7 +174,7 @@ getUserId(email, password, callback){
 
 
 addSellBuy(user_id, sell, buy){
-	var addSql = `INSERT INTO user_sell_buy (users_id, sell, buy) VALUES (?,?,?)`;
+	var addSql = `INSERT INTO user_sell_buy (user_id, sell, buy) VALUES (?,?,?)`;
 	//console.log(role_id + "," + online + "," + firstname + "," + lastname + "," + email + "," + password + "," + img + "," + area + "," + buffert + "," + consumption);
 	con.query(addSql,[user_id, sell, buy] , function(err, result){
 		if(err){
