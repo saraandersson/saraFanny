@@ -300,7 +300,8 @@ app.post('/callSimulator', function(req,res){
             console.log("HIT");
             db_user.getSellBuy(req.session.Users, (e,r)=>{
               console.log("INNANFÖR");
-              var value = results[2] * r[0].sell;
+              //var value = results[2] * r[0].sell;
+              var value = 1;
               console.log(value);
               db_user.updateBuffert(req.session.Users, value);
             }); 
@@ -309,7 +310,8 @@ app.post('/callSimulator', function(req,res){
             console.log("DIT");
             db_user.getSellBuy(req.session.Users, (e,r)=>{
               console.log("INNANFÖR");
-            var value = results[2] * r[0].buy;
+           // var value = results[2] * r[0].buy;
+           var value = 1;
             console.log(value);
             db_user.updateBuffert(req.session.Users, value);
 
