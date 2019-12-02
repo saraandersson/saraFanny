@@ -256,7 +256,6 @@ function getAllProsumers(callback){
            //alert(xhttp.responseText);
 
       var arr = JSON.parse(xhttp.responseText);
-      window.alert(arr);
       callback(null, arr); 
       
   }
@@ -276,7 +275,6 @@ function fetchWindData(callback){
            //alert(xhttp.responseText);
 
       var arr = JSON.parse(xhttp.responseText);
-      window.alert(arr);
       callback(null, arr); 
       
   }
