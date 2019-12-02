@@ -193,6 +193,7 @@ addSellBuy(user_id, sell, buy){
 				
 			}else{
 				var buffert = value + res[0].buffert;
+				console.log(buffert);
 				var setsql=`UPDATE users SET buffert = ? WHERE id = ?`;
 				con.query(setsql, [buffert, id], function(error, result){
 				if(error){

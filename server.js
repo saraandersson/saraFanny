@@ -295,16 +295,16 @@ app.post('/getAllProsumers', function(req,res){
 app.post('/callSimulator', function(req,res){
         db_user.getUser(req.session.Users,(err,result) =>{
         sim.getTotalProductionPerDay(result[0].consumption, result[0].area, (results)=>{
-          console.log(results);
+          console.log("HEJ: " + results[2]);
           if(results[2] > 0){
+            console.log("HIT");
             db_user.getSellBuy(req.session.Users, (e,r)=>{
               var value = results[2] * r[0].sell;
               db_user.updateBuffert(req.session.Users, value);
-            });
-
-            
+            }); 
 
           }else{
+            console.log("DIT");
             db_user.getSellBuy(req.session.Users, (e,r)=>{
             var value = results[2] * r[0].buy;
             db_user.updateBuffert(req.session.Users, value);
