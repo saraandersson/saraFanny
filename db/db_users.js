@@ -41,8 +41,10 @@ class Db_user{
 		});
 	}
 
+	//var getSql = `SELECT users.id, users.firstname, users.lastname, users.email, users.online, blocked.blocked FROM users JOIN blocked ON users.id = blocked.users_id`;
+
 	getUser(id, callback){
-		var getSql = `SELECT * FROM users WHERE id = ?`;
+		var getSql = `SELECT users.firstname, users.lastname, users.email, users.password, users.img, users.area, users.buffert, users.consumption, users.online, user_sell_buy.sell, user_sell_buy.buy FROM users JOIN user_sell_buy ON users.id = ?`;
 		con.query(getSql, [id], function(err, result){
 			if(err){
 				callback(err, null);
@@ -169,6 +171,56 @@ getUserId(email, password, callback){
 		}
 	});
 }
+
+
+addSellBuy(user_id, sell, buy){
+	var addSql = `INSERT INTO user_sell_buy (users_id, sell, buy) VALUES (?,?,?)`;
+	//console.log(role_id + "," + online + "," + firstname + "," + lastname + "," + email + "," + password + "," + img + "," + area + "," + buffert + "," + consumption);
+	con.query(addSql,[user_id, sell, buy] , function(err, result){
+		if(err){
+			throw err;
+		}else{
+			console.log("user_sell_buy table is added");
+		}
+	});
+}
+
+	updateBuffert(id, value){
+		var getSql = `SELECT * FROM users WHERE id = ?`;
+		con.query(getSql, [id], function(err, res){
+			if(err){
+				
+			}else{
+				var buffert = value + res[0].buffert;
+				var setsql=`UPDATE users SET buffert = ? WHERE id = ?`;
+				con.query(setsql, [buffert, id], function(error, result){
+				if(error){
+				}else{
+					console.log("Buffert uppdaterad");
+				}});
+			}
+		});
+		
+			
+	}
+
+	updateMarket(value){
+
+		var getSql = `SELECT * FROM market`;
+		con.query(getSql, [], function(err, res){
+			if(err){
+				
+			}else{
+				var amount = value + res[0].amount;
+				var setsql=`UPDATE users SET amount = ?`;
+				con.query(setsql, [amount, id], function(error, result){
+				if(error){
+				}else{
+					console.log("Market amount uppdaterad");
+				}});
+			}
+		});
+	}
 
 
 

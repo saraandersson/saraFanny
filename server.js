@@ -205,6 +205,7 @@ app.post('/createUser', function(req,res){
               req.session.Users = results[0].id; 
               db_user.setOnline(req.session.Users, 1);
               db_user.addBlocked(req.session.Users, 0, 0);
+              db_user.addSellBuy(req.session.Users, 0.5 , 0.5);
             });
             
             send_(err, result, res);
@@ -295,7 +296,15 @@ app.post('/callSimulator', function(req,res){
         db_user.getUser(req.session.Users,(err,result) =>{
         sim.getTotalProductionPerDay(result[0].consumption, result[0].area, (results)=>{
           console.log(results);
-              send_(err, results, res);
+          if(results[2] > 0){
+            var value = results[2] * results[0].sell;
+            db_user.updateBuffert(req.session.Users, value);
+
+          }else{
+            var value = results[2] * results[0].buy;
+            db_user.updateBuffert(req.session.Users, value);
+          }
+          send_(err, results, res);
         });
     });
         
