@@ -188,7 +188,7 @@ addSellBuy(user_id, sell, buy){
 
 	updateBuffert(id, value){
 		var getSql = `SELECT * FROM users WHERE id = ?`;
-		var setsql=`UPDATE users SET buffert = ? WHERE id = ?`;
+		var setsql=`UPDATE users SET buffert = 1 WHERE id = 3`;
 		var buffert = 0;
 		con.query(getSql, [id], function(err, res){
 			if(err){
