@@ -188,7 +188,7 @@ addSellBuy(user_id, sell, buy){
 
 	updateBuffert(id, value){
 		var getSql = `SELECT * FROM users WHERE id = ?`;
-		var setsql=`UPDATE users SET buffert = 1 WHERE id = 3`;
+		var setsql=`UPDATE users SET buffert = ? WHERE id = ?`;
 		var buffert = 0;
 		con.query(getSql, [id], function(err, res){
 			if(err){
@@ -210,23 +210,6 @@ addSellBuy(user_id, sell, buy){
 			
 	}
 
-	updateBuffert2(id, value){
-		var setsql=`UPDATE users SET buffert = 1 WHERE id = 3`;
-
-				var buffert = value;
-				console.log(buffert);
-				console.log(id);
-				con.query(setsql, [value, id], function(error, result){
-				if(error){
-					console.log("FEL");
-				}else{
-					console.log("Buffert uppdaterad");
-				}});
-		}
-	
-		
-			
-	
 
 	updateMarket(value){
 
