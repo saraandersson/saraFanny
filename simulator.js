@@ -24,7 +24,7 @@ class Sim {
 		this.totalProduction = this.wind.getElProd();
 		this.consumption_per_area = this.consumption/this.area;
 		this.excessElProd = this.totalProduction - (this.consumption_per_area/8640);
-		this.consumption_10 = consumption_per_area/8640;
+		this.consumption_10 = this.consumption_per_area/8640;
 
 		var result = [this.windspeed, this.totalProduction, this.excessElProd, this.consumption_10];
 
