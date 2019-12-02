@@ -13,6 +13,7 @@ class Sim {
 		this.consumption_per_area = 0;
 		this.excessElProd = 0;
 		this.totalProduction = 0; 
+		this.consumption_10 = 0;
 	}
 
 	getTotalProductionPerDay(consumption, area, callback){
@@ -22,11 +23,10 @@ class Sim {
 		this.area = area;
 		this.totalProduction = this.wind.getElProd();
 		this.consumption_per_area = this.consumption/this.area;
-		this.excessElProd = this.totalProduction - this.consumption_per_area;
+		this.excessElProd = this.totalProduction - (this.consumption_per_area/8640);
+		this.consumption_10 = consumption_per_area/8640
 
-		 
-
-		var result = [this.windspeed, this.totalProduction, this.excessElProd];
+		var result = [this.windspeed, this.totalProduction, this.excessElProd, this.consumption_10];
 
 		callback(result);
 
