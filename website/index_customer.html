@@ -33,15 +33,20 @@
 
 <script type="text/javascript">
       window.addEventListener("load", function () {
-        fetchWindData();
+
+        fetchUserWindData(function(arr){
+          document.getElementById("wind").placeholder= arr[0] + " m/s";
+          document.getElementById("production").placeholder= arr[1] + " kWh";
+          document.getElementById("elPrice").placeholder=arr[2] + " kr/kWh"; 
+
+        });
+        
         setInterval(fetchUserWindData(function(arr){
           document.getElementById("wind").placeholder= arr[0] + " m/s";
           document.getElementById("production").placeholder= arr[1] + " kWh";
           document.getElementById("elPrice").placeholder=arr[2] + " kr/kWh"; 
 
-
-
-        },10000);
+        }),10000);
 
 
 
