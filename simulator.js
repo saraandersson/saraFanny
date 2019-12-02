@@ -3,7 +3,7 @@
 
 class Sim {
 
-	constructor(consumption, area) {
+	constructor() {
 		//WindSpeed wind = new WindSpeed();
 		this.counter = 0; 
 		this.wind = 0;
