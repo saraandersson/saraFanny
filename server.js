@@ -292,6 +292,7 @@ app.post('/getAllProsumers', function(req,res){
 app.post('/callSimulator', function(req,res){
         db_user.getUser(req.session.Users,(err,result) =>{
         sim.getTotalProductionPerDay(result[0].consumption, result[0].area, (results)=>{
+          console.log(results);
               send_(err, results, res);
         });
     });
