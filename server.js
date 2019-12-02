@@ -297,12 +297,19 @@ app.post('/callSimulator', function(req,res){
         sim.getTotalProductionPerDay(result[0].consumption, result[0].area, (results)=>{
           console.log(results);
           if(results[2] > 0){
-            var value = results[2] * results[0].sell;
-            db_user.updateBuffert(req.session.Users, value);
+            db_user.getSellBuy(req.session.Users, (e,r)=>{
+              var value = results[2] * r[0].sell;
+              db_user.updateBuffert(req.session.Users, value);
+            });
+
+            
 
           }else{
-            var value = results[2] * results[0].buy;
+            db_user.getSellBuy(req.session.Users, (e,r)=>{
+            var value = results[2] * r[0].buy;
             db_user.updateBuffert(req.session.Users, value);
+
+          });
           }
           send_(err, results, res);
         });
