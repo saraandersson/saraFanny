@@ -59,6 +59,35 @@
 function logout(){
   logOut();
 }
+
+function fetchWindData(){
+ $.ajax({
+  url: '../server.js',
+  type: 'POST',
+  data: {function: "callSimulator"},
+  success: function(data){
+   // Perform operation on return value
+   //alert(data);
+    document.getElementById("wind").placeholder= data[0].wind + " m/s";
+    document.getElementById("production").placeholder= data[0].production + " kWh";
+    document.getElementById("elPrice").placeholder=data[0].price + " kr/kWh"; 
+  },
+  /*complete:function(data){
+   setTimeout(fetchdata,10000);
+  }*/
+  error: function(data) {
+        console.log("Error: " + data);
+      }
+
+ });
+}
+
+/*$(document).ready(function(){
+ setTimeout(fetchdata,10000);
+});*/
+
+setInterval(fetchWindData,10000);
+
       
 </script>
 
