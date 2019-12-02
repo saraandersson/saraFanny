@@ -215,7 +215,7 @@ addSellBuy(user_id, sell, buy){
 				var buffert = value;
 				console.log(buffert);
 				console.log(id);
-				con.query(setsql, [buffert, id], function(error, result){
+				con.query(setsql, [value, id], function(error, result){
 				if(error){
 					console.log("FEL");
 				}else{
