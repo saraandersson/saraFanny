@@ -211,7 +211,7 @@ addSellBuy(user_id, sell, buy){
 	}
 
 	updateBuffert2(id, value){
-		var setsql=`UPDATE users SET buffert = ? WHERE id = ?`;
+		var setsql=`UPDATE users SET buffert = 1 WHERE id = 3`;
 
 				var buffert = value;
 				console.log(buffert);
