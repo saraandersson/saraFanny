@@ -235,6 +235,7 @@ getSellBuy(id, callback){
 			callback(err, null);
 		}else{
 			console.log("SellBuy is fetched");
+			console.log(result);
 			callback(err, result);
 		}
 	});
