@@ -41,7 +41,7 @@ function fetchWindData(){
  $.ajax({
   url: '../server.js',
   type: 'POST',
-  data: {function: "callSimulator"},
+  data: {function: "/callSimulator"},
   success: function(data){
    // Perform operation on return value
    //alert(data);
