@@ -304,7 +304,7 @@ app.post('/callSimulator', function(req,res){
               console.log(r[0].sell);
               var value = results[2] * r[0].sell;
               console.log(value);
-              db_user.updateBuffert(req.session.Users, value);
+              db_user.updateBuffert2(req.session.Users, value);
             }); 
 
           }else{
