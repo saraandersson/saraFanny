@@ -197,7 +197,7 @@ addSellBuy(user_id, sell, buy){
 				buffert = value + res[0].buffert;
 				console.log(buffert);
 				var setsql=`UPDATE users SET buffert = ? WHERE id = ?`;
-				con.query(setsql, [value, id], function(error, result){
+				con.query(setsql, [buffert, id], function(error, result){
 				if(error){
 					console.log("FEL");
 				}else{
@@ -229,7 +229,7 @@ addSellBuy(user_id, sell, buy){
 
 
 getSellBuy(id, callback){
-	var getSql = `SELECT * FROM users WHERE id = ?`;
+	var getSql = `SELECT * FROM user_sell_buy WHERE id = ?`;
 	con.query(getSql, [id] , function(err, result){
 		if(err){
 			callback(err, null);
