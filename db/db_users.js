@@ -229,7 +229,7 @@ addSellBuy(user_id, sell, buy){
 
 
 getSellBuy(id, callback){
-	var getSql = `SELECT * FROM user_sell_buy WHERE id = ?`;
+	var getSql = `SELECT * FROM user_sell_buy WHERE user_id = ?`;
 	con.query(getSql, [id] , function(err, result){
 		if(err){
 			callback(err, null);
