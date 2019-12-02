@@ -302,7 +302,7 @@ app.post('/callSimulator', function(req,res){
               console.log("INNANFÖR");
               //var value = results[2] * r[0].sell;
               console.log(r[0].sell);
-              var value = results[2] * 0.5;
+              var value = results[2] * r[0].sell;
               console.log(value);
               db_user.updateBuffert(req.session.Users, value);
             }); 
@@ -313,7 +313,7 @@ app.post('/callSimulator', function(req,res){
               console.log("INNANFÖR");
            // var value = results[2] * r[0].buy;
             console.log(r[0].buy);
-           var value = results[2] * 0.5;
+           var value = results[2] * r[0].buy;
             console.log(value);
             db_user.updateBuffert(req.session.Users, value);
 
