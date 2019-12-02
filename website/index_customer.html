@@ -33,33 +33,10 @@
 
 <script type="text/javascript">
       window.addEventListener("load", function () {
-
-       getEnergyValues(function(arr){
-        console.log(arr);
-
-        /*Consumption finns i en annan tabell så den ska ha ett annat värde*/
-
-        document.getElementById("wind").placeholder= arr[0].wind + " m/s";
-        document.getElementById("production").placeholder= arr[0].production + " kWh";
-        //document.getElementById("consumption").placeholder=arr[0].consumption + " kWh";
-        //document.getElementById("netProduction").placeholder= arr[0].production - arr[0].consumption + " kWh";
-        //document.getElementById("buffert").placeholder=arr[0].buffert + " kWh";
-        document.getElementById("elPrice").placeholder=arr[0].price + " kr/kWh";  
-        });      
+        fetchWindData();
+        setInterval(fetchWindData,10000);
+     
     });
-
-
-    async function getEnergyValues(fn){
-          //var id = cookievärdet som finns i browsern  
-          getUserEnergyValues((err,result) =>{
-          fn(result);
-          });
-      }
-
-function logout(){
-  logOut();
-}
-
 function fetchWindData(){
  $.ajax({
   url: '../server.js',
@@ -86,7 +63,16 @@ function fetchWindData(){
  setTimeout(fetchdata,10000);
 });*/
 
-setInterval(fetchWindData,10000);
+
+
+
+
+
+function logout(){
+  logOut();
+}
+
+
 
       
 </script>
