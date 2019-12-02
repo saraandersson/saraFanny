@@ -34,10 +34,26 @@
 <script type="text/javascript">
       window.addEventListener("load", function () {
         fetchWindData();
-        setInterval(fetchWindData,10000);
-     
+        setInterval(fetchUserWindData(function(arr){
+          document.getElementById("wind").placeholder= arr[0] + " m/s";
+          document.getElementById("production").placeholder= arr[1] + " kWh";
+          document.getElementById("elPrice").placeholder=arr[2] + " kr/kWh"; 
+
+
+
+        },10000);
+
+
+
+    
     });
-function fetchWindData(){
+
+    async function fetchUserWindData(fn){
+          fetchWindData((err,result) =>{
+          fn(result);
+          });
+      }
+/*function fetchWindData(){
  $.ajax({
   url: '../server.js',
   type: 'POST',
@@ -49,15 +65,15 @@ function fetchWindData(){
     document.getElementById("production").placeholder= data[1] + " kWh";
     document.getElementById("elPrice").placeholder=data[2] + " kr/kWh"; 
   },
-  /*complete:function(data){
+  complete:function(data){
    setTimeout(fetchdata,10000);
-  }*/
+  }
   error: function(data) {
         console.log("Error: " + data);
       }
 
  });
-}
+}*/
 
 /*$(document).ready(function(){
  setTimeout(fetchdata,10000);
