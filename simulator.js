@@ -1,5 +1,5 @@
 
-//const Wind = require('./wind.js');
+const Wind = require('./wind.js');
 
 class Sim {
 
