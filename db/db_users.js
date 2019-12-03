@@ -194,13 +194,31 @@ addSellBuy(user_id, sell, buy){
 			if(err){
 				
 			}else{
-				buffert = value + res[0].buffert;
-				con.query(setsql, [buffert, id], function(error, result){
-				if(error){
+
+				if((res[0].buffert + value) < 0){
+
+					buffert = 0;
+
+					con.query(setsql, [buffert, id], function(error, result){
+					if(error){
+
+					}else{
+
+						console.log("Buffert uppdaterad");
+					}});
+
 				}else{
-					console.log("Buffert uppdaterad");
-				}});
+					buffert = value + res[0].buffert;
+					con.query(setsql, [buffert, id], function(error, result){
+					if(error){
+
+					}else{
+
+						console.log("Buffert uppdaterad");
+					}});
 			}
+				}
+				
 		});
 		
 			
@@ -208,21 +226,40 @@ addSellBuy(user_id, sell, buy){
 
 
 	updateMarket(value){
-		console.log("HEJ VAD HÄNDER : " + value);
 		var getSql = `SELECT * FROM market`;
 		var setsql=`UPDATE market SET amount = ?`;
 		con.query(getSql, [], function(err, res){
 			if(err){
 				
 			}else{
-				var amount = value + res[0].amount;
-				console.log("AMOUNT VA: " + amount);
-				
-				con.query(setsql, [amount], function(error, result){
-				if(error){
+				if(res.amount[0] + value < 0){
+
+					var temp =  (value + res.amount[0]); 
+					var amount = 0;
+
+					con.query(setsql, [amount], function(error, result){
+					if(error){
+
+					}else{
+
+						console.log("Market amount uppdaterad");
+
+					}});
+
+
+
 				}else{
-					console.log("Market amount uppdaterad");
-				}});
+					var amount = value + res[0].amount;
+					con.query(setsql, [amount], function(error, result){
+					if(error){
+
+					}else{
+
+						console.log("Market amount uppdaterad");
+
+					}});
+				}
+				
 			}
 		});
 	}

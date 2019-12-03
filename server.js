@@ -295,25 +295,28 @@ app.post('/getAllProsumers', function(req,res){
 app.post('/callSimulator', function(req,res){
         db_user.getUser(req.session.Users,(err,result) =>{
         sim.getTotalProductionPerDay(result[0].consumption, result[0].area, (results)=>{
-          
+
+
+          /*Surplus/Excess*/
           if(results[2] > 0){
            
               db_user.getSellBuy(req.session.Users, (e,r)=>{
               
+              //Set in to buffert and sell to market.
               var value_buffert = results[2] * (1.00 - r[0].sell);
               var value_market = results[2] * r[0].sell;
-             
               db_user.updateBuffert(req.session.Users, value_buffert);
               db_user.updateMarket(value_market);
             }); 
 
+          /*Loss/Deficit*/
           }else{
           
             db_user.getSellBuy(req.session.Users, (e,r)=>{
-        
+
+            //Take from buffert and buy from market. 
             var value_buffert = results[2] * (1.00 -r[0].buy);
             var value_market = results[2] * r[0].buy;
-
             db_user.updateBuffert(req.session.Users, value_buffert);
             db_user.updateMarket(value_market);
 
