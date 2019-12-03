@@ -208,7 +208,7 @@ addSellBuy(user_id, sell, buy){
 
 
 	updateMarket(value){
-
+			console.log("HEJ : " + value);
 		var getSql = `SELECT * FROM market`;
 		con.query(getSql, [], function(err, res){
 			if(err){
