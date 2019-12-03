@@ -300,10 +300,10 @@ app.post('/callSimulator', function(req,res){
             console.log("HIT"+ req.session.Users);
             db_user.getSellBuy(req.session.Users, (e,r)=>{
               console.log("INNANFÖR");
-              //var value = results[2] * r[0].sell;
               console.log(r[0].sell);
+              var value_buffert = 0.01;
               value_buffert = results[2] * (1.00 - r[0].sell);
-              var value_market = results[2] * (r[0].sell);
+              var value_market = results[2] * r[0].sell;
               console.log("MARKET: " + value_market);
               console.log("BUFFERT : " + value_buffert);
               db_user.updateBuffert(req.session.Users, value_buffert);
@@ -318,7 +318,7 @@ app.post('/callSimulator', function(req,res){
             console.log(r[0].buy);
             var value_buffert = 0.01;
             value_buffert = results[2] * (1.00 -r[0].buy);
-            var value_market = results[2] * (r[0].buy);
+            var value_market = results[2] * r[0].buy;
             db_user.updateBuffert(req.session.Users, value_buffert);
             db_user.updateMarket(req.session.Users, value_market);
 
