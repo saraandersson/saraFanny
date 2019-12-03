@@ -194,31 +194,13 @@ addSellBuy(user_id, sell, buy){
 			if(err){
 				
 			}else{
-
-				if((res[0].buffert + value) < 0){
-
-					buffert = 0;
-
-					con.query(setsql, [buffert, id], function(error, result){
-					if(error){
-
-					}else{
-
-						console.log("Buffert uppdaterad");
-					}});
-
+				buffert = value + res[0].buffert;
+				con.query(setsql, [buffert, id], function(error, result){
+				if(error){
 				}else{
-					buffert = value + res[0].buffert;
-					con.query(setsql, [buffert, id], function(error, result){
-					if(error){
-
-					}else{
-
-						console.log("Buffert uppdaterad");
-					}});
+					console.log("Buffert uppdaterad");
+				}});
 			}
-				}
-				
 		});
 		
 			
@@ -232,34 +214,12 @@ addSellBuy(user_id, sell, buy){
 			if(err){
 				
 			}else{
-				if(res.amount[0] + value < 0){
-
-					var temp =  (value + res.amount[0]); 
-					var amount = 0;
-
-					con.query(setsql, [amount], function(error, result){
-					if(error){
-
-					}else{
-
-						console.log("Market amount uppdaterad");
-
-					}});
-
-
-
+				var amount = value + res[0].amount;
+				con.query(setsql, [amount], function(error, result){
+				if(error){
 				}else{
-					var amount = value + res[0].amount;
-					con.query(setsql, [amount], function(error, result){
-					if(error){
-
-					}else{
-
-						console.log("Market amount uppdaterad");
-
-					}});
-				}
-				
+					console.log("Market amount uppdaterad");
+				}});
 			}
 		});
 	}
