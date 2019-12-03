@@ -208,15 +208,16 @@ addSellBuy(user_id, sell, buy){
 
 
 	updateMarket(value){
-			console.log("HEJ VAD HÄNDER : " + value);
+		console.log("HEJ VAD HÄNDER : " + value);
 		var getSql = `SELECT * FROM market`;
+		var setsql=`UPDATE market SET amount = ?`;
 		con.query(getSql, [], function(err, res){
 			if(err){
 				
 			}else{
-				var amount = value + res[0].amount;;
-				console.log("AMOUNT VA: " + amount)
-				var setsql=`UPDATE users SET amount = ?`;
+				var amount = value + res[0].amount;
+				console.log("AMOUNT VA: " + amount);
+				
 				con.query(setsql, [amount], function(error, result){
 				if(error){
 				}else{
