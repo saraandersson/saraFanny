@@ -307,6 +307,10 @@ app.post('/callSimulator', function(req,res){
               var value_market = results[2] * r[0].sell;
               db_user.updateBuffert(req.session.Users, value_buffert);
               db_user.updateMarket(value_market);
+              db_user.getUser(req.session.Users,(errbuffert ,buffert) =>{
+                  results.push(buffert[0].buffert);
+                  send_(err, results, res);
+              });
             }); 
 
           /*Loss/Deficit*/
@@ -320,10 +324,15 @@ app.post('/callSimulator', function(req,res){
             db_user.updateBuffert(req.session.Users, value_buffert);
             db_user.updateMarket(value_market);
 
+             db_user.getUser(req.session.Users,(errbuffert ,buffert) =>{
+                  results.push(buffert[0].buffert);
+                  send_(err, results, res);
+              });
+
 
           });
           }
-          send_(err, results, res);
+          
         });
     });
         
