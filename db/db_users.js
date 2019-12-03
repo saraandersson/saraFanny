@@ -216,7 +216,7 @@ addSellBuy(user_id, sell, buy){
 			}else{
 				var amount = value + res[0].amount;
 				var setsql=`UPDATE users SET amount = ?`;
-				con.query(setsql, [amount, id], function(error, result){
+				con.query(setsql, [amount], function(error, result){
 				if(error){
 				}else{
 					console.log("Market amount uppdaterad");
