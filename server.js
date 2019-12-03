@@ -302,9 +302,10 @@ app.post('/callSimulator', function(req,res){
               console.log("INNANFÖR");
               //var value = results[2] * r[0].sell;
               console.log(r[0].sell);
-              var value = results[2] * r[0].sell;
-              console.log(value);
-              db_user.updateBuffert(req.session.Users, value);
+              var value_buffert = results[2] * (1 - r[0].sell);
+              var value_market = results[2] * (r[0].sell);
+              db_user.updateBuffert(req.session.Users, value_buffert);
+              db_user.updateBuffert(req.session.Users, value_market);
             }); 
 
           }else{
@@ -313,9 +314,10 @@ app.post('/callSimulator', function(req,res){
               console.log("INNANFÖR");
            // var value = results[2] * r[0].buy;
             console.log(r[0].buy);
-           var value = results[2] * r[0].buy;
-            console.log(value);
-            db_user.updateBuffert(req.session.Users, value);
+            var value_buffert = results[2] * (1-r[0].buy);
+            var value_market = results[2] * (r[0].buy);
+            db_user.updateBuffert(req.session.Users, value_buffert);
+            db_user.updateBuffert(req.session.Users, value_market);
 
           });
           }

@@ -194,13 +194,9 @@ addSellBuy(user_id, sell, buy){
 			if(err){
 				
 			}else{
-				console.log(res[0].buffert);
 				buffert = value + res[0].buffert;
-				console.log(buffert);
-				console.log(id);
 				con.query(setsql, [buffert, id], function(error, result){
 				if(error){
-					console.log("FEL");
 				}else{
 					console.log("Buffert uppdaterad");
 				}});
