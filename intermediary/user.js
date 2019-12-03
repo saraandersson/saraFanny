@@ -69,8 +69,7 @@ function createUser(firstname, lastname, email, password, img, area, consumption
       var arr = JSON.parse(xhttp.responseText);
 
       if (arr.length == 0){
-        //Konto har skapats.
-        window.location.replace("../");
+        
       }else{
         document.getElementById("errorMsg").innerHTML += '<br>Email already exist!';
         //Felmeddelande: E-mail upptaget. 

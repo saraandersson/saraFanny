@@ -227,8 +227,7 @@ app.post('/loginUser',function(req,res){
             req.session.role_id = result[0].role_id;
             req.session.Users = result[0].id; 
             console.log("RESULTAT OK:" + result);
-
-            db_user.setOnline(req.body.id, 1);
+            db_user.setOnline(result[0].id, 1);
 
             send_(err, result, res);
           }else{
