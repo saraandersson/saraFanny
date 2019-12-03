@@ -295,32 +295,28 @@ app.post('/getAllProsumers', function(req,res){
 app.post('/callSimulator', function(req,res){
         db_user.getUser(req.session.Users,(err,result) =>{
         sim.getTotalProductionPerDay(result[0].consumption, result[0].area, (results)=>{
-          console.log("HEJ: " + results[2]);
+          
           if(results[2] > 0){
-            console.log("HIT"+ req.session.Users);
-            db_user.getSellBuy(req.session.Users, (e,r)=>{
-              console.log("INNANFÖR");
-              console.log(r[0].sell);
-              var value_buffert = 0.01;
-              value_buffert = results[2] * (1.00 - r[0].sell);
+           
+              db_user.getSellBuy(req.session.Users, (e,r)=>{
+              
+              var value_buffert = results[2] * (1.00 - r[0].sell);
               var value_market = results[2] * r[0].sell;
-              console.log("MARKET: " + value_market);
-              console.log("BUFFERT : " + value_buffert);
+             
               db_user.updateBuffert(req.session.Users, value_buffert);
-              db_user.updateMarket(req.session.Users, value_market);
+              db_user.updateMarket(value_market);
             }); 
 
           }else{
-            console.log("DIT" + req.session.Users);
+          
             db_user.getSellBuy(req.session.Users, (e,r)=>{
-              console.log("INNANFÖR");
-           // var value = results[2] * r[0].buy;
-            console.log(r[0].buy);
-            var value_buffert = 0.01;
-            value_buffert = results[2] * (1.00 -r[0].buy);
+        
+            var value_buffert = results[2] * (1.00 -r[0].buy);
             var value_market = results[2] * r[0].buy;
+
             db_user.updateBuffert(req.session.Users, value_buffert);
             db_user.updateMarket(req.session.Users, value_market);
+
 
           });
           }
