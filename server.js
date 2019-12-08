@@ -206,8 +206,7 @@ app.post('/createUser', function(req,res){
               console.log("Hashed password: "+ hash);
               //const password = hash; 
               db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, hash, "hejsan", req.body.area, 0, req.body.consumption);
-            });
-            db_user.getUserId(req.body.email, password, (error, results) =>{
+              db_user.getUserId(req.body.email, hash, (error, results) =>{
               req.session.role_id = 0;
               req.session.Users = results[0].id; 
               db_user.setOnline(req.session.Users, 1);
@@ -216,6 +215,7 @@ app.post('/createUser', function(req,res){
             });
             
             send_(err, result, res);
+            });
           }else{
             send_(err, result, res);
           }
