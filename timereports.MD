@@ -37,4 +37,5 @@
 | 2019-11-28  | 8       | Meeting with Niklas, working with simulator values to website and database|
 | 2019-12-02  | 8       | Working with simulator and fetching values to prosumers site, update every 10 seconds. Updated database.|
 | 2019-12-04  | 3       | Preparing diagrams and presentation for thursdays meeting. |
+| 2019-12-08  | 4       | Working with hashed passwords, updated database |
 
