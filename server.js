@@ -257,7 +257,7 @@ app.post('/loginUser',function(req,res){
         const hash = result1[0].password.toString();
         console.log("PASSWORD:" + hash);
         bcrypt.compare(req.body.password, hash, function(err, response) {
-            if(reponse==true){
+            if(response==true){
               db_user.checkLogin(req.body.email,req.body.password,(err,result) =>{
               if(err){
                 console.error(err);
