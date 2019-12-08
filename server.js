@@ -8,8 +8,8 @@ var PORT = 3000;
 
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-const bcrypt = require('bcrypt');
-const saltRounds = 10; 
+//const bcrypt = require('bcrypt');
+//const saltRounds = 10; 
 
 
 
