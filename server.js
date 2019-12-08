@@ -259,7 +259,7 @@ app.post('/loginUser',function(req,res){
         bcrypt.compare(req.body.password, hash, function(err, response) {
             if(response==true){
               console.log("här!");
-              db_user.checkLogin(req.body.email,req.body.password,(err,result) =>{
+              db_user.checkLogin(req.body.email,hash,(err,result) =>{
               if(err){
                 console.error(err);
               }else{
