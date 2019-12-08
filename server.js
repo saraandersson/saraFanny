@@ -1,4 +1,5 @@
 // server.js
+const bcrypt = require('bcrypt');
 var express = require('express');
 const bodyParser = require('body-parser');
 var http = require('http');
@@ -9,7 +10,7 @@ var PORT = 3000;
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 //const bcrypt = require('bcrypt');
-//const saltRounds = 10; 
+const saltRounds = 10; 
 
 
 
@@ -111,7 +112,7 @@ app.route('/index.html')
         }
       });
 
-    app.route('/profile_admin.html')
+  app.route('/profile_admin.html')
   .get((req,res)=>{
      if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
           res.redirect('website/profile_customer.html');
