@@ -360,12 +360,12 @@ app.post('/changePassword', (req, res) => {
             res.send("{}");
           });
 
-       // }
+        }
         else{
           res.send("{}");
         }
 
-      }
+    //  }
     });
 
     });
