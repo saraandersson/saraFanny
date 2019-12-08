@@ -238,6 +238,19 @@ getSellBuy(id, callback){
 	});
 }
 
+getUserHashedPassword(email,callback){
+	var getSql =  `SELECT password FROM users WHERE email= ?`;
+		con.query(getSql, [email] , function(err, result){
+		if(err){
+			callback(err, null);
+		}else{
+			//console.log("SellBuy is fetched");
+			//console.log(result);
+			callback(err, result);
+		}
+	});
+}
+
 
 
 

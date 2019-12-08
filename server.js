@@ -9,6 +9,8 @@ var PORT = 3000;
 
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+const bcrypt = require('bcrypt');
+const saltRounds = 10; 
 
 
 
@@ -192,7 +194,36 @@ const Db_user = require('./db/db_users.js');
 
 const db_user = new Db_user();
 
+
 app.post('/createUser', function(req,res){
+
+  db_user.emailAvailable(req.body.username,(err,result) =>{
+        if(err){
+          console.error(err);
+        }else{
+          if(result.length == 0){
+            bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
+              const password = hash; 
+              db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, hash, "hejsan", req.body.area, 0, req.body.consumption);
+            });
+            db_user.getUserId(req.body.email, password, (error, results) =>{
+              req.session.role_id = 0;
+              req.session.Users = results[0].id; 
+              db_user.setOnline(req.session.Users, 1);
+              db_user.addBlocked(req.session.Users, 0, 0);
+              db_user.addSellBuy(req.session.Users, 0.5 , 0.5);
+            });
+            
+            send_(err, result, res);
+          }else{
+            send_(err, result, res);
+          }
+        }
+    })
+
+  })
+
+/*app.post('/createUser', function(req,res){
 
   db_user.emailAvailable(req.body.username,(err,result) =>{
         if(err){
@@ -215,9 +246,41 @@ app.post('/createUser', function(req,res){
         }
     })
 
-  });
+  });*/
 
 app.post('/loginUser',function(req,res){
+      db_user.getUserHashedPassword(req.body.email, (err, result1) =>{
+        const hash = result[0].password.toString();
+        console.log("PASSWORD:" + hash);
+        bcrypt.compare(req.body.password, hash, function(err, response) {
+            if(reponse==true){
+              db_user.checkLogin(req.body.email,req.body.password,(err,result) =>{
+              if(err){
+                console.error(err);
+              }else{
+                console.log("SIZE:" + result.length);
+                if(result.length > 0 && (result[0].role_id == 0||result[0].role_id == 1)){
+                  req.session.role_id = result[0].role_id;
+                  req.session.Users = result[0].id; 
+                  console.log("RESULTAT OK:" + result);
+                  db_user.setOnline(result[0].id, 1);
+
+                  send_(err, result, res); 
+                }else{
+                  console.log("RESULTAT EJ OK:" + result);
+                  send_(err, result, res);
+          }
+        }
+      })
+
+            }
+        });
+
+      })
+
+  });
+
+/*app.post('/loginUser',function(req,res){
       db_user.checkLogin(req.body.email,req.body.password,(err,result) =>{
         if(err){
           console.error(err);
@@ -237,7 +300,7 @@ app.post('/loginUser',function(req,res){
         }
       })
 
-  });
+  });*/
 
 
 
