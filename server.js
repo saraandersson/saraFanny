@@ -9,8 +9,8 @@ var PORT = 3000;
 
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-const bcrypt = require('bcrypt');
-const saltRounds = 10; 
+//var bcrypt = require('bcrypt');
+//var saltRounds = 10; 
 
 
 
@@ -195,7 +195,7 @@ const Db_user = require('./db/db_users.js');
 const db_user = new Db_user();
 
 
-app.post('/createUser', function(req,res){
+/*app.post('/createUser', function(req,res){
 
   db_user.emailAvailable(req.body.username,(err,result) =>{
         if(err){
@@ -221,9 +221,9 @@ app.post('/createUser', function(req,res){
         }
     })
 
-  })
+  })*/
 
-/*app.post('/createUser', function(req,res){
+app.post('/createUser', function(req,res){
 
   db_user.emailAvailable(req.body.username,(err,result) =>{
         if(err){
@@ -246,9 +246,9 @@ app.post('/createUser', function(req,res){
         }
     })
 
-  });*/
+  });
 
-app.post('/loginUser',function(req,res){
+/*app.post('/loginUser',function(req,res){
       db_user.getUserHashedPassword(req.body.email, (err, result1) =>{
         const hash = result[0].password.toString();
         console.log("PASSWORD:" + hash);
@@ -278,9 +278,9 @@ app.post('/loginUser',function(req,res){
 
       })
 
-  });
+  });*/
 
-/*app.post('/loginUser',function(req,res){
+app.post('/loginUser',function(req,res){
       db_user.checkLogin(req.body.email,req.body.password,(err,result) =>{
         if(err){
           console.error(err);
@@ -300,7 +300,7 @@ app.post('/loginUser',function(req,res){
         }
       })
 
-  });*/
+  });
 
 
 
