@@ -1,5 +1,4 @@
 // server.js
-
 var express = require('express');
 const bodyParser = require('body-parser');
 var http = require('http');
@@ -9,8 +8,8 @@ var PORT = 3000;
 
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-//var bcrypt = require('bcrypt');
-//var saltRounds = 10; 
+const bcrypt = require('bcrypt');
+const saltRounds = 10; 
 
 
 
