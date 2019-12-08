@@ -255,10 +255,9 @@ app.post('/createUser', function(req,res){
 app.post('/loginUser',function(req,res){
       db_user.getUserHashedPassword(req.body.email, (err, result1) =>{
         const hash = result1[0].password.toString();
-        console.log("PASSWORD:" + hash);
+        //console.log("PASSWORD:" + hash);
         bcrypt.compare(req.body.password, hash, function(err, response) {
             if(response==true){
-              console.log("här!");
               db_user.checkLogin(req.body.email,hash,(err,result) =>{
               if(err){
                 console.error(err);
@@ -333,8 +332,7 @@ app.post('/getUser', function(req,res){
   });
 
 
-
-app.post('/changePassword', (req, res) => {
+/*app.post('/changePassword', (req, res) => {
   db_user.getUser(req.session.Users,(err,result) =>{
     if(req.body.old_password == result[0].password){ //Checks if the password is correct
       console.log(result[0].password);
@@ -343,6 +341,33 @@ app.post('/changePassword', (req, res) => {
     }else{
         res.send("{}");
     }
+    });
+  
+});*/
+
+app.post('/changePassword', (req, res) => {
+  db_user.getUser(req.session.Users,(err,result) =>{
+    const hash = result[0].password.toString();
+    bcrypt.compare(req.body.old_password, hash, function(err, response) {
+      if(response==true){
+        //if(req.body.old_password == result[0].password){ //Checks if the password is correct
+          console.log(result[0].password);
+          bcrypt.hash(req.body.new_password, saltRounds, function(err, hash){
+            if(err){
+              console.log(err);
+            }
+            db_user.changePassword(req.session.Users, hash); //Change password
+            res.send("{}");
+          });
+
+       // }
+        else{
+          res.send("{}");
+        }
+
+      }
+    });
+
     });
   
 });
