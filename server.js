@@ -201,8 +201,10 @@ app.post('/createUser', function(req,res){
           console.error(err);
         }else{
           if(result.length == 0){
-            console.log('testar');
             bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
+              if(err){
+                console.log(err);
+              }
               console.log("Hashed password: "+ hash);
               //const password = hash; 
               db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, hash, "hejsan", req.body.area, 0, req.body.consumption);
@@ -216,6 +218,7 @@ app.post('/createUser', function(req,res){
             
             send_(err, result, res);
             });
+
           }else{
             send_(err, result, res);
           }
