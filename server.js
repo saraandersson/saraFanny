@@ -9,7 +9,7 @@ var PORT = 3000;
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 const bcrypt = require('bcrypt');
-const saltRounds = 5; 
+let saltRounds = 10; 
 
 
 
