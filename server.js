@@ -194,7 +194,7 @@ const Db_user = require('./db/db_users.js');
 const db_user = new Db_user();
 
 
-/*app.post('/createUser', function(req,res){
+app.post('/createUser', function(req,res){
 
   db_user.emailAvailable(req.body.username,(err,result) =>{
         if(err){
@@ -225,9 +225,9 @@ const db_user = new Db_user();
         }
     })
 
-  })*/
+  })
 
-app.post('/createUser', function(req,res){
+/*app.post('/createUser', function(req,res){
 
   db_user.emailAvailable(req.body.username,(err,result) =>{
         if(err){
@@ -250,11 +250,11 @@ app.post('/createUser', function(req,res){
         }
     })
 
-  });
+  });*/
 
-/*app.post('/loginUser',function(req,res){
+app.post('/loginUser',function(req,res){
       db_user.getUserHashedPassword(req.body.email, (err, result1) =>{
-        const hash = result[0].password.toString();
+        const hash = result1[0].password.toString();
         console.log("PASSWORD:" + hash);
         bcrypt.compare(req.body.password, hash, function(err, response) {
             if(reponse==true){
@@ -282,9 +282,9 @@ app.post('/createUser', function(req,res){
 
       })
 
-  });*/
+  });
 
-app.post('/loginUser',function(req,res){
+/*app.post('/loginUser',function(req,res){
       db_user.checkLogin(req.body.email,req.body.password,(err,result) =>{
         if(err){
           console.error(err);
@@ -304,7 +304,7 @@ app.post('/loginUser',function(req,res){
         }
       })
 
-  });
+  });*/
 
 
 
