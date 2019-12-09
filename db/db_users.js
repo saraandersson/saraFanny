@@ -251,7 +251,7 @@ getSellBuy(id, callback){
 }
 
 updateSell(id, sell){
-	var setsql=`UPDATE user_sell_buy SET sell = ? WHERE id = ?`;
+	var setSql=`UPDATE user_sell_buy SET sell = ? WHERE id = ?`;
 		con.query(setSql, [sell, id], function(err, res){
 			if(err){	
 			}else{
@@ -261,7 +261,7 @@ updateSell(id, sell){
 }
 
 updateBuy(id, buy){
-	var setsql=`UPDATE user_sell_buy SET buy = ? WHERE id = ?`;
+	var setSql=`UPDATE user_sell_buy SET buy = ? WHERE id = ?`;
 		con.query(setSql, [buy, id], function(err, res){
 			if(err){	
 			}else{
