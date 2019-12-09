@@ -79,9 +79,9 @@ window.addEventListener("load", function () {
             if(obj[x].role_id == 0){
 
               if(obj[x].blocked == 0){
-               txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='blockProsumer()'>Block prosumer</button>" + "</tr></td>";
+               txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='blockProsumer("+ obj[x].id +")'>Block prosumer</button>" + "</tr></td>";
               }else{
-                txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" + "<button class='btn btn-default' id =" + obj[x].id + " onclick='unblockProsumer()'>Unblock prosumer</button>" + "</tr></td>";
+                txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" + "<button class='btn btn-default' id ='block' onclick='unblockProsumer("+ obj[x].id +")'>Unblock prosumer</button>" + "</tr></td>";
               }
             }
           }
@@ -109,8 +109,8 @@ window.addEventListener("load", function () {
           }
 
   function blockButton(id){
-    document.getElementById(id).innerText = "Unblock Prosumer";
-    document.getElementById(id).onclick = unblockProsumer(id); 
+    document.getElementById(block).innerText = "Unblock Prosumer";
+    document.getElementById(block).onclick = unblockProsumer(id); 
 
 }
 
@@ -121,8 +121,8 @@ window.addEventListener("load", function () {
 }
 
   function unblockButton(id){
-    document.getElementById(id).innerText = "Block Prosumer";
-    document.getElementById(id).onclick = blockProsumer(id); 
+    document.getElementById(block).innerText = "Block Prosumer";
+    document.getElementById(block).onclick = blockProsumer(id); 
     blockUser(id);
 
 }
