@@ -136,7 +136,7 @@ window.addEventListener("load", function () {
             if(obj[x].role_id == 0){
 
               if(obj[x].blocked == 0){
-               txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='blockProsumer("+ obj[x].id +")'>Block prosumer</button>" + "</tr></td>";
+               txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormBlock("+ obj[x].id +")'>Block prosumer</button>" + "</tr></td>";
               }else{
                 txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" + "<button class='btn btn-default' id ='block' onclick='unblockProsumer("+ obj[x].id +")'>Unblock prosumer</button>" + "</tr></td>";
               }
@@ -174,9 +174,14 @@ window.addEventListener("load", function () {
 }
 
 
-  function blockProsumer(id){
-    openFormBlock(id);
+  function blockProsumer(){
+    var id = document.getElementById("blockid").innerHTML;
+    var blocktime = document.getElementById("blocktime").placeholder;
+    window.alert(id);
+    window.alert(blocktime);
     //blockUser(id, blocktime);
+    //openFormBlock(id);
+    
 
 }
 
@@ -201,10 +206,6 @@ function unblockProsumer(id){
 
 
 function closeFormBlock() {
-  var id = document.getElementById("blockid").innerHTML;
-  var blocktime = document.getElementById("blocktime").placeholder;
-  window.alert(id);
-  window.alert(blocktime);
   //blockProsumer(id,blocktime);
   document.getElementById("myFormBlock").style.display = "none";
 }
@@ -249,7 +250,7 @@ function logout(){
     <label for="BlockTime"><b>Block Time</b></label>
     <input type="Text" placeholder="Enter Block Time (10-100 sec)" name="blocktime" id = "blocktime"required>
 
-    <button type="submit" class="btn">Submit</button>
+    <button type="submit" class="btn" onclick="blockProsumer()">Submit </button>
     <button type="button" class="btn cancel" onclick="closeFormBlock()">Close</button>
   </form>
 </div>
