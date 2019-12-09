@@ -84,7 +84,7 @@
 <script type="text/javascript">
       window.addEventListener("load", function () {
 
-       getAdminValues(function(arr){
+       getUser(function(arr){
         //console.log(arr);
         document.getElementById("firstname").innerHTML=arr[0].firstname;
         document.getElementById("lastname").innerHTML= arr[0].lastname;
@@ -95,7 +95,7 @@
 
 
 
-    async function getAdminValues(fn){ 
+    async function getUser(fn){ 
           getUser((err,result) =>{
           fn(result);
           });
@@ -139,34 +139,29 @@
         <div class="col-sm-offset-4 col-md-offset-4">
             <div class="form-group">
                 <label class="control-label">Firstname:</label>
-                <input type="text" placeholder="" name="firstname" id = "firstname" maxlength="255" class="form-control text-box single-line">
+                <p id = "firstname" style="font-size:15px;"></p>
             </div>
             <div class="form-group">
                 <label class="control-label">Lastname:</label>
-                <input type="text" placeholder="" name="lastname" maxlength="255" class="form-control text-box single-line" id = "lastname">
+                <p id = "lastname" style="font-size:15px;"> </p>
             </div>
               <div class="form-group">
                 <label class="control-label">Email:</label>
-                <input type="text" placeholder="" name="email" maxlength="255" class="form-control text-box single-line" id = "email">
+                <p id = "email" style="font-size:15px;"> </p>
             </div>
-              <div class="form-group">
+            <div class="form-group">
                 <label class="control-label">Profile picture:</label>
-                <input type="text" placeholder="" name="img" maxlength="255" class="form-control text-box single-line" id = "img">
+                <p id = "img" style="font-size:15px;"> </p>
             </div>
             <div class="form-group_2">
               <div id = "changePasswordButton">
-                <form action="../website/change_password.html" class="inline">
+                <form action="/change_password" class="inline">
                   <button class="btn btn-default">Change password</button>
                 </form>
               </div>
               <div id = "editProfileButton">
                 <form action="/edit_profile" class="inline">
                   <button class="btn btn-default">Edit profile</button>
-              </form>
-            </div>
-            <div id = "deleteProfileButton">
-               <form action="../website/edit_profile.html" class="inline">
-                  <button class="btn btn-default">Delete Profile</button>
               </form>
             </div>
             </div>
