@@ -149,13 +149,24 @@ app.route('/index')
      if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
           res.redirect('website/market_customer.html');
       }
-
-      //ÄNDRA HÄR
       else if(req.session.Users && req.cookies.user_id && req.session.role_id == 1){
           res.redirect('/website/market_admin.html');
         } 
       else {
            res.redirect('/website/market.html');
+        }
+      });
+
+        app.route('/prosumers_admin')
+    .get((req,res)=>{
+     if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
+          res.render('/index');
+      }
+      else if(req.session.Users && req.cookies.user_id && req.session.role_id == 1){
+          res.redirect('/website/prosumers_admin.html');
+        } 
+      else {
+           res.render('/index');
         }
       });
 
