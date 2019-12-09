@@ -13,12 +13,13 @@ con.connect(function(err) {
 });
 
 
-class Db_production{
+class Db_market{
 
 	constructor(){
 
 	}
 
+/*
 updateWind(user_id, wind, production){
 	var addSql = `INSERT INTO wind (users_id, wind, production) VALUES (?,?,?)`;
 	//console.log(role_id + "," + online + "," + firstname + "," + lastname + "," + email + "," + password + "," + img + "," + area + "," + buffert + "," + consumption);
@@ -32,6 +33,9 @@ updateWind(user_id, wind, production){
 
 
 }
+*/
+
+
 
 }
 

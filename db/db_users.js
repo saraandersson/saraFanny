@@ -272,6 +272,18 @@ updateBuy(id, buy){
 		});
 }
 
+getMarket(){
+	var getSql = `SELECT * FROM market`;
+		con.query(getSql, [], function(err, result){
+			if(err){
+				callback(err, null);
+			}else{
+				console.log("Market is fetched");
+				callback(err, result);
+			}
+		});
+}
+
 
 
 

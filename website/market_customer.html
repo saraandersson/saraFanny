@@ -76,16 +76,16 @@ p{
 <script type="text/javascript">
 
 window.addEventListener("load", function () {
-     getMarket(function(arr){ 
-       document.getElementById("market").innerHTML= arr[0] + " m/s";
-       document.getElementById("marketprice").innerHTML= arr[1] + " m/s";
+     getCurrentMarket(function(arr){ 
+       document.getElementById("market").innerHTML= arr[0].amount;
+       document.getElementById("marketprice").innerHTML= arr[0].price;
 
   
     });
   });
 
-  async function getMarket(fn){
-    getCurrentMarket((err,result) =>{
+  async function getCurrentMarket(fn){
+    getMarket((err,result) =>{
       fn(result);
         });
       } 

@@ -419,6 +419,12 @@ app.post('/updateUserProductionDeficit', function(req,res){
      db_user.updateBuy(req.session.Users, req.body.buy);
   });
 
+app.post('/getMarket', function(req,res){
+     db_user.getMarket((err,result) =>{
+        send_(err, result, res);
+    });
+  });
+
 
 /*I called every 10 second*/
 
