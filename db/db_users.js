@@ -113,6 +113,16 @@ class Db_user{
 			});
 	}
 
+	updateProfileAdmin(id,firstname,lastname, img){
+		var setsql=`UPDATE users SET firstname = ?, lastname = ?, img = ? WHERE id = ?`;
+		con.query(setsql, [firstname, lastname, img, id], function(err, result){
+				if(err){
+				}else{
+					console.log("Profile updated");
+				}
+			});
+	}
+
 	changePassword(id, password){
 		var setsql=`UPDATE users SET password = ? WHERE id = ?`;
 		con.query(setsql, [password, id], function(err, result){
@@ -122,6 +132,8 @@ class Db_user{
 				}
 			});
 	}
+
+
 
 	getEnergy(id, callback){
 		var getSql = `SELECT * FROM production WHERE id = ?`;

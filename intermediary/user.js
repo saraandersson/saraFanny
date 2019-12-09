@@ -121,7 +121,7 @@ function getUserEnergyValues(){
     xhttp.send(JSON.stringify(data));
 }
 
-/*Lägga till ändra lösenord? Kanske separat?*/
+
 function editProfile(firstname, lastname, area, consumption, img){
   var xhttp = new XMLHttpRequest();
   var firstname_val = firstname;
@@ -139,6 +139,29 @@ function editProfile(firstname, lastname, area, consumption, img){
   }
 
    var data = {firstname: firstname_val,lastname: lastname_val,img: img_val, area: area_val,consumption: consumption_val};
+
+  xhttp.send(JSON.stringify(data));
+
+}
+
+function editProfileAdmin(firstname, lastname, img){
+  var xhttp = new XMLHttpRequest();
+  var firstname_val = firstname;
+  var lastname_val = lastname;
+  var img_val = lastname;
+  var img_val = img;
+  var area_val = area;
+  var consumption_val = consumption;
+  xhttp.open("POST", "/updateProfileAdmin", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        window.location.replace("../website/profile_customer.html");
+
+    }
+  }
+
+   var data = {firstname: firstname_val,lastname: lastname_val, img: img_val};
 
   xhttp.send(JSON.stringify(data));
 

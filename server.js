@@ -72,31 +72,31 @@ app.route('/index')
           }
         });
 
-  app.route('/index_customer')
-  .get((req,res)=>{
-     if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
-          res.redirect('website/index_customer.html');
+
+
+app.route('/login')
+    .get((req,res)=>{
+      if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
+        res.redirect('website/index_customer.html');
+      }else if(req.session.Users && req.cookies.user_id && req.session.role_id == 1){
+        res.redirect('website/index_admin.html');
+      }else{
+        res.redirect('website/login.html');
       }
-      else if(req.session.Users && req.cookies.user_id && req.session.role_id == 1){
-          res.redirect('/website/index_admin.html');
-        } 
-      else {
-           res.redirect('/website/index.html');
-        }
+        });
+      
+
+  app.route('/signUp')
+  .get((req,res)=>{
+      if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
+        res.redirect('website/index_customer.html');
+      }else if(req.session.Users && req.cookies.user_id && req.session.role_id == 1){
+        res.redirect('website/index_admin.html');
+      }else{
+        res.redirect('website/signUp.html');
+      }
       });
 
-  app.route('/index_admin')
-  .get((req,res)=>{
-     if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
-          res.redirect('website/index_customer.html');
-      }
-      else if(req.session.Users && req.cookies.user_id && req.session.role_id == 1){
-          res.redirect('/website/index_admin.html');
-        } 
-      else {
-           res.redirect('/website/index.html');
-        }
-      });
 
   app.route('/profile')
   .get((req,res)=>{
@@ -113,15 +113,14 @@ app.route('/index')
 
 
 
-    app.route('/edit_profile')
+  app.route('/edit_profile')
   .get((req,res)=>{
      if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
           res.redirect('website/edit_profile.html');
       }
 
-      //ÄNDRA HÄR
       else if(req.session.Users && req.cookies.user_id && req.session.role_id == 1){
-          res.redirect('/website/edit_profile.html');
+          res.redirect('/website/edit_profile_admin.html');
         } 
       else {
            res.redirect('/website/index.html');
@@ -157,13 +156,26 @@ app.route('/index')
         }
       });
 
-        app.route('/prosumers_admin')
+    app.route('/prosumers_admin')
     .get((req,res)=>{
      if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
           res.render('/index');
       }
       else if(req.session.Users && req.cookies.user_id && req.session.role_id == 1){
           res.redirect('/website/prosumers_admin.html');
+        } 
+      else {
+           res.render('/index');
+        }
+      });
+
+    app.route('/change_password')
+    .get((req,res)=>{
+     if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
+          res.redirect('/website/change_password.html');
+      }
+      else if(req.session.Users && req.cookies.user_id && req.session.role_id == 1){
+          res.redirect('/website/change_password_admin.html');
         } 
       else {
            res.render('/index');
@@ -184,39 +196,8 @@ app.listen(PORT, function() {
 });
 
 
-app.route('/login')
-    .get((req,res)=>{
-      if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
-        res.redirect('website/index_customer.html');
-      }else if(req.session.Users && req.cookies.user_id && req.session.role_id == 1){
-        res.redirect('website/index_admin.html');
-      }else{
-        res.redirect('website/login.html');
-      }
-        });
-      
 
-  app.route('/signUp')
-  .get((req,res)=>{
-      if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
-        res.redirect('website/index_customer.html');
-      }else if(req.session.Users && req.cookies.user_id && req.session.role_id == 1){
-        res.redirect('website/index_admin.html');
-      }else{
-        res.redirect('website/signUp.html');
-      }
-      });
 
-app.route('/market.html')
-    .get((req,res)=>{
-        if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
-          res.redirect('website/market_customer.html');
-        }else if(req.session.Users && req.cookies.user_id && req.session.role_id == 1){
-          res.redirect('website/market_admin.html');
-        }else{
-          res.redirect('website/market.html');
-        }
-        });
 
 
 const Db_user = require('./db/db_users.js');
@@ -351,6 +332,11 @@ app.post('/logout', (req, res) => {
 
 app.post('/updateProfile', (req, res) => {
     db_user.updateProfile(req.session.Users, req.body.firstname, req.body.lastname, req.body.area, req.body.consumption, req.body.img);
+    res.send("{}");
+});
+
+app.post('/updateProfileAdmin', (req, res) => {
+    db_user.updateProfileAdmin(req.session.Users, req.body.firstname, req.body.lastname, req.body.img);
     res.send("{}");
 });
 
