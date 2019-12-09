@@ -82,20 +82,18 @@
 <body>
 
 <script type="text/javascript">
-      window.addEventListener("load", function () {
 
-       getUser(function(arr){
-        //console.log(arr);
-        document.getElementById("firstname").innerHTML=arr[0].firstname;
+    window.addEventListener("load", function () {
+
+       getUserValues(function(arr){
+        document.getElementById("firstname").innerHTML= arr[0].firstname;
         document.getElementById("lastname").innerHTML= arr[0].lastname;
-        document.getElementById("email").innerHTML= arr[0].email;
+        document.getElementById("email").innerHTML=arr[0].email;
         document.getElementById("img").innerHTML=arr[0].img;  
        });      
     });
 
-
-
-    async function getUser(fn){ 
+    async function getUserValues(fn){ 
           getUser((err,result) =>{
           fn(result);
           });
@@ -105,6 +103,7 @@
     function logout(){
       logOut();
     }
+  
       
 </script>
 
