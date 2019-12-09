@@ -285,6 +285,56 @@ getMarket(callback){
 }
 
 
+addUserProduction(id){
+	var addSql = `INSERT INTO user_production (user_id, total_production , total_excess ) VALUES (?,0,0)`;
+	con.query(addSql,[id] , function(err, result){
+		if(err){
+			throw err;
+		}else{
+			console.log("User production is added");
+		}
+	});
+}
+
+
+getUserProduction(id, callback){
+	var getSql = `SELECT * FROM user_production WHERE user_id = ?`;
+		con.query(getSql, [id], function(err, result){
+			if(err){
+				callback(err, null);
+			}else{
+				console.log("User production is fetched");
+				callback(err, result);
+			}
+		});
+}
+
+getAllUserProduction(callback){
+	var getSql = `SELECT * FROM user_production`;
+		con.query(getSql, [], function(err, result){
+			if(err){
+				callback(err, null);
+			}else{
+				console.log("All user production is fetched");
+				callback(err, result);
+			}
+		});
+}
+
+updateUserProduction(id, production, excess){
+	console.log("Går till updateUserProduction");
+	var setSql=`UPDATE user_production SET total_production = total_production + ? AND total_excess = total_excess + ? WHERE user_id = ?`;
+		con.query(setSql, [production, excess, id], function(err, res){
+			if(err){	
+			}else{
+				console.log("User production uppdaterat");
+			}
+		});
+}
+
+
+
+
 
 
 }

@@ -260,6 +260,7 @@ app.post('/createUser', function(req,res){
               db_user.setOnline(req.session.Users, 1);
               db_user.addBlocked(req.session.Users, 0, 0);
               db_user.addSellBuy(req.session.Users, 0.5 , 0.5);
+              db_user.addUserProduction(req.session.Users);
             });
             
             send_(err, result, res);
@@ -426,16 +427,35 @@ app.post('/getMarket', function(req,res){
   });
 
 
+/*Get the production for the active user*/
+
+app.post('/getUserProduction', function(req,res){
+     db_user.getUserProduction(req.session.Users, (err,result) =>{
+        send_(err, result, res);
+    });
+  });
+
+/*Get the production for all users*/
+
+app.post('/getAllUserProduction', function(req,res){
+     db_user.getAllUserProduction((err,result) =>{
+        send_(err, result, res);
+    });
+  });
+
+
+
 /*I called every 10 second*/
 
 app.post('/callSimulator', function(req,res){
-        db_user.getUser(req.session.Users,(err,result) =>{
-        sim.getTotalProductionPerDay(result[0].consumption, result[0].area, (results)=>{
+          db_user.getUser(req.session.Users,(err,result) =>{
+          sim.getTotalProductionPerDay(result[0].consumption, result[0].area, (results)=>{
 
-
+          //Update user production result
+          db.user.updateUserProduction(req.session.Users, results[1], results[2]);
           /*Surplus/Excess*/
           if(results[2] > 0){
-           
+              
               db_user.getSellBuy(req.session.Users, (e,r)=>{
               
               //Set in to buffert and sell to market.
