@@ -297,8 +297,8 @@ function getMarket(callback){
       var arr = JSON.parse(xhttp.responseText);
       callback(null, arr); 
       
+    }
   }
-}
     var data = {};
   
     xhttp.send(JSON.stringify(data));

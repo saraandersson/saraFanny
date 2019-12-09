@@ -272,7 +272,7 @@ updateBuy(id, buy){
 		});
 }
 
-getMarket(){
+getMarket(callback){
 	var getSql = `SELECT * FROM market`;
 		con.query(getSql, [], function(err, result){
 			if(err){
