@@ -183,14 +183,14 @@ window.addEventListener("load", function () {
 function openFormBlock(id) {
   window.alert("tes");
   document.getElementById("myFormBlock").style.display = "block";
-  document.getElementById("id").innerHTML = id; 
+  document.getElementById("blockid").innerHTML = id; 
 }
 
   function unblockButton(id){
     var text = "Block prosumer";
     document.getElementById("block").innerHTML = "Unblock Prosumer";
-    document.getElementById("block").onclick = blockProsumer(id); 
-    //document.getElementById("block").onclick = openFormBlock(id); 
+    //document.getElementById("block").onclick = blockProsumer(id); 
+    document.getElementById("block").onclick = openFormBlock(id); 
   
 }
 
@@ -206,7 +206,7 @@ function closeFormBlock() {
   var blocktime = document.getElementById("blocktime").innerHTML;
   window.alert(id);
   window.alert(blocktime);
-  blockProsumer(id,blocktime);
+  //blockProsumer(id,blocktime);
   document.getElementById("myFormBlock").style.display = "none";
 }
 
@@ -246,7 +246,7 @@ function logout(){
     <h1>Block Prosumer</h1>
 
     <label for="id"><b>Id</b></label>
-     <input type="text" name="id" id = "id" required>
+     <input type="text" name="id" id = "blockid" required>
     
 
     <label for="BlockTime"><b>Block Time</b></label>
