@@ -75,7 +75,9 @@ window.addEventListener("load", function () {
           var x, txt=""; 
 
           for (x in obj){
-           txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" + obj[x].blocked + " "+ "<button class='btn btn-default' id =" + obj[x].id + " onclick='blockProsumer()'>Block Prosumer</button>" + "</td><td>" + "<button class='btn btn-default' id = 'info' onclick='viewProsumerProduction()'>View Prosumer Production</button>" + "</tr></td>";
+            if(obj[x].role_id == 0){
+             txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" + obj[x].blocked + " "+ "<button class='btn btn-default' id =" + obj[x].id + " onclick='blockProsumer()'>Block Prosumer</button>" + "</td><td>" + "<button class='btn btn-default' id = 'info' onclick='viewProsumerProduction()'>View Prosumer Production</button>" + "</tr></td>";
+            }
           }
           $('#myTable tbody').html(txt); 
 
