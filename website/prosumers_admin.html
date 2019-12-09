@@ -116,19 +116,18 @@ window.addEventListener("load", function () {
 
 
   function blockProsumer(id){
-    blockUser(id);
+    blockUser(id, 20);
 
 }
 
   function unblockButton(id){
     document.getElementById(block).innerText = "Block Prosumer";
     document.getElementById(block).onclick = blockProsumer(id); 
-    blockUser(id);
-
+  
 }
 
 function unblockProsumer(id){ 
-    unblockUser(id);
+    unblockUser(id, 20);
 }
 
 

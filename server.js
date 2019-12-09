@@ -441,7 +441,7 @@ app.post('/getAllUserProduction', function(req,res){
   });
 
 app.post('/blockUser', function(req,res){
-     db_user.blockUser(req.body.id, 1, 20);
+     db_user.blockUser(req.body.id, 1, req.body.time);
   });
 
 app.post('/unblockUser', function(req,res){
