@@ -133,7 +133,7 @@ function editProfile(firstname, lastname, area, consumption, img){
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-        window.location.replace("../website/profile_customer.html");
+        window.location.replace("/profile");
 
     }
   }
@@ -153,7 +153,7 @@ function editProfileAdmin(firstname, lastname, img){
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-        window.location.replace("../website/profile_customer.html");
+        window.location.replace("/profile");
 
     }
   }
@@ -193,7 +193,7 @@ function changePassword(old_password, new_password){
     if (this.readyState == 4 && this.status == 200) {
 
       //IF success
-        window.location.replace("../website/profile_customer.html");
+        window.location.replace("/profile");
       //Else error message
 
     }
