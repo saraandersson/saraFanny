@@ -166,11 +166,10 @@ window.addEventListener("load", function () {
           }
 
   function blockButton(id){
-     window.alert("testar");
     var text = "Unblock prosumer";
     document.getElementById("block").innerHTML = text;
-    //document.getElementById("block").onclick = unblockProsumer(id);
-   document.getElementById("block").onclick = openFormBlock(id); 
+    document.getElementById("block").onclick = unblockProsumer(id);
+   //document.getElementById("block").onclick = openFormBlock(id); 
 
 }
 
@@ -187,15 +186,16 @@ function openFormBlock(id) {
 }
 
   function unblockButton(id){
-   // var text = "Block prosumer";
+    var text = "Block prosumer";
     document.getElementById("block").innerHTML = "Unblock Prosumer";
-    //document.getElementById("block").onclick = blockProsumer(id); 
-    document.getElementById("block").onclick = openFormBlock(id); 
+    document.getElementById("block").onclick = blockProsumer(id); 
+    //document.getElementById("block").onclick = openFormBlock(id); 
   
 }
 
 function unblockProsumer(id){ 
-    unblockUser(id, 20);
+    openFormBlock(id);
+    //unblockUser(id, 20);
 }
 
 
@@ -203,6 +203,8 @@ function unblockProsumer(id){
 function closeFormBlock() {
   var id = document.getElementById("id").innerHTML;
   var blocktime = document.getElementById("blocktime").innerHTML;
+  window.alert(id);
+  window.alert(blocktime);
   blockProsumer(id,blocktime);
   document.getElementById("myFormBlock").style.display = "none";
 }
