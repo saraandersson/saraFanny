@@ -268,22 +268,50 @@ function updateUserProductionDeficit(buy){
 
 }
 
-function getAdmin(){
+
+
+function blockUser(id, time){
   var xhttp = new XMLHttpRequest();
-  xhttp.open("POST", "/getUser", true);
+  var id_val = id;
+  var time_val = time;
+  xhttp.open("POST", "/blockUser", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-           // Typical action to be performed when the document is ready:
-           //alert(xhttp.responseText);
-      var arr = JSON.parse(xhttp.responseText);
-      callback(null, arr); 
-      
+
+      //IF success
+        //window.location.replace("../website/profile_customer.html");
+      //Else error message
+
+    }
   }
+
+   var data = {id: id_val, time: time_val};
+
+  xhttp.send(JSON.stringify(data));
+
 }
-    var data = {};
-  
-    xhttp.send(JSON.stringify(data));
+
+function unblockUser(id, time){
+  var xhttp = new XMLHttpRequest();
+  var id_val = id;
+  var time_val = time;
+  xhttp.open("POST", "/unblockUser", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+
+      //IF success
+        //window.location.replace("../website/profile_customer.html");
+      //Else error message
+
+    }
+  }
+
+   var data = {id: id_val, time: time_val};
+
+  xhttp.send(JSON.stringify(data));
+
 }
 
 function getAllProsumers(callback){

@@ -77,7 +77,12 @@ window.addEventListener("load", function () {
           for (x in obj){
             //Så att endast prosumers syns, ej admin
             if(obj[x].role_id == 0){
-             txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" + obj[x].blocked + " "+ "<button class='btn btn-default' id =" + obj[x].id + " onclick='blockProsumer()'>Block Prosumer</button>" + "</tr></td>";
+
+              if(obj[x].blocked == 0){
+               txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='blockProsumer()'>Block prosumer</button>" + "</tr></td>";
+              }else{
+                txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" + "<button class='btn btn-default' id =" + obj[x].id + " onclick='unblockProsumer()'>Unblock prosumer</button>" + "</tr></td>";
+              }
             }
           }
           $('#myTable tbody').html(txt); 
@@ -91,6 +96,7 @@ window.addEventListener("load", function () {
        }); 
 
       });
+
       async function getUsersValues(fn){
               getAllProsumers((err,result) =>{
               fn(result);
@@ -98,14 +104,65 @@ window.addEventListener("load", function () {
           }
 
 
-  function blockButton(id){
-    document.getElementById(id).innerText = "Unblock Prosumer";
-    document.getElementById(id).onclick = unblockProsumer(id); 
+  function blockProsumer(id){
+    blockUser(id);
+    getUsersValues(function(arr){
+         
+
+          var obj = arr; 
+          var x, txt=""; 
+
+          for (x in obj){
+            //Så att endast prosumers syns, ej admin
+            if(obj[x].role_id == 0){
+
+              if(obj[x].blocked == 0){
+               txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='blockProsumer()'>Block prosumer</button>" + "</tr></td>";
+              }else{
+                txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" + "<button class='btn btn-default' id =" + obj[x].id + " onclick='unblockProsumer()'>Unblock prosumer</button>" + "</tr></td>";
+              }
+            }
+          }
+          $('#myTable tbody').html(txt); 
+
+        for(x in obj){
+          if(obj[x].blocked==1){
+            blockButton(obj[x].id);
+          }
+        }
+
+       }); 
 
 }
 
 function unblockProsumer(id){
-    window.alert("funkar!");
+    unblockUser(id);
+    getUsersValues(function(arr){
+         
+
+          var obj = arr; 
+          var x, txt=""; 
+
+          for (x in obj){
+            //Så att endast prosumers syns, ej admin
+            if(obj[x].role_id == 0){
+
+              if(obj[x].blocked == 0){
+               txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='blockProsumer()'>Block prosumer</button>" + "</tr></td>";
+              }else{
+                txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" + "<button class='btn btn-default' id =" + obj[x].id + " onclick='unblockProsumer()'>Unblock prosumer</button>" + "</tr></td>";
+              }
+            }
+          }
+          $('#myTable tbody').html(txt); 
+
+        for(x in obj){
+          if(obj[x].blocked==1){
+            blockButton(obj[x].id);
+          }
+        }
+
+       }); 
 }
 
 

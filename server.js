@@ -440,6 +440,14 @@ app.post('/getAllUserProduction', function(req,res){
     });
   });
 
+app.post('/blockUser', function(req,res){
+     db_user.blockUser(req.body.id, 1, 20);
+  });
+
+app.post('/unblockUser', function(req,res){
+     db_user.blockUser(req.body.id, 0, 0);
+  });
+
 
 
 /*I called every 10 second*/

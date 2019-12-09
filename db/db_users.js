@@ -335,9 +335,6 @@ getAllUserProduction(callback){
 }
 
 updateUserProduction(id, production, excess){
-	console.log("Production: " + production);
-	console.log("Excess: " + excess);
-
 	var setSql=`UPDATE user_production SET total_production = total_production + ?, total_excess = total_excess + ? WHERE user_id = ?`;
 		con.query(setSql, [production, excess, id], function(err, res){
 			if(err){	
@@ -346,6 +343,17 @@ updateUserProduction(id, production, excess){
 			}
 		});
 }
+
+blockUser(id, block, time){
+	var setSql=`UPDATE blocked SET blocked = ?, time = ? WHERE users_id = ?`;
+		con.query(setSql, [block, time, id], function(err, res){
+			if(err){	
+			}else{
+				console.log("User blocked uppdaterat");
+			}
+		});
+}
+
 
 
 
