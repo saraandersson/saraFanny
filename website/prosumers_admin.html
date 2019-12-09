@@ -174,8 +174,9 @@ window.addEventListener("load", function () {
 }
 
 
-  function blockProsumer(id, blocktime){
-    blockUser(id, blocktime);
+  function blockProsumer(id){
+    openFormBlock(id);
+    //blockUser(id, blocktime);
 
 }
 
@@ -194,7 +195,6 @@ function openFormBlock(id) {
 }
 
 function unblockProsumer(id){ 
-    window.alert("testar");
     openFormBlock(id);
     //unblockUser(id, 20);
 }
