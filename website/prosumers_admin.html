@@ -109,7 +109,8 @@ window.addEventListener("load", function () {
           }
 
   function blockButton(id){
-    document.getElementById("block").innerText = "Unblock Prosumer";
+    var text = "Unblock prosumer";
+    document.getElementById("block").innerHTML = text;
     document.getElementById("block").onclick = unblockProsumer(id); 
 
 }
@@ -121,7 +122,8 @@ window.addEventListener("load", function () {
 }
 
   function unblockButton(id){
-    document.getElementById("block").innerText = "Block Prosumer";
+    var text = "Block prosumer";
+    document.getElementById("block").innerHTML = "Unblock Prosumer";
     document.getElementById("block").onclick = blockProsumer(id); 
   
 }
