@@ -178,8 +178,9 @@ window.addEventListener("load", function () {
 
 }
 
-function openFormBlock(id){
-
+function openFormBlock(id) {
+  document.getElementById("myFormBlock").style.display = "block";
+  document.getElementById("id").innerHTML = id; 
 }
 
   function unblockButton(id){
@@ -195,10 +196,6 @@ function unblockProsumer(id){
 }
 
 
-function openFormBlock(id) {
-  document.getElementById("myFormBlock").style.display = "block";
-  document.getElementById("id").innerHTML = id; 
-}
 
 function closeFormBlock() {
   var id = document.getElementById("id").innerHTML;
