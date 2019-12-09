@@ -59,7 +59,7 @@ app.route('/')
 
 //Dessa funkar inte om man ändrar i webbadressen, men via länkar funkar detta
 
-app.route('/index.html')
+app.route('/index')
     .get((req,res)=>{
        if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
             res.redirect('website/index_customer.html');
@@ -72,7 +72,7 @@ app.route('/index.html')
           }
         });
 
-  app.route('/index_customer.html')
+  app.route('/index_customer')
   .get((req,res)=>{
      if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
           res.redirect('website/index_customer.html');
@@ -85,7 +85,7 @@ app.route('/index.html')
         }
       });
 
-  app.route('/index_admin.html')
+  app.route('/index_admin')
   .get((req,res)=>{
      if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
           res.redirect('website/index_customer.html');
@@ -98,20 +98,7 @@ app.route('/index.html')
         }
       });
 
-  app.route('/profile_customer.html')
-  .get((req,res)=>{
-     if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
-          res.redirect('website/profile_customer.html');
-      }
-      else if(req.session.Users && req.cookies.user_id && req.session.role_id == 1){
-          res.redirect('/website/profile_admin.html');
-        } 
-      else {
-           res.redirect('/website/index.html');
-        }
-      });
-
-  app.route('/profile_admin.html')
+  app.route('/profile')
   .get((req,res)=>{
      if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
           res.redirect('website/profile_customer.html');
@@ -125,7 +112,8 @@ app.route('/index.html')
       });
 
 
-    app.route('/edit_profile.html')
+
+    app.route('/edit_profile')
   .get((req,res)=>{
      if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
           res.redirect('website/edit_profile.html');
@@ -137,6 +125,37 @@ app.route('/index.html')
         } 
       else {
            res.redirect('/website/index.html');
+        }
+      });
+
+
+    app.route('/production_settings_customer')
+    .get((req,res)=>{
+     if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
+          res.redirect('website/production_settings_customer.html');
+      }
+
+      //ÄNDRA HÄR
+      else if(req.session.Users && req.cookies.user_id && req.session.role_id == 1){
+          res.redirect('/website/index_admin.html');
+        } 
+      else {
+           res.redirect('/website/index.html');
+        }
+      });
+
+    app.route('/market')
+    .get((req,res)=>{
+     if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
+          res.redirect('website/market_customer.html');
+      }
+
+      //ÄNDRA HÄR
+      else if(req.session.Users && req.cookies.user_id && req.session.role_id == 1){
+          res.redirect('/website/market_admin.html');
+        } 
+      else {
+           res.redirect('/website/market.html');
         }
       });
 
@@ -154,7 +173,7 @@ app.listen(PORT, function() {
 });
 
 
-app.route('/login.html')
+app.route('/login')
     .get((req,res)=>{
       if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
         res.redirect('website/index_customer.html');
@@ -166,7 +185,7 @@ app.route('/login.html')
         });
       
 
-  app.route('/signUp.html')
+  app.route('/signUp')
   .get((req,res)=>{
       if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
         res.redirect('website/index_customer.html');
