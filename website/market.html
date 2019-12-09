@@ -75,31 +75,22 @@ p{
 
 <script type="text/javascript">
 
+window.addEventListener("load", function () {
+     getCurrentMarket(function(arr){ 
+       document.getElementById("market").innerHTML= arr[0].amount;
+       document.getElementById("marketprice").innerHTML= arr[0].price;
+
   
-    window.addEventListener("load", function () {
-    
-    
-       getFirstname(function(arr){
-        console.log(arr);
-         var firstname = arr[0].firstname; 
-
-         console.log(arr);
-
-          $('#test').html(firstname);
-        });
-
-
-      
     });
+  });
 
-    async function getFirstname(fn){
-          getUserFirstname(1,(err,result) =>{
-          fn(result);
-          });
-      }
-
+  async function getCurrentMarket(fn){
+    getMarket((err,result) =>{
+      fn(result);
+        });
+      } 
       
-      </script>
+</script>
 
 
 <nav class="navbar navbar-inverse">
