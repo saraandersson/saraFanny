@@ -166,6 +166,7 @@ window.addEventListener("load", function () {
           }
 
   function blockButton(id){
+     window.alert("testar");
     var text = "Unblock prosumer";
     document.getElementById("block").innerHTML = text;
     //document.getElementById("block").onclick = unblockProsumer(id);
@@ -180,6 +181,7 @@ window.addEventListener("load", function () {
 }
 
 function openFormBlock(id) {
+  window.alert("tes");
   document.getElementById("myFormBlock").style.display = "block";
   document.getElementById("id").innerHTML = id; 
 }
@@ -201,8 +203,6 @@ function unblockProsumer(id){
 function closeFormBlock() {
   var id = document.getElementById("id").innerHTML;
   var blocktime = document.getElementById("blocktime").innerHTML;
-  console.log(blocktime);
-  console.log(id);
   blockProsumer(id,blocktime);
   document.getElementById("myFormBlock").style.display = "none";
 }
