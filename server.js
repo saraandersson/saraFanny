@@ -410,10 +410,12 @@ app.post('/getUserSellBuy', function(req,res){
   });
 
 app.post('/updateUserProductionExcess', function(req,res){
+   console.log("HIT : "  + req.body.sell);
      db_user.updateSell(req.session.Users, req.body.sell);
   });
 
 app.post('/updateUserProductionDeficit', function(req,res){
+      console.log("HIT : "  + req.body.buy);
      db_user.updateBuy(req.session.Users, req.body.buy);
   });
 
