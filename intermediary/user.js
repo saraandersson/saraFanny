@@ -188,6 +188,7 @@ function changePassword(old_password, new_password){
 /*Ska hämta värden från databasen gällande en prosumers sell/buy värden */
 function getUserSellBuy(callback){
   var xhttp = new XMLHttpRequest();
+  window.alert("går hit");
   xhttp.open("POST", "/getUserSellBuy", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
@@ -208,6 +209,7 @@ function getUserSellBuy(callback){
 function updateUserProductionExcess(sell){
   var xhttp = new XMLHttpRequest();
   var sell_val = sell;
+  window.alert(sell);
   xhttp.open("POST", "/updateUserProductionExcess", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
@@ -230,6 +232,7 @@ function updateUserProductionExcess(sell){
 function updateUserProductionDeficit(buy){
   var xhttp = new XMLHttpRequest();
   var buy_val = buy;
+  window.alert(buy);
   xhttp.open("POST", "/updateUserProductionDeficit", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
