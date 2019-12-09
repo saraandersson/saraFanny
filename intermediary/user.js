@@ -148,10 +148,7 @@ function editProfileAdmin(firstname, lastname, img){
   var xhttp = new XMLHttpRequest();
   var firstname_val = firstname;
   var lastname_val = lastname;
-  var img_val = lastname;
   var img_val = img;
-  var area_val = area;
-  var consumption_val = consumption;
   xhttp.open("POST", "/updateProfileAdmin", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
