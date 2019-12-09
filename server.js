@@ -448,6 +448,9 @@ app.post('/callSimulator', function(req,res){
           db_user.getUser(req.session.Users,(err,result) =>{
           sim.getTotalProductionPerDay(result[0].consumption, result[0].area, (results)=>{
 
+          console.log("INNAN 1: " + results[1]);
+          console.log("INNAN 2: " + results[2]);
+
           //Update user production result
           db_user.updateUserProduction(req.session.Users, results[1], results[2]);
           /*Surplus/Excess*/

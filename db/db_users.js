@@ -335,7 +335,9 @@ getAllUserProduction(callback){
 }
 
 updateUserProduction(id, production, excess){
-	console.log("Går till updateUserProduction");
+	console.log("Production: " + production);
+	console.log("Excess: " + excess);
+
 	var setSql=`UPDATE user_production SET total_production = total_production + ? AND total_excess = total_excess + ? WHERE user_id = ?`;
 		con.query(setSql, [production, excess, id], function(err, res){
 			if(err){	
