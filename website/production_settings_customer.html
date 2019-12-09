@@ -159,14 +159,14 @@ function logout(){
 function updateMarketToDatabase(){
     var market = document.getElementById("marketValue").innerHTML; 
    
-    console.log(market);
-    updateUserProductionExcess(0.1);
+    console.log(market/100);
+    updateUserProductionExcess(market/100);
 }
 
 function updateMarketToDatabaseUnderProd(){
     var market_underProd = document.getElementById("marketValue_underProd").innerHTML; 
-    console.log(market_underProd);
-    updateUserProductionDeficit(0.1);
+    console.log(market_underProd/100);
+    updateUserProductionDeficit(market_underProd/100);
 }
 
       
