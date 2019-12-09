@@ -384,6 +384,23 @@ app.post('/getAllProsumers', function(req,res){
     });
   });
 
+app.post('/getUserSellBuy', function(req,res){
+     db_user.getSellBuy(req.session.Users, (err, result) =>{
+        send_(err, result, res);
+     });
+  });
+
+app.post('/updateUserProductionExcess', function(req,res){
+     db_user.updateSell(req.session.Users, req.body.sell);
+  });
+
+app.post('/updateUserProductionDeficit', function(req,res){
+     db_user.updateBuy(req.session.Users, req.body.buy);
+  });
+
+
+/*I called every 10 second*/
+
 app.post('/callSimulator', function(req,res){
         db_user.getUser(req.session.Users,(err,result) =>{
         sim.getTotalProductionPerDay(result[0].consumption, result[0].area, (results)=>{

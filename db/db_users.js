@@ -224,6 +224,18 @@ addSellBuy(user_id, sell, buy){
 		});
 	}
 
+getUserHashedPassword(email,callback){
+	var getSql =  `SELECT password FROM users WHERE email= ?`;
+		con.query(getSql, [email] , function(err, result){
+		if(err){
+			callback(err, null);
+		}else{
+			//console.log("SellBuy is fetched");
+			//console.log(result);
+			callback(err, result);
+		}
+	});
+}
 
 getSellBuy(id, callback){
 	var getSql = `SELECT * FROM user_sell_buy WHERE user_id = ?`;
@@ -238,17 +250,24 @@ getSellBuy(id, callback){
 	});
 }
 
-getUserHashedPassword(email,callback){
-	var getSql =  `SELECT password FROM users WHERE email= ?`;
-		con.query(getSql, [email] , function(err, result){
-		if(err){
-			callback(err, null);
-		}else{
-			//console.log("SellBuy is fetched");
-			//console.log(result);
-			callback(err, result);
-		}
-	});
+updateSell(id, sell){
+	var setsql=`UPDATE user_sell_buy SET sell = ? WHERE id = ?`;
+		con.query(setSql, [sell, id], function(err, res){
+			if(err){	
+			}else{
+				console.log("Sell uppdaterat");
+			}
+		});
+}
+
+updateBuy(id, buy){
+	var setsql=`UPDATE user_sell_buy SET buy = ? WHERE id = ?`;
+		con.query(setSql, [buy, id], function(err, res){
+			if(err){	
+			}else{
+				console.log("Buy uppdaterat");
+			}
+		});
 }
 
 

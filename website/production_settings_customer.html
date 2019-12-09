@@ -124,21 +124,25 @@ p{
 <script type="text/javascript">
 
 window.addEventListener("load", function () {
-     getUserProductionValues(function(arr){ 
+     getUserSellBuyValues(function(arr){ 
 
-     document.getElementById("myRange").value = arr[0].buffert;
-     document.getElementById("buffert").innerHTML = arr[0].buffert; 
-     document.getElementById("marketValue").innerHTML = 100 - arr[0].buffert; 
+     document.getElementById("myRange").value = (1 - arr[0].sell) * 100;
+     document.getElementById("buffert").innerHTML = (1 - arr[0].sell) * 100; 
+     document.getElementById("marketValue").innerHTML = arr[0].sell * 100; 
 
-    x = arr[0].buffert;
+     document.getElementById("myRange_underProd").value = (1 - arr[0].buy) * 100;
+     document.getElementById("buffert_underProd").innerHTML = (1 - arr[0].buy) * 100; 
+     document.getElementById("marketValue_underProd").innerHTML = arr[0].buy * 100; 
+
+    x = (1 - arr[0].sell) * 100;
     color = 'linear-gradient(90deg, rgb(117, 252, 117)' + x + '% , rgb(214, 214, 214)' + x + '%)';
     slider.style.background = color;
  
     });
   });
 
-  async function getUserProduction(fn){
-    getProduction((err,result) =>{
+  async function getUserSellBuyValues(fn){
+    getUserSellBuy((err,result) =>{
       fn(result);
         });
       } 
@@ -164,13 +168,13 @@ function updateMarketUnderProd(){
 function updateMarketToDatabase(){
     var buffert = document.getElementById("buffert_final").innerHTML;
     var market = document.getElementById("marketValue_final").innerHTML; 
-    updateUserProduction(buffert, market);
+    updateUserProductionExcess(market/100);
 }
 
 function updateMarketToDatabaseUnderProd(){
     var buffert_underProd = document.getElementById("buffert_final_underProd").innerHTML;
     var marketValue_underProd = document.getElementById("marketValue_final_underProd").innerHTML; 
-    updateUserProduction(buffert_underProd, marketValue_final_underProd);
+    updateUserProductionDeficit(marketValue_final_underProd/100);
 }
 
       

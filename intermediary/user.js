@@ -185,10 +185,10 @@ function changePassword(old_password, new_password){
 
 }
 
-/*Ska hämta värden från databasen gällande en prosumers buffert */
-function getProduction(callback){
+/*Ska hämta värden från databasen gällande en prosumers sell/buy värden */
+function getUserSellBuy(callback){
   var xhttp = new XMLHttpRequest();
-  xhttp.open("POST", "/getProduction", true);
+  xhttp.open("POST", "/getUserSellBuy", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -204,12 +204,11 @@ function getProduction(callback){
     xhttp.send(JSON.stringify(data));
 }
 
-/*Om prosumern har ändrat sin buffert/market procent så uppdateras detta*/
-function updateUserProduction(buffert, market){
+/*Om prosumern har ändrat sin sell ändras denna*/
+function updateUserProductionExcess(sell){
   var xhttp = new XMLHttpRequest();
-  var buffert_val = buffert;
-  var market_val = market;
-  xhttp.open("POST", "/updateUserProduction", true);
+  var sell_val = sell;
+  xhttp.open("POST", "/updateUserProductionExcess", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -221,7 +220,29 @@ function updateUserProduction(buffert, market){
     }
   }
 
-   var data = {buffert: buffert_val, market: market_val};
+   var data = {sell: sell_val};
+
+  xhttp.send(JSON.stringify(data));
+
+}
+
+/*Om prosumern har ändrat sin buy så uppdateras detta*/
+function updateUserProductionDeficit(buy){
+  var xhttp = new XMLHttpRequest();
+  var buy_val = buy;
+  xhttp.open("POST", "/updateUserProductionDeficit", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+
+      //IF success
+        //window.location.replace("../website/profile_customer.html");
+      //Else error message
+
+    }
+  }
+
+   var data = {buy: buy_val};
 
   xhttp.send(JSON.stringify(data));
 
