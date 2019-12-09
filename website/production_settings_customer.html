@@ -216,19 +216,10 @@ function updateMarketToDatabaseUnderProd(){
           <p>Market: <span id = "marketValue"></span>%</p>
         </div>
          <div id = "updateButton">
-          <button class="btn btn-default" name="submit" onclick = "updateMarket()">Update Values</button> 
+          <button class="btn btn-default" name="submit" onclick = "updateMarketToDatabase()">Update Values</button> 
         </div>
-        <div id = "updateBuffert">
-          <h5> Would you like to update your production partition with following values: </h5>
-          <h5>Market: <span id = "marketValue_final"></span>%</h5>
-          <h5>Buffert: <span id="buffert_final"></span>%</h5>
-          <div class="form-group_2">
-            <div id = "yesButton">
-              <button class="btn btn-default" type="submit" name="submit" onclick = "updateMarketToDatabase()">Yes</button> 
-            </div>
-            </div> 
-          </div>
         </div>
+      </div>
 
     <script>
     var slider = document.getElementById("myRange");
