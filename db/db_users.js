@@ -149,7 +149,7 @@ class Db_user{
 
 getAllProsumers(callback){
 	var getSql = `SELECT users.id, users.firstname, users.lastname, users.email, users.online, blocked.blocked, user_production.total_production, 
-	user_production.total_excess FROM users JOIN blocked ON users.id = blocked.users_id JOIN user_production ON users.id = user_production.user_id`;
+	user_production.total_excess FROM users WHERE users.role_id = 0 JOIN blocked ON users.id = blocked.users_id JOIN user_production ON users.id = user_production.user_id`;
 	con.query(getSql, [] , function(err, result){
 		if(err){
 			callback(err, null);
