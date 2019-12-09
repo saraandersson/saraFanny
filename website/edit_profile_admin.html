@@ -68,13 +68,13 @@
 
 <script type="text/javascript">
 
-      window.addEventListener("load", function () {
+  window.addEventListener("load", function () {
 
        getUserValues(function(arr){
         //console.log(arr);
         document.getElementById("firstname").placeholder= arr[0].firstname;
         document.getElementById("lastname").placeholder= arr[0].lastname;
-        document.getElementById("img").placeholder= arr[0].img;
+        document.getElementById("img").placeholder=arr[0].img;  
        });      
     });
 
@@ -90,11 +90,11 @@
       function updateUser(){
         var firstname = document.getElementById("firstname").placeholder=document.getElementById("firstname").value;
         var lastname = document.getElementById("lastname").placeholder= document.getElementById("lastname").value;
-        var img = document.getElementById("img").placeholder= document.getElementById("img").value;
+        var img = document.getElementById("img").placeholder=document.getElementById("img").value;
 
         /*Kalla på funktion som skickar in de värden som ska uppdateras till databasen*/
 
-        editProfile(firstname, lastname, img);
+        editProfile(firstname, lastname, area, consumption, img);
 
       }
 
@@ -147,7 +147,7 @@ function logout(){
             </div>
             <div class="form-group">
                 <label class="control-label">Profile picture:</label>
-                <input type="text" placeholder="" name="img" maxlength="255" class="form-control text-box single-line" id = "lastname">
+                <input type="text" placeholder="" name="img" maxlength="255" class="form-control text-box single-line" id = "img">
             </div>
           <div class="form-group_2">
               <div id = "saveButton">
