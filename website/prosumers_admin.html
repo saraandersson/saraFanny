@@ -21,18 +21,75 @@
       padding: 25px;
     }
     
-  .carousel-inner img {
-      width: 100%; /* Set width to 100% */
-      margin: auto;
-      min-height:200px;
-  }
+    .open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
 
-  /* Hide the carousel text when the screen is less than 600 pixels wide */
-  @media (max-width: 600px) {
-    .carousel-caption {
-      display: none; 
-    }
-  }
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+
+
   </style>
 </head>
 <body>
@@ -116,15 +173,20 @@ window.addEventListener("load", function () {
 }
 
 
-  function blockProsumer(id){
-    blockUser(id, 20);
+  function blockProsumer(id, blocktime){
+    blockUser(id, blocktime);
+
+}
+
+function openFormBlock(id){
 
 }
 
   function unblockButton(id){
-    var text = "Block prosumer";
+   // var text = "Block prosumer";
     document.getElementById("block").innerHTML = "Unblock Prosumer";
-    document.getElementById("block").onclick = blockProsumer(id); 
+    //document.getElementById("block").onclick = blockProsumer(id); 
+    document.getElementById("block").onclick = openFormBlock(id); 
   
 }
 
@@ -132,6 +194,20 @@ function unblockProsumer(id){
     unblockUser(id, 20);
 }
 
+
+function openFormBlock(id) {
+  document.getElementById("myFormBlock").style.display = "block";
+  document.getElementById("id").innerHTML = id; 
+}
+
+function closeFormBlock() {
+  var id = document.getElementById("id").innerHTML;
+  var blocktime = document.getElementById("blocktime").innerHTML;
+  console.log(blocktime);
+  console.log(id);
+  blockProsumer(id,blocktime);
+  document.getElementById("myFormBlock").style.display = "none";
+}
 
 function logout(){
   logOut();
@@ -163,6 +239,22 @@ function logout(){
     </div>
   </div>
 </nav>
+
+<div class="form-popup" id="myFormBlock">
+  <form class="form-container">
+    <h1>Block Prosumer</h1>
+
+    <label for="id"><b>Id</b></label>
+     <input type="text" name="id" id = "id" required>
+    
+
+    <label for="BlockTime"><b>Block Time</b></label>
+    <input type="Text" placeholder="Enter Block Time (10-100 sec)" name="blocktime" id = "blocktime"required>
+
+    <button type="submit" class="btn">Submit</button>
+    <button type="button" class="btn cancel" onclick="closeFormBlock()">Close</button>
+  </form>
+</div>
 
 <div class='container body-content'>
    
