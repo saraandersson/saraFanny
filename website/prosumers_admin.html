@@ -181,9 +181,8 @@ window.addEventListener("load", function () {
 }
 
 function openFormBlock(id) {
-  window.alert(id);
   document.getElementById("myFormBlock").style.display = "block";
-  document.getElementById("blockid").innerHTML = id; 
+  document.getElementById("blockid").placeholder = id; 
 }
 
   function unblockButton(id){
@@ -245,8 +244,8 @@ function logout(){
   <form class="form-container">
     <h1>Block Prosumer</h1>
 
-    <label for="id"><b>Id</b></label>
-     <input  name="blockid" id = "blockid" required>
+    <label for="id"><b>ID</b></label>
+     <input type = "Text" name="blockid" id = "blockid" placeholder="" required>
     <label for="BlockTime"><b>Block Time</b></label>
     <input type="Text" placeholder="Enter Block Time (10-100 sec)" name="blocktime" id = "blocktime"required>
 
