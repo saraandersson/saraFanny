@@ -157,14 +157,12 @@ function logout(){
 
 
 function updateMarketToDatabase(){
-    var buffert = document.getElementById("buffert_final").value;
-    var market = document.getElementById("marketValue_final").value; 
+    var market = document.getElementById("marketValue").value; 
     updateUserProductionExcess(market/100);
 }
 
 function updateMarketToDatabaseUnderProd(){
-    var buffert_underProd = document.getElementById("buffert_final_underProd").value;
-    var marketValue_underProd = document.getElementById("marketValue_final_underProd").value; 
+    var marketValue_underProd = document.getElementById("marketValue_underProd").value; 
     updateUserProductionDeficit(marketValue_final_underProd/100);
 }
 
