@@ -147,7 +147,7 @@ window.addEventListener("load", function () {
     var id = document.getElementById("blockid").innerHTML;
     var blocktime = document.getElementById("blocktime").value;
     blockUser(id, blocktime);
-    var x = setInterval(function() {
+    setInterval(function() {
       window.alert("test");
     
       var now = new Date().getTime();
@@ -160,7 +160,7 @@ window.addEventListener("load", function () {
     
   // If the count down is over, write some text 
   if (distance < 0) {
-    clearInterval(x);
+    clearInterval();
     unblockUser(id, 20); 
   }
 }, 1000);
