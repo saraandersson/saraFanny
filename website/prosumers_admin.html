@@ -166,6 +166,7 @@ window.addEventListener("load", function () {
           }
 
   function blockButton(id){
+    window.alert("testar");
     var text = "Unblock prosumer";
     document.getElementById("block").innerHTML = text;
     document.getElementById("block").onclick = unblockProsumer(id);
@@ -198,6 +199,7 @@ function openFormBlock(id) {
 
 
   function unblockButton(id){
+    window.alert("unblock");
     var text = "Block prosumer";
     document.getElementById("block").innerHTML = text;
     document.getElementById("block").id = id;
