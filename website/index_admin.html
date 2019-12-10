@@ -39,6 +39,8 @@
 
 <script type="text/javascript">
 
+
+
 function logout(){
   logOut();
 }
@@ -71,9 +73,17 @@ function logout(){
 </nav>
 
 <div class='card-body'>
-    <div class='card-title'><h2 align = "center">See and control the Coal Power plant’s electricity production </h2></div>
-    <div class='card-title'><h2 align = "center">See the Coal Power plant’s status: starting, running, stopped </h2></div>
-        <div class='card-title'><h2 align = "center"> When producing, control a ratio of electricity being sent to the buffer and to the market (when stopped the buffer should be used to supply the market demand) </h2></div>
+        <div class="col-sm-offset-4 col-md-offset-4">
+            <div class="form-group">
+                <h3>Production Status: </h3>
+                 <div class="well" id = "prodStatus"></div>
+            </div>
+            <button class="btn btn-default">Start Production</button>
+            <button class="btn btn-default">Stop Production</button>
+             <div class="form-group">
+                <h3>Your Buffert </h3>
+                 <div class="well" id = "buffert"></div>
+            </div>
   <div class="container body-content">
 </div>
 </div>
