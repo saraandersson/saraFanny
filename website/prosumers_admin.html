@@ -109,7 +109,7 @@ window.addEventListener("load", function () {
               if(obj[x].blocked == 0){
                txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormBlock("+ obj[x].id +")'>Block prosumer</button>" + "</tr></td>";
               }else{
-                txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" + "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormUnblock("+ obj[x].id +")'>Unblock prosumer</button>" + "<p id="+obj[x].id+"> </p> " +"</tr></td>";
+                txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" + "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormUnblock("+ obj[x].id +")'>Unblock prosumer</button>" +"</tr></td>";
               }
             }
           }
