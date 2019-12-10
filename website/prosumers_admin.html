@@ -155,6 +155,7 @@ function unblockProsumerTimer(id, blocktime){
     blockUser(id, blocktime);
    // var test = unblockProsumerTimer(id, blocktime);
     setTimeout(function(){
+      window.alert(id);
       unblockProsumerTimer(id, blocktime);
     }, 1000);
   }
