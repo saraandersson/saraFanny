@@ -357,7 +357,7 @@ blockUser(id, block, time){
 		con.query(update, [time, 0], function(err, res){
 			if(err){	
 			}else{
-				console.log("User blocked uppdaterat");
+				console.log("User unblocked testing");
 			}
 		});
 
