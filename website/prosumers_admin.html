@@ -148,9 +148,10 @@ window.addEventListener("load", function () {
     var blocktime = document.getElementById("blocktime").value;
     blockUser(id, blocktime);
     //var test = unblockProsumerTimer(id, blocktime);
-    setInterval(unblockProsumerTimer(id,blocktime), 1000*blocktime);
+    setTimeout(unblockProsumerTimer(id,blocktime), 1000*blocktime);
   }
 
+// Kollaupp startimterval
 function unblockProsumerTimer(id, blocktime){
   window.alert("testar");
   unblockUser(id, 20);
