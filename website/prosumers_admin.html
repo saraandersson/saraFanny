@@ -173,14 +173,19 @@ window.addEventListener("load", function () {
 
 }
 
+  function closeFormBlock() {
+  //blockProsumer(id,blocktime);
+  document.getElementById("myFormBlock").style.display = "none";
+}
+
 
   function blockProsumer(){
     var id = document.getElementById("blockid").innerHTML;
     var blocktime = document.getElementById("blocktime").value;
-    window.alert(id);
-    window.alert(blocktime);
+    //window.alert(id);
+    //window.alert(blocktime);
     //document.getElementById(id).innerHTML = "Unblock Prosumer";
-    blockUser(id, blocktime);
+    //blockUser(id, blocktime);
     closeFormBlock(); 
 
     //openFormBlock(id);
@@ -209,11 +214,6 @@ function unblockProsumer(id){
 }
 
 
-
-function closeFormBlock() {
-  //blockProsumer(id,blocktime);
-  document.getElementById("myFormBlock").style.display = "none";
-}
 
 function logout(){
   logOut();
