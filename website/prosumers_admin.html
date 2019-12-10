@@ -194,7 +194,9 @@ function openFormBlock(id) {
 
   function unblockButton(id){
     var text = "Block prosumer";
-    document.getElementById("block").innerHTML = "Unblock Prosumer";
+    document.getElementById("block").innerHTML = text;
+    document.getElementById("block").id = id;
+    document.getElementById(id).onclick = openFormBlock(id);
     //document.getElementById("block").onclick = blockProsumer(id); 
     //document.getElementById("block").onclick = openFormBlock(id); 
   
@@ -203,6 +205,7 @@ function openFormBlock(id) {
 function unblockProsumer(id){ 
     //openFormBlock(id);
     unblockUser(id, 20);
+    unblockButton(id);
 }
 
 
