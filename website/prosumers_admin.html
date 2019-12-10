@@ -147,8 +147,8 @@ window.addEventListener("load", function () {
     var id = document.getElementById("blockid").innerHTML;
     var blocktime = document.getElementById("blocktime").value;
     blockUser(id, blocktime);
-    var test = unblockProsumerTimer(id, blocktime);
-    setInterval("test", 1000*blocktime);
+    //var test = unblockProsumerTimer(id, blocktime);
+    setInterval(unblockProsumerTimer(id,blocktime), 1000*blocktime);
   }
 
 function unblockProsumerTimer(id, blocktime){
