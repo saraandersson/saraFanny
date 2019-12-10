@@ -154,14 +154,14 @@ window.addEventListener("load", function () {
 function time(id, blocktime){
     window.alert("hejsan");
       var now = new Date().getTime();
-      window.alert(now);
       var value = new Date().getTime(); 
+      window.alert(value);
       var countDownDate = value.setSeconds( value.getSeconds() + blocktime);
+      window.alert(countDownDate);
 
       var distance = countDownDate-now; 
       // Output the result in an element with id="demo"
      document.getElementById(id).innerHTML = blocktime + "s ";
-     window.alert(distance);
     
   // If the count down is over, write some text 
   if (distance < 0) {
