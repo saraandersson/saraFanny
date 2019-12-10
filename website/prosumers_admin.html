@@ -181,6 +181,7 @@ window.addEventListener("load", function () {
     window.alert(blocktime);
     //document.getElementById(id).innerHTML = "Unblock Prosumer";
     blockUser(id, blocktime);
+    closeFormBlock(); 
 
     //openFormBlock(id);
 }
@@ -190,17 +191,18 @@ function openFormBlock(id) {
   document.getElementById("blockid").innerHTML = id; 
 }
 
+
   function unblockButton(id){
     var text = "Block prosumer";
     document.getElementById("block").innerHTML = "Unblock Prosumer";
     //document.getElementById("block").onclick = blockProsumer(id); 
-    document.getElementById("block").onclick = openFormBlock(id); 
+    //document.getElementById("block").onclick = openFormBlock(id); 
   
 }
 
 function unblockProsumer(id){ 
-    openFormBlock(id);
-    //unblockUser(id, 20);
+    //openFormBlock(id);
+    unblockUser(id, 20);
 }
 
 
