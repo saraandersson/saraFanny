@@ -147,7 +147,8 @@ window.addEventListener("load", function () {
     var id = document.getElementById("blockid").innerHTML;
     var blocktime = document.getElementById("blocktime").value;
     blockUser(id, blocktime);
-    var x = setInterval(function(id, blocktime) {
+    var x = setInterval(function() {
+      window.alert("test");
     
       var now = new Date().getTime();
       var value = new Date().getTime(); 
