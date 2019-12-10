@@ -146,8 +146,9 @@ window.addEventListener("load", function () {
   function blockProsumer(){
     var id = document.getElementById("blockid").innerHTML;
     var blocktime = document.getElementById("blocktime").value;
-    //blockUser(id, blocktime);
-    setInterval(function() {
+    blockUser(id, blocktime);
+    window.alert("test");
+    setInterval(function {
       window.alert("test");
     
       var now = new Date().getTime();
@@ -165,6 +166,7 @@ window.addEventListener("load", function () {
   }
 }, 1000);
 }
+
 
 function openFormBlock(id) {
   document.getElementById("myFormBlock").style.display = "block";
