@@ -147,12 +147,16 @@ window.addEventListener("load", function () {
     var id = document.getElementById("blockid").innerHTML;
     var blocktime = document.getElementById("blocktime").value;
     blockUser(id, blocktime);
-    setInterval('time()', 1000);
+    var x = setInterval(time, 1000);
   }
 
 function time(){
+  execute();
+
+}
+
+function execute(){
   window.alert("test");
-    
       var now = new Date().getTime();
       var value = new Date().getTime(); 
       var countDownDate = value.setSeconds( value.getSeconds() + 20);
@@ -166,8 +170,8 @@ function time(){
     clearInterval();
     unblockUser(id, 20); 
   }
-
 }
+
 
 function openFormBlock(id) {
   document.getElementById("myFormBlock").style.display = "block";
