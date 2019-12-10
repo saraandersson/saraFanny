@@ -143,6 +143,12 @@ window.addEventListener("load", function () {
 }
 
 
+function unblockProsumerTimer(id, blocktime){
+  window.alert("test");
+  unblockUser(id, 20);
+  location.reload();
+}
+
   function blockProsumer(){
     var id = document.getElementById("blockid").innerHTML;
     var blocktime = document.getElementById("blocktime").value;
@@ -150,14 +156,9 @@ window.addEventListener("load", function () {
    // var test = unblockProsumerTimer(id, blocktime);
     setTimeout(function(){
       unblockProsumerTimer(id, blocktime);
-    }, 10000);
+    }, 1000);
   }
 
-function unblockProsumerTimer(id, blocktime){
-  window.alert("test");
-  unblockUser(id, 20);
-  location.reload();
-}
 
 function openFormBlock(id) {
   document.getElementById("myFormBlock").style.display = "block";
