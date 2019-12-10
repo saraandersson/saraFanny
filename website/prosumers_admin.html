@@ -147,9 +147,14 @@ window.addEventListener("load", function () {
     var id = document.getElementById("blockid").innerHTML;
     var blocktime = document.getElementById("blocktime").value;
     blockUser(id, blocktime);
-    var test = unblockUser(id, blocktime);
+    var test = unblockProsumerTimer(id, blocktime);
     setInterval("test", 1000*blocktime);
   }
+
+function unblockProsumerTimer(id, blocktime){
+  unblockUser(id, 20);
+  location.reload();
+}
 
 function openFormBlock(id) {
   document.getElementById("myFormBlock").style.display = "block";
