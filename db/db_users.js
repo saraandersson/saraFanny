@@ -353,7 +353,7 @@ blockUser(id, block, time){
 			}
 		});
 	var update = 'CREATE EVENT myevent ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 10 SECONDS DO UPDATE blocked SET blocked = ?;'
-		con.query(update, [time, 0], function(err, res){
+		con.query(update, [0], function(err, res){
 			if(err){
 				console.log(err);	
 			}else{
