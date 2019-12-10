@@ -154,8 +154,10 @@ function unblockProsumerTimer(id, blocktime){
     var blocktime = document.getElementById("blocktime").value;
     blockUser(id, blocktime);
    // var test = unblockProsumerTimer(id, blocktime);
-    setTimeout(unblockProsumerTimer(id, blocktime), 3000);
+    setTimeout(function(){window.alert("test");}, 3000);
   }
+
+  setTimeout(function(){window.alert("test");}, 3000);
 
 
 function openFormBlock(id) {
