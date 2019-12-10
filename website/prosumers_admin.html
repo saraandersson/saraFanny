@@ -109,7 +109,7 @@ window.addEventListener("load", function () {
               if(obj[x].blocked == 0){
                txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormBlock("+ obj[x].id +")'>Block prosumer</button>" + "</tr></td>";
               }else{
-                txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" + "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormUnblock("+ obj[x].id +")'>Unblock prosumer</button>"+"</td><td>" + "<button class='btn btn-default' id ='sara'></button>"+ "</tr></td>";
+                txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" + "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormUnblock("+ obj[x].id +")'>Unblock prosumer</button>"+ "</tr></td>";
               }
             }
           }
@@ -147,32 +147,9 @@ window.addEventListener("load", function () {
     var id = document.getElementById("blockid").innerHTML;
     var blocktime = document.getElementById("blocktime").value;
     blockUser(id, blocktime);
-    var test = time(id, blocktime);
-    setInterval("test", 1000);
+    var test = unblockUser(id, blocktime);
+    setInterval("test", 1000*blocktime);
   }
-
-function time(id, blocktime){
-      var now = new Date().getTime();
-      var value = new Date().getTime(); 
-      /*var countDownDate = value.setSeconds( value.getSeconds() + blocktime);
-      window.alert(countDownDate);
-
-      var distance = countDownDate-now; */
-      // Output the result in an element with id="demo"
-     document.getElementById("sara").innerHTML = blocktime + "s ";
-    
-  // If the count down is over, write some text 
-  /*if (distance < 0) {
-    clearInterval();
-    unblockUser(id, 20); 
-  }*/
-
-}
-
-function execute(){
-  
-}
-
 
 function openFormBlock(id) {
   document.getElementById("myFormBlock").style.display = "block";
@@ -283,7 +260,7 @@ function logout(){
                   <th scope='col'>Total production</th>
                   <th scope='col'>Total profit</th>
                   <th scope='col'>Blocked</th>
-                  <th scope='col'>Timer</th>
+                  <th scope='col'></th>
                   <th scope='col'></th>
                 </tr>
               </thead>
