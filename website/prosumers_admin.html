@@ -109,7 +109,7 @@ window.addEventListener("load", function () {
               if(obj[x].blocked == 0){
                txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormBlock("+ obj[x].id +")'>Block prosumer</button>" + "</tr></td>";
               }else{
-                txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" + "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormUnblock("+ obj[x].id +")'>Unblock prosumer</button>" + "</tr></td>";
+                txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" + "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormUnblock("+ obj[x].id +")'>Unblock prosumer</button>" + "<p id="+obj[x].id+"> </p> " +"</tr></td>";
               }
             }
           }
@@ -147,6 +147,22 @@ window.addEventListener("load", function () {
     var id = document.getElementById("blockid").innerHTML;
     var blocktime = document.getElementById("blocktime").value;
     blockUser(id, blocktime);
+    var x = setInterval(function(id, blocktime) {
+    
+      var now = new Date().getTime();
+      var value = new Date().getTime(); 
+      var countDownDate = value.setSeconds( value.getSeconds() + blocktime);
+
+      var distance = countDownDate-now; 
+  // Output the result in an element with id="demo"
+     document.getElementById(id).innerHTML = blocktime + "s ";
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    unblockUser(id, 20); 
+  }
+}, 1000);
 }
 
 function openFormBlock(id) {
@@ -182,6 +198,7 @@ function closeFormUnblock() {
 function logout(){
   logOut();
 }
+
       
 </script>
 
@@ -238,6 +255,8 @@ function logout(){
     <button type="button" class="btn cancel" onclick="closeFormUnblock()">No</button>
   </form>
 </div>
+
+
 
 <div class='container body-content'>
    
