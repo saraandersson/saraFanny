@@ -146,7 +146,7 @@ window.addEventListener("load", function () {
   function blockProsumer(){
     var id = document.getElementById("blockid").innerHTML;
     var blocktime = document.getElementById("blocktime").value;
-    blockUser(id, blocktime);
+    //blockUser(id, blocktime);
     setInterval(function() {
       window.alert("test");
     
@@ -155,7 +155,7 @@ window.addEventListener("load", function () {
       var countDownDate = value.setSeconds( value.getSeconds() + blocktime);
 
       var distance = countDownDate-now; 
-  // Output the result in an element with id="demo"
+      // Output the result in an element with id="demo"
      document.getElementById("demo").innerHTML = blocktime + "s ";
     
   // If the count down is over, write some text 
