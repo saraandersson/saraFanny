@@ -147,11 +147,8 @@ window.addEventListener("load", function () {
     var id = document.getElementById("blockid").innerHTML;
     var blocktime = document.getElementById("blocktime").value;
     blockUser(id, blocktime);
-    //var test = unblockProsumerTimer(id, blocktime);
-    setTimeout(function(){
-       unblockUser(id, 20);
-        location.reload();
-      },10000);
+    var test = unblockProsumerTimer(id, blocktime);
+    setTimeout("test", 10000);
   }
 
 // Kollaupp startimterval
