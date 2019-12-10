@@ -166,17 +166,11 @@ window.addEventListener("load", function () {
           }
 
   function blockButton(id){
-    window.alert("testar");
     var text = "Unblock prosumer";
     document.getElementById("block").innerHTML = text;
-    document.getElementById("block").onclick = unblockProsumer(id);
+    //document.getElementById("block").onclick = unblockProsumer(id);
    //document.getElementById("block").onclick = openFormBlock(id); 
 
-}
-
-  function closeFormBlock() {
-  //blockProsumer(id,blocktime);
-  document.getElementById("myFormBlock").style.display = "none";
 }
 
 
@@ -187,7 +181,7 @@ window.addEventListener("load", function () {
     //window.alert(blocktime);
     //document.getElementById(id).innerHTML = "Unblock Prosumer";
     blockUser(id, blocktime);
-    closeFormBlock();
+    //closeFormBlock(); 
 
     //openFormBlock(id);
 }
@@ -215,6 +209,11 @@ function unblockProsumer(id){
 }
 
 
+
+function closeFormBlock() {
+  //blockProsumer(id,blocktime);
+  document.getElementById("myFormBlock").style.display = "none";
+}
 
 function logout(){
   logOut();
