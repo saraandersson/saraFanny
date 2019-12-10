@@ -143,19 +143,19 @@ window.addEventListener("load", function () {
 }
 
 
+function unblockProsumerTimer(id, blocktime){
+  unblockUser(id, 20);
+  location.reload();
+}
 
   function blockProsumer(){
     var id = document.getElementById("blockid").innerHTML;
     var blocktime = document.getElementById("blocktime").value;
     blockUser(id, blocktime);
-    function unblockProsumerTimer(){
+    return setTimeout(function(){
       window.alert("test");
-     // unblockUser(id, 20);
-      //location.reload();
-      }
-    setTimeout(unblockProsumerTimer, 3000);
+    }, 2000);
   }
-
 
 function openFormBlock(id) {
   document.getElementById("myFormBlock").style.display = "block";
