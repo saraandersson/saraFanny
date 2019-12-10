@@ -146,7 +146,7 @@ window.addEventListener("load", function () {
 
         for(x in obj){
           if(obj[x].blocked==1){
-            //blockButton(obj[x].id);
+            blockButton(obj[x].id);
           }
         }
 
@@ -167,7 +167,6 @@ window.addEventListener("load", function () {
 
   function blockButton(id){
     var text = "Unblock prosumer";
-    window.alert(document.getElementById("block").innerHTML);
     document.getElementById("block").innerHTML = text;
     document.getElementById("block").onclick = unblockProsumer(id);
    //document.getElementById("block").onclick = openFormBlock(id); 
@@ -182,6 +181,8 @@ window.addEventListener("load", function () {
     //window.alert(blocktime);
     //document.getElementById(id).innerHTML = "Unblock Prosumer";
     blockUser(id, blocktime);
+    document.getElementById(id).innerHTML = "Unblock Prosumer";
+    document.getElementById(id).onclick = unblockProsumer(id);
     //closeFormBlock(); 
 
     //openFormBlock(id);
@@ -196,17 +197,15 @@ function openFormBlock(id) {
   function unblockButton(id){
     var text = "Block prosumer";
     document.getElementById("block").innerHTML = text;
-    document.getElementById("block").id = id;
-    document.getElementById(id).onclick = openFormBlock(id);
-    closeFormBlock();
     //document.getElementById("block").onclick = blockProsumer(id); 
     //document.getElementById("block").onclick = openFormBlock(id); 
 }
 
 function unblockProsumer(id){ 
     //openFormBlock(id);
-    unblockUser(id, 20);
-    unblockButton(id); 
+    unblockUser(id, 20); 
+    document.getElementById(id).innerHTML = "Block Prosumer";
+    document.getElementById(id).onclick = openFormBlock(id);
     //unblockButton(id);
 }
 
