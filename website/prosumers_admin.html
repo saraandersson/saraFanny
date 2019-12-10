@@ -146,7 +146,7 @@ window.addEventListener("load", function () {
 
         for(x in obj){
           if(obj[x].blocked==1){
-            //blockButton(obj[x].id);
+            blockButton(obj[x].id);
           }
         }
 
@@ -195,8 +195,8 @@ function openFormBlock(id) {
   function unblockButton(id){
     var text = "Block prosumer";
     document.getElementById("block").innerHTML = text;
-    document.getElementById("block").id = id;
-    document.getElementById(id).onclick = openFormBlock(id);
+    //document.getElementById("block").id = id;
+    //document.getElementById(id).onclick = openFormBlock(id);
     //document.getElementById("block").onclick = blockProsumer(id); 
     //document.getElementById("block").onclick = openFormBlock(id); 
   
