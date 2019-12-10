@@ -138,7 +138,7 @@ window.addEventListener("load", function () {
               if(obj[x].blocked == 0){
                txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormBlock("+ obj[x].id +")'>Block prosumer</button>" + "</tr></td>";
               }else{
-                txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" + "<button class='btn btn-default' id =" + obj[x].id + " onclick='unblockProsumer("+ obj[x].id +")'>Unblock prosumer</button>" + "</tr></td>";
+                txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" + "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormUnblock("+ obj[x].id +")'>Unblock prosumer</button>" + "</tr></td>";
               }
             }
           }
@@ -192,6 +192,11 @@ function openFormBlock(id) {
 }
 
 
+function openFormUnblock(id) {
+  document.getElementById("myFormUnblock").style.display = "block";
+  document.getElementById("Unblockid").innerHTML = id; 
+}
+
   function unblockButton(id){
     var text = "Block prosumer";
     document.getElementById("block").innerHTML = text;
@@ -199,7 +204,8 @@ function openFormBlock(id) {
     //document.getElementById("block").onclick = openFormBlock(id); 
 }
 
-function unblockProsumer(id){ 
+function unblockProsumer(){ 
+    var id = document.getElementById("Unblockid").innerHTML;
     //openFormBlock(id);
     unblockUser(id, 20); 
     //document.getElementById("block").innerHTML = "Block Prosumer";
@@ -212,6 +218,12 @@ function unblockProsumer(id){
 function closeFormBlock() {
   //blockProsumer(id,blocktime);
   document.getElementById("myFormBlock").style.display = "none";
+}
+
+
+function closeFormUnblock() {
+  //blockProsumer(id,blocktime);
+  document.getElementById("myFormUnblock").style.display = "none";
 }
 
 function logout(){
@@ -256,6 +268,21 @@ function logout(){
 
     <button type="submit" class="btn" onclick="blockProsumer()">Submit </button>
     <button type="button" class="btn cancel" onclick="closeFormBlock()">Close</button>
+  </form>
+</div>
+
+
+<div class="form-popup" id="myFormUnblock">
+  <form class="form-container">
+    <h1>Unblock Prosumer</h1>
+
+    <label for="id"><b>ID</b></label>
+     <p name = "Unblockid" id = "Unblockid"></p>
+    <label for="BlockTime"><b>Are you sure you want to unblock prosumer?</b></label>
+    
+
+    <button type="submit" class="btn" onclick="unblockProsumer()">Yes </button>
+    <button type="button" class="btn cancel" onclick="closeFormUnblock()">No</button>
   </form>
 </div>
 
