@@ -151,10 +151,12 @@ function unblockProsumerTimer(id, blocktime){
   function blockProsumer(){
     var id = document.getElementById("blockid").innerHTML;
     var blocktime = document.getElementById("blocktime").value;
-    blockUser(id, blocktime);
-    return setTimeout(function(){
-      window.alert("test");
-    }, 2000);
+    //blockUser(id, blocktime);
+    setTimeout(test, 3000);
+  }
+
+  function test(){
+    window.alert("hej");
   }
 
 function openFormBlock(id) {
