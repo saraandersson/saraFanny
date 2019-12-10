@@ -95,35 +95,6 @@
 <body>
 
 <script type="text/javascript">
-
- /* window.addEventListener("load", function () {
-
-       getAllProsumersAdmin(function(arr){
-        var obj = arr; 
-        var x, txt=""; 
-
-        for (x in obj){
-         txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname + "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online + "</td><td>" + obj[x].blocked + "</td><td>" + "<button class='btn btn-default' id = 'info' onclick='viewProsumer()'>View prosumer production</button>" + "</tr></td>";
-        }
-        $('#myTable tbody').html(txt); 
-
-      });
-    });
-
-
-    async function getAllProsumersAdmin(fn){  
-          getAllProsumers((err,result) =>{
-          fn(result);
-          });
-      }
-
-
-function logout(){
-  logOut();
-}*/
-
-/*Nedan är endast för testning av design, ska ändras sen när vi vet hur 
-vi ska göra med blockerade användare osv*/
 window.addEventListener("load", function () {
         getUsersValues(function(arr){
          
@@ -175,15 +146,7 @@ window.addEventListener("load", function () {
   function blockProsumer(){
     var id = document.getElementById("blockid").innerHTML;
     var blocktime = document.getElementById("blocktime").value;
-    //window.alert(id);
-    //window.alert(blocktime);
-    //document.getElementById(id).innerHTML = "Unblock Prosumer";
     blockUser(id, blocktime);
-    //document.getElementById(id).innerHTML = "Unblock Prosumer";
-    //document.getElementById(id).onclick = unblockProsumer(id);
-    //closeFormBlock(); 
-
-    //openFormBlock(id);
 }
 
 function openFormBlock(id) {
@@ -200,29 +163,19 @@ function openFormUnblock(id) {
   function unblockButton(id){
     var text = "Block prosumer";
     document.getElementById("block").innerHTML = text;
-    //document.getElementById("block").onclick = blockProsumer(id); 
-    //document.getElementById("block").onclick = openFormBlock(id); 
 }
 
 function unblockProsumer(){ 
     var id = document.getElementById("Unblockid").innerHTML;
-    //openFormBlock(id);
     unblockUser(id, 20); 
-    //document.getElementById("block").innerHTML = "Block Prosumer";
-    //document.getElementById("block").onclick = openFormBlock(id);
-    //unblockButton(id);
 }
 
-
-
 function closeFormBlock() {
-  //blockProsumer(id,blocktime);
   document.getElementById("myFormBlock").style.display = "none";
 }
 
 
 function closeFormUnblock() {
-  //blockProsumer(id,blocktime);
   document.getElementById("myFormUnblock").style.display = "none";
 }
 
