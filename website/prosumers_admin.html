@@ -148,25 +148,26 @@ window.addEventListener("load", function () {
     var blocktime = document.getElementById("blocktime").value;
     blockUser(id, blocktime);
     window.alert("test");
-    setInterval(function {
-      window.alert("test");
+    setInterval(time, 1000);
+
+function time(){
+  window.alert("test");
     
       var now = new Date().getTime();
       var value = new Date().getTime(); 
-      var countDownDate = value.setSeconds( value.getSeconds() + blocktime);
+      var countDownDate = value.setSeconds( value.getSeconds() + 20);
 
       var distance = countDownDate-now; 
       // Output the result in an element with id="demo"
-     document.getElementById("demo").innerHTML = blocktime + "s ";
+     document.getElementById("demo").innerHTML = 20 + "s ";
     
   // If the count down is over, write some text 
   if (distance < 0) {
     clearInterval();
     unblockUser(id, 20); 
   }
-}, 1000);
-}
 
+}
 
 function openFormBlock(id) {
   document.getElementById("myFormBlock").style.display = "block";
