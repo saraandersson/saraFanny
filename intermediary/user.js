@@ -425,7 +425,7 @@ function getMarketDemand(old_amount, callback){
       
     }
   }
-    var data = {old_amount: old_amount_val};
+    var data = {oldAmount: old_amount_val};
   
     xhttp.send(JSON.stringify(data));
 }
