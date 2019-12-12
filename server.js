@@ -473,8 +473,16 @@ app.post('/callSimulator', function(req,res){
           db_user.updateUserProduction(req.session.Users, results[1], results[2]);
           /*Surplus/Excess*/
           if(results[2] > 0){
-              
-              db_user.getSellBuy(req.session.Users, (e,r)=>{
+              if(result[0].blocked == 1){
+              db_user.updateBuffert(req.session.Users, results[2]);
+              db_user.getUser(req.session.Users,(errbuffert ,buffert) =>{
+                  //Add buffert in results array
+                  results.push(buffert[0].buffert);
+                  send_(err, results, res);
+                }); 
+
+              }else{
+                db_user.getSellBuy(req.session.Users, (e,r)=>{
               
               //Set in to buffert and sell to market.
               var value_buffert = results[2] * (1.00 - r[0].sell);
@@ -482,10 +490,13 @@ app.post('/callSimulator', function(req,res){
               db_user.updateBuffert(req.session.Users, value_buffert);
               db_user.updateMarket(value_market);
               db_user.getUser(req.session.Users,(errbuffert ,buffert) =>{
+                //Add buffert in results array
                   results.push(buffert[0].buffert);
                   send_(err, results, res);
-              });
-            }); 
+                });
+              }); 
+              }
+              
 
           /*Loss/Deficit*/
           }else{
@@ -499,6 +510,7 @@ app.post('/callSimulator', function(req,res){
             db_user.updateMarket(value_market);
 
              db_user.getUser(req.session.Users,(errbuffert ,buffert) =>{
+              //Add buffert in results array
                   results.push(buffert[0].buffert);
                   send_(err, results, res);
               });
