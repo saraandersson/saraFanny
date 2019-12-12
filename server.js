@@ -442,6 +442,10 @@ app.post('/getAllUserProduction', function(req,res){
 
 app.post('/blockUser', function(req,res){
      db_user.blockUser(req.body.id, 1, req.body.time);
+     /*Unblock after a certain time*/
+     setTimeout(function(){
+      db_user.blockUser(req.body.id, 0, req.body.time);
+    }, req.body.time*1000);
   });
 
 app.post('/unblockUser', function(req,res){
