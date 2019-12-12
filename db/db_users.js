@@ -57,13 +57,14 @@ class Db_user{
 	}
 
 
-	deleteUser(id){
+	deleteUser(id, callback){
 		var deleteSql = `DELETE FROM users WHERE id = ?`;
 		con.query(deleteSql,[id], function(err, result){
 			if(err){
-				throw err;
+				callback(err, null);
 			}else{
 				console.log("User is deleted");
+				callback(err, result);
 			}
 		});
 	}
