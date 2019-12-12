@@ -526,7 +526,7 @@ app.post('/callSimulator', function(req,res){
         
   });
 
-app.post('/marketDemand', function(req,res){
+app.post('/getMarketDemand', function(req,res){
           db_user.getMarket((err,result)=>{
             //If - people have been buying more, if + people have been selling more
             var marketDemand = result[0].amount - req.body.oldAmount;
