@@ -57,6 +57,7 @@
     }
 
     async function marketDemand(fn){
+          window.alert("HEJ: " + old_amount);
           getMarketDemand(old_amount, (err,result) =>{
           fn(result);
           });
