@@ -50,7 +50,15 @@
    function test(){
     marketDemand(function(arr){
           old_amount = arr[0];
+          var currentMarket = arr[0];
           var marketDemand = arr[1]; //Set somewhere
+          var procentage = arr[2] * 100;
+
+          document.getElementById("market_amount").innerHTML= currentMarket;
+          document.getElementById("market_demand").innerHTML= marketDemand;
+          document.getElementById("procentage").innerHTML= procentage;
+
+
        });  
     }
 
@@ -91,9 +99,24 @@ function logout(){
   </div>
 </nav>
 
-<div class='card-body'>
-    <div class='card-title'><h2 align = "center">See the current Market demand </h2></div>
+    <div class='card-body'>
+    <div class='card-title'><h2 align = "center"> Market </h2></div>
   <div class="container body-content">
+        <div class="col-sm-offset-4 col-md-offset-4">
+          <div class="form-group">
+                <h3>Current market amount: </h3>
+                 <div class="well" id = "market_amount"></div>
+            </div>
+            <div class="form-group">
+                <h3>Market demand: </h3>
+                 <div class="well" id = "market_demand"></div>
+            </div>
+             <div class="form-group">
+                <h3>Market demand in procentage: </h3>
+                 <div class="well" id = "procentage"></div>
+            </div>
+    </div>
+  </div>
 </div>
 </div>
 
