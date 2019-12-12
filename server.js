@@ -248,7 +248,9 @@ function setPrice(){
   db_user.getAllProsumers((err,result) =>{
 
     for(int i = 0; i < result.length; i++){
-      price = price + simulatorCall(result[i].id);
+      if(result[i].role_id == 0){
+        price = price + simulatorCall(result[i].id);
+      }
     }
 
     db_users.updateMarketPriceSim(price);
@@ -264,6 +266,7 @@ function simulatorCall(id){
 
           //Update user production result
           db_user.updateUserProduction(req.session.Users, results[1], results[2], results[0]);
+
           /*Surplus/Excess*/
           if(results[2] > 0){
             //Check if blocked, cant sell to market, only add to buffert
