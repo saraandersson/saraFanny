@@ -253,7 +253,7 @@ function setPrice(){
       }
     }
 
-    db_users.updateMarketPriceSim(price);
+    db_user.updateMarketPriceSim(price);
 
   });
 
