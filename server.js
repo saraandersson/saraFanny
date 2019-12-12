@@ -267,6 +267,7 @@ function simulatorCall(id){
             console.log("Result efter sim: " + results);
 
           //Update user production result
+          
           db_user.updateUserProduction(id, results[1], results[2], results[0]);
 
           /*Surplus/Excess*/

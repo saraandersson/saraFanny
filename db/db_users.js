@@ -375,10 +375,11 @@ getAllUserProduction(callback){
 			}
 		});
 }
-
 updateUserProduction(id, production, excess, wind){
+	var add_production = production;
+	var add_excess = excess;
 	var setSql=`UPDATE user_production SET total_production = total_production + ?, total_excess = total_excess + ?, latest_production = ?, latest_wind = ?, latest_excess = ? WHERE user_id = ?`;
-		con.query(setSql, [production, excess, id, production, wind , excess], function(err, res){
+		con.query(setSql, [add_production, add_excess, id, production, wind , excess], function(err, res){
 			if(err){	
 			}else{
 				console.log("User production uppdaterat");
