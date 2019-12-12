@@ -158,7 +158,15 @@ function logout(){
 }
 
 function deleteProsumer(id){
-  deleteUser(id);
+  deleteProsumerCall(id,function(callback){
+      window.location.reload();
+  } );
+}
+
+function deleteProsumerCall(id, fn){
+  deleteUser(id,(err,result) =>{
+              fn(result);
+              });
 }
 
 /*uppdaterar sidan varje minut*/

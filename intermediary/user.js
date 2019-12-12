@@ -314,17 +314,16 @@ function unblockUser(id, time){
 
 }
 
-function deleteUser(id){
+function deleteUser(id, callback){
   var xhttp = new XMLHttpRequest();
   var id_val = id;
   xhttp.open("POST", "/deleteUser", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-
-      //IF success
-        //window.location.replace("../website/profile_customer.html");
-      //Else error message
+       var arr = JSON.parse(xhttp.responseText);
+       callback(null, arr); 
+    
 
     }
   }

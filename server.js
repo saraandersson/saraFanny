@@ -453,7 +453,9 @@ app.post('/unblockUser', function(req,res){
   });
 
 app.post('/deleteUser', function(req,res){
-     db_user.deleteUser(req.body.id);
+     db_user.deleteUser(req.body.id,(err,result)=>{
+      res.send("{}");
+    });
   });
 
 
