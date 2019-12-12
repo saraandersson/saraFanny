@@ -265,22 +265,22 @@ function simulatorCall(id){
           sim.getTotalProductionPerDay(result[0].consumption, result[0].area, (results)=>{
 
           //Update user production result
-          db_user.updateUserProduction(req.session.Users, results[1], results[2], results[0]);
+          db_user.updateUserProduction(id, results[1], results[2], results[0]);
 
           /*Surplus/Excess*/
           if(results[2] > 0){
             //Check if blocked, cant sell to market, only add to buffert
               if(result[0].blocked == 1){
-              db_user.updateBuffert(req.session.Users, results[2]);
+              db_user.updateBuffert(id, results[2]);
               return results[4];
 
               }else{
-                db_user.getSellBuy(req.session.Users, (e,r)=>{
+                db_user.getSellBuy(id, (e,r)=>{
               
                   //Set in to buffert and sell to market.
                   var value_buffert = results[2] * (1.00 - r[0].sell);
                   var value_market = results[2] * r[0].sell;
-                  db_user.updateBuffert(req.session.Users, value_buffert);
+                  db_user.updateBuffert(id, value_buffert);
                   db_user.updateMarket(value_market);
                   return results[4];
               }); 
@@ -290,12 +290,12 @@ function simulatorCall(id){
           /*Loss/Deficit*/
           }else{
           
-            db_user.getSellBuy(req.session.Users, (e,r)=>{
+            db_user.getSellBuy(id, (e,r)=>{
 
             //Take from buffert and buy from market. 
             var value_buffert = results[2] * (1.00 -r[0].buy);
             var value_market = results[2] * r[0].buy;
-            db_user.updateBuffert(req.session.Users, value_buffert);
+            db_user.updateBuffert(id, value_buffert);
             db_user.updateMarket(value_market);
 
             return results[4];
