@@ -256,7 +256,7 @@ addSellBuy(user_id, sell, buy){
 	
 	var setsql=`UPDATE market SET price = ?`;
 		
-	con.query(setsql, [amount], function(error, result){
+	con.query(setsql, [value], function(error, result){
 	if(error){
 	}else{
 		console.log("Market price uppdaterad");
@@ -267,7 +267,7 @@ addSellBuy(user_id, sell, buy){
 	
 	var setsql=`UPDATE market SET price_sim = ?`;
 		
-	con.query(setsql, [amount], function(error, result){
+	con.query(setsql, [value], function(error, result){
 	if(error){
 	}else{
 		console.log("Market price_sim uppdaterad");
