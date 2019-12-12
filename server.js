@@ -452,6 +452,10 @@ app.post('/unblockUser', function(req,res){
      db_user.blockUser(req.body.id, 0, 0);
   });
 
+app.post('/deleteUser', function(req,res){
+     db_user.deleteUser(req.body.id);
+  });
+
 
 
 /*I called every 10 second*/
