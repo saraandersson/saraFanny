@@ -536,8 +536,8 @@ app.post('/getMarketDemand', function(req,res){
             }else if(result[0] < 2){ //If market smaller than a specific value
               //START COAL POWER
             }
-            //Arr = current market, market demand
-            var arr = [result[0].amount, marketDemand];
+            //Arr = current market, market demand, procent
+            var arr = [result[0].amount, marketDemand, procent];
             console.log("HÄR KOMMER ARRAYEN: " + arr);
             send_(err, arr, res);
           });

@@ -50,14 +50,11 @@
    function test(){
     marketDemand(function(arr){
           old_amount = arr[0];
-          window.alert(old_amount);
           var marketDemand = arr[1]; //Set somewhere
-          window.alert(marketDemand);
        });  
     }
 
     async function marketDemand(fn){
-          window.alert("HEJ: " + old_amount);
           getMarketDemand(old_amount, (err,result) =>{
           fn(result);
           });
