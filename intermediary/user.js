@@ -410,6 +410,27 @@ function getAllUserProduction(callback){
     xhttp.send(JSON.stringify(data));
 }
 
+function getMarketDemand(old_amount, callback){
+  var old_amount_val = old_amount;
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "/getMarketDemand", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+           // Typical action to be performed when the document is ready:
+           //alert(xhttp.responseText);
+
+      var arr = JSON.parse(xhttp.responseText);
+      callback(null, arr); 
+      
+    }
+  }
+    var data = {old_amount: old_amount_val};
+  
+    xhttp.send(JSON.stringify(data));
+}
+
+
 /*Get values from simulator*/
 function fetchWindData(callback){
   var xhttp = new XMLHttpRequest();

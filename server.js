@@ -473,6 +473,7 @@ app.post('/callSimulator', function(req,res){
           db_user.updateUserProduction(req.session.Users, results[1], results[2]);
           /*Surplus/Excess*/
           if(results[2] > 0){
+            //Check if blocked, cant sell to market, only add to buffert
               if(result[0].blocked == 1){
               console.log("Den visar blocked YES");
               db_user.updateBuffert(req.session.Users, results[2]);
@@ -522,6 +523,23 @@ app.post('/callSimulator', function(req,res){
           
         });
     });
+        
+  });
+
+app.post('/marketDemand', function(req,res){
+          db_user.getMarket((err,result)=>{
+            //If - people have been buying more, if + people have been selling more
+            var marketDemand = result[0].amount - req.body.oldAmount;
+            var procent = result[0].amount/req.body.oldAmount;
+            if(procent < 0.6){ //If lower than a specific procentage
+              //START COAL POWER
+            }else if(result[0] < 2){ //If market smaller than a specific value
+              //START COAL POWER
+            }
+            //Arr = current market, market demand
+            var arr = [result[0].amount, marketDemand];
+            send_(err, arr, res);
+          });
         
   });
 

@@ -38,6 +38,29 @@
 <body>
 
 <script type="text/javascript">
+    var old_amount = 0;
+
+    window.addEventListener("load", function () {
+
+      test();
+      setInterval(test,10000);
+
+    });
+
+   function test(){
+    marketDemand(function(arr){
+          old_amount = arr[0];
+          window.alert(old_amount);
+          var marketDemand = arr[1]; //Set somewhere
+          window.alert(marketDemand);
+       });  
+    }
+
+    async function marketDemand(fn){
+          getMarketDemand(old_amount, (err,result) =>{
+          fn(result);
+          });
+    }
 
 function logout(){
   logOut();
