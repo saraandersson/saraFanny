@@ -264,6 +264,8 @@ function simulatorCall(id){
   db_user.getUser(id,(err,result) =>{
           sim.getTotalProductionPerDay(result[0].consumption, result[0].area, (results)=>{
 
+            console.log("Result efter sim: " + results);
+
           //Update user production result
           db_user.updateUserProduction(id, results[1], results[2], results[0]);
 

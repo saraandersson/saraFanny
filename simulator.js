@@ -23,7 +23,9 @@ class Sim {
 		this.windspeed = this.wind.windspeed;
 		this.consumption = consumption;
 		this.area = area;
+
 		var arr = this.wind.getElProd();
+		console.log("ARREN VA: " + arr);
 		this.totalProduction = arr[0];
 		this.price = arr[1];
 		this.consumption_per_area = this.consumption/this.area;
