@@ -249,6 +249,8 @@ function setPrice(){
 
     for(var i = 0; i < result.length; i++){
       if(result[i].role_id == 0){
+
+        //Kanske lägga in senaste price i databasen istället (user_production?? så lägger man ihop alla dem
         price = price + simulatorCall(result[i].id);
       }
     }
@@ -269,7 +271,7 @@ function simulatorCall(id){
             console.log("Result efter sim: " + results);
 
           //Update user production result
-
+          //DENNA GER EJ RÄTT ÄN
           db_user.updateUserProduction(id, results[1], results[2], results[0]);
 
           console.log("SKUMTOMTE : " + results[0] + "  " + results[1] + "  " + results[2]);
