@@ -247,7 +247,7 @@ function setPrice(){
   var price = 0;
   db_user.getAllProsumers((err,result) =>{
 
-    for(int i = 0; i < result.length; i++){
+    for(var i = 0; i < result.length; i++){
       if(result[i].role_id == 0){
         price = price + simulatorCall(result[i].id);
       }
