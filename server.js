@@ -538,6 +538,7 @@ app.post('/marketDemand', function(req,res){
             }
             //Arr = current market, market demand
             var arr = [result[0].amount, marketDemand];
+            console.log("HÄR KOMMER ARRAYEN: " + arr);
             send_(err, arr, res);
           });
         
