@@ -44,8 +44,8 @@ class Db_user{
 	//var getSql = `SELECT users.id, users.firstname, users.lastname, users.email, users.online, blocked.blocked FROM users JOIN blocked ON users.id = blocked.users_id`;
 
 	getUser(id, callback){
-		//var getSql = `SELECT users.firstname, users.lastname, users.email, users.password, users.img, users.area, users.buffert, users.consumption, users.online, user_sell_buy.sell, user_sell_buy.buy FROM users JOIN user_sell_buy ON users.id = user_sell_buy.user_id`;
-		var getSql = `SELECT * FROM users WHERE id = ?`;
+		var getSql= `SELECT users.firstname, users.lastname, users.email, users.consumption, user.area, blocked.blocked FROM users JOIN blocked ON users.id = blocked.user_id WHERE users.id = ?`;
+		//var getSql = `SELECT * FROM users WHERE id = ?`;
 		con.query(getSql, [id], function(err, result){
 			if(err){
 				callback(err, null);

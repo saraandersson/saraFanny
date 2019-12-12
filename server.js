@@ -474,6 +474,7 @@ app.post('/callSimulator', function(req,res){
           /*Surplus/Excess*/
           if(results[2] > 0){
               if(result[0].blocked == 1){
+              console.log("Den visar blocked YES");
               db_user.updateBuffert(req.session.Users, results[2]);
               db_user.getUser(req.session.Users,(errbuffert ,buffert) =>{
                   //Add buffert in results array
