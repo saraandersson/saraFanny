@@ -52,11 +52,11 @@
   function test(){
 
     fetchUserWindData(function(arr){
-          document.getElementById("wind").innerHTML= arr[0] + " m/s";
-          document.getElementById("production").innerHTML= arr[1] + " kWh";
-          document.getElementById("netProduction").innerHTML=arr[2] + " kWh"; 
-          document.getElementById("consumption").innerHTML=arr[3] + " kWh"; 
-          document.getElementById("buffert").innerHTML=arr[4] + " kWh"; 
+          document.getElementById("wind").innerHTML= arr[0].latest_wind + " m/s";
+          document.getElementById("production").innerHTML= arr[0].latest_production + " kWh";
+          document.getElementById("netProduction").innerHTML=arr[0].latest_excess + " kWh"; 
+          document.getElementById("consumption").innerHTML=(arr[0].consumption/arr[0].area)/8640 + " kWh"; 
+          document.getElementById("buffert").innerHTML=arr[0].buffert + " kWh"; 
 
         });
 

@@ -56,6 +56,20 @@ class Db_user{
 		});
 	}
 
+	getUserProduction(id, callback){
+		var getSql= `SELECT users.consumption, users.area, users.buffert, user_production.latest_production, user_production.latest_wind, user_production.latest_excess FROM users JOIN user_production ON users.id = user_production.user_id WHERE users.id = ?`;
+		//var getSql = `SELECT * FROM users WHERE id = ?`;
+		con.query(getSql, [id], function(err, result){
+			if(err){
+				callback(err, null);
+			}else{
+				console.log("User production is fetched");
+				callback(err, result);
+			}
+		});
+	}
+
+
 
 	deleteUser(id, callback){
 		var deleteSql = `DELETE FROM users WHERE id = ?`;
@@ -238,6 +252,33 @@ addSellBuy(user_id, sell, buy){
 		});
 	}
 
+	updateMarketPrice(value){
+	
+	var setsql=`UPDATE market SET price = ?`;
+		
+	con.query(setsql, [amount], function(error, result){
+	if(error){
+	}else{
+		console.log("Market price uppdaterad");
+	}});
+	}
+
+	updateMarketPriceSim(value){
+	
+	var setsql=`UPDATE market SET price_sim = ?`;
+		
+	con.query(setsql, [amount], function(error, result){
+	if(error){
+	}else{
+		console.log("Market price_sim uppdaterad");
+	}});
+	}
+		
+		
+	
+
+
+
 getUserHashedPassword(email,callback){
 	var getSql =  `SELECT password FROM users WHERE email= ?`;
 		con.query(getSql, [email] , function(err, result){
@@ -300,7 +341,7 @@ getMarket(callback){
 
 
 addUserProduction(id){
-	var addSql = `INSERT INTO user_production (user_id, total_production , total_excess ) VALUES (?,0,0)`;
+	var addSql = `INSERT INTO user_production (user_id, total_production , total_excess, latest_production, latest_wind, latest_excess ) VALUES (?, 0, 0, 0, 0, 0)`;
 	con.query(addSql,[id] , function(err, result){
 		if(err){
 			throw err;
@@ -335,9 +376,9 @@ getAllUserProduction(callback){
 		});
 }
 
-updateUserProduction(id, production, excess){
-	var setSql=`UPDATE user_production SET total_production = total_production + ?, total_excess = total_excess + ? WHERE user_id = ?`;
-		con.query(setSql, [production, excess, id], function(err, res){
+updateUserProduction(id, production, excess, wind){
+	var setSql=`UPDATE user_production SET total_production = total_production + ?, total_excess = total_excess + ?, latest_production = ?, latest_wind = ?, latest_excess = ? WHERE user_id = ?`;
+		con.query(setSql, [production, excess, id, production, wind , excess], function(err, res){
 			if(err){	
 			}else{
 				console.log("User production uppdaterat");
@@ -363,6 +404,9 @@ blockUser(id, block, time){
 		});*/
 
 }
+
+
+
 
 
 

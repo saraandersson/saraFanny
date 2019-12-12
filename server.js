@@ -159,13 +159,13 @@ app.route('/login')
     app.route('/prosumers_admin')
     .get((req,res)=>{
      if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
-          res.render('/index');
+          res.redirect('/website/index_customer.html');
       }
       else if(req.session.Users && req.cookies.user_id && req.session.role_id == 1){
           res.redirect('/website/prosumers_admin.html');
         } 
       else {
-           res.render('/index');
+           res.redirect('/website/index.html');
         }
       });
 
@@ -178,7 +178,7 @@ app.route('/login')
           res.redirect('/website/change_password_admin.html');
         } 
       else {
-           res.render('/index');
+           res.redirect('/website/index.html');
         }
       });
 
@@ -237,6 +237,77 @@ const db_user = new Db_user();
     })
 
   })*/
+
+
+/*Run the simulator and decide price*/
+
+setInterval(setPrice, 10000);
+
+function setPrice(){
+  var price = 0;
+  db_user.getAllProsumers((err,result) =>{
+
+    for(int i = 0; i < result.length; i++){
+      price = price + simulatorCall(result[i].id);
+    }
+
+    db_users.updateMarketPriceSim(price);
+
+  });
+
+}
+
+function simulatorCall(id){
+
+  db_user.getUser(id,(err,result) =>{
+          sim.getTotalProductionPerDay(result[0].consumption, result[0].area, (results)=>{
+
+          //Update user production result
+          db_user.updateUserProduction(req.session.Users, results[1], results[2], results[0]);
+          /*Surplus/Excess*/
+          if(results[2] > 0){
+            //Check if blocked, cant sell to market, only add to buffert
+              if(result[0].blocked == 1){
+              db_user.updateBuffert(req.session.Users, results[2]);
+              return results[4];
+
+              }else{
+                db_user.getSellBuy(req.session.Users, (e,r)=>{
+              
+                  //Set in to buffert and sell to market.
+                  var value_buffert = results[2] * (1.00 - r[0].sell);
+                  var value_market = results[2] * r[0].sell;
+                  db_user.updateBuffert(req.session.Users, value_buffert);
+                  db_user.updateMarket(value_market);
+                  return results[4];
+              }); 
+              }
+              
+
+          /*Loss/Deficit*/
+          }else{
+          
+            db_user.getSellBuy(req.session.Users, (e,r)=>{
+
+            //Take from buffert and buy from market. 
+            var value_buffert = results[2] * (1.00 -r[0].buy);
+            var value_market = results[2] * r[0].buy;
+            db_user.updateBuffert(req.session.Users, value_buffert);
+            db_user.updateMarket(value_market);
+
+            return results[4];
+
+
+          });
+          }
+          
+        });
+    });
+
+  return 0;
+
+}
+
 
 app.post('/createUser', function(req,res){
 
@@ -462,20 +533,28 @@ app.post('/deleteUser', function(req,res){
 
 /*I called every 10 second*/
 
+//DENNA SKA ÄNDRAS TILL ATT ENDAST HÄMTA NY DATA
+app.post('/callSimulator', function(req,res){
+    db_user.getUserProduction(req.session.Users,(err,result) =>{
+      send_(err, result, res);
+    }
+});
+
+
+/*
+
 app.post('/callSimulator', function(req,res){
           db_user.getUser(req.session.Users,(err,result) =>{
           sim.getTotalProductionPerDay(result[0].consumption, result[0].area, (results)=>{
 
-          console.log("INNAN 1: " + results[1]);
-          console.log("INNAN 2: " + results[2]);
+
 
           //Update user production result
           db_user.updateUserProduction(req.session.Users, results[1], results[2]);
-          /*Surplus/Excess*/
+          //Surplus/Excess
           if(results[2] > 0){
             //Check if blocked, cant sell to market, only add to buffert
               if(result[0].blocked == 1){
-              console.log("Den visar blocked YES");
               db_user.updateBuffert(req.session.Users, results[2]);
               db_user.getUser(req.session.Users,(errbuffert ,buffert) =>{
                   //Add buffert in results array
@@ -500,7 +579,7 @@ app.post('/callSimulator', function(req,res){
               }
               
 
-          /*Loss/Deficit*/
+          //Loss/Deficit
           }else{
           
             db_user.getSellBuy(req.session.Users, (e,r)=>{
@@ -524,7 +603,10 @@ app.post('/callSimulator', function(req,res){
         });
     });
         
-  });
+  }); 
+
+*/
+
 
 app.post('/getMarketDemand', function(req,res){
           db_user.getMarket((err,result)=>{
