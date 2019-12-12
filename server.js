@@ -270,7 +270,7 @@ function simulatorCall(id){
 
           db_user.updateUserProduction(id, results[1], results[2], results[0]);
 
-          conole.log("SKUMTOMTE : " + results[0] + "  " + results[1] + "  " + results[2]);
+          console.log("SKUMTOMTE : " + results[0] + "  " + results[1] + "  " + results[2]);
 
           /*Surplus/Excess*/
           if(results[2] > 0){
