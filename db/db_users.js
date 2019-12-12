@@ -376,6 +376,7 @@ getAllUserProduction(callback){
 		});
 }
 updateUserProduction(id, production, excess, wind){
+	console.log("ID: " + id + "production : " + production + "excess : " + excess + "Wind: " + wind);
 	var add_production = production;
 	var add_excess = excess;
 	var setSql=`UPDATE user_production SET total_production = total_production + ?, total_excess = total_excess + ?, latest_production = ?, latest_wind = ?, latest_excess = ? WHERE user_id = ?`;
