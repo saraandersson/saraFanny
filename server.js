@@ -253,6 +253,8 @@ function setPrice(){
       }
     }
 
+    console.log("PRICE:: " + price);
+
     db_user.updateMarketPriceSim(price);
 
   });
