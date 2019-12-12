@@ -21,121 +21,145 @@
       padding: 25px;
     }
     
-  .carousel-inner img {
-      width: 100%; /* Set width to 100% */
-      margin: auto;
-      min-height:200px;
-  }
-
-  /* Hide the carousel text when the screen is less than 600 pixels wide */
-  @media (max-width: 600px) {
-    .carousel-caption {
-      display: none; 
-    }
-  }
+    .open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
   </style>
 </head>
 <body>
 
 <script type="text/javascript">
-
- /* window.addEventListener("load", function () {
-
-       getAllProsumersAdmin(function(arr){
-        var obj = arr; 
-        var x, txt=""; 
-
-        for (x in obj){
-         txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname + "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online + "</td><td>" + obj[x].blocked + "</td><td>" + "<button class='btn btn-default' id = 'info' onclick='viewProsumer()'>View prosumer production</button>" + "</tr></td>";
-        }
-        $('#myTable tbody').html(txt); 
-
-      });
-    });
-
-
-    async function getAllProsumersAdmin(fn){  
-          getAllProsumers((err,result) =>{
-          fn(result);
-          });
-      }
-
-
-function logout(){
-  logOut();
-}*/
-
-/*Nedan är endast för testning av design, ska ändras sen när vi vet hur 
-vi ska göra med blockerade användare osv*/
 window.addEventListener("load", function () {
         getUsersValues(function(arr){
          
-
           var obj = arr; 
           var x, txt=""; 
-
           for (x in obj){
             //Så att endast prosumers syns, ej admin
             if(obj[x].role_id == 0){
-
               if(obj[x].blocked == 0){
-               txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='blockProsumer("+ obj[x].id +")'>Block prosumer</button>" + "</tr></td>";
+               txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + +obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormBlock("+ obj[x].id +")'>Block prosumer</button>" + "</tr></td>";
               }else{
-                txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" + "<button class='btn btn-default' id ='block' onclick='unblockProsumer("+ obj[x].id +")'>Unblock prosumer</button>" + "</tr></td>";
+                txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" + "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormUnblock("+ obj[x].id +")'>Unblock prosumer</button>"+ "</tr></td>";
               }
             }
           }
           $('#myTable tbody').html(txt); 
-
         for(x in obj){
           if(obj[x].blocked==1){
             blockButton(obj[x].id);
           }
         }
-
         for(x in obj){
           if(obj[x].blocked==0){
             unblockButton(obj[x].id);
           }
         }
-
        }); 
-
       });
       async function getUsersValues(fn){
               getAllProsumers((err,result) =>{
               fn(result);
               });
           }
-
   function blockButton(id){
     var text = "Unblock prosumer";
-    document.getElementById("block").innerHTML = text;
-    document.getElementById("block").onclick = unblockProsumer(id); 
-
+    document.getElementById(id).innerHTML = text; 
 }
-
-
-  function blockProsumer(id){
-    blockUser(id, 20);
-
+function unblockProsumerTimer(id, blocktime){
+  unblockUser(id, 20);
+  location.reload();
 }
-
+  function blockProsumer(){
+    var id = document.getElementById("blockid").innerHTML;
+    var blocktime = document.getElementById("blocktime").value;
+    blockUser(id, blocktime);
+  }
+function openFormBlock(id) {
+  document.getElementById("myFormBlock").style.display = "block";
+  document.getElementById("blockid").innerHTML = id; 
+}
+function openFormUnblock(id) {
+  document.getElementById("myFormUnblock").style.display = "block";
+  document.getElementById("Unblockid").innerHTML = id; 
+}
   function unblockButton(id){
     var text = "Block prosumer";
-    document.getElementById("block").innerHTML = "Unblock Prosumer";
-    document.getElementById("block").onclick = blockProsumer(id); 
-  
+    document.getElementById("block").innerHTML = text;
 }
-
-function unblockProsumer(id){ 
-    unblockUser(id, 20);
+function unblockProsumer(){ 
+    var id = document.getElementById("Unblockid").innerHTML;
+    unblockUser(id, 20); 
 }
-
-
+function closeFormBlock() {
+  document.getElementById("myFormBlock").style.display = "none";
+}
+function closeFormUnblock() {
+  document.getElementById("myFormUnblock").style.display = "none";
+}
 function logout(){
   logOut();
 }
+/*uppdaterar sidan varje minut*/
+setInterval(function() {
+  window.location.reload();
+      }, 60000);
       
 </script>
 
@@ -164,6 +188,35 @@ function logout(){
   </div>
 </nav>
 
+<div class="form-popup" id="myFormBlock">
+  <form class="form-container">
+    <h1>Block Prosumer</h1>
+
+    <label for="id"><b>ID</b></label>
+     <p name = "blockid" id = "blockid"></p>
+    <label for="BlockTime"><b>Block Time</b></label>
+    <input type="Text" placeholder="Enter Block Time (10-100 sec)" name="blocktime" id = "blocktime"required>
+
+    <button type="submit" class="btn" onclick="blockProsumer()">Submit </button>
+    <button type="button" class="btn cancel" onclick="closeFormBlock()">Close</button>
+  </form>
+</div>
+
+
+<div class="form-popup" id="myFormUnblock">
+  <form class="form-container">
+    <h1>Unblock Prosumer</h1>
+
+    <label for="id"><b>ID</b></label>
+     <p name = "Unblockid" id = "Unblockid"></p>
+    <label for="BlockTime"><b>Are you sure you want to unblock prosumer?</b></label>
+    
+
+    <button type="submit" class="btn" onclick="unblockProsumer()">Yes </button>
+    <button type="button" class="btn cancel" onclick="closeFormUnblock()">No</button>
+  </form>
+</div>
+
 <div class='container body-content'>
    
         <div class='card-body'>
@@ -182,6 +235,7 @@ function logout(){
                   <th scope='col'>Total production</th>
                   <th scope='col'>Total profit</th>
                   <th scope='col'>Blocked</th>
+                  <th scope='col'></th>
                   <th scope='col'></th>
                 </tr>
               </thead>
