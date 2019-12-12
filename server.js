@@ -540,7 +540,7 @@ app.post('/deleteUser', function(req,res){
 app.post('/callSimulator', function(req,res){
     db_user.getUserProduction(req.session.Users,(err,result) =>{
       send_(err, result, res);
-    }
+    });
 });
 
 
