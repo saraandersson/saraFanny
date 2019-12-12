@@ -53,10 +53,13 @@
           var currentMarket = arr[0];
           var marketDemand = arr[1]; //Set somewhere
           var procentage = arr[2] * 100;
+          procentage = procentage.toFixed(2);
+          currentMarket = currentMarket.toFixed(5);
+          marketDemand = marketDemand.toFixed(5);
 
           document.getElementById("market_amount").innerHTML= currentMarket;
           document.getElementById("market_demand").innerHTML= marketDemand;
-          document.getElementById("procentage").innerHTML= procentage;
+          document.getElementById("procentage").innerHTML= procentage + "%";
 
 
        });  
