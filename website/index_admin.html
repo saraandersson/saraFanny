@@ -88,12 +88,12 @@ window.addEventListener("load", function () {
           for (x in obj){
             
               if(obj[x].status == 0){
-               txt+= "<tr><td>" + obj[x].id + "</td><td id = 'stopped'>" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStartSim("+ obj[x].id +")'>Start Simulator</button>" + "</tr></td>";
+               txt+= "<tr><td>" + obj[x].id + "</td><td id = "+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' onclick='openFormStartSim("+ obj[x].id +")'>Start Simulator</button>" + "</tr></td>";
               }if(obj[x].status==1){
-              txt+= "<tr><td>" + obj[x].id + "</td><td id = 'starting'>" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormProd("+ obj[x].id +"prod)'>See Production</button>"+ "</td><td>"+ "</tr></td>";
+              txt+= "<tr><td>" + obj[x].id + "</td><td id = "+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" + "</td><td>"  +  "<button class='btn btn-default' onclick='openFormProd("+ obj[x].id +"prod)'>See Production</button>"+ "</td><td>"+ "</tr></td>";
               }
               if(obj[x].status==2){
-                txt+= "<tr><td>" + obj[x].id + "</td><td id = 'running'>" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormProd("+ obj[x].id +"prod)'>See Production</button>"+ "</tr></td>";
+                txt+= "<tr><td>" + obj[x].id + "</td><td id = "+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormProd("+ obj[x].id +"prod)'>See Production</button>"+ "</tr></td>";
               }
             
           }
@@ -101,13 +101,13 @@ window.addEventListener("load", function () {
 
           for(x in obj){
             if(obj[x].status==0){
-              document.getElementById("stopped").innerHTML="Stopped";
+              document.getElementById(obj[x].id).innerHTML="Stopped";
             }
             if(obj[x].status==1){
-              document.getElementById("starting").innerHTML="Starting";
+              document.getElementById(obj[x].id).innerHTML="Starting";
             }
             if(obj[x].status==2){
-              document.getElementById("running").innerHTML="Running";
+              document.getElementById(obj[x].id).innerHTML="Running";
             }
           }
        }); 
@@ -128,6 +128,7 @@ function logout(){
 
 function createNewCoalSimulator(){
   createCoalSimulator();
+  window.location.reload();
 }
 
 function openFormStartSim(id){
@@ -150,6 +151,7 @@ function startCoalProduction(){
     var time = 20; 
   }
   startCoalSimulator(production,coal_id,time);
+  window.location.reload();
 }
 
 setInterval(function() {
