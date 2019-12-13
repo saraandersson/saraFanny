@@ -99,7 +99,7 @@ window.addEventListener("load", function () {
 
           for(x in obj){
             if(obj[x].status==0){
-              document.getElementById('status'+obj[x].id)="Stopped";
+              document.getElementById('status'+obj[x].id).innerHTML="Stopped";
             }
           }
        }); 
