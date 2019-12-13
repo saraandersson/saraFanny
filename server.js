@@ -263,7 +263,8 @@ function setPrice(){
       simulatorCall(idarr[j], function(answer){
         db_user.getProsumerProductionSimPrice(idarr[j], (err, res) =>{
 
-           price = price + res[0].sim_price;
+           console.log(res); 
+           //price = price + res[0].sim_price;
            number ++;
 
 
