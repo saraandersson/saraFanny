@@ -698,7 +698,7 @@ app.post('/startCoalProduction', function(req,res){
 
 
 app.post('/stopCoalProduction', function(req,res){
-    //db_user.stopCoalProduction(req.body.coal_id, req.body.time, req.body.production);
+    db_user.stopCoalProduction(req.body.coal_id, req.body.time, req.body.production);
     db_user.stopCoalSimulator(req.body.coal_id,0);
 });
 
