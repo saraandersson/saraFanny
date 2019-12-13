@@ -128,6 +128,7 @@ function closeFormStartCoalSim() {
 
 function startCoalProduction(){ 
   var production = document.getElementById("production").value;
+  window.alert(production);
 }
       
 </script>
@@ -187,7 +188,7 @@ function startCoalProduction(){
     <label for="id"><b>ID</b></label>
      <p name = "coalId" id = "coalId"></p>
     <label for="Production Amount"><b>Production Amount</b></label>
-    <input type="Text" placeholder="Enter Production Amount" name="production" id = "production"required>
+    <input type="Text" placeholder="Enter Production Amount In KWH" name="production" id = "production"required>
 
     <button type="submit" class="btn" onclick="startCoalProduction()">Submit </button>
     <button type="button" class="btn cancel" onclick="closeFormStartCoalSim()">Close</button>
