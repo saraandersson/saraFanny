@@ -288,7 +288,7 @@ async function simulatorCall(id, fn){
 
           //Update user production result
           //DENNA GER EJ RÄTT ÄN DÅ DEN EJ SÄTTER IN VÄRDEN
-          db_user.updateUserProduction(id, results[1], results[2], results[0]);
+          db_user.updateUserProduction(id, results[1], results[2], results[0], results[4]);
 
           console.log("SKUMTOMTE : " + results[0] + "  " + results[1] + "  " + results[2]);
 
