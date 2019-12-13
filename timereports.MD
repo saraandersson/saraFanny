@@ -41,4 +41,6 @@
 | 2019-12-02  | 8       | Working with simulator and fetching values to prosumers site, update every 10 seconds. Updated database.|
 | 2019-12-04  | 3       | Preparing diagrams and presentation for thursdays meeting. |
 | 2019-12-08  | 4       | Working with hashed passwords, updated database |
-
+| 2019-12-10  | 8       | Working with blocking/unblocking prosumers |
+| 2019-12-12  | 3       | Writing the report|
+| 2019-12-13  | 8       | Making the coal simulator, solve some bugs and been writing the report|
