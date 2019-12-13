@@ -241,7 +241,6 @@ const db_user = new Db_user();
 
 /*Run the simulator and decide price*/
 
-setPrice();
 
 setInterval(setPrice, 10000);
 
