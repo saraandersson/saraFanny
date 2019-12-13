@@ -262,7 +262,11 @@ function setPrice(){
     console.log("Finns idarr? : " + idarr[0]);
 
     for(var j = 0; j < idarr.length; j ++){
+
       var id = idarr[j];
+      var temp_j = j;
+      var temp_length = idarr.length;
+
       simulatorCall(idarr[j], function(answer){
         console.log("VI VET ATT ID ÄR : " + id);
         db_user.getProsumerProductionSimPrice(id, (err, res) =>{
@@ -270,7 +274,7 @@ function setPrice(){
            number ++;
 
 
-          if(j == (idarr.length - 1)){
+          if(temp_j == (temp_length - 1)){
               price = price / number;
               console.log("Kommer hit: " + price);
               db_user.updateMarketPriceSim(price);
