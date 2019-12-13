@@ -341,7 +341,7 @@ getMarket(callback){
 
 
 addUserProduction(id){
-	var addSql = `INSERT INTO user_production (user_id, total_production , total_excess, latest_production, latest_wind, latest_excess ) VALUES (?, 0, 0, 0, 0, 0)`;
+	var addSql = `INSERT INTO user_production (user_id, total_production , total_excess, latest_production, latest_wind, latest_excess, sim_price) VALUES (?, 0, 0, 0, 0, 0, 0)`;
 	con.query(addSql,[id] , function(err, result){
 		if(err){
 			throw err;
@@ -375,12 +375,12 @@ getAllUserProduction(callback){
 			}
 		});
 }
-updateUserProduction(id, production, excess, wind){
+updateUserProduction(id, production, excess, wind, price){
 	console.log("ID: " + id + "production : " + production + "excess : " + excess + "Wind: " + wind);
 	var add_production = production;
 	var add_excess = excess;
-	var setSql=`UPDATE user_production SET total_production = total_production + ?, total_excess = total_excess + ?, latest_production = ?, latest_wind = ?, latest_excess = ? WHERE user_id = ?`;
-		con.query(setSql, [add_production, add_excess, id, production, wind , excess], function(err, res){
+	var setSql=`UPDATE user_production SET total_production = total_production + ?, total_excess = total_excess + ?, latest_production = ?, latest_wind = ?, latest_excess = ?, sim_price = ? WHERE user_id = ?`;
+		con.query(setSql, [add_production, add_excess, id, production, wind , excess, price], function(err, res){
 			if(err){	
 			}else{
 				console.log("User production uppdaterat");

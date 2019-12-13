@@ -244,35 +244,48 @@ const db_user = new Db_user();
 setInterval(setPrice, 10000);
 
 function setPrice(){
-  var price = 0;
+  var idarr = [];
   db_user.getAllProsumers((err,result) =>{
 
     for(var i = 0; i < result.length; i++){
       if(result[i].role_id == 0){
 
-        //Kanske lägga in senaste price i databasen istället (user_production?? så lägger man ihop alla dem
-        price = price + simulatorCall(result[i].id);
+        idarr.push(result[i].id);
+        
       }
     }
 
-    console.log("PRICE:: " + price);
+    simulatorCall(idarr, function(arr){
+        var price = 0;
+        var number = 0;
+        for(var j = 0; j < arr.length; j++){
+            price = price + arr[i].sim_price;
+            number++;
+        }
+        price = price / number;
+        db_user.updateMarketPriceSim(price);
 
-    db_user.updateMarketPriceSim(price);
+    });
+
+    
 
   });
 
 }
 
-function simulatorCall(id){
+async function simulatorCall(idarr, fn){
 
-  db_user.getUser(id,(err,result) =>{
+  //Går igenom alla prosumers
+  for(var i = 0; i < idarr.length; i++){
+
+          db_user.getUser(idarr[i],(err,result) =>{
           sim.getTotalProductionPerDay(result[0].consumption, result[0].area, (results)=>{
 
             console.log("Result efter sim: " + results);
 
           //Update user production result
           //DENNA GER EJ RÄTT ÄN
-          db_user.updateUserProduction(id, results[1], results[2], results[0]);
+          db_user.updateUserProduction(idarr[i], results[1], results[2], results[0]);
 
           console.log("SKUMTOMTE : " + results[0] + "  " + results[1] + "  " + results[2]);
 
@@ -280,18 +293,17 @@ function simulatorCall(id){
           if(results[2] > 0){
             //Check if blocked, cant sell to market, only add to buffert
               if(result[0].blocked == 1){
-              db_user.updateBuffert(id, results[2]);
-              return results[4];
+              db_user.updateBuffert(idarr[i], results[2]);
 
               }else{
-                db_user.getSellBuy(id, (e,r)=>{
+                db_user.getSellBuy(idarr[i], (e,r)=>{
               
                   //Set in to buffert and sell to market.
                   var value_buffert = results[2] * (1.00 - r[0].sell);
                   var value_market = results[2] * r[0].sell;
-                  db_user.updateBuffert(id, value_buffert);
+                  db_user.updateBuffert(idarr[i], value_buffert);
                   db_user.updateMarket(value_market);
-                  return results[4];
+                  
               }); 
               }
               
@@ -304,10 +316,10 @@ function simulatorCall(id){
             //Take from buffert and buy from market. 
             var value_buffert = results[2] * (1.00 -r[0].buy);
             var value_market = results[2] * r[0].buy;
-            db_user.updateBuffert(id, value_buffert);
+            db_user.updateBuffert(idarr[i], value_buffert);
             db_user.updateMarket(value_market);
 
-            return results[4];
+            
 
 
           });
@@ -316,7 +328,11 @@ function simulatorCall(id){
         });
     });
 
-  return 0;
+  }
+    //Get info about all prosumers production
+  db_user.getAllProsumersProduction((er,re){
+    fn(re);
+  })
 
 }
 
