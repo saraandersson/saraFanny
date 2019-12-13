@@ -272,6 +272,7 @@ function setPrice(){
 
           if(j == (idarr.length - 1)){
               price = price / number;
+              console.log("Kommer hit: " + price);
               db_user.updateMarketPriceSim(price);
           }
         });
