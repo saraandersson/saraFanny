@@ -89,7 +89,7 @@ window.addEventListener("load", function () {
             //Så att endast prosumers syns, ej admin
             
               if(obj[x].status == 0){
-               txt+= "<tr><td>" + obj[x].id + "</td><td id = 'status'"+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStartSim("+ obj[x].id +")'>Start Simulator</button>" + "</tr></td>";
+               txt+= "<tr><td>" + obj[x].id + "</td><td id = 'stopped'>" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStartSim("+ obj[x].id +")'>Start Simulator</button>" + "</tr></td>";
               }else{
               txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormProd("+ obj[x].id +"prod)'>See Production</button>"+ "</tr></td>";
               }
@@ -99,7 +99,7 @@ window.addEventListener("load", function () {
 
           for(x in obj){
             if(obj[x].status==0){
-              document.getElementById('status'+obj[x].id).innerHTML="Stopped";
+              document.getElementById("stopped").innerHTML="Stopped";
             }
           }
        }); 
