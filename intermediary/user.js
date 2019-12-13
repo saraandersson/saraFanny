@@ -478,7 +478,7 @@ function getCoalSimulators(callback){
 
       var arr = JSON.parse(xhttp.responseText);
       callback(null, arr); 
-      
+      }
     }
     xhttp.send(JSON.stringify(data));
 }
@@ -501,8 +501,6 @@ function startCoalSimulator(production, coal_id, time){
   }
   var data = {production: production_val, coal_id: coal_id_val, time_val: time};
   xhttp.send(JSON.stringify(data));
-
-
 
 }
 

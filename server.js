@@ -243,7 +243,7 @@ const db_user = new Db_user();
 
 setPrice();
 
-//setInterval(setPrice, 10000);
+setInterval(setPrice, 10000);
 
 function setPrice(){
   var idarr = [];
