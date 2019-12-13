@@ -311,7 +311,7 @@ async function simulatorCall(idarr, fn){
           /*Loss/Deficit*/
           }else{
           
-            db_user.getSellBuy(id, (e,r)=>{
+            db_user.getSellBuy(idarr[i], (e,r)=>{
 
             //Take from buffert and buy from market. 
             var value_buffert = results[2] * (1.00 -r[0].buy);
