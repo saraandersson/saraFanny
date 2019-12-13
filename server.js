@@ -266,9 +266,7 @@ function setPrice(){
       simulatorCall(idarr[j], function(answer){
         console.log("VI VET ATT ID ÄR : " + id);
         db_user.getProsumerProductionSimPrice(id, (err, res) =>{
-
-           console.log("RES: " + res); 
-           //price = price + res[0].sim_price;
+           price = price + res[0].sim_price;
            number ++;
 
 
