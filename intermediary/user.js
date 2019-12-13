@@ -67,9 +67,10 @@ function createUser(firstname, lastname, email, password, img, area, consumption
            // Typical action to be performed when the document is ready:
            //alert(xhttp.responseText);
       var arr = JSON.parse(xhttp.responseText);
+      window.alert(arr);
 
       if (arr.length == 0){
-        window.location.replace("/login");
+        window.location.replace("../");
       }else{
         document.getElementById("errorMsg").innerHTML += '<br>Email already exist!';
         //Felmeddelande: E-mail upptaget. 
