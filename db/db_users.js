@@ -375,6 +375,20 @@ getAllUserProduction(callback){
 			}
 		});
 }
+
+getProsumersProductionPrice(callback){
+	var getSql = `SELECT users.role_id, user_production.sim_price FROM users JOIN user_production ON users.id = user_production.user_id WHERE users.role_id = 0`;
+		con.query(getSql, [], function(err, result){
+			if(err){
+				callback(err, null);
+			}else{
+				console.log("All prosumers production is fetched");
+				callback(err, result);
+			}
+		});
+}
+
+
 updateUserProduction(id, production, excess, wind, price){
 	console.log("ID: " + id + "production : " + production + "excess : " + excess + "Wind: " + wind);
 	var add_production = production;
