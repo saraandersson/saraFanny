@@ -277,7 +277,7 @@ function setPrice(){
                      number ++; 
                   }
                   price = price / number;
-                  console.log("Kommer hit: " + price);
+                  console.log("Sim priset blir: " + price);
                   db_user.updateMarketPriceSim(price);
                 });
               
