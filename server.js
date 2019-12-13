@@ -330,7 +330,7 @@ async function simulatorCall(idarr, fn){
 
   }
     //Get info about all prosumers production
-  db_user.getAllProsumersProduction((er,re){
+  db_user.getAllProsumersProduction((er,re) =>{
     fn(re);
   });
 
