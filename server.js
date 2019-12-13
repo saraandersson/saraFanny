@@ -257,6 +257,7 @@ function setPrice(){
 
     simulatorCall(idarr[0], function(arr){
           db_user.getProsumersProductionSimPrice((err, res) =>{
+              console.log("DEN KOMMER HIT NUUU");
               var price = 0;
               var number = 0;
               for(var j = 0; j < res.length; j++){
