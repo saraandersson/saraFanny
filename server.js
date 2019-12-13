@@ -403,7 +403,6 @@ app.post('/createUser', function(req,res){
   });*/
 
 app.post('/loginUser',function(req,res){
-  console.log("HIT KOMMER JAG!")
       db_user.checkLogin(req.body.email,req.body.password,(err,result) =>{
         if(err){
           console.error(err);
