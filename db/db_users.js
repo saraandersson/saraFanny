@@ -395,6 +395,7 @@ getProsumerProductionSimPrice(id, callback){
 				callback(err, null);
 			}else{
 				console.log("One prosumers production is fetched");
+				console.log(result);
 				callback(err, result);
 			}
 		});
