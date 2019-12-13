@@ -241,6 +241,7 @@ const db_user = new Db_user();
 
 /*Run the simulator and decide price*/
 
+setPrice();
 
 setInterval(setPrice, 10000);
 
@@ -263,6 +264,8 @@ function setPrice(){
 
     for(var j = 0; j < idarr.length; j ++){
 
+      //Dessa behövs då den glömmer bort värden efter simulatorCall
+
       var id = idarr[j];
       var temp_j = j;
       var temp_length = idarr.length;
@@ -283,37 +286,11 @@ function setPrice(){
       });
     }
 
-
-      /*
-    simulatorCall(idarr[0], function(arr){
-          db_user.getProsumersProductionSimPrice((err, res) =>{
-              console.log("DEN KOMMER HIT NUUU");
-              var price = 0;
-              var number = 0;
-              for(var j = 0; j < res.length; j++){
-                  price = price + res[j].sim_price;
-                  number++;
-              }
-              price = price / number;
-              db_user.updateMarketPriceSim(price);
-          });
-       
-
-    });
-
-    */
-
-
-
-    
-
   });
 
 }
 
 async function simulatorCall(id, fn){
-
-  //SKA ta in idarr sen och köra som en for-loop eller liknande, men nu testar jag bara för ett id för att se om det funkar
 
   db_user.getUser(id,(err,result) =>{
           sim.getTotalProductionPerDay(result[0].consumption, result[0].area, (results)=>{
