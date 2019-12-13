@@ -272,12 +272,10 @@ function setPrice(){
               price = price / number;
               db_user.updateMarketPriceSim(price);
           }
-        }
-
-        
-
-      })
+        });
+      });
     }
+
 
       /*
     simulatorCall(idarr[0], function(arr){
