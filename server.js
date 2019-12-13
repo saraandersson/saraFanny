@@ -326,7 +326,7 @@ async function simulatorCall(id, fn){
         });
     });
 
-  
+  fn("Klar");
 
 }
 
