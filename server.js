@@ -295,6 +295,7 @@ async function simulatorCall(id, fn){
             //Check if blocked, cant sell to market, only add to buffert
               if(result[0].blocked == 1){
               db_user.updateBuffert(id, results[2]);
+              fn("Klar");
 
               }else{
                 db_user.getSellBuy(id, (e,r)=>{
@@ -304,6 +305,7 @@ async function simulatorCall(id, fn){
                   var value_market = results[2] * r[0].sell;
                   db_user.updateBuffert(id, value_buffert);
                   db_user.updateMarket(value_market);
+                  fn("Klar");
                   
               }); 
               }
@@ -319,14 +321,13 @@ async function simulatorCall(id, fn){
             var value_market = results[2] * r[0].buy;
             db_user.updateBuffert(id, value_buffert);
             db_user.updateMarket(value_market);
+            fn("Klar");
 
           });
           }
           
         });
     });
-
-  fn("Klar");
 
 }
 
