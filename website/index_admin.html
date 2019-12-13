@@ -128,7 +128,16 @@ function closeFormStartCoalSim() {
 
 function startCoalProduction(){ 
   var production = document.getElementById("production").value;
-  window.alert(production);
+  var coal_id = document.getElementById("coalId").innerHTML;
+  window.alert(coal_id);
+  if (production <1000000){
+    var time = 10;
+  }
+  if(production>1000000){
+    var time = 20; 
+  }
+  window.alert(time);
+  //startCoalSimulator(production,coal_id,time);
 }
       
 </script>
