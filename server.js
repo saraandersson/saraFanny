@@ -279,13 +279,15 @@ function setPrice(){
 
 async function simulatorCall(id, fn){
 
+  //SKA ta in idarr sen och köra som en for-loop eller liknande, men nu testar jag bara för ett id för att se om det funkar
+
   db_user.getUser(id,(err,result) =>{
           sim.getTotalProductionPerDay(result[0].consumption, result[0].area, (results)=>{
 
             console.log("Result efter sim: " + results);
 
           //Update user production result
-          //DENNA GER EJ RÄTT ÄN
+          //DENNA GER EJ RÄTT ÄN DÅ DEN EJ SÄTTER IN VÄRDEN
           db_user.updateUserProduction(id, results[1], results[2], results[0]);
 
           console.log("SKUMTOMTE : " + results[0] + "  " + results[1] + "  " + results[2]);

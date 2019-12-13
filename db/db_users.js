@@ -394,7 +394,7 @@ updateUserProduction(id, production, excess, wind, price){
 	var add_production = production;
 	var add_excess = excess;
 	var setSql=`UPDATE user_production SET total_production = total_production + ?, total_excess = total_excess + ?, latest_production = ?, latest_wind = ?, latest_excess = ?, sim_price = ? WHERE user_id = ?`;
-		con.query(setSql, [add_production, add_excess, id, production, wind , excess, price], function(err, res){
+		con.query(setSql, [add_production, add_excess, production, wind , excess, price, id], function(err, res){
 			if(err){	
 			}else{
 				console.log("User production uppdaterat");
