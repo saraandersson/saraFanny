@@ -376,7 +376,7 @@ getAllUserProduction(callback){
 		});
 }
 
-getProsumersProductionPrice(callback){
+getProsumersProductionSimPrice(callback){
 	var getSql = `SELECT users.role_id, user_production.sim_price FROM users JOIN user_production ON users.id = user_production.user_id WHERE users.role_id = 0`;
 		con.query(getSql, [], function(err, result){
 			if(err){
