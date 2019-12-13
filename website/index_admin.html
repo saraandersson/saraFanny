@@ -56,6 +56,20 @@ function logout(){
 function createNewCoalSimulator(){
   createCoalSimulator();
 }
+
+function openFormStartSim(id){
+  document.getElementById("myFormStartSim").style.display = "block";
+  document.getElementById("coalId").innerHTML = id; 
+
+}
+
+function closeFormStartCoalSim() {
+  document.getElementById("myFormStartSim").style.display = "none";
+}
+
+startCoalProduction(){ 
+  var production = document.getElementById("production").value;
+}
       
 </script>
 
@@ -105,6 +119,20 @@ function createNewCoalSimulator(){
     </table>  
 <button class='btn btn-default' id ="createCoalSimulator" onclick='createNewCoalSimulator();'>Create New Simulator</button>
 
+</div>
+
+<div class="form-popup" id="myFormBlock">
+  <form class="form-container">
+    <h1>Start Coal Simulator</h1>
+
+    <label for="id"><b>ID</b></label>
+     <p name = "coalId" id = "coalId"></p>
+    <label for="Production Amount"><b>Production Amount</b></label>
+    <input type="Text" placeholder="Enter Production Amount" name="production" id = "production"required>
+
+    <button type="submit" class="btn" onclick="startCoalProduction()">Submit </button>
+    <button type="button" class="btn cancel" onclick="closeFormStartCoalSim()">Close</button>
+  </form>
 </div>
 
 </body>
