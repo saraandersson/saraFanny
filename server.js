@@ -282,7 +282,6 @@ function setPrice(){
                   price = price / number;
                   console.log("Kommer hit: " + price);
                   db_user.updateMarketPriceSim(price);
-                  break;
                 });
               
           }
