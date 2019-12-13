@@ -675,7 +675,7 @@ app.post('/startCoalSimulator', function(req,res){
     db_user.startCoalSimulator(req.body.coal_id,1)
 
     setTimeout(function(){
-      db.user.startCoalSimulator(req.body.coal_id,2);
+      db_user.startCoalSimulator(req.body.coal_id,2);
       db_user.startCoalProduction(req.body.coal_id, req.body.time, req.body.production);
       setTimeout(function(){
       //stops the production
@@ -698,7 +698,7 @@ app.post('/startCoalProduction', function(req,res){
 
 
 app.post('/stopCoalProduction', function(req,res){
-    db_user.stopCoalProduction(req.body.coal_id, req.body.time, req.body.production);
+    //db_user.stopCoalProduction(req.body.coal_id, req.body.time, req.body.production);
     db_user.stopCoalSimulator(req.body.coal_id,0);
 });
 

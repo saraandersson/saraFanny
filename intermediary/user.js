@@ -504,5 +504,22 @@ function startCoalSimulator(production, coal_id, time){
 
 }
 
+function stopCoalProduction(coal_id){
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "/stopCoalProduction", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+           // Typical action to be performed when the document is ready:
+           //alert(xhttp.responseText);
+
+      var arr = JSON.parse(xhttp.responseText);
+      callback(null, arr); 
+      }
+    }
+    var data = {};
+    xhttp.send(JSON.stringify(data));
+}
+
 
 

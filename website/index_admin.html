@@ -88,12 +88,12 @@ window.addEventListener("load", function () {
           for (x in obj){
             
               if(obj[x].status == 0){
-               txt+= "<tr><td>" + obj[x].id + "</td><td id = "+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' onclick='openFormStartSim("+ obj[x].id +")'>Start Simulator</button>" + "</tr></td>";
+               txt+= "<tr><td>" + obj[x].id + "</td><td id = "+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' onclick='openFormStartSim("+ obj[x].id +")'>Start Simulator</button>" + "</td><td>"+ "</tr></td>";
               }if(obj[x].status==1){
               txt+= "<tr><td>" + obj[x].id + "</td><td id = "+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" + "</td><td>"  +  "<button class='btn btn-default' onclick='openFormProd("+ obj[x].id +"prod)'>See Production</button>"+ "</td><td>"+ "</tr></td>";
               }
               if(obj[x].status==2){
-                txt+= "<tr><td>" + obj[x].id + "</td><td id = "+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormProd("+ obj[x].id +"prod)'>See Production</button>"+ "</tr></td>";
+                txt+= "<tr><td>" + obj[x].id + "</td><td id = "+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormProd("+ obj[x].id +"prod)'>See Production</button>"+ "</td><td>"+"</tr></td>";
               }
             
           }
@@ -151,6 +151,21 @@ function startCoalProduction(){
     var time = 20; 
   }
   startCoalSimulator(production,coal_id,time);
+  window.location.reload();
+}
+
+function openFormStopSim(){
+  document.getElementById("myFormStopSim").style.display = "block";
+  document.getElementById("coalId").innerHTML = id; 
+}
+
+function closeFormStopSim(){
+   document.getElementById("myFormStopSim").style.display = "none";
+}
+
+function stopCoalSim(){
+  var coal_id = document.getElementById("coalId").innerHTML;
+  stopCoalProduction(coal_id);
   window.location.reload();
 }
 
@@ -219,6 +234,20 @@ setInterval(function() {
 
     <button type="submit" class="btn" onclick="startCoalProduction()">Submit </button>
     <button type="button" class="btn cancel" onclick="closeFormStartCoalSim()">Close</button>
+  </form>
+</div>
+
+<div class="form-popup" id="myFormStopSim">
+  <form class="form-container">
+    <h1>Stop Coal Simulator</h1>
+
+    <label for="id"><b>ID</b></label>
+     <p name = "Unblockid" id = "Unblockid"></p>
+    <label for="BlockTime"><b>Are you sure you want to stop coal simulator?</b></label>
+    
+
+    <button type="submit" class="btn" onclick="stopCoalSim()">Yes </button>
+    <button type="button" class="btn cancel" onclick="closeFormStopSim()">No</button>
   </form>
 </div>
 
