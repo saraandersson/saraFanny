@@ -657,6 +657,49 @@ app.post('/getMarketDemand', function(req,res){
         
   });
 
+/*Funktioner för manager att kontrollera kolsimulatorn*/
+
+app.post('/createCoalSimulator', function(req,res){
+    db_user.createCoalSimulator(req.session.Users,(err,result) =>{
+      send_(err, result, res);
+    });
+});
+
+app.post('/getCoalSimulators', function(req,res){
+    db_user.getCoalSimulators(req.session.Users,(err,result) =>{
+      send_(err, result, res);
+    });
+});
+
+app.post('/startCoalSimulator', function(req,res){
+    db_user.startCoalSimulator(req.session.Users,req.body.coal_id,1)
+
+    setTimeout(function(){
+      db.user.startCoalSimulator(req.session.Users,req.body.coal_id,2);
+      db_user.startCoalProduction(req.body.coal_id, req.body.time, req.body.production);
+      setTimeout(function(){
+      //stops the production
+      db_user.stopCoalProduction(0,req.body.coal_id);
+      db_user.stopCoalSimulator(req.session.Users,req.body.coal_id,0);
+
+    },req.body.time*1000)
+    },30*1000)
+});
+
+app.post('/startCoalProduction', function(req,res){
+    db_user.startCoalProduction(req.body.coal_id, req.body.time, req.body.production);
+
+    setTimeout(function(){
+      //stops the production
+      db_user.stopCoalProduction(req.body.coal_id);
+
+    },req.body.time*1000)
+});
+
+
+
+
+
 
 function send_(err, data, res) {
     if (err) {

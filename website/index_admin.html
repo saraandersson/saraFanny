@@ -15,34 +15,46 @@
       border-radius: 0;
     }
     
-    /* Add a gray background color and some padding to the footer */
-    footer {
-      background-color: #f2f2f2;
-      padding: 25px;
-    }
-    
-  .carousel-inner img {
-      width: 100%; /* Set width to 100% */
-      margin: auto;
-      min-height:200px;
-  }
 
-  /* Hide the carousel text when the screen is less than 600 pixels wide */
-  @media (max-width: 600px) {
-    .carousel-caption {
-      display: none; 
-    }
-  }
   </style>
 </head>
 <body>
 
 <script type="text/javascript">
+window.addEventListener("load", function () {
+        getAllCoalSimulators(function(arr){
+         
+          var obj = arr; 
+          var x, txt=""; 
+          for (x in obj){
+            //Så att endast prosumers syns, ej admin
+            
+              if(obj[x].status == 0){
+               txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStartSim("+ obj[x].id +")'>Start Simulator</button>" + "</tr></td>";
+              }else{
+              txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormProd("+ obj[x].id +"prod)'>See Production</button>"+ "</tr></td>";
+              }
+            
+          }
+          $('#myTable tbody').html(txt); 
+       }); 
+      });
+
+      async function getAllCoalSimulators(fn){
+              getCoalSimulator((err,result) =>{
+              fn(result);
+              });
+          }
+          
 
 
 
 function logout(){
   logOut();
+}
+
+function createNewCoalSimulator(){
+  createCoalSimulator();
 }
       
 </script>
@@ -72,20 +84,27 @@ function logout(){
   </div>
 </nav>
 
-<div class='card-body'>
-        <div class="col-sm-offset-4 col-md-offset-4">
-            <div class="form-group">
-                <h3>Production Status: </h3>
-                 <div class="well" id = "prodStatus"></div>
-            </div>
-            <button class="btn btn-default">Start Production</button>
-            <button class="btn btn-default">Stop Production</button>
-             <div class="form-group">
-                <h3>Your Buffert </h3>
-                 <div class="well" id = "buffert"></div>
-            </div>
-  <div class="container body-content">
-</div>
+<div class='container body-content'>
+   
+        <div class='card-body'>
+          <div class='card-title'><h2>Your Coal Simulators</h2></div>
+         
+        </div>
+    
+          <table class='table' id='myTable'> 
+              <thead>
+                <tr>
+                  <th scope='col'>Coal Simulator ID</th>
+                  <th scope='col'>Status</th>
+                  <th scope='col'></th>
+                </tr>
+              </thead>
+
+              <tbody></tbody>
+
+    </table>  
+<button class='btn btn-default' id ="createCoalSimulator" onclick='createNewCoalSimulator();'>Create New Simulator</button>"
+
 </div>
 
 </body>

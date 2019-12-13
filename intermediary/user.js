@@ -67,10 +67,9 @@ function createUser(firstname, lastname, email, password, img, area, consumption
            // Typical action to be performed when the document is ready:
            //alert(xhttp.responseText);
       var arr = JSON.parse(xhttp.responseText);
-      window.alert(arr);
 
       if (arr.length == 0){
-        window.location.replace("../");
+        
       }else{
         document.getElementById("errorMsg").innerHTML += '<br>Email already exist!';
         //Felmeddelande: E-mail upptaget. 
@@ -452,7 +451,62 @@ function fetchWindData(callback){
     xhttp.send(JSON.stringify(data));
 }
 
+function createCoalSimulator(){
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "/createCoalSimulator", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        
+    }
+  }
 
+  var data = {};
+
+  
+
+  xhttp.send(JSON.stringify(data));
+}
+
+function getCoalSimulators(callback){
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "/getCoalSimulators", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+           // Typical action to be performed when the document is ready:
+           //alert(xhttp.responseText);
+
+      var arr = JSON.parse(xhttp.responseText);
+      callback(null, arr); 
+      
+    }
+    xhttp.send(JSON.stringify(data));
+}
+
+function startCoalSimulator(production, coal_id, time){
+  var production_val = production;
+  var coal_id_val = coal_id;
+  var time_val = time; 
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "/startCoalSimulator", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+           // Typical action to be performed when the document is ready:
+           //alert(xhttp.responseText);
+
+     // var arr = JSON.parse(xhttp.responseText);
+      //callback(null, arr); 
+    }
+  }
+
+  var data = {production: production_val, coal_id: coal_id_val, time_val: time};
+  xhttp.send(JSON.stringify(data));
+
+
+
+}
 
 
 

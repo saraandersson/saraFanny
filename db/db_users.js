@@ -423,26 +423,74 @@ blockUser(id, block, time){
 				console.log("User blocked uppdaterat");
 			}
 		});
-	/*var update = 'CREATE EVENT myevent ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL ? SECOND DO UPDATE blocked SET blocked = ?;'
-		con.query(update, [time,0], function(err, res){
-			if(err){
-				console.log(err);	
-			}else{
-				console.log("User unblocked testing");
-			}
-		});*/
-
 }
 
 
+createCoalSimulator(id){
+	var addSql = `INSERT INTO coal (user_id, status) VALUES (?,?)`;
+		//console.log(role_id + "," + online + "," + firstname + "," + lastname + "," + email + "," + password + "," + img + "," + area + "," + buffert + "," + consumption);
+		con.query(addSql,[id,0] , function(err, result){
+			if(err){
+				throw err;
+			}else{
+				console.log("Coal simulator is added");
+			}
+	});
+}
 
+getCoalSimulators(id,callback){
+	var getSql = `SELECT * FROM coal WHERE user_id = ?`;
+		con.query(getSql,[id] , function(err, result){
+			if(err){
+				callback(err,null)
+			}else{
+				console.log("Coal simulators is fetched");
+				callback(err,result);
+			}
+		});
+	}
 
+startCoalSimulator(coal_id, status){
+	var setSql=`UPDATE coal SET status = ? WHERE id = ?`;
+		con.query(setSql, [status, coal_id], function(err, res){
+			if(err){	
+			}else{
+				console.log("Coal simulator started");
+			}
+		});
+}
 
+stopCoalSimulator(coal_id, status){
+	var setSql=`UPDATE coal SET status = ? WHERE id = ?`;
+		con.query(setSql, [status, coal_id], function(err, res){
+			if(err){	
+			}else{
+				console.log("Coal simulator stopped");
+			}
+		});
+}
 
+startCoalProduction(coal_id, time, production){
+	var addSql = `INSERT INTO coal_production (coal_id, time,production, price status) VALUES (?,?,?,?,?)`;
+	con.query(addSql,[coal_id, time, production, 0, 1] , function(err, result){
+			if(err){
+				throw err;
+			}else{
+				console.log("Coal simulator production is started");
+			}
+		});
 
+}
 
-
-
+stopCoalProduction(status, coal_id){
+	var setSql=`UPDATE coal_production SET status = ? WHERE id = ?`;
+		con.query(setSql, [status, coal_id], function(err, res){
+			if(err){	
+			}else{
+				console.log("Coal production stopped");
+			}
+		});
+}
 
 }
 
