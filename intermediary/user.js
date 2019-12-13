@@ -479,6 +479,7 @@ function getCoalSimulators(callback){
       callback(null, arr); 
       }
     }
+    var data = {};
     xhttp.send(JSON.stringify(data));
 }
 
