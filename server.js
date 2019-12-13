@@ -264,8 +264,9 @@ function setPrice(){
     for(var j = 0; j < idarr.length; j ++){
       console.log("LÄNGDEN? : " + idarr.length);
       console.log("VAD ÄR J? : " + j);
+      console.log("VAD ÄR ARRJ? : " + idarr[j]);
       simulatorCall(idarr[j], function(answer){
-        console.log("IDARR: " + idarr[j]);
+        console.log("VAD ÄR ARRJ? : " + idarr[j]);
         db_user.getProsumerProductionSimPrice(idarr[j], (err, res) =>{
 
            console.log("RES: " + res); 
