@@ -262,12 +262,10 @@ function setPrice(){
     console.log("Finns idarr? : " + idarr[0]);
 
     for(var j = 0; j < idarr.length; j ++){
-      console.log("LÄNGDEN? : " + idarr.length);
-      console.log("VAD ÄR J? : " + j);
-      console.log("VAD ÄR ARRJ? : " + idarr[j]);
+      var id = idarr[j];
       simulatorCall(idarr[j], function(answer){
-        console.log("VAD ÄR ARRJ? : " + idarr[j]);
-        db_user.getProsumerProductionSimPrice(idarr[j], (err, res) =>{
+        console.log("VI VET ATT ID ÄR : " + id);
+        db_user.getProsumerProductionSimPrice(id, (err, res) =>{
 
            console.log("RES: " + res); 
            //price = price + res[0].sim_price;
