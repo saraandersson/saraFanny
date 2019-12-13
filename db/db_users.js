@@ -479,7 +479,7 @@ startCoalProduction(coal_id, time, production){
 }
 
 stopCoalProduction(status, coal_id){
-	var setSql=`UPDATE coal_power SET status = ? WHERE id = ?`;
+	var setSql=`UPDATE coal_power SET status = ? WHERE coal_id = ?`;
 		con.query(setSql, [status, coal_id], function(err, res){
 			if(err){
 			console.log(err);	
