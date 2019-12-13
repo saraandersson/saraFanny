@@ -154,7 +154,7 @@ function startCoalProduction(){
   window.location.reload();
 }
 
-function openFormStopSim(){
+function openFormStopSim(id){
   document.getElementById("myFormStopSim").style.display = "block";
   document.getElementById("coalId").innerHTML = id; 
 }
@@ -242,7 +242,7 @@ setInterval(function() {
     <h1>Stop Coal Simulator</h1>
 
     <label for="id"><b>ID</b></label>
-     <p name = "Unblockid" id = "Unblockid"></p>
+     <p name = "coalId" id = "coalId></p>
     <label for="BlockTime"><b>Are you sure you want to stop coal simulator?</b></label>
     
 
