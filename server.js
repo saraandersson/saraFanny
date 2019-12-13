@@ -241,6 +241,8 @@ const db_user = new Db_user();
 
 /*Run the simulator and decide price*/
 
+setPrice();
+
 setInterval(setPrice, 10000);
 
 function setPrice(){
@@ -255,6 +257,29 @@ function setPrice(){
       }
     }
 
+    var price = 0;
+    var number = 0;
+
+    for(var j = 0; j < idarr.length; j ++){
+      simulatorCall(idarr[j], function(answer){
+        db_user.getProsumerProductionSimPrice(idarr[j], (err, res) =>{
+
+           price = price + res[0].sim_price;
+           number ++;
+
+
+          if(j == (idarr.length - 1)){
+              price = price / number;
+              db_user.updateMarketPriceSim(price);
+          }
+        }
+
+        
+
+      })
+    }
+
+      /*
     simulatorCall(idarr[0], function(arr){
           db_user.getProsumersProductionSimPrice((err, res) =>{
               console.log("DEN KOMMER HIT NUUU");
@@ -271,6 +296,10 @@ function setPrice(){
 
     });
 
+    */
+
+
+
     
 
   });
@@ -284,13 +313,13 @@ async function simulatorCall(id, fn){
   db_user.getUser(id,(err,result) =>{
           sim.getTotalProductionPerDay(result[0].consumption, result[0].area, (results)=>{
 
-            console.log("Result efter sim: " + results);
+          
 
           //Update user production result
-          //DENNA GER EJ RÄTT ÄN DÅ DEN EJ SÄTTER IN VÄRDEN
+          
           db_user.updateUserProduction(id, results[1], results[2], results[0], results[4]);
 
-          console.log("SKUMTOMTE : " + results[0] + "  " + results[1] + "  " + results[2]);
+          
 
           /*Surplus/Excess*/
           if(results[2] > 0){

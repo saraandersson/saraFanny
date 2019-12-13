@@ -388,6 +388,18 @@ getProsumersProductionSimPrice(callback){
 		});
 }
 
+getProsumerProductionSimPrice(id, callback){
+	var getSql = `SELECT users.role_id, user_production.sim_price FROM users JOIN user_production ON users.id = user_production.user_id WHERE users.id = ?`;
+		con.query(getSql, [id], function(err, result){
+			if(err){
+				callback(err, null);
+			}else{
+				console.log("One prosumers production is fetched");
+				callback(err, result);
+			}
+		});
+}
+
 
 updateUserProduction(id, production, excess, wind, price){
 	console.log("ID: " + id + "production : " + production + "excess : " + excess + "Wind: " + wind + "Price: " + price);
