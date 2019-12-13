@@ -467,7 +467,7 @@ stopCoalSimulator(coal_id, status){
 }
 
 startCoalProduction(coal_id, time, production){
-	var addSql = `INSERT INTO coal_production (coal_id, time,production, price status) VALUES (?,?,?,?,?)`;
+	var addSql = `INSERT INTO coal_production (coal_id, time,production, price, status) VALUES (?,?,?,?,?)`;
 	con.query(addSql,[coal_id, time, production, 0, 1] , function(err, result){
 			if(err){
 				throw err;

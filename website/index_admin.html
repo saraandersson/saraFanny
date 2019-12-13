@@ -89,13 +89,19 @@ window.addEventListener("load", function () {
             //Så att endast prosumers syns, ej admin
             
               if(obj[x].status == 0){
-               txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStartSim("+ obj[x].id +")'>Start Simulator</button>" + "</tr></td>";
+               txt+= "<tr><td>" + obj[x].id + "</td><td id = 'status'"+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStartSim("+ obj[x].id +")'>Start Simulator</button>" + "</tr></td>";
               }else{
               txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormProd("+ obj[x].id +"prod)'>See Production</button>"+ "</tr></td>";
               }
             
           }
           $('#myTable tbody').html(txt); 
+
+          for(x in obj){
+            if(obj[x].status==0){
+              document.getElementById('status'+obj[x].id)="Stopped";
+            }
+          }
        }); 
       });
 
@@ -129,16 +135,18 @@ function closeFormStartCoalSim() {
 function startCoalProduction(){ 
   var production = document.getElementById("production").value;
   var coal_id = document.getElementById("coalId").innerHTML;
-  window.alert(coal_id);
-  if (production <1000000){
+  if (production <=1000000){
     var time = 10;
   }
   if(production>1000000){
     var time = 20; 
   }
-  window.alert(time);
   //startCoalSimulator(production,coal_id,time);
 }
+
+setInterval(function() {
+  window.location.reload();
+      }, 60000);
       
 </script>
 
