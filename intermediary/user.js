@@ -24,7 +24,6 @@ function getUserFirstname(user_id, callback){
 }
 
 function checkLogin(email, password){
-  window.alert("HIIIIIT");
   var xhttp = new XMLHttpRequest();
   var email_val = email;
   var password_val = password;
