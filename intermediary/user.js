@@ -69,6 +69,7 @@ function createUser(firstname, lastname, email, password, img, area, consumption
       var arr = JSON.parse(xhttp.responseText);
 
       if (arr.length == 0){
+         window.location.replace("/index_customer");
         
       }else{
         document.getElementById("errorMsg").innerHTML += '<br>Email already exist!';
