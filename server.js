@@ -259,6 +259,8 @@ function setPrice(){
     var price = 0;
     var number = 0;
 
+    console.log("Finns idarr? : " + idarr);
+
     for(var j = 0; j < idarr.length; j ++){
       simulatorCall(idarr[j], function(answer){
         console.log("IDARR: " + idarr[j]);
