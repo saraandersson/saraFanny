@@ -266,14 +266,11 @@ function setPrice(){
 
       //Dessa behövs då den glömmer bort värden efter simulatorCall
 
-      var id = idarr[j];
-      var temp_j = j;
       var temp_length = idarr.length;
 
-      simulatorCall(idarr[j], function(answer){
-        console.log("VI VET ATT ID ÄR : " + id);
+      simulatorCall(idarr[j], j, function(arr_num){
         
-          if(temp_j == (temp_length - 1)){
+          if(arr_num == (temp_length - 1)){
               db_user.getProsumersProductionSimPrice((err, res) =>{
                   for(var k = 0; k < temp_length; k++){
                      price = price + res[k].sim_price;
@@ -292,7 +289,7 @@ function setPrice(){
 
 }
 
-async function simulatorCall(id, fn){
+async function simulatorCall(id, number,  fn){
 
   db_user.getUser(id,(err,result) =>{
           sim.getTotalProductionPerDay(result[0].consumption, result[0].area, (results)=>{
@@ -310,7 +307,7 @@ async function simulatorCall(id, fn){
             //Check if blocked, cant sell to market, only add to buffert
               if(result[0].blocked == 1){
               db_user.updateBuffert(id, results[2]);
-              fn("Klar");
+              fn(number);
 
               }else{
                 db_user.getSellBuy(id, (e,r)=>{
@@ -320,7 +317,7 @@ async function simulatorCall(id, fn){
                   var value_market = results[2] * r[0].sell;
                   db_user.updateBuffert(id, value_buffert);
                   db_user.updateMarket(value_market);
-                  fn("Klar");
+                  fn(number);
                   
               }); 
               }
@@ -336,7 +333,7 @@ async function simulatorCall(id, fn){
             var value_market = results[2] * r[0].buy;
             db_user.updateBuffert(id, value_buffert);
             db_user.updateMarket(value_market);
-            fn("Klar");
+            fn(number);
 
           });
           }
