@@ -16,6 +16,7 @@
 | 2019-12-03  | 2       | Working with user, market and buffert functionality. |
 | 2019-12-04  | 3       | Preparing diagrams and presentation for thursdays meeting. |
 | 2019-12-09  | 8       | Working with user setting for buffert and market, insert a new table in the database for user production and handle values to admin to see the prosumers system, fetching values for the market to the market sites, updated and handled sites for admin: profile, edit_profile and change password |
+| 2019-12-12  | 8       | Working with delete user, manager market side and market demand, and started working with simulator price after Niklas new descripton  |
  
 
 
