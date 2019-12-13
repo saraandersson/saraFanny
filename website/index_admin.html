@@ -86,14 +86,13 @@ window.addEventListener("load", function () {
           var obj = arr; 
           var x, txt=""; 
           for (x in obj){
-            //Så att endast prosumers syns, ej admin
             
               if(obj[x].status == 0){
                txt+= "<tr><td>" + obj[x].id + "</td><td id = 'stopped'>" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStartSim("+ obj[x].id +")'>Start Simulator</button>" + "</tr></td>";
               }if(obj[x].status==1){
-              txt+= "<tr><td>" + obj[x].id + "</td><td id = 'starting'>" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormProd("+ obj[x].id +"prod)'>See Production</button>"+ "</tr></td>";
+              txt+= "<tr><td>" + obj[x].id + "</td><td id = 'starting'>" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormProd("+ obj[x].id +"prod)'>See Production</button>"+ "</td><td>"+ "</tr></td>";
               }
-              else{
+              if(obj[x].status==2){
                 txt+= "<tr><td>" + obj[x].id + "</td><td id = 'running'>" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormProd("+ obj[x].id +"prod)'>See Production</button>"+ "</tr></td>";
               }
             
