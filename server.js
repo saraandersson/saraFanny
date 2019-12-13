@@ -272,17 +272,19 @@ function setPrice(){
 
       simulatorCall(idarr[j], function(answer){
         console.log("VI VET ATT ID ÄR : " + id);
-        db_user.getProsumerProductionSimPrice(id, (err, res) =>{
-           price = price + res[0].sim_price;
-           number ++;
-
-
+        
           if(temp_j == (temp_length - 1)){
-              price = price / number;
-              console.log("Kommer hit: " + price);
-              db_user.updateMarketPriceSim(price);
+              db_user.getProsumersProductionSimPrice((err, res) =>{
+                  for(var k = 0; k < temp_length; k++){
+                     price = price + res[k].sim_price;
+                     number ++; 
+                  }
+                  price = price / number;
+                  console.log("Kommer hit: " + price);
+                  db_user.updateMarketPriceSim(price);
+                });
+              
           }
-        });
       });
     }
 
