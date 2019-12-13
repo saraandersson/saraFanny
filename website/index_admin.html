@@ -90,8 +90,11 @@ window.addEventListener("load", function () {
             
               if(obj[x].status == 0){
                txt+= "<tr><td>" + obj[x].id + "</td><td id = 'stopped'>" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStartSim("+ obj[x].id +")'>Start Simulator</button>" + "</tr></td>";
-              }else{
-              txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormProd("+ obj[x].id +"prod)'>See Production</button>"+ "</tr></td>";
+              }if(obj[x].status==1){
+              txt+= "<tr><td>" + obj[x].id + "</td><td id = 'starting'>" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormProd("+ obj[x].id +"prod)'>See Production</button>"+ "</tr></td>";
+              }
+              else{
+                txt+= "<tr><td>" + obj[x].id + "</td><td id = 'running'>" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormProd("+ obj[x].id +"prod)'>See Production</button>"+ "</tr></td>";
               }
             
           }
@@ -100,6 +103,12 @@ window.addEventListener("load", function () {
           for(x in obj){
             if(obj[x].status==0){
               document.getElementById("stopped").innerHTML="Stopped";
+            }
+            if(obj[x].status==1){
+              document.getElementById("starting").innerHTML="Starting";
+            }
+            if(obj[x].status==2){
+              document.getElementById("running").innerHTML="Running";
             }
           }
        }); 
@@ -141,7 +150,7 @@ function startCoalProduction(){
   if(production>1000000){
     var time = 20; 
   }
-  //startCoalSimulator(production,coal_id,time);
+  startCoalSimulator(production,coal_id,time);
 }
 
 setInterval(function() {
