@@ -261,7 +261,7 @@ function setPrice(){
               var price = 0;
               var number = 0;
               for(var j = 0; j < res.length; j++){
-                  price = price + res[i].sim_price;
+                  price = price + res[j].sim_price;
                   number++;
               }
               price = price / number;
