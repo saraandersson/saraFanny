@@ -505,6 +505,7 @@ function startCoalSimulator(production, coal_id, time){
 }
 
 function stopCoalProduction(coal_id){
+  var coal_id_val=coal_id;
   var xhttp = new XMLHttpRequest();
   xhttp.open("POST", "/stopCoalProduction", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
@@ -517,7 +518,7 @@ function stopCoalProduction(coal_id){
       callback(null, arr); 
       }
     }
-    var data = {};
+    var data = {coal_id:coal_id_val};
     xhttp.send(JSON.stringify(data));
 }
 
