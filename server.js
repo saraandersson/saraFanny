@@ -245,7 +245,7 @@ const db_user = new Db_user();
 setInterval(setPrice, 10000);
 
 function setPrice(){
-  var idarr = [12];
+  var idarr = [20];
   db_user.getAllProsumers((err,result) =>{
 
     for(var i = 0; i < result.length; i++){
