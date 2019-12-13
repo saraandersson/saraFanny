@@ -24,7 +24,6 @@ function getUserFirstname(user_id, callback){
 }
 
 function checkLogin(email, password){
-  window.alert("hit");
   var xhttp = new XMLHttpRequest();
   var email_val = email;
   var password_val = password;
@@ -499,7 +498,6 @@ function startCoalSimulator(production, coal_id, time){
       //callback(null, arr); 
     }
   }
-
   var data = {production: production_val, coal_id: coal_id_val, time_val: time};
   xhttp.send(JSON.stringify(data));
 

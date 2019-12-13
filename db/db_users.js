@@ -24,7 +24,7 @@ const client = new Client({
 
 //client.connect()
 
-class Db_user{
+class Db_user {
 
 	constructor(){
 
@@ -253,25 +253,21 @@ addSellBuy(user_id, sell, buy){
 	}
 
 	updateMarketPrice(value){
-	
-	var setsql=`UPDATE market SET price = ?`;
-		
-	con.query(setsql, [value], function(error, result){
-	if(error){
-	}else{
-		console.log("Market price uppdaterad");
-	}});
-	}
+		var setsql=`UPDATE market SET price = ?`;
+		con.query(setsql, [value], function(error, result){
+		if(error){
+			}else{
+				console.log("Market price uppdaterad");
+			}});
+			}
 
 	updateMarketPriceSim(value){
-	
-	var setsql=`UPDATE market SET price_sim = ?`;
-		
-	con.query(setsql, [value], function(error, result){
-	if(error){
-	}else{
-		console.log("Market price_sim uppdaterad");
-	}});
+		var setsql=`UPDATE market SET price_sim = ?`;	
+		con.query(setsql, [value], function(error, result){
+		if(error){
+		}else{
+			console.log("Market price_sim uppdaterad");
+		}});
 	}
 		
 		
@@ -490,8 +486,7 @@ stopCoalProduction(status, coal_id){
 				console.log("Coal production stopped");
 			}
 		});
-}
-
+	}
 }
 
 module.exports = Db_user;
