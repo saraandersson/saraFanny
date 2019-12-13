@@ -24,6 +24,7 @@ function getUserFirstname(user_id, callback){
 }
 
 function checkLogin(email, password){
+  window.alert("hit");
   var xhttp = new XMLHttpRequest();
   var email_val = email;
   var password_val = password;
@@ -67,7 +68,7 @@ function createUser(firstname, lastname, email, password, img, area, consumption
       var arr = JSON.parse(xhttp.responseText);
 
       if (arr.length == 0){
-        
+         window.location.replace("/login");
       }else{
         document.getElementById("errorMsg").innerHTML += '<br>Email already exist!';
         //Felmeddelande: E-mail upptaget. 
