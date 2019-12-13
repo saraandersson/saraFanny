@@ -245,7 +245,7 @@ const db_user = new Db_user();
 setInterval(setPrice, 10000);
 
 function setPrice(){
-  var idarr = [20];
+  var idarr = [];
   db_user.getAllProsumers((err,result) =>{
 
     for(var i = 0; i < result.length; i++){
@@ -259,7 +259,7 @@ function setPrice(){
     var price = 0;
     var number = 0;
 
-    console.log("Finns idarr? : " + idarr);
+    console.log("Finns idarr? : " + idarr[0]);
 
     for(var j = 0; j < idarr.length; j ++){
       simulatorCall(idarr[j], function(answer){
