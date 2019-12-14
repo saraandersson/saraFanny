@@ -102,26 +102,16 @@ window.addEventListener("load", function () {
           }
           $('#myTable tbody').html(txt); 
         for(x in obj){
-          window.alert("testar");
           if(obj[x].blocked==1){
             blockButton(obj[x].id);
           }
         }
         for(x in obj){
-          window.alert("testar");
           if(obj[x].blocked==0){
             unblockButton(obj[x].id);
           }
         }
 
-        for(x in obj){
-          window.alert("test");
-          if(obj[x].online==1){
-            window.alert("test");
-            window.alert(document.getElementById('status'+obj[x].id).innerHTML);
-            document.getElementById('status'+obj[x].id).innerHTML="Offline";
-          }
-        }
        }); 
       });
       async function getUsersValues(fn){
