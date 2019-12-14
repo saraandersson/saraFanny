@@ -102,11 +102,13 @@ window.addEventListener("load", function () {
           }
           $('#myTable tbody').html(txt); 
         for(x in obj){
+          window.alert("testar");
           if(obj[x].blocked==1){
             blockButton(obj[x].id);
           }
         }
         for(x in obj){
+          window.alert("testar");
           if(obj[x].blocked==0){
             unblockButton(obj[x].id);
           }
