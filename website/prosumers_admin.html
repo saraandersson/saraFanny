@@ -114,6 +114,7 @@ window.addEventListener("load", function () {
 
         for(x in obj){
           if(obj[x].online==0){
+            window.alert("test");
             window.alert(document.getElementById('status'+obj[x].id).innerHTML);
             document.getElementById('status'+obj[x].id).innerHTML="Offline";
           }
