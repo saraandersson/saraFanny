@@ -105,6 +105,13 @@ window.addEventListener("load", function () {
           if(obj[x].blocked==1){
             blockButton(obj[x].id);
           }
+          if(obj[x].online==1){
+            onlineButton(obj[x].id);
+          }
+
+          if(obj[x].online==0){
+            offlineButton(obj[x].id);
+          }
         }
         for(x in obj){
           if(obj[x].blocked==0){
@@ -119,10 +126,20 @@ window.addEventListener("load", function () {
               fn(result);
               });
           }
+
+   function onlineButton(id){
+    document.getElementById('status'+id).innerHTML="Online";
+   }   
+
+   function offlineButton(id){
+    document.getElementById('status'+id).innerHTML="Offline";
+   }    
+
   function blockButton(id){
     var text = "Unblock prosumer";
     document.getElementById(id).innerHTML = text; 
 }
+
 function unblockProsumerTimer(id, blocktime){
   unblockUser(id, 20);
   location.reload();
