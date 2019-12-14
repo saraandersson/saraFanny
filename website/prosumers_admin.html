@@ -117,6 +117,14 @@ window.addEventListener("load", function () {
           if(obj[x].blocked==0){
             unblockButton(obj[x].id);
           }
+
+          if(obj[x].online==1){
+            onlineButton(obj[x].id);
+          }
+
+          if(obj[x].online==0){
+            offlineButton(obj[x].id);
+          }
         }
 
        }); 
@@ -128,6 +136,7 @@ window.addEventListener("load", function () {
           }
 
    function onlineButton(id){
+    window.alert('tets');
     document.getElementById('status'+id).innerHTML="Online";
    }   
 
