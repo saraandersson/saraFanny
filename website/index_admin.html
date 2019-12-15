@@ -90,7 +90,7 @@ window.addEventListener("load", function () {
               if(obj[x].status == 0){
                txt+= "<tr><td>" + obj[x].id + "</td><td id = "+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' onclick='openFormStartSim("+ obj[x].id +")'>Start Simulator</button>" + "</td><td>"+ "</tr></td>";
               }if(obj[x].status==1){
-              txt+= "<tr><td>" + obj[x].id + "</td><td id = "+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" + "</td><td>"  +  "<button class='btn btn-default' onclick='openFormProd("+ obj[x].id +")'>See Production</button>"+ "</td><td>"+ "</tr></td>";
+              txt+= "<tr><td>" + obj[x].id + "</td><td id = "+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" + "</td><td>"+ "</tr></td>";
               }
               if(obj[x].status==2){
                 txt+= "<tr><td>" + obj[x].id + "</td><td id = "+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormProd("+ obj[x].id +")'>See Production</button>"+ "</td><td>"+"</tr></td>";
@@ -171,9 +171,9 @@ function stopCoalSim(){
 
 function openFormProd(id){
   getCoalUserProduction(id,function(arr){
-  window.alert(arr[0].coal_id);  
+  //window.alert(arr[0].coal_id);  
   document.getElementById("myFormProdSim").style.display = "block";
-  //document.getElementById("prodAmount").innerHTML = arr[0].production;
+  document.getElementById("prodAmount").innerHTML = arr[0].production;
   document.getElementById("startTime").innerHTML = 30 + " seconds";
   document.getElementById("prodTime").innerHTML = arr[0].time + " seconds";
   document.getElementById("totalTime").innerHTML = 30+arr[0].time + " seconds";
