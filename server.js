@@ -694,12 +694,12 @@ app.post('/startCoalSimulator', function(req,res){
       //stops the production
       db_user.stopCoalProduction(0,req.body.coal_id);
       db_user.stopCoalSimulator(req.body.coal_id,0);
+      //Updates admin buffert and the market
       db_user.getSellBuy(req.session.Users,(err,result)=>{
-        console.log("TESTAR"+result);
         var marketValue = req.body.production*result[0].sell;
         var buffertValue = req.body.production*result[0].buy;
         db_user.updateMarket(marketValue);
-        db_user.updateBuffert(buffertValue);
+        db_user.updateBuffert(req.session.Users,buffertValue);
       });
 
     },req.body.time*1000)
