@@ -138,7 +138,7 @@ function updateMarketToDatabase(){
   var buffert = 1-market;
   console.log(market);
   console.log(buffert);
-  updateAdminProduction(market,buffert);
+  updateAdminProduction(market,Math.round(buffert));
 }
         
 
