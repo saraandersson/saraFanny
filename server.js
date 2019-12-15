@@ -716,7 +716,7 @@ app.post('/stopCoalProduction', function(req,res){
 });
 
 app.post('/getCoalProduction', function(req,res){
-    db_user.getCoalProduction(req.body.coal_id,(err,result) =>{
+    db_user.getCoalProduction(req.body.coal_id,1,(err,result) =>{
       send_(err, result, res);
     });
 });
