@@ -171,7 +171,11 @@ function stopCoalSim(){
 
 function openFormProd(id){
   getCoalUserProduction(id,function(arr){
-    window.alert(arr[0].coal_id);
+  document.getElementById("myFormProdSim").style.display = "block";
+  document.getElementById("prodAmount").innerHTML = arr[0].production;
+  document.getElementById("startTime").innerHTML = 30 + " seconds";
+  document.getElementById("prodTime").innerHTML = arr[0].time + " seconds";
+  document.getElementById("totalTime").innerHTML = 30+arr[0].time + " seconds";
   });
   //var arr =getCoalProduction(id);
 }
@@ -182,7 +186,9 @@ async function getCoalUserProduction(id,fn){
               });
           }
 
-
+function closeFormProdSim(){
+  document.getElementById("myFormProdSim").style.display = "none";
+}
 
 
 setInterval(function() {
@@ -268,6 +274,23 @@ se produktionen*/
 
     <button type="submit" class="btn" onclick="stopCoalSim()">Yes </button>
     <button type="button" class="btn cancel" onclick="closeFormStopSim()">No</button>
+  </form>
+</div>
+
+
+<div class="form-popup" id="myFormProdSim">
+  <form class="form-container">
+    <h1>Your Coal Production</h1>
+
+    <label for="prodAmount"><b>Production Amount</b></label>
+     <p name = "prodAmount" id = "prodAmount"></p>
+    <label for="startTime"><b>Production Starting Time</b></label>
+     <p name = "startTime" id = "startTime"></p>
+    <label for="prodTime"><b>Production Time</b></label>
+     <p name = "prodTime" id = "prodTime"></p>
+    <label for="totalTime"><b>Total Production Time</b></label>
+     <p name = "totalTime" id = "totalTime"></p>
+    <button type="button" class="btn cancel" onclick="closeFormProdSim()">Close</button>
   </form>
 </div>
 
