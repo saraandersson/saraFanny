@@ -134,9 +134,11 @@ async function getCurrentBuffert(fn){
   });
 
 function updateMarketToDatabase(){
-  var market = document.getElementById("marketValue").innerHTML; 
-  console.log(market/100);
-  updateAdminProduction(market/100);
+  var market = document.getElementById("marketValue").innerHTML/100; 
+  var buffert = 1-market;
+  console.log(market);
+  console.log(buffert);
+  updateAdminProduction(market,buffert);
 }
         
 
