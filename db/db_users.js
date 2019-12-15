@@ -217,12 +217,12 @@ addSellBuy(user_id, sell, buy){
 	updateBuffert(id, value){
 		var getSql = `SELECT * FROM users WHERE id = ?`;
 		var setsql=`UPDATE users SET buffert = ? WHERE id = ?`;
-		var buffert = 0;
+		//var buffert = 0;
 		con.query(getSql, [id], function(err, res){
 			if(err){
 				
 			}else{
-				buffert = value + res[0].buffert;
+				var buffert = value + res[0].buffert;
 				con.query(setsql, [buffert, id], function(error, result){
 				if(error){
 				}else{
@@ -512,12 +512,9 @@ updateAdminProduction(id, market){
 }
 
 getAdminMarketProcent(id){
-	
-}
-
-updateAdminBuffert(amount){
 
 }
+
 
 
 
