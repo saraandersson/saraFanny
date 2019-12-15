@@ -694,6 +694,13 @@ app.post('/startCoalSimulator', function(req,res){
       //stops the production
       db_user.stopCoalProduction(0,req.body.coal_id);
       db_user.stopCoalSimulator(req.body.coal_id,0);
+      db_user.getSellBuy(req.session.Users,(err,result)=>{
+        console.log("TESTAR"+result);
+        var marketValue = req.body.production*result[0].sell;
+        var buffertValue = req.body.production*result[0].buy;
+        db_user.updateMarket(marketValue);
+        db_user.updateBuffert(buffertValue);
+      });
 
     },req.body.time*1000)
     },30*1000)
@@ -717,6 +724,12 @@ app.post('/stopCoalProduction', function(req,res){
 
 app.post('/getCoalProduction', function(req,res){
     db_user.getCoalProduction(req.body.coal_id,1,(err,result) =>{
+      send_(err, result, res);
+    });
+});
+
+app.post('/updateAdminProduction', function(req,res){
+    db_user.updateAdminProduction(req.session.Users,req.body.market,(err,result) =>{
       send_(err, result, res);
     });
 });

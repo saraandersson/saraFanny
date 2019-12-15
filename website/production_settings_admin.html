@@ -96,11 +96,19 @@ p{
 <body>
 
 <script type="text/javascript">
-window.addEventListener("load", function () {
+function updateMarketToDatabase(){
+  var market = document.getElementById("marketValue").innerHTML; 
+  console.log(market/100);
+  updateAdminProduction(market/100);
+}
         
 
 function logout(){
   logOut();
+}
+
+function getCurrentBuffert(){
+  
 }
 
 setInterval(function() {
@@ -183,6 +191,12 @@ setInterval(function() {
       });
 
       </script>
+
+
+      <div class="form-group">
+          <h3>Your buffert: </h3>
+          <div class="well" id = "buffert"></div>
+          </div>
       </div>
 
 

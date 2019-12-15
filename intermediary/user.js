@@ -540,5 +540,25 @@ function getCoalProduction(coal_id, callback){
     xhttp.send(JSON.stringify(data));
 }
 
+function updateAdminProduction(market){
+  var xhttp = new XMLHttpRequest();
+  var market_val = market;
+  xhttp.open("POST", "/updateAdminProduction", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+
+      //IF success
+        //window.location.replace("../website/profile_customer.html");
+      //Else error message
+
+    }
+  }
+
+   var data = {market: market_val};
+
+  xhttp.send(JSON.stringify(data));
+}
+
 
 
