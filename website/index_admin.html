@@ -90,10 +90,10 @@ window.addEventListener("load", function () {
               if(obj[x].status == 0){
                txt+= "<tr><td>" + obj[x].id + "</td><td id = "+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' onclick='openFormStartSim("+ obj[x].id +")'>Start Simulator</button>" + "</td><td>"+ "</tr></td>";
               }if(obj[x].status==1){
-              txt+= "<tr><td>" + obj[x].id + "</td><td id = "+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" + "</td><td>"  +  "<button class='btn btn-default' onclick='openFormProd("+ obj[x].id +"prod)'>See Production</button>"+ "</td><td>"+ "</tr></td>";
+              txt+= "<tr><td>" + obj[x].id + "</td><td id = "+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" + "</td><td>"  +  "<button class='btn btn-default' onclick='openFormProd("+ obj[x].id +")'>See Production</button>"+ "</td><td>"+ "</tr></td>";
               }
               if(obj[x].status==2){
-                txt+= "<tr><td>" + obj[x].id + "</td><td id = "+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormProd("+ obj[x].id +"prod)'>See Production</button>"+ "</td><td>"+"</tr></td>";
+                txt+= "<tr><td>" + obj[x].id + "</td><td id = "+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormProd("+ obj[x].id +")'>See Production</button>"+ "</td><td>"+"</tr></td>";
               }
             
           }
@@ -168,6 +168,20 @@ function stopCoalSim(){
   stopCoalProduction(coal_id);
   window.location.reload();
 }
+
+function openFormProd(id){
+  var arr =getCoalProduction(id);
+  window.alert(arr); 
+}
+
+/*async function openFormProd(fn){
+      getCoalSimulators((err,result) =>{
+          fn(result);
+              });
+          }*/
+
+
+
 
 setInterval(function() {
   window.location.reload();

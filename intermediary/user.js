@@ -522,5 +522,23 @@ function stopCoalProduction(coal_id){
     xhttp.send(JSON.stringify(data));
 }
 
+function getCoalProduction(coal_id, callback){
+  var coal_id_val=coal_id;
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "/getCoalProduction", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+           // Typical action to be performed when the document is ready:
+           //alert(xhttp.responseText);
+
+      var arr = JSON.parse(xhttp.responseText);
+      callback(null, arr); 
+      }
+    }
+    var data = {coal_id:coal_id_val};
+    xhttp.send(JSON.stringify(data));
+}
+
 
 

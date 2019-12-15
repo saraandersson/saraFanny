@@ -488,6 +488,19 @@ stopCoalProduction(status, coal_id){
 			}
 		});
 	}
+
+getCoalProduction(coal_id){
+	var getSql = `SELECT * FROM coal_power WHERE coal_id = ?`;
+		con.query(getSql,[coal_id] , function(err, result){
+			if(err){
+				callback(err,null)
+			}else{
+				console.log("Coal production is fetched");
+				callback(err,result);
+			}
+		});
+}
+
 }
 
 module.exports = Db_user;

@@ -715,6 +715,11 @@ app.post('/stopCoalProduction', function(req,res){
     db_user.stopCoalSimulator(req.body.coal_id,0);
 });
 
+app.post('/getCoalProduction', function(req,res){
+    db_user.getCoalProduction(req.body.coal_id,(err,result) =>{
+      send_(err, result, res);
+    });
+});
 
 
 function send_(err, data, res) {
