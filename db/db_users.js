@@ -489,7 +489,7 @@ stopCoalProduction(status, coal_id){
 		});
 	}
 
-getCoalProduction(coal_id){
+getCoalProduction(coal_id,callback){
 	var getSql = `SELECT * FROM coal_power WHERE coal_id = ?`;
 		con.query(getSql,[coal_id] , function(err, result){
 			if(err){
