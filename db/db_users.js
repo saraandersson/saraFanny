@@ -220,11 +220,13 @@ addSellBuy(user_id, sell, buy){
 		//var buffert = 0;
 		con.query(getSql, [id], function(err, res){
 			if(err){
-				
+				console.log(err);
 			}else{
+				console.log("BUFFERT: "+res[0].buffert);
 				var buffert = value + res[0].buffert;
 				con.query(setsql, [buffert, id], function(error, result){
 				if(error){
+					console.log(error);
 				}else{
 					console.log("Buffert uppdaterad");
 				}});
