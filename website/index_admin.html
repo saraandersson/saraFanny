@@ -171,7 +171,7 @@ function stopCoalSim(){
 
 function openFormProd(id){
   getCoalUserProduction(id,function(arr){
-  document.getElementById("myFormProdSim").style.display = "block";
+  //document.getElementById("myFormProdSim").style.display = "block";
   document.getElementById("prodAmount").innerHTML = arr[0].production;
   document.getElementById("startTime").innerHTML = 30 + " seconds";
   document.getElementById("prodTime").innerHTML = arr[0].time + " seconds";
