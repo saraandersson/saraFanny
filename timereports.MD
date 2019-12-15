@@ -44,3 +44,4 @@
 | 2019-12-10  | 8       | Working with blocking/unblocking prosumers |
 | 2019-12-12  | 3       | Writing the report|
 | 2019-12-13  | 8       | Making the coal simulator, solve some bugs and been writing the report|
+| 2019-12-15  | 6       | Working with the coal simulator for admin, admin can now produce and values are updated to admins market and buffert|
