@@ -91,11 +91,48 @@ p{
       margin-left: 40%;
 }
 
+
+
   </style>
 </head>
 <body>
 
 <script type="text/javascript">
+
+window.addEventListener("load", function () {
+
+  getUserSellBuyValues(function(arr){ 
+
+     document.getElementById("myRange").value = Math.round((1 - arr[0].sell) * 100);
+     document.getElementById("buffert").innerHTML = Math.round((1 - arr[0].sell) * 100); 
+     document.getElementById("marketValue").innerHTML = Math.round(arr[0].sell * 100); 
+
+    x = Math.round((1 - arr[0].sell) * 100);
+    color = 'linear-gradient(90deg, rgb(117, 252, 117)' + x + '% , rgb(214, 214, 214)' + x + '%)';
+    slider.style.background = color;
+ 
+    });
+
+  async function getUserSellBuyValues(fn){
+    getUserSellBuy((err,result) =>{
+      fn(result);
+        });
+      } 
+
+  getCurrentBuffert(function(arr){
+    document.getElementById('buffert').innerHTML=arr[0].buffert;
+  });
+
+
+
+async function getCurrentBuffert(fn){
+  getUser((err,result) =>{
+      fn(result);
+          });
+    }
+
+  });
+
 function updateMarketToDatabase(){
   var market = document.getElementById("marketValue").innerHTML; 
   console.log(market/100);
@@ -105,10 +142,6 @@ function updateMarketToDatabase(){
 
 function logout(){
   logOut();
-}
-
-function getCurrentBuffert(){
-  
 }
 
 setInterval(function() {
@@ -192,12 +225,19 @@ setInterval(function() {
 
       </script>
 
-
-      <div class="form-group">
+    <div class='card-body'>
+    <div class='card-title'><h2 align = "center"> Market </h2></div>
+  <div class="container body-content">
+        <div class="col-sm-offset-4 col-md-offset-4">
+          <div class="form-group">
           <h3>Your buffert: </h3>
           <div class="well" id = "buffert"></div>
           </div>
       </div>
+    </div>
+  </div>
+</div>
+
 
 
 
