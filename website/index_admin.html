@@ -169,16 +169,16 @@ function stopCoalSim(){
   window.location.reload();
 }
 
-function openFormProd(id){
-  var arr =getCoalProduction(id);
+function openFormProd(){
+  //var arr =getCoalProduction(id);
   window.alert(arr); 
 }
 
-/*async function openFormProd(fn){
-      getCoalSimulators((err,result) =>{
+async function openFormProd(fn){
+      getCoalProduction(id,(err,result) =>{
           fn(result);
               });
-          }*/
+          }
 
 
 
