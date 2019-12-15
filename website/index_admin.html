@@ -170,13 +170,13 @@ function stopCoalSim(){
 }
 
 function openFormProd(id){
-  getCoalProduction(id,function(arr){
+  getCoalUserProduction(id,function(arr){
     window.alert(arr);
   });
   //var arr =getCoalProduction(id);
 }
 
-async function getCoalProduction(id,fn){
+async function getCoalUserProduction(id,fn){
       getCoalProduction(id,(err,result) =>{
           fn(result);
               });
