@@ -502,19 +502,17 @@ getCoalProduction(coal_id,status,callback){
 		});
 }
 
-updateAdminProduction(id, market){
-	var setSql=`UPDATE user_sell_buy SET buy = ? WHERE user_id = ?`;
-		con.query(setSql, [market, id], function(err, res){
+updateAdminProduction(market,id){
+	var setSql=`UPDATE user_sell_buy SET sell = ? AND buy = ? WHERE user_id = ?`;
+		con.query(setSql, [market, id,1-market], function(err, res){
 			if(err){	
+				console.log(err);
 			}else{
 				console.log("Buy uppdaterat");
 			}
 		});
 }
 
-getAdminMarketProcent(id){
-
-}
 
 
 

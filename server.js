@@ -729,8 +729,7 @@ app.post('/getCoalProduction', function(req,res){
 });
 
 app.post('/updateAdminProduction', function(req,res){
-    db_user.updateAdminProduction(req.session.Users,req.body.market,(err,result) =>{
-      send_(err, result, res);
+    db_user.updateAdminProduction(req.body.market,req.session.Users,(err,result) =>{
     });
 });
 
