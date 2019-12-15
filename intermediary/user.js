@@ -540,9 +540,10 @@ function getCoalProduction(coal_id, callback){
     xhttp.send(JSON.stringify(data));
 }
 
-function updateAdminProduction(market){
+function updateAdminProduction(market,buffert){
   var xhttp = new XMLHttpRequest();
   var market_val = market;
+  var buffert_val = buffert;
   xhttp.open("POST", "/updateAdminProduction", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
@@ -555,7 +556,7 @@ function updateAdminProduction(market){
     }
   }
 
-   var data = {market: market_val};
+   var data = {market: market_val, buffert:buffert_val};
 
   xhttp.send(JSON.stringify(data));
 }
