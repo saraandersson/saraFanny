@@ -169,14 +169,14 @@ function stopCoalSim(){
   window.location.reload();
 }
 
-function openFormProd(){
+openFormProd(id,function(arr){
+  window.alert(arr);
+});
   //var arr =getCoalProduction(id);
-  window.alert(arr); 
-}
 
-async function openFormProd(id, fn){
+async function openFormProd(id,fn){
       getCoalProduction(id,(err,result) =>{
-          fn(id,result);
+          fn(result);
               });
           }
 
