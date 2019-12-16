@@ -667,7 +667,7 @@ app.post('/getMarketDemand', function(req,res){
             var procent = (result[0].amount/req.body.oldAmount - 1.00);
         
             //Arr = current market, market demand, procent
-            var arr = [result[0].amount, marketDemand, procent, result[0].sim_price];
+            var arr = [result[0].amount, marketDemand, procent, result[0].price_sim];
             send_(err, arr, res);
           });
         
