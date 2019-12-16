@@ -44,6 +44,7 @@
 
       marketDemand(function(arr){
         old_amount = arr[0];
+        document.getElementById("market_price").placeholder=arr[4];  
         test();
         setInterval(test,10000);
 
@@ -77,11 +78,18 @@
           });
     }
 
+function updateMarketsPrice(){
+  var price = document.getElementById("market_price").placeholder=document.getElementById("market_price").value;
+  updateMarketPrice(price);
+  document.getElementById("market_price").placeholder= price;
     
+}  
 
 function logout(){
   logOut();
 }
+
+
       
 </script>
 
@@ -138,7 +146,7 @@ function logout(){
             
           
               <div id = "saveButton">
-                <button class="btn btn-default" type="submit" name="submit" onclick = "updateMarketPrice()">Update</button> 
+                <button class="btn btn-default" type="submit" name="submit" onclick = "updateMarketsPrice()">Update</button> 
               </div>
     </div>
   </div>

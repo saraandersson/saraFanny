@@ -441,6 +441,24 @@ function getMarketDemand(old_amount, callback){
     xhttp.send(JSON.stringify(data));
 }
 
+function updateMarketPrice(price){
+  var price_val = price;
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "/updateMarketPrice", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+           
+
+      
+      
+    }
+  }
+    var data = {price: price_val};
+  
+    xhttp.send(JSON.stringify(data));
+}
+
 
 /*Get values from simulator*/
 function fetchWindData(callback){

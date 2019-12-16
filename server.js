@@ -578,6 +578,12 @@ app.post('/deleteUser', function(req,res){
     });
   });
 
+app.post('/updateMarketPrice', function(req,res){
+     db_user.updateMarketPrice(req.body.price,(err,result)=>{
+      res.send("{}");
+    });
+  });
+
 
 
 /*I called every 10 second*/
@@ -667,7 +673,7 @@ app.post('/getMarketDemand', function(req,res){
             var procent = (result[0].amount/req.body.oldAmount - 1.00);
         
             //Arr = current market, market demand, procent
-            var arr = [result[0].amount, marketDemand, procent, result[0].price_sim];
+            var arr = [result[0].amount, marketDemand, procent, result[0].price_sim, result[0].price];
             send_(err, arr, res);
           });
         
