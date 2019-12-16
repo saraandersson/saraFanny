@@ -584,7 +584,12 @@ app.post('/deleteUser', function(req,res){
 
 app.post('/deleteUserProsumer', function(req,res){
      db_user.deleteUser(req.session.Users,(err,result)=>{
+       if (req.session.Users && req.cookies.user_id) {
+        res.clearCookie('user_id');
+        res.send("{}");
+    } else {
       res.send("{}");
+    }
     });
   });
 
