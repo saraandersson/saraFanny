@@ -378,6 +378,18 @@ getUserProduction(id, callback){
 		});
 }
 
+getProductionInfo(id, callback){
+	var getSql = `SELECT users.buffert, users.area, users.consumption, user_production.latest_wind, user_production.latest_production, user_production.latest_excess FROM users JOIN user_production ON users.id = user_production.user_id WHERE users.id = ?`;
+		con.query(getSql, [id], function(err, result){
+			if(err){
+				callback(err, null);
+			}else{
+				//console.log("User production is fetched");
+				callback(err, result);
+			}
+		});
+}
+
 getAllUserProduction(callback){
 	var getSql = `SELECT * FROM user_production`;
 		con.query(getSql, [], function(err, result){

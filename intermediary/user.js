@@ -445,7 +445,7 @@ function getMarketDemand(old_amount, callback){
 /*Get values from simulator*/
 function fetchWindData(callback){
   var xhttp = new XMLHttpRequest();
-  xhttp.open("POST", "/callSimulator", true);
+  xhttp.open("POST", "/getProductionInfo", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {

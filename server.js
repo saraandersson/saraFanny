@@ -581,8 +581,8 @@ app.post('/deleteUser', function(req,res){
 /*I called every 10 second*/
 
 //DENNA SKA ÄNDRAS TILL ATT ENDAST HÄMTA NY DATA
-app.post('/callSimulator', function(req,res){
-    db_user.getUserProduction(req.session.Users,(err,result) =>{
+app.post('/getProductionInfo', function(req,res){
+    db_user.getProductionInfo(req.session.Users,(err,result) =>{
       send_(err, result, res);
     });
 });
