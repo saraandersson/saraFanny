@@ -364,7 +364,7 @@ app.post('/createUser', function(req,res){
           console.error(err);
         }else{
           if(result.length == 0){
-              console.log(Kommer till OK);
+            console.log("Kommer till OK");
               db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, req.body.password, "hejsan", req.body.area, 0, req.body.consumption);
               db_user.getUserId(req.body.email, req.body.password, (error, results) =>{
               db_user.addBlocked(results[0].id, 0, 0);
@@ -374,7 +374,7 @@ app.post('/createUser', function(req,res){
             
             send_(err, result, res);
           }else{
-            console.log(Kommer till FAIL);
+            console.log("Kommer till FAIL");
             send_(err, result, res);
           }
         }
