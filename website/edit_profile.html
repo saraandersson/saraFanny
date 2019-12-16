@@ -57,15 +57,32 @@
 <body>
 
 <script type="text/javascript">
+
+      var old_firstname;
+      var old_lastname;
+      var old_area;
+      var old_consumption;
+      var old_img;
+
       window.addEventListener("load", function () {
 
        getUserValues(function(arr){
         //console.log(arr);
         document.getElementById("firstname").placeholder= arr[0].firstname;
+        old_firstname = arr[0].firstname;
+
         document.getElementById("lastname").placeholder= arr[0].lastname;
+        old_lastname = arr[0].lastname;
+
         document.getElementById("area").placeholder= arr[0].area;
+        old_firstname = arr[0].area;
+
         document.getElementById("consumption").placeholder=arr[0].consumption;
-        document.getElementById("house").placeholder=arr[0].img;  
+        old_firstname = arr[0].consumption;
+
+        document.getElementById("house").placeholder=arr[0].img;
+        old_firstname = arr[0].img;
+
        });      
     });
 
@@ -80,10 +97,25 @@
 
       function updateUser(){
         var firstname = document.getElementById("firstname").placeholder=document.getElementById("firstname").value;
+        if(firstname == ""){
+          firstname = old_firstname;
+        }
         var lastname = document.getElementById("lastname").placeholder= document.getElementById("lastname").value;
+        if(lastname == ""){
+          lastname = old_lastname;
+        }
         var area = document.getElementById("area").placeholder= document.getElementById("area").value;
+        if(area == ""){
+          area = old_area;
+        }        
         var consumption = document.getElementById("consumption").placeholder=document.getElementById("consumption").value;
+        if(consumption == ""){
+          consumption = old_consumption;
+        }
         var img = document.getElementById("house").placeholder=document.getElementById("house").value;
+        if(img == ""){
+          img = old_img;
+        }
 
         /*Kalla på funktion som skickar in de värden som ska uppdateras till databasen*/
 
