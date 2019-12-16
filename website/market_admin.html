@@ -82,7 +82,8 @@ function updateMarketsPrice(){
   var price = document.getElementById("market_price").placeholder=document.getElementById("market_price").value;
   updateMarketPrice(price);
   document.getElementById("market_price").placeholder= price;
-    
+  window.location.reload();
+
 }  
 
 function logout(){
