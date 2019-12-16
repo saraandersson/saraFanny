@@ -194,8 +194,17 @@ function changePassword(old_password, new_password){
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
 
+       var arr = JSON.parse(xhttp.responseText);
+
+      if (arr.length > 0){
+         window.location.replace("/profile");
+      }else{
+        document.getElementById("errorMsg").innerHTML += '<br>Wrong password!';
+        
+      }
+
       //IF success
-        window.location.replace("/profile");
+        
       //Else error message
 
     }

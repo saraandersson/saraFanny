@@ -468,13 +468,13 @@ app.post('/getUser', function(req,res){
 
 
 app.post('/changePassword', (req, res) => {
-  db_user.getUser(req.session.Users,(err,result) =>{
-    if(req.body.old_password == result[0].password){ //Checks if the password is correct
-      console.log(result[0].password);
+  db_user.checkPassword(req.session.Users, req.body.old_password,(err,result) =>{
+    if(result.length > 0){ //Checks if the password is correct
+        console.log(result[0].password);
         db_user.changePassword(req.session.Users, req.body.new_password); //Change password
-        res.send("{}");
+        send_(err, result, res);
     }else{
-        res.send("{}");
+        send_(err, result, res);
     }
     });
   

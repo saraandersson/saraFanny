@@ -353,6 +353,18 @@ addUserProduction(id){
 	});
 }
 
+checkPassword(id, password, callback){
+	var getSql = `SELECT * FROM users WHERE id = ? AND password = ? `;
+		con.query(getSql, [id, password], function(err, result){
+			if(err){
+				callback(err, null);
+			}else{
+				//console.log("User production is fetched");
+				callback(err, result);
+			}
+		});
+}
+
 
 getUserProduction(id, callback){
 	var getSql = `SELECT * FROM user_production WHERE user_id = ?`;
