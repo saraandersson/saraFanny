@@ -661,7 +661,7 @@ app.post('/getMarketDemand', function(req,res){
             var marketDemand = result[0].amount - req.body.oldAmount;
 
 
-            console.log("IS CALLED: OLD: " + oldAmount + " NEW: " + result[0].amount);
+            console.log("IS CALLED: OLD: " + req.body.oldAmount + " NEW: " + result[0].amount);
             var procent = (result[0].amount/req.body.oldAmount - 1.00);
         
             //Arr = current market, market demand, procent
