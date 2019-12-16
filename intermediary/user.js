@@ -160,7 +160,7 @@ function editProfileAdmin(firstname, lastname, img){
     }
   }
 
-   var data = {firstname: firstname_val,lastname: lastname_val, img: img_val};
+   var data = {firstname: firstname_val, lastname: lastname_val, img: img_val};
 
   xhttp.send(JSON.stringify(data));
 
