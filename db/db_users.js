@@ -447,6 +447,18 @@ getCoalSimulators(id,callback){
 		});
 	}
 
+getCoalSimulator(id,callback){
+	var getSql = `SELECT * FROM coal WHERE id = ?`;
+		con.query(getSql,[id] , function(err, result){
+			if(err){
+				callback(err,null)
+			}else{
+				console.log("Coal simulator is fetched");
+				callback(err,result);
+			}
+		});
+	}
+
 startCoalSimulator(coal_id, status){
 	var setSql=`UPDATE coal SET status = ? WHERE id = ?`;
 		con.query(setSql, [status, coal_id], function(err, res){
