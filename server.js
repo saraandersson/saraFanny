@@ -426,8 +426,7 @@ app.post('/loginUser',function(req,res){
             send_(err, result, res);
           }else{
             console.log("RESULTAT EJ OK:" + result);
-            var errorR = 0;
-            send_(err, errorR, res);
+            send_(err, result, res);
           }
         }
       })
