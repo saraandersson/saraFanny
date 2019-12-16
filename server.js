@@ -464,6 +464,7 @@ app.post('/updateProfileAdmin', (req, res) => {
 
 app.post('/getUser', function(req,res){
      db_user.getUser(req.session.Users,(err,result) =>{
+      console.log(result);
         send_(err, result, res);
     });
   });
