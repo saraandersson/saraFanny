@@ -91,7 +91,7 @@ window.addEventListener("load", function () {
               if(obj[x].status == 0){
                txt+= "<tr><td>" + obj[x].id + "</td><td id = "+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' onclick='openFormStartSim("+ obj[x].id +")'>Start Simulator</button>" + "</td><td>"+ "</tr></td>";
               }if(obj[x].status==1){
-              txt+= "<tr><td>" + obj[x].id + "</td><td id = "+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" +"</td><td id = 'demo'>"+ getTimer()+ "</td><td>"+ "</tr></td>";
+              txt+= "<tr><td>" + obj[x].id + "</td><td id = "+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" +"</td><td id = 'demo'>"+ "</td><td>"+ "</tr></td>";
               }
               if(obj[x].status==2){
                 txt+= "<tr><td>" + obj[x].id + "</td><td id = "+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormProd("+ obj[x].id +")'>See Production</button>"+ "</td><td>"+"</tr></td>";
@@ -152,6 +152,7 @@ function startCoalProduction(){
   if(production>1000){
     var time = 20; 
   } 
+  getTimer();
   startCoalSimulator(production,coal_id,time);
   window.location.reload();
 }
@@ -198,7 +199,7 @@ function getTimer(){
   var countDownDate = new Date();
   countDownDate.setSeconds(countDownDate.getSeconds() + 30);
 
-  document.getElementById('demo').innerHTML = 30; 
+  //document.getElementById('demo').innerHTML = 30; 
 
 // Update the count down every 1 second
   var x = setInterval(function() {
