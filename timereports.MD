@@ -18,6 +18,7 @@
 | 2019-12-09  | 8       | Working with user setting for buffert and market, insert a new table in the database for user production and handle values to admin to see the prosumers system, fetching values for the market to the market sites, updated and handled sites for admin: profile, edit_profile and change password |
 | 2019-12-12  | 8       | Working with delete user, manager market side and market demand, and started working with simulator price after Niklas new descripton  |
 | 2019-12-13  | 4       | Working with simulator calls and sim price|
+| 2019-12-16  | 6.5       | Fixed some bugs, added error-messages, fetched some data to manager and prosumer sites, added functionality so a prosumer can remove their account, added so manager can see simulator price and change price on market|
  
 
 
