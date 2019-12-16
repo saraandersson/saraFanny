@@ -273,7 +273,7 @@ function setPrice(){
     var price = 0;
     var number = 0;
 
-    console.log("Finns idarr? : " + idarr[0]);
+    
 
     for(var j = 0; j < idarr.length; j ++){
 
@@ -290,7 +290,7 @@ function setPrice(){
                      number ++; 
                   }
                   price = price / number;
-                  console.log("Sim priset blir: " + price);
+                  //console.log("Sim priset blir: " + price);
                   db_user.updateMarketPriceSim(price);
                 });
               

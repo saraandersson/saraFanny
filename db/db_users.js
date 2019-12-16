@@ -36,7 +36,7 @@ class Db_user {
 			if(err){
 				throw err;
 			}else{
-				console.log("User is added");
+				//console.log("User is added");
 			}
 		});
 	}
@@ -50,7 +50,7 @@ class Db_user {
 			if(err){
 				callback(err, null);
 			}else{
-				console.log("User is fetched");
+				//console.log("User is fetched");
 				callback(err, result);
 			}
 		});
@@ -63,7 +63,7 @@ class Db_user {
 			if(err){
 				callback(err, null);
 			}else{
-				console.log("User production is fetched");
+				//console.log("User production is fetched");
 				callback(err, result);
 			}
 		});
@@ -77,7 +77,7 @@ class Db_user {
 			if(err){
 				callback(err, null);
 			}else{
-				console.log("User is deleted");
+				//console.log("User is deleted");
 				callback(err, result);
 			}
 		});
@@ -89,7 +89,7 @@ class Db_user {
 			if(err){
 				callback(err, null);
 			}else{
-				console.log("Från databas: " + result);
+				//console.log("Från databas: " + result);
 				callback(err, result);
 			}
 		});
@@ -101,7 +101,7 @@ class Db_user {
 			if(err){
 				callback(err, null);
 			}else{
-				console.log("Email is checked");
+				//console.log("Email is checked");
 				callback(err, result);
 			}
 		});
@@ -128,7 +128,7 @@ class Db_user {
 		con.query(setsql, [firstname, lastname, area, consumption, img, id], function(err, result){
 				if(err){
 				}else{
-					console.log("Profile updated");
+					//console.log("Profile updated");
 				}
 			});
 	}
@@ -138,7 +138,7 @@ class Db_user {
 		con.query(setsql, [firstname, lastname, img, id], function(err, result){
 				if(err){
 				}else{
-					console.log("Profile updated");
+					//console.log("Profile updated");
 				}
 			});
 	}
@@ -148,7 +148,7 @@ class Db_user {
 		con.query(setsql, [password, id], function(err, result){
 				if(err){
 				}else{
-					console.log("Lösenord ändrat");
+					//console.log("Lösenord ändrat");
 				}
 			});
 	}
@@ -161,7 +161,7 @@ class Db_user {
 			if(err){
 				callback(err, null);
 			}else{
-				console.log("User is fetched");
+				//console.log("User is fetched");
 				callback(err, result);
 			}
 		});
@@ -174,7 +174,7 @@ getAllProsumers(callback){
 		if(err){
 			callback(err, null);
 		}else{
-			console.log("Users is fetched");
+			//console.log("Users is fetched");
 			callback(err, result);
 		}
 	});
@@ -189,7 +189,7 @@ addBlocked(user_id, blocked, time){
 		if(err){
 			throw err;
 		}else{
-			console.log("Blocked table is added");
+			//console.log("Blocked table is added");
 		}
 	});
 }
@@ -200,7 +200,7 @@ getUserId(email, password, callback){
 		if(err){
 			callback(err, null);
 		}else{
-			console.log("Id is fetched");
+			//console.log("Id is fetched");
 			callback(err, result);
 		}
 	});
@@ -214,7 +214,7 @@ addSellBuy(user_id, sell, buy){
 		if(err){
 			throw err;
 		}else{
-			console.log("user_sell_buy table is added");
+			//console.log("user_sell_buy table is added");
 		}
 	});
 }
@@ -232,7 +232,7 @@ addSellBuy(user_id, sell, buy){
 				if(error){
 					console.log(error);
 				}else{
-					console.log("Buffert uppdaterad");
+					//console.log("Buffert uppdaterad");
 				}});
 			}
 		});
@@ -252,7 +252,7 @@ addSellBuy(user_id, sell, buy){
 				con.query(setsql, [amount], function(error, result){
 				if(error){
 				}else{
-					console.log("Market amount uppdaterad");
+					//console.log("Market amount uppdaterad");
 				}});
 			}
 		});
@@ -272,7 +272,7 @@ addSellBuy(user_id, sell, buy){
 		con.query(setsql, [value], function(error, result){
 		if(error){
 		}else{
-			console.log("Market price_sim uppdaterad");
+			//console.log("Market price_sim uppdaterad");
 		}});
 	}
 		
@@ -300,8 +300,8 @@ getSellBuy(id, callback){
 		if(err){
 			callback(err, null);
 		}else{
-			console.log("SellBuy is fetched");
-			console.log(result);
+			//console.log("SellBuy is fetched");
+			
 			callback(err, result);
 		}
 	});
@@ -313,7 +313,7 @@ updateSell(id, sell){
 		con.query(setSql, [sell, id], function(err, res){
 			if(err){	
 			}else{
-				console.log("Sell uppdaterat");
+				//console.log("Sell uppdaterat");
 			}
 		});
 }
@@ -324,7 +324,7 @@ updateBuy(id, buy){
 		con.query(setSql, [buy, id], function(err, res){
 			if(err){	
 			}else{
-				console.log("Buy uppdaterat");
+				//console.log("Buy uppdaterat");
 			}
 		});
 }
@@ -335,7 +335,7 @@ getMarket(callback){
 			if(err){
 				callback(err, null);
 			}else{
-				console.log("Market is fetched");
+				//console.log("Market is fetched");
 				callback(err, result);
 			}
 		});
@@ -348,7 +348,7 @@ addUserProduction(id){
 		if(err){
 			throw err;
 		}else{
-			console.log("User production is added");
+			//console.log("User production is added");
 		}
 	});
 }
@@ -360,7 +360,7 @@ getUserProduction(id, callback){
 			if(err){
 				callback(err, null);
 			}else{
-				console.log("User production is fetched");
+				//console.log("User production is fetched");
 				callback(err, result);
 			}
 		});
@@ -384,7 +384,7 @@ getProsumersProductionSimPrice(callback){
 			if(err){
 				callback(err, null);
 			}else{
-				console.log("All prosumers production is fetched");
+				//console.log("All prosumers production is fetched");
 				callback(err, result);
 			}
 		});
@@ -396,8 +396,8 @@ getProsumerProductionSimPrice(id, callback){
 			if(err){
 				callback(err, null);
 			}else{
-				console.log("One prosumers production is fetched");
-				console.log(result);
+				//console.log("One prosumers production is fetched");
+				
 				callback(err, result);
 			}
 		});
@@ -412,7 +412,7 @@ updateUserProduction(id, production, excess, wind, price){
 		con.query(setSql, [add_production, add_excess, production, wind , excess, price, id], function(err, res){
 			if(err){	
 			}else{
-				console.log("User production uppdaterat");
+				//console.log("User production uppdaterat");
 			}
 		});
 }
@@ -422,7 +422,7 @@ blockUser(id, block, time){
 		con.query(setSql, [block, time, id], function(err, res){
 			if(err){	
 			}else{
-				console.log("User blocked uppdaterat");
+				//console.log("User blocked uppdaterat");
 			}
 		});
 }
@@ -435,7 +435,7 @@ createCoalSimulator(id){
 			if(err){
 				throw err;
 			}else{
-				console.log("Coal simulator is added");
+				//console.log("Coal simulator is added");
 			}
 	});
 }
@@ -446,7 +446,7 @@ getCoalSimulators(id,callback){
 			if(err){
 				callback(err,null)
 			}else{
-				console.log("Coal simulators is fetched");
+				//console.log("Coal simulators is fetched");
 				callback(err,result);
 			}
 		});
@@ -458,7 +458,7 @@ getCoalSimulator(id,callback){
 			if(err){
 				callback(err,null)
 			}else{
-				console.log("Coal simulator is fetched");
+				//console.log("Coal simulator is fetched");
 				callback(err,result);
 			}
 		});
@@ -469,7 +469,7 @@ startCoalSimulator(coal_id, status){
 		con.query(setSql, [status, coal_id], function(err, res){
 			if(err){	
 			}else{
-				console.log("Coal simulator started");
+				//console.log("Coal simulator started");
 			}
 		});
 }
@@ -479,7 +479,7 @@ stopCoalSimulator(coal_id, status){
 		con.query(setSql, [status, coal_id], function(err, res){
 			if(err){	
 			}else{
-				console.log("Coal simulator stopped");
+				//console.log("Coal simulator stopped");
 			}
 		});
 }
@@ -490,7 +490,7 @@ startCoalProduction(coal_id, time, production){
 			if(err){
 				throw err;
 			}else{
-				console.log("Coal simulator production is started");
+				//console.log("Coal simulator production is started");
 			}
 		});
 
@@ -502,7 +502,7 @@ stopCoalProduction(status, coal_id){
 			if(err){
 			console.log(err);	
 			}else{
-				console.log("Coal production stopped");
+				//console.log("Coal production stopped");
 			}
 		});
 	}
@@ -513,7 +513,7 @@ getCoalProduction(coal_id,status,callback){
 			if(err){
 				callback(err,null)
 			}else{
-				console.log("Coal production is fetched");
+				//console.log("Coal production is fetched");
 				callback(err,result);
 			}
 		});
@@ -525,7 +525,7 @@ updateAdminProduction(market,buffert,id){
 			if(err){	
 				console.log(err);
 			}else{
-				console.log("Admin procent to market is changed");
+				//console.log("Admin procent to market is changed");
 			}
 		});
 }
