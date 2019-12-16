@@ -697,6 +697,7 @@ app.post('/startCoalSimulator', function(req,res){
       //Updates admin buffert and the market
       db_user.getSellBuy(req.session.Users,(err,result)=>{
         var marketValue = req.body.production*result[0].sell;
+        console.log("MARKET VALUE: " + marketValue);
         var buffertValue = req.body.production*result[0].buy;
         db_user.updateMarket(marketValue);
         db_user.updateBuffert(req.session.Users,buffertValue);
