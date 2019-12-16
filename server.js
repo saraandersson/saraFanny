@@ -689,20 +689,26 @@ app.post('/startCoalSimulator', function(req,res){
 
     setTimeout(function(){
       db_user.getCoalSimulator(req.body.coal_id,(err,result)=>{
+        /*kanske bättre lösning med clearInterval men blev problem med vilket intervall som skulle
+        försvinna*/
         if(result[0].status==1){
           db_user.startCoalSimulator(req.body.coal_id,2);
           db_user.startCoalProduction(req.body.coal_id, req.body.time, req.body.production);
           setTimeout(function(){  
-      //stops the production
-          db_user.stopCoalProduction(0,req.body.coal_id);
-          db_user.stopCoalSimulator(req.body.coal_id,0);
+          db_user.getCoalSimulator(req.body.coal_id,(err,results)=>{
+            if(results[0].status==2){
+              //stops the production
+            db_user.stopCoalProduction(0,req.body.coal_id);
+            db_user.stopCoalSimulator(req.body.coal_id,0);
       //Updates admin buffert and the market
-          db_user.getSellBuy(req.session.Users,(err,result)=>{
-          var marketValue = req.body.production*result[0].sell;
-          var buffertValue = req.body.production*result[0].buy;
-          db_user.updateMarket(marketValue);
-          db_user.updateBuffert(req.session.Users,buffertValue);
-      });
+            db_user.getSellBuy(req.session.Users,(err,result1)=>{
+            var marketValue = req.body.production*result1[0].sell;
+            var buffertValue = req.body.production*result1[0].buy;
+            db_user.updateMarket(marketValue);
+            db_user.updateBuffert(req.session.Users,buffertValue);
+              });
+            }
+          });  
 
     },req.body.time*1000)
         }
