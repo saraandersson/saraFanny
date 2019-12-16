@@ -75,6 +75,7 @@
   window.addEventListener("load", function () {
 
        getUserValues(function(arr){
+        window.alert(arr);
        
         document.getElementById("firstname").placeholder= arr[0].firstname;
         old_firstname = arr[0].firstname;
@@ -88,7 +89,7 @@
        });      
     });
 
-  
+
 
 
 
