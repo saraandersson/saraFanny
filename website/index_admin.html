@@ -91,7 +91,7 @@ window.addEventListener("load", function () {
               if(obj[x].status == 0){
                txt+= "<tr><td>" + obj[x].id + "</td><td id = "+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' onclick='openFormStartSim("+ obj[x].id +")'>Start Simulator</button>" + "</td><td>"+ "</tr></td>";
               }if(obj[x].status==1){
-              txt+= "<tr><td>" + obj[x].id + "</td><td id = "+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" +"</td><td id = 'demo'>"+getTimer()+ "</td><td>"+ "</tr></td>";
+              txt+= "<tr><td>" + obj[x].id + "</td><td id = "+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" +"</td><td id = 'demo'>"+ "</td><td>"+ "</tr></td>";
               }
               if(obj[x].status==2){
                 txt+= "<tr><td>" + obj[x].id + "</td><td id = "+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormProd("+ obj[x].id +")'>See Production</button>"+ "</td><td>"+"</tr></td>";
@@ -191,30 +191,6 @@ async function getCoalUserProduction(id,fn){
 
 function closeFormProdSim(){
   document.getElementById("myFormProdSim").style.display = "none";
-}
-
-function getTimer(){
-  //var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
-  var countDownDate = new Date();
-  countDownDate.setSeconds(countDownDate.getSeconds() + 30);
-
-  //document.getElementById('demo').innerHTML = 30; 
-
-// Update the count down every 1 second
-  var x = setInterval(function() {
-
-  // Get today's date and time
-  var now = new Date().getTime();
-    
-  // Find the distance between now and the count down date
-  var distance = countDownDate - now;
-    
-  // Time calculations for seconds
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-  // Output the result in an element with id="demo"
-  document.getElementById('demo').innerHTML = seconds; 
-}, 1000);
 }
 
 
