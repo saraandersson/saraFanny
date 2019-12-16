@@ -38,6 +38,14 @@
       float:left;
       display:inline-block;
     }
+
+      #removeUserButton{ 
+      width: 49%;
+      position: relative; 
+      float:left;
+      display:inline-block;
+    
+    }
     
 
     /* Remove the navbar's default margin-bottom and rounded borders hej*/ 
@@ -157,12 +165,11 @@
                 <form action="/edit_profile" class="inline">
                   <button class="btn btn-default">Edit profile</button>
               </form>
-            </div>
-              <div id = "removeProfileButton">
-                <form class="inline">
-                  <button class="btn btn-default" onclick = "removeProfile()">Remove profile</button>
-              </form>
-            </div>
+              </div>
+              <div id = "removeUserButton">
+                <button class="btn btn-default" type="submit" name="submit" onclick = "removeProfile()">Remove user</button> 
+              </div>
+              
             
             </div>
         </div>
