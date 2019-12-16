@@ -196,11 +196,11 @@ function checkBlackout(production){
     });
 }
 
-function async checkCurrentMarket(fn){
-        getMarket((err,result) =>{
+async function checkCurrentMarket(fn){
+      getMarket((err,result) =>{
           fn(result);
               });
-}
+          }
 
 
 /*uppdaterar sidan varje minut*/
