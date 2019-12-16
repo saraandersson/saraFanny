@@ -96,6 +96,18 @@
       deleteUserProsumer();
     }
 
+    function confirmRemove() {
+      
+      if (confirm("You are going to remove your account. Do you want to continue?")) {
+
+        removeProfile();
+        
+      } else {
+        
+      }
+      
+    }
+
     function logout(){
       logOut();
     }
@@ -167,7 +179,7 @@
               </form>
               </div>
               <div id = "removeUserButton">
-                <button class="btn btn-default" type="submit" name="submit" onclick = "removeProfile()">Remove user</button> 
+                <button class="btn btn-default" type="submit" name="submit" onclick = "confirmRemove()">Remove user</button> 
               </div>
               
             
