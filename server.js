@@ -359,7 +359,7 @@ async function simulatorCall(id, number,  fn){
 
 app.post('/createUser', function(req,res){
 
-  db_user.emailAvailable(req.body.username,(err,result) =>{
+  db_user.emailAvailable(req.body.email,(err,result) =>{
         if(err){
           console.error(err);
         }else{
