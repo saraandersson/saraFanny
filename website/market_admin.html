@@ -65,6 +65,7 @@
           document.getElementById("market_amount").innerHTML= currentMarket + " kWh";
           document.getElementById("market_demand").innerHTML= marketDemand + " kWh";
           document.getElementById("procentage").innerHTML= procentage + "%";
+          document.getElementById("sim_price").innerHTML= arr[3] + "%";
 
 
        });  
@@ -125,6 +126,10 @@ function logout(){
              <div class="form-group">
                 <h3>The market change in procentage: </h3>
                  <div class="well" id = "procentage"></div>
+            </div>
+            <div class="form-group">
+                <h3>Calculated simulator price: </h3>
+                 <div class="well" id = "sim_price"></div>
             </div>
     </div>
   </div>
