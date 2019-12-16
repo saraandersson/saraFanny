@@ -36,6 +36,10 @@ function checkLogin(email, password){
       var arr = JSON.parse(xhttp.responseText);
       if (arr.length > 0){
         window.location.replace("../");
+      }else{
+
+        document.getElementById("errorMsg").innerHTML += '<br>Wrong email or password!';
+
       }
       
     }

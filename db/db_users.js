@@ -405,7 +405,6 @@ getProsumerProductionSimPrice(id, callback){
 
 
 updateUserProduction(id, production, excess, wind, price){
-	console.log("ID: " + id + "production : " + production + "excess : " + excess + "Wind: " + wind + "Price: " + price);
 	var add_production = production;
 	var add_excess = excess;
 	var setSql=`UPDATE user_production SET total_production = total_production + ?, total_excess = total_excess + ?, latest_production = ?, latest_wind = ?, latest_excess = ?, sim_price = ? WHERE user_id = ?`;

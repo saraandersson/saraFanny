@@ -417,7 +417,6 @@ app.post('/loginUser',function(req,res){
         if(err){
           console.error(err);
         }else{
-          console.log("SIZE:" + result.length);
           if(result.length > 0 && (result[0].role_id == 0||result[0].role_id == 1)){
             req.session.role_id = result[0].role_id;
             req.session.Users = result[0].id; 
@@ -427,7 +426,8 @@ app.post('/loginUser',function(req,res){
             send_(err, result, res);
           }else{
             console.log("RESULTAT EJ OK:" + result);
-            send_(err, result, res);
+            var errorR = 0;
+            send_(err, errorR, res);
           }
         }
       })
@@ -661,7 +661,6 @@ app.post('/getMarketDemand', function(req,res){
         
             //Arr = current market, market demand, procent
             var arr = [result[0].amount, marketDemand, procent];
-            console.log("HÄR KOMMER ARRAYEN: " + arr);
             send_(err, arr, res);
           });
         
