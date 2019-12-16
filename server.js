@@ -417,6 +417,7 @@ app.post('/loginUser',function(req,res){
         if(err){
           console.error(err);
         }else{
+          
           if(result.length > 0 && (result[0].role_id == 0||result[0].role_id == 1)){
             req.session.role_id = result[0].role_id;
             req.session.Users = result[0].id; 
