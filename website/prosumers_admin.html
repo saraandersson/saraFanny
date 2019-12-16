@@ -191,12 +191,16 @@ function deleteProsumerCall(id, fn){
 }
 
 function checkBlackout(production){
-
+    checkCurrentMarket(function(arr){
+        console.log(arr[0].amount);
+    });
 }
 
-/*function async checkBlackout(fn){
-
-}*/
+function async checkCurrentMarket(fn){
+        getMarket((err,result) =>{
+          fn(result);
+              });
+}
 
 
 /*uppdaterar sidan varje minut*/
@@ -279,6 +283,7 @@ setInterval(function() {
                   <th scope='col'>Total production</th>
                   <th scope='col'>Total profit</th>
                   <th scope='col'>Blocked</th>
+                  <th scope='col'></th>
                   <th scope='col'>Have Blackout</th>
                   <th scope='col'></th>
                 </tr>
