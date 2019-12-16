@@ -366,12 +366,9 @@ app.post('/createUser', function(req,res){
           if(result.length == 0){
             db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, req.body.password, "hejsan", req.body.area, 0, req.body.consumption);
             db_user.getUserId(req.body.email, req.body.password, (error, results) =>{
-              req.session.role_id = 0;
-              req.session.Users = results[0].id; 
-              db_user.setOnline(req.session.Users, 1);
-              db_user.addBlocked(req.session.Users, 0, 0);
-              db_user.addSellBuy(req.session.Users, 0.5 , 0.5);
-              db_user.addUserProduction(req.session.Users);
+              db_user.addBlocked(results[0].id, 0, 0);
+              db_user.addSellBuy(results[0].id, 0.5 , 0.5);
+              db_user.addUserProduction(results[0].id);
             });
             
             send_(err, result, res);

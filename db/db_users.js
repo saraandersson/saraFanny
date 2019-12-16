@@ -112,7 +112,12 @@ class Db_user {
 		con.query(setsql, [online, id], function(err, result){
 				if(err){
 				}else{
-					console.log("Set online/offline");
+					if(online == 0){
+						console.log("Set offline");
+					}else{
+						console.log("Set online");
+					}
+					
 				}
 			});
 
