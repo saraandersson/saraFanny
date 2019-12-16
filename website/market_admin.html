@@ -42,9 +42,14 @@
 
     window.addEventListener("load", function () {
 
-      test();
-      setInterval(test,10000);
+      marketDemand(function(arr){
+        old_amount = arr[0];
+        test();
+        setInterval(test,10000);
 
+      });
+
+      
     });
 
    function test(){
@@ -70,6 +75,8 @@
           fn(result);
           });
     }
+
+    
 
 function logout(){
   logOut();
