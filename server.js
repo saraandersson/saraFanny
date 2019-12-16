@@ -329,6 +329,7 @@ async function simulatorCall(id, number,  fn){
                   var value_buffert = results[2] * (1.00 - r[0].sell);
                   var value_market = results[2] * r[0].sell;
                   db_user.updateBuffert(id, value_buffert);
+                  console.log("UPDATE MARKET VALUE SELL: " + value_market);
                   db_user.updateMarket(value_market);
                   fn(number);
                   
@@ -345,6 +346,7 @@ async function simulatorCall(id, number,  fn){
             var value_buffert = results[2] * (1.00 -r[0].buy);
             var value_market = results[2] * r[0].buy;
             db_user.updateBuffert(id, value_buffert);
+            console.log("UPDATE MARKET VALUE BUY: " + value_market);
             db_user.updateMarket(value_market);
             fn(number);
 
