@@ -193,13 +193,14 @@ function deleteProsumerCall(id, fn){
 /*Osäker på denna om det är så han menar med blackout men ska ta en till titt*/
 function checkBlackout(production){
     checkCurrentMarket(function(arr){
-        console.log(arr[0].amount);
+        return "test";
+        /*
         if(production==0 && arr[0].amount==0){
           return "Have Blackout";
         }
         else{
           return "No Blackout";
-        }
+        }*/
     });
 }
 
@@ -290,7 +291,7 @@ setInterval(function() {
                   <th scope='col'>Total production</th>
                   <th scope='col'>Total profit</th>
                   <th scope='col'>Blocked</th>
-                  <th scope='col'></th>
+                  <th scope='col'>Delete</th>
                   <th scope='col'>Have Blackout</th>
                   <th scope='col'></th>
                 </tr>
