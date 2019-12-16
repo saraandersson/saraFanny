@@ -68,28 +68,28 @@
 
 <script type="text/javascript">
 
+
       var old_firstname;
       var old_lastname;
+      
       var old_img;
 
-  window.addEventListener("load", function () {
+      window.addEventListener("load", function () {
 
        getUserValues(function(arr){
-        window.alert(arr);
-       
+        //console.log(arr);
         document.getElementById("firstname").placeholder= arr[0].firstname;
         old_firstname = arr[0].firstname;
 
         document.getElementById("lastname").placeholder= arr[0].lastname;
         old_lastname = arr[0].lastname;
 
+        
         document.getElementById("img").placeholder=arr[0].img;
         old_img = arr[0].img;
 
        });      
-    });
-
-
+      });
 
 
 
@@ -108,11 +108,17 @@
         var lastname = document.getElementById("lastname").placeholder= document.getElementById("lastname").value;
         if(lastname == ""){
           lastname = old_lastname;
+        }
+               
         
         var img = document.getElementById("img").placeholder=document.getElementById("img").value;
         if(img == ""){
           img = old_img;
         }
+
+        /*Kalla på funktion som skickar in de värden som ska uppdateras till databasen*/
+
+        window.alert("Firstname:  " + firstname + " Lastname: " + lastname +  " Img: " + img    );
 
         editProfileAdmin(firstname, lastname, img);
 
@@ -123,8 +129,6 @@
 function logout(){
   logOut();
 }
-      
-
       
 </script>
 
