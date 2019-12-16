@@ -190,7 +190,8 @@ function deleteProsumerCall(id, fn){
               });
 }
 
-/*Osäker på denna om det är så han menar med blackout men ska ta en till titt*/
+/*Osäker på denna om det är så han menar med blackout men ska ta en till titt
+man kanske ska ha buffert istället total produktion*/
 function checkBlackout(production){
   var market = 0;
     checkCurrentMarket(function(arr){

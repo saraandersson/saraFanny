@@ -91,7 +91,7 @@ window.addEventListener("load", function () {
               if(obj[x].status == 0){
                txt+= "<tr><td>" + obj[x].id + "</td><td id = "+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' onclick='openFormStartSim("+ obj[x].id +")'>Start Simulator</button>" + "</td><td>"+ "</tr></td>";
               }if(obj[x].status==1){
-              txt+= "<tr><td>" + obj[x].id + "</td><td id = "+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" + "</td><td>"+ "</tr></td>";
+              txt+= "<tr><td>" + obj[x].id + "</td><td id = "+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" +"</td><td id='test'>"+ "</td><td>"+ "</tr></td>";
               }
               if(obj[x].status==2){
                 txt+= "<tr><td>" + obj[x].id + "</td><td id = "+obj[x].id+">" + obj[x].status + "</td><td>"  +  "<button class='btn btn-default' onclick='openFormStopSim("+ obj[x].id +")'>Stop Simulator</button>" + "</td><td>"  +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormProd("+ obj[x].id +")'>See Production</button>"+ "</td><td>"+"</tr></td>";
@@ -142,6 +142,7 @@ function closeFormStartCoalSim() {
   document.getElementById("myFormStartSim").style.display = "none";
 }
 
+/*Ska läggas till fler värden för produktion, dessa är endast för test*/
 function startCoalProduction(){ 
   var production = document.getElementById("production").value;
   var coal_id = document.getElementById("coalId").innerHTML;
@@ -151,6 +152,7 @@ function startCoalProduction(){
   if(production>1000){
     var time = 20; 
   }
+  document.getElementById("test").innerHTML = "testar"; 
   startCoalSimulator(production,coal_id,time);
   window.location.reload();
 }
@@ -191,6 +193,8 @@ async function getCoalUserProduction(id,fn){
 function closeFormProdSim(){
   document.getElementById("myFormProdSim").style.display = "none";
 }
+
+
 
 
 setInterval(function() {
