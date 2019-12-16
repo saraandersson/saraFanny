@@ -35,7 +35,7 @@ function checkLogin(email, password){
            //alert(xhttp.responseText);
       var arr = JSON.parse(xhttp.responseText);
       if (arr.length > 0){
-        window.location.replace("../");
+        window.location.replace("/index");
       }else{
 
         document.getElementById("errorMsg").innerHTML += '<br>Wrong email or password!';
@@ -93,7 +93,7 @@ function logOut(){
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-        window.location.replace("../");
+        window.location.replace("/index");
     }
   }
 
@@ -352,7 +352,7 @@ function deleteUserProsumer(){
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-       window.location.replace("../");
+       window.location.replace("/index");
     
 
     }
