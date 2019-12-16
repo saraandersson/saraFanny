@@ -345,6 +345,25 @@ function deleteUser(id, callback){
 
 }
 
+
+function deleteUserProsumer(){
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "/deleteUserProsumer", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       window.location.replace("../");
+    
+
+    }
+  }
+
+   var data = {};
+
+  xhttp.send(JSON.stringify(data));
+
+}
+
 function getAllProsumers(callback){
   var xhttp = new XMLHttpRequest();
   xhttp.open("POST", "/getAllProsumers", true);

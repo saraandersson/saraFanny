@@ -84,6 +84,9 @@
           });
       }
 
+    function removeProfile(){
+      deleteUserProsumer();
+    }
 
     function logout(){
       logOut();
@@ -153,6 +156,10 @@
               <div id = "editProfileButton">
                 <form action="/edit_profile" class="inline">
                   <button class="btn btn-default">Edit profile</button>
+              </form>
+              <div id = "editProfileButton">
+                <form lass="inline">
+                  <button class="btn btn-default" onclick = "removeProfile()">Remove profile</button>
               </form>
             </div>
             </div>

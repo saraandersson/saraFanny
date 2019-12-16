@@ -572,8 +572,18 @@ app.post('/unblockUser', function(req,res){
      db_user.blockUser(req.body.id, 0, 0);
   });
 
+//Admin uses this function
+
 app.post('/deleteUser', function(req,res){
      db_user.deleteUser(req.body.id,(err,result)=>{
+      res.send("{}");
+    });
+  });
+
+//Prosumer uses this function
+
+app.post('/deleteUserProsumer', function(req,res){
+     db_user.deleteUser(req.session.Users,(err,result)=>{
       res.send("{}");
     });
   });
