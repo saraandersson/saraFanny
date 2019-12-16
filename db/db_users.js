@@ -252,7 +252,7 @@ addSellBuy(user_id, sell, buy){
 				con.query(setsql, [amount], function(error, result){
 				if(error){
 				}else{
-					//console.log("Market amount uppdaterad");
+					console.log("Market amount uppdaterad");
 				}});
 			}
 		});

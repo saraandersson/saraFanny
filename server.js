@@ -659,6 +659,7 @@ app.post('/getMarketDemand', function(req,res){
           db_user.getMarket((err,result)=>{
             //If - people have been buying more, if + people have been selling more
             var marketDemand = result[0].amount - req.body.oldAmount;
+            console.log("IS CALLED");
             var procent = (result[0].amount/req.body.oldAmount - 1.00);
         
             //Arr = current market, market demand, procent
