@@ -131,6 +131,14 @@ function logout(){
                 <h3>Calculated simulator price: </h3>
                  <div class="well" id = "sim_price"></div>
             </div>
+            <div class="form-group">
+                <label class="control-label">Set market price:</label>
+                <input type="text" placeholder="" name="market_price" maxlength="255" class="form-control text-box single-line" id = "market_price">
+            </div>
+          <div class="form-group_2">
+              <div id = "saveButton">
+                <button class="btn btn-default" type="submit" name="submit" onclick = "updateMarketPrice()">Update</button> 
+              </div>
     </div>
   </div>
 </div>
