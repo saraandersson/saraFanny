@@ -611,7 +611,7 @@ function updateAdminProduction(market,buffert){
   xhttp.send(JSON.stringify(data));
 }
 
-function sendToMarket(value){
+function sendToMarket(value, callback){
   var value_val = value;
   var xhttp = new XMLHttpRequest();
   xhttp.open("POST", "/sendToMarket", true);
@@ -628,6 +628,8 @@ function sendToMarket(value){
           document.getElementById("errorMsg").innerHTML = '';
         document.getElementById("okMsg").innerHTML = '<br> Sent to market.';
       }
+
+      callback(err,arr);
            
 
       
