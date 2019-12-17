@@ -124,6 +124,7 @@ class Db_user {
 		}
 
 	setHasPower(id, power){
+		console.log("Går in i setHasPower");
 		var setsql=`UPDATE users SET power = ? WHERE id = ?`;
 		con.query(setsql, [power, id], function(err, result){
 				if(err){
