@@ -61,7 +61,9 @@
 
           if(arr[0].has_power == 0){
             document.getElementById("errorMsg").innerHTML = '<br> You don´t have any power right now.';
+            document.getElementById("okMsg").innerHTML = '';
           }else{
+            document.getElementById("errorMsg").innerHTML = '';
             document.getElementById("okMsg").innerHTML = '<br> You have power.';
           }
 
