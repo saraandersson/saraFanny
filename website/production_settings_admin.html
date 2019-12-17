@@ -153,7 +153,14 @@ function transferToMarket(){
   var value = document.getElementById("transfer").placeholder=document.getElementById("transfer").value;
   
   sendPowerToMarket(value, function(answer){
-    document.getElementById("transfer").placeholder= 0;
+    document.getElementById("transfer").placeholder= "";
+    if(answer[0] == 0){
+        document.getElementById("errorMsg").innerHTML = '<br> You don´t have that much in your buffert.';
+        document.getElementById("okMsg").innerHTML = '';
+      }else{
+          document.getElementById("errorMsg").innerHTML = '';
+        document.getElementById("okMsg").innerHTML = '<br> Sent to market.';
+      }
     
   });
 

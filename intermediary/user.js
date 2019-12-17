@@ -621,13 +621,7 @@ function sendToMarket(value, callback){
 
       var arr = JSON.parse(xhttp.responseText);
 
-      if(arr[0] == 0){
-        document.getElementById("errorMsg").innerHTML = '<br> You don´t have that much in your buffert.';
-        document.getElementById("okMsg").innerHTML = '';
-      }else{
-          document.getElementById("errorMsg").innerHTML = '';
-        document.getElementById("okMsg").innerHTML = '<br> Sent to market.';
-      }
+    
 
       callback(err,arr);
            
