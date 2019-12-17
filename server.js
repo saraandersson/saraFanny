@@ -474,7 +474,7 @@ app.post('/loginUser',function(req,res){
           console.error(err);
         }else{
           
-          if(result.length > 0 && (result[0].role_id == 0||result[0].role_id == 1)){
+          if(result.length > 0 ){
             req.session.role_id = result[0].role_id;
             req.session.Users = result[0].id; 
             console.log("RESULTAT OK:" + result);
@@ -653,6 +653,11 @@ app.post('/updateMarketPrice', function(req,res){
   });
 
 app.post('/sendToMarket', function(req,res){
+
+  //TEMP ID, ska försöka fixa
+
+      console.log(req.session.Users);
+
       db_user.getBuffert(35, (err, result)=>{
         if(result[0].buffert > req.body.value){
 
