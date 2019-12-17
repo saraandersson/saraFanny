@@ -125,6 +125,9 @@ function updateValues(){
      document.getElementById("buffert").innerHTML = Math.round((1 - arr[0].sell) * 100); 
      document.getElementById("marketValue").innerHTML = Math.round(arr[0].sell * 100); 
 
+     document.getElementById("errorMsg").innerHTML = '';
+    document.getElementById("okMsg").innerHTML = '';
+
     x = Math.round((1 - arr[0].sell) * 100);
     color = 'linear-gradient(90deg, rgb(117, 252, 117)' + x + '% , rgb(214, 214, 214)' + x + '%)';
     slider.style.background = color;
