@@ -351,6 +351,10 @@ async function simulatorCall(id, number,  fn){
 
 
             //Checks if its enough in the buffert
+
+              var temp2 = result[0].buffert + value_buffert;
+              console.log(temp2);
+
             if((result[0].buffert + value_buffert) > 0){
               db_user.updateBuffert(id, value_buffert);
             }else{ 
@@ -363,12 +367,18 @@ async function simulatorCall(id, number,  fn){
 
             db_user.getMarket((er,re)=>{
                 //Checks if its enough on the market
+                var temp = re[0].amount + value_market + remaining;
+                console.log(temp);
+
                 if((re[0].amount + value_market + remaining) > 0){
+                  console.log("går in i if");
+
                   value_market += remaining;
                    db_user.updateMarket(value_market);
                    //Set has_power = 1
                    db_user.setHasPower(id, 1);
                 }else{
+                  console.log("går in i else");
                   //If not, the user has not enough power
                   var updatemarket = -(re[0].amount);
                   //Market is now 0
