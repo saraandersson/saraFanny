@@ -19,6 +19,7 @@
 | 2019-12-12  | 8       | Working with delete user, manager market side and market demand, and started working with simulator price after Niklas new descripton  |
 | 2019-12-13  | 4       | Working with simulator calls and sim price|
 | 2019-12-16  | 6.5       | Fixed some bugs, added error-messages, fetched some data to manager and prosumer sites, added functionality so a prosumer can remove their account, added so manager can see simulator price and change price on market|
+| 2019-12-17  | 8       | Added buffert and markets checks and prosumer blackout, fetch that data to manager, worked with links, some css, and added so the manager can send power from his/her buffert to market|
  
 
 
