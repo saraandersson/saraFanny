@@ -153,6 +153,7 @@ class Db_user {
 	}
 
 	getBuffert(id, callback){
+		console.log("ID ÄR: " + id);
 		var getSql = `SELECT buffert FROM users WHERE id = ?`;
 		con.query(getSql, [id], function(err, result){
 			if(err){
