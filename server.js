@@ -128,7 +128,7 @@ app.route('/login')
       });
 
 
-    app.route('/production_settings_customer')
+    app.route('/production_settings')
     .get((req,res)=>{
      if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
           res.redirect('website/production_settings_customer.html');
@@ -136,7 +136,7 @@ app.route('/login')
 
       //ÄNDRA HÄR
       else if(req.session.Users && req.cookies.user_id && req.session.role_id == 1){
-          res.redirect('/website/index_admin.html');
+          res.redirect('/website/production_settings_admin.html');
         } 
       else {
            res.redirect('/website/index.html');
@@ -169,18 +169,8 @@ app.route('/login')
         }
       });
 
-    app.route('/production_settings_admin')
-    .get((req,res)=>{
-     if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
-          res.redirect('/website/index_customer.html');
-      }
-      else if(req.session.Users && req.cookies.user_id && req.session.role_id == 1){
-          res.redirect('/website/production_settings_admin.html');
-        } 
-      else {
-           res.redirect('/website/index.html');
-        }
-      });
+    
+      
 
     app.route('/change_password')
     .get((req,res)=>{
