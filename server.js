@@ -200,6 +200,7 @@ app.route('/login')
 
      app.route('/website/index_admin.html')
     .get((req,res)=>{
+      console.log("Går hit ju");
      if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
           res.redirect('/website/index_customer.html');
       }
