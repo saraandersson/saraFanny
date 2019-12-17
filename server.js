@@ -185,6 +185,31 @@ app.route('/login')
         }
       });
 
+    app.route('/website/index_customer.html')
+    .get((req,res)=>{
+     if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
+          res.redirect('/website/index_customer.html');
+      }
+      else if(req.session.Users && req.cookies.user_id && req.session.role_id == 1){
+          res.redirect('/website/index_admin.html');
+        } 
+      else {
+           res.redirect('/website/index.html');
+        }
+      });
+
+     app.route('/website/index_admin.html')
+    .get((req,res)=>{
+     if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
+          res.redirect('/website/index_customer.html');
+      }
+      else if(req.session.Users && req.cookies.user_id && req.session.role_id == 1){
+          res.redirect('/website/index_admin.html');
+        } 
+      else {
+           res.redirect('/website/index.html');
+        }
+      });
 
     app.route('/*')
     .get((req,res)=>{
