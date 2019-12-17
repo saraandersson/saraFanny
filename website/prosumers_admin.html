@@ -94,9 +94,9 @@ window.addEventListener("load", function () {
             //Så att endast prosumers syns, ej admin
             if(obj[x].role_id == 0){
               if(obj[x].blocked == 0){
-               txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>" +status(obj[x].id,obj[x].online) + "</td><td>" +statusPower(obj[x].id,obj[x].has_power) + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormBlock("+ obj[x].id +")'>Block prosumer</button>" + "</td><td>" + "<button class='btn btn-default' id =" + obj[x].id + " onclick='deleteProsumer("+ obj[x].id +")'>Delete prosumer</button>"+ "</td><td>"+ checkBlackout(obj[x].total_production)+"</tr></td>";
+               txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>" +status(obj[x].id,obj[x].online)  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormBlock("+ obj[x].id +")'>Block prosumer</button>" + "</td><td>" + "<button class='btn btn-default' id =" + obj[x].id + " onclick='deleteProsumer("+ obj[x].id +")'>Delete prosumer</button>"+ "</td><td>"+ statusBlackout(obj[x].id,obj[x].has_power) +"</tr></td>";
               }else{
-                txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online + "</td><td>" +statusPower(obj[x].id,obj[x].has_power)  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" + "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormUnblock("+ obj[x].id +")'>Unblock prosumer</button>"+ "</td><td>" + "<button class='btn btn-default' id =" + obj[x].id + " onclick='deleteProsumer("+ obj[x].id +")'>Delete prosumer</button>"+ "</td><td>"+ checkBlackout(obj[x].total_production)+ "</tr></td>";
+                txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online + "</td><td>"  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" + "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormUnblock("+ obj[x].id +")'>Unblock prosumer</button>"+ "</td><td>" + "<button class='btn btn-default' id =" + obj[x].id + " onclick='deleteProsumer("+ obj[x].id +")'>Delete prosumer</button>"+ "</td><td>"+ statusBlackout(obj[x].id,obj[x].has_power) + "</tr></td>";
               }
             }
           }
@@ -134,12 +134,12 @@ window.addEventListener("load", function () {
     }
    }
 
-   function statusPower(id, status){
+   function statusBlackout(id, status){
     if(status==0){
-      return "No";
+      return "Yes";
     }
     else{
-      return "Yes"; 
+      return "No"; 
     }
    }
 
@@ -199,20 +199,7 @@ function deleteProsumerCall(id, fn){
               });
 }
 
-/*Osäker på denna om det är så han menar med blackout men ska ta en till titt
-man kanske ska ha buffert istället total produktion*/
-function checkBlackout(production){
-  var market = 0;
-    checkCurrentMarket(function(arr){
-      market = arr[0].amount;
-    });
-    if(production==0 && market==0){
-          return "Have Blackout";
-        }
-        else{
-          return "No Blackout";
-        }
-}
+
 
 async function checkCurrentMarket(fn){
       getMarket((err,result) =>{
@@ -298,12 +285,11 @@ setInterval(function() {
                   <th scope='col'>Lastname</th>
                   <th scope='col'>Email</th>
                   <th scope='col'>Online</th>
-                  <th scope='col'>Power</th>
                   <th scope='col'>Total production</th>
                   <th scope='col'>Total profit</th>
                   <th scope='col'>Blocked</th>
                   <th scope='col'>Delete</th>
-                  <th scope='col'>Have Blackout</th>
+                  <th scope='col'>Blackout</th>
                   <th scope='col'></th>
                 </tr>
               </thead>
