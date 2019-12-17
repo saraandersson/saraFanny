@@ -611,8 +611,8 @@ function updateAdminProduction(market,buffert){
   xhttp.send(JSON.stringify(data));
 }
 
-function sendToMarket(price){
-  var price_val = value;
+function sendToMarket(value){
+  var value_val = value;
   var xhttp = new XMLHttpRequest();
   xhttp.open("POST", "/sendToMarket", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
