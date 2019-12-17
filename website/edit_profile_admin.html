@@ -56,6 +56,14 @@
       min-height:200px;
   }
 
+  .myBox{
+  display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    background-color: white;
+}
+
   /* Hide the carousel text when the screen is less than 600 pixels wide */
   @media (max-width: 600px) {
     .carousel-caption {
@@ -159,7 +167,8 @@ function logout(){
 <div class='card-body'>
     <div class='card-title'><h2 align = "center"> Edit profile </h2></div>
   <div class="container body-content">
-        <div class="col-sm-offset-4 col-md-offset-4">
+    <br>
+        <div class="myBox">
             <div class="form-group">
                 <label class="control-label">Firstname:</label>
                 <input type="text" placeholder="" name="firstname" id = "firstname" maxlength="255" class="form-control text-box single-line">
