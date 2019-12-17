@@ -611,32 +611,21 @@ function updateAdminProduction(market,buffert){
   xhttp.send(JSON.stringify(data));
 }
 
-function sendToMarket(value, callback){
-  var value_val=value;
+function sendToMarket(price){
+  var price_val = value;
   var xhttp = new XMLHttpRequest();
   xhttp.open("POST", "/sendToMarket", true);
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-           // Typical action to be performed when the document is ready:
-           //alert(xhttp.responseText);
+           
 
-      var arr = JSON.parse(xhttp.responseText);
-
-      if(arr[0].buffert < value_val ){
-        document.getElementById("errorMsg").innerHTML = '<br> You don´t have that much in your buffert.';
-        document.getElementById("okMsg").innerHTML = '';
-      }else{
-          document.getElementById("errorMsg").innerHTML = '';
-        document.getElementById("okMsg").innerHTML = '<br> Sent to market.';
-      }
-      callback(null, arr); 
-
-
-      }
+      
+      
     }
+  }
     var data = {value: value_val};
-
+  
     xhttp.send(JSON.stringify(data));
 }
 
@@ -644,3 +633,13 @@ function sendToMarket(value, callback){
 
 
 
+
+/*
+if(result[0].buffert == 0){
+        document.getElementById("errorMsg").innerHTML = '<br> You don´t have that much in your buffert.';
+        document.getElementById("okMsg").innerHTML = '';
+      }else{
+          document.getElementById("errorMsg").innerHTML = '';
+        document.getElementById("okMsg").innerHTML = '<br> Sent to market.';
+      }
+*/

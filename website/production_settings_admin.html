@@ -151,10 +151,15 @@ function updateMarketToDatabase(){
 
 function transferToMarket(){
   var value = document.getElementById("transfer").placeholder=document.getElementById("transfer").value;
+  sendToMarket(value);
+
+  /*
   sendPowerToMarket(value, function(answer){
     document.getElementById("transfer").placeholder= 0;
     
   });
+
+  */
   
   
 
