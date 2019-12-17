@@ -623,7 +623,7 @@ function sendToMarket(value, callback){
 
       var arr = JSON.parse(xhttp.responseText);
 
-      if(arr[0] == 0){
+      if(arr[0].buffert < value_val ){
         document.getElementById("errorMsg").innerHTML = '<br> You don´t have that much in your buffert.';
         document.getElementById("okMsg").innerHTML = '';
       }else{
@@ -636,6 +636,7 @@ function sendToMarket(value, callback){
       }
     }
     var data = {value: value_val};
+
     xhttp.send(JSON.stringify(data));
 }
 

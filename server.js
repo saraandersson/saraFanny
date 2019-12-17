@@ -662,14 +662,14 @@ app.post('/sendToMarket', function(req,res){
 
           var sendArr = [1];
 
-          send_(err, sendArr, res);
+          send_(err, result, res);
 
 
         }else{
 
           var sendArr = [0];
 
-          send_(err, sendArr, res);
+          send_(err, result, res);
 
         }
       });
