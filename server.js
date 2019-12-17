@@ -653,6 +653,7 @@ app.post('/updateMarketPrice', function(req,res){
   });
 
 app.post('/sendToMarket', function(req,res){
+  console.log("KOMMER HIT");
       db_user.getBuffert(req.session.User, (err, result)=>{
         if(result[0].buffert > req.body.value){
 
