@@ -94,9 +94,9 @@ window.addEventListener("load", function () {
             //Så att endast prosumers syns, ej admin
             if(obj[x].role_id == 0){
               if(obj[x].blocked == 0){
-               txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>" +status(obj[x].id,obj[x].online)  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormBlock("+ obj[x].id +")'>Block prosumer</button>" + "</td><td>" + "<button class='btn btn-default' id =" + obj[x].id + " onclick='deleteProsumer("+ obj[x].id +")'>Delete prosumer</button>"+ "</td><td>"+ checkBlackout(obj[x].total_production)+"</tr></td>";
+               txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>" +status(obj[x].id,obj[x].online) + "</td><td>" +statusPower(obj[x].id,obj[x].has_power) + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" +  "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormBlock("+ obj[x].id +")'>Block prosumer</button>" + "</td><td>" + "<button class='btn btn-default' id =" + obj[x].id + " onclick='deleteProsumer("+ obj[x].id +")'>Delete prosumer</button>"+ "</td><td>"+ checkBlackout(obj[x].total_production)+"</tr></td>";
               }else{
-                txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" + "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormUnblock("+ obj[x].id +")'>Unblock prosumer</button>"+ "</td><td>" + "<button class='btn btn-default' id =" + obj[x].id + " onclick='deleteProsumer("+ obj[x].id +")'>Delete prosumer</button>"+ "</td><td>"+ checkBlackout(obj[x].total_production)+ "</tr></td>";
+                txt+= "<tr><td>" + obj[x].id + "</td><td>" + obj[x].firstname + "</td><td>"  + obj[x].lastname+ "</td><td>" + obj[x].email + "</td><td>"  + obj[x].online + "</td><td>" +statusPower(obj[x].id,obj[x].has_power)  + "</td><td>" + obj[x].total_production + "</td><td>" + obj[x].total_excess + "</td><td>" + "<button class='btn btn-default' id =" + obj[x].id + " onclick='openFormUnblock("+ obj[x].id +")'>Unblock prosumer</button>"+ "</td><td>" + "<button class='btn btn-default' id =" + obj[x].id + " onclick='deleteProsumer("+ obj[x].id +")'>Delete prosumer</button>"+ "</td><td>"+ checkBlackout(obj[x].total_production)+ "</tr></td>";
               }
             }
           }
@@ -131,6 +131,15 @@ window.addEventListener("load", function () {
     }
     else{
       return "Online"; 
+    }
+   }
+
+   function statusPower(id, status){
+    if(status==0){
+      return "No";
+    }
+    else{
+      return "Yes"; 
     }
    }
 
@@ -289,6 +298,7 @@ setInterval(function() {
                   <th scope='col'>Lastname</th>
                   <th scope='col'>Email</th>
                   <th scope='col'>Online</th>
+                  <th scope='col'>Has power</th>
                   <th scope='col'>Total production</th>
                   <th scope='col'>Total profit</th>
                   <th scope='col'>Blocked</th>
