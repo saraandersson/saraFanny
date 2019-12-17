@@ -41,7 +41,7 @@ class Db_user {
 		});
 	}
 
-	//var getSql = `SELECT users.id, users.firstname, users.lastname, users.email, users.online, blocked.blocked FROM users JOIN blocked ON users.id = blocked.users_id`;
+
 
 	getUser(id, callback){
 		var getSql= `SELECT users.firstname, users.lastname, users.email, users.consumption, users.area, users.buffert, users.img, blocked.blocked FROM users JOIN blocked ON users.id = blocked.users_id WHERE users.id = ?`;
@@ -147,6 +147,18 @@ class Db_user {
 				callback(err, null);
 			}else{
 				console.log("Has power is fetched");
+				callback(err, result);
+			}
+		});
+	}
+
+	getBuffert(id, callback){
+		var getSql = `SELECT buffert FROM users WHERE id = ?`;
+		con.query(getSql, [id], function(err, result){
+			if(err){
+				callback(err, null);
+			}else{
+				console.log("Buffert is fetched");
 				callback(err, result);
 			}
 		});
