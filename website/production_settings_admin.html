@@ -109,6 +109,16 @@ p{
 
 window.addEventListener("load", function () {
 
+  updateValues();
+
+  setInterval(updateValues,10000);
+
+
+
+  });
+
+
+function updateValues(){
   getUserSellBuyValues(function(arr){ 
 
      document.getElementById("myRange").value = Math.round((1 - arr[0].sell) * 100);
@@ -128,10 +138,7 @@ window.addEventListener("load", function () {
   getCurrentBuffert(function(arr){
     document.getElementById('buffertValue').innerHTML=arr[0].buffert + " kWh";
   });
-
-
-
-  });
+}
 
 function updateMarketToDatabase(){
   var market = document.getElementById("marketValue").innerHTML/100; 
@@ -193,11 +200,7 @@ function logout(){
   logOut();
 }
 
-setInterval(function() {
-  window.location.reload();
-      }, 60000);
 
-/*Att fortsätta med, fixa produktion till buffert och marknad*/
 
 
       
