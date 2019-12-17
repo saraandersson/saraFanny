@@ -653,12 +653,12 @@ app.post('/updateMarketPrice', function(req,res){
   });
 
 app.post('/sendToMarket', function(req,res){
-      db_user.getBuffert(req.session.User, (err, result)=>{
+      db_user.getBuffert(35, (err, result)=>{
         if(result[0].buffert > req.body.value){
 
           db_user.updateMarket(req.body.value);
           buffert_value = -(req.body.value);
-          db_user.updateBuffert(req.session.User, buffert_value);
+          db_user.updateBuffert(35, buffert_value);
 
           var sendArr = [1];
 
