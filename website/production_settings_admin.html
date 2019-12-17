@@ -118,26 +118,18 @@ window.addEventListener("load", function () {
     x = Math.round((1 - arr[0].sell) * 100);
     color = 'linear-gradient(90deg, rgb(117, 252, 117)' + x + '% , rgb(214, 214, 214)' + x + '%)';
     slider.style.background = color;
+
+
  
     });
 
-  async function getUserSellBuyValues(fn){
-    getUserSellBuy((err,result) =>{
-      fn(result);
-        });
-      } 
+
 
   getCurrentBuffert(function(arr){
     document.getElementById('buffertValue').innerHTML=arr[0].buffert + " kWh";
   });
 
 
-
-async function getCurrentBuffert(fn){
-  getUser((err,result) =>{
-      fn(result);
-          });
-    }
 
   });
 
@@ -158,8 +150,24 @@ function transferToMarket(){
         document.getElementById("errorMsg").innerHTML = '<br> You don´t have that much in your buffert.';
         document.getElementById("okMsg").innerHTML = '';
       }else{
-          document.getElementById("errorMsg").innerHTML = '';
+        document.getElementById("errorMsg").innerHTML = '';
         document.getElementById("okMsg").innerHTML = '<br> Sent to market.';
+        getUserSellBuyValues(function(arr){ 
+
+            document.getElementById("myRange").value = Math.round((1 - arr[0].sell) * 100);
+            document.getElementById("buffert").innerHTML = Math.round((1 - arr[0].sell) * 100); 
+            document.getElementById("marketValue").innerHTML = Math.round(arr[0].sell * 100); 
+
+            x = Math.round((1 - arr[0].sell) * 100);
+            color = 'linear-gradient(90deg, rgb(117, 252, 117)' + x + '% , rgb(214, 214, 214)' + x + '%)';
+            slider.style.background = color;
+   
+        });
+
+        getCurrentBuffert(function(arr){
+            document.getElementById('buffertValue').innerHTML=arr[0].buffert + " kWh";
+        });
+
       }
     
   });
@@ -168,6 +176,19 @@ function transferToMarket(){
   
   
 
+} 
+
+async function getCurrentBuffert(fn){
+  getUser((err,result) =>{
+      fn(result);
+          });
+    }
+
+
+async function getUserSellBuyValues(fn){
+    getUserSellBuy((err,result) =>{
+      fn(result);
+        });
 } 
 
 async function sendPowerToMarket(value, fn){
