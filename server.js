@@ -185,7 +185,7 @@ app.route('/login')
         }
       });
 
-    app.route('/website/index_customer.html')
+    app.route('/*.html')
     .get((req,res)=>{
      if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
           res.redirect('/website/index_customer.html');
@@ -198,19 +198,7 @@ app.route('/login')
         }
       });
 
-     app.route('/website/*')
-    .get((req,res)=>{
-      console.log("Går hit ju");
-     if (req.session.Users && req.cookies.user_id && req.session.role_id == 0) {
-          res.redirect('/website/index_customer.html');
-      }
-      else if(req.session.Users && req.cookies.user_id && req.session.role_id == 1){
-          res.redirect('/website/index_admin.html');
-        } 
-      else {
-           res.redirect('/website/index.html');
-        }
-      });
+
 
     app.route('/*')
     .get((req,res)=>{
