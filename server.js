@@ -317,6 +317,8 @@ async function simulatorCall(id, number,  fn){
 
           /*Surplus/Excess*/
           if(results[2] > 0){
+            //Set has_power = 1
+            db_user.setHasPower(id, 1);
             //Check if blocked, cant sell to market, only add to buffert
               if(result[0].blocked == 1){
               db_user.updateBuffert(id, results[2]);
@@ -345,10 +347,43 @@ async function simulatorCall(id, number,  fn){
             //Take from buffert and buy from market. 
             var value_buffert = results[2] * (1.00 -r[0].buy);
             var value_market = results[2] * r[0].buy;
-            db_user.updateBuffert(id, value_buffert);
+            var remaining = 0;
+
+
+            //Checks if its enough in the buffert
+            if((result[0].buffert + value_buffert) > 0){
+              db_user.updateBuffert(id, value_buffert);
+            }else{ 
+            //If not, save the amount thats remaining in the var "remaining"
+              remaining = result[0].buffert + value_buffert;
+              value_buffert = -(result[0].buffert);
+              //Buffert is now 0
+              db_user.updateBuffert(id, value_buffert);
+            }
+
+            db_user.getMarket((er,re)=>{
+                //Checks if its enough on the market
+                if((re[0].amount + value_market + remaining) > 0){
+                  value_market += remaining;
+                   db_user.updateMarket(value_market);
+                   //Set has_power = 1
+                   db_user.setHasPower(id, 1);
+                }else{
+                  //If not, the user has not enough power
+                  var updatemarket = -(re[0].amount);
+                  //Market is now 0
+                  db_user.updateMarket(updatemarket);
+                  //Set has_power = 0
+                  db_user.setHasPower(id, 0);
+                }
+
+                fn(number);
+
+            });
+            
          
-            db_user.updateMarket(value_market);
-            fn(number);
+          
+            
 
           });
           }
