@@ -155,7 +155,7 @@ function transferToMarket(){
   var value = document.getElementById("transfer").placeholder=document.getElementById("transfer").value;
   
   sendPowerToMarket(value, function(answer){
-    document.getElementById("transfer").innerHTML= "";
+    document.getElementById("transfer").placeholder= ""; //Funkar ej
     if(answer[0] == 0){
         document.getElementById("errorMsg").innerHTML = '<br> You don´t have that much in your buffert.';
         document.getElementById("okMsg").innerHTML = '';
