@@ -148,6 +148,25 @@ function updateMarketToDatabase(){
   console.log(buffert);
   updateAdminProduction(market,Math.round(buffert));
 }
+
+function transferToMarket(){
+  var value = document.getElementById("transfer").placeholder=document.getElementById("transfer").value;
+  sendPowerToMarket(value, function(answer){
+    document.getElementById("transfer").placeholder= 0;
+    
+  });
+  
+  
+
+} 
+
+async function sendPowerToMarket(value, fn){
+
+  sendToMarket(value, (err,result) =>{
+          fn(result);
+          });
+
+}
         
 
 function logout(){
@@ -244,7 +263,19 @@ setInterval(function() {
           <label class="control-label">Your buffert: </label>
           <div class="well" id = "buffertValue"></div>
           </div>
-      </div>
+        </div>
+        <div class="myBox">
+          <label class="control-label">Transfer from buffert to market:</label>
+                <br>
+                <input class = "well" type="text" placeholder="" name="transfer" maxlength="255" class="form-control text-box single-line" id = "transfer">
+          <div id = "sendButton">
+                <button class="btn btn-default" type="submit" name="submit" onclick = "transferToMarket()">Send</button> 
+              </div>
+              <p id="okMsg" style="color:green"></p>
+            <p id="errorMsg" style="color:red"></p>
+        </div>
+
+
     </div>
   </div>
 </div>

@@ -652,6 +652,31 @@ app.post('/updateMarketPrice', function(req,res){
     });
   });
 
+app.post('/sendToMarket', function(req,res){
+      db_user.getBuffert(req.session.User, (err, result)=>{
+        if(result[0].buffert > req.body.value){
+
+          db_user.updateMarket(req.body.value);
+          buffert_value = -(req.body.value);
+          db_user.updateBuffert(req.session.User, buffert_value);
+
+          var sendArr = [1];
+
+          send_(err, sendArr, res);
+
+
+        }else{
+
+          var sendArr = [0];
+
+          send_(err, sendArr, res);
+
+        }
+      });
+    
+  });
+
+
 
 
 /*I called every 10 second*/
