@@ -30,7 +30,7 @@ class Db_user {
 
 	}
 	addUser(role_id, online, firstname, lastname, email, password, img, area, buffert, consumption){
-		var addSql = `INSERT INTO users (role_id, online, firstname, lastname, email, password, img, area, buffert, consumption) VALUES (?,?,?,?,?,?,?,?,?,?)`;
+		var addSql = `INSERT INTO users (role_id, online, firstname, lastname, email, password, img, area, buffert, consumption, has_power) VALUES (?,?,?,?,?,?,?,?,?,?, 1)`;
 		//console.log(role_id + "," + online + "," + firstname + "," + lastname + "," + email + "," + password + "," + img + "," + area + "," + buffert + "," + consumption);
 		con.query(addSql,[role_id, online, firstname, lastname, email, password, img, area, buffert, consumption ] , function(err, result){
 			if(err){
@@ -122,6 +122,34 @@ class Db_user {
 			});
 
 		}
+
+	setHasPower(id, power){
+		var setsql=`UPDATE users SET power = ? WHERE id = ?`;
+		con.query(setsql, [power, id], function(err, result){
+				if(err){
+				}else{
+					if(power == 0){
+						console.log("Set has no power");
+					}else{
+						console.log("Set has power");
+					}
+					
+				}
+			});
+
+		}
+
+	getHasPower(id, callback){
+		var getSql = `SELECT has_power FROM users WHERE id = ?`;
+		con.query(getSql, [id], function(err, result){
+			if(err){
+				callback(err, null);
+			}else{
+				console.log("Has power is fetched");
+				callback(err, result);
+			}
+		});
+	}
 
 	updateProfile(id,firstname,lastname, area, consumption, img){
 		var setsql=`UPDATE users SET firstname = ?, lastname = ?, area = ?, consumption = ?, img = ? WHERE id = ?`;
@@ -379,7 +407,7 @@ getUserProduction(id, callback){
 }
 
 getProductionInfo(id, callback){
-	var getSql = `SELECT users.buffert, users.area, users.consumption, user_production.latest_wind, user_production.latest_production, user_production.latest_excess FROM users JOIN user_production ON users.id = user_production.user_id WHERE users.id = ?`;
+	var getSql = `SELECT users.buffert, users.area, users.consumption, users.has_power, user_production.latest_wind, user_production.latest_production, user_production.latest_excess FROM users JOIN user_production ON users.id = user_production.user_id WHERE users.id = ?`;
 		con.query(getSql, [id], function(err, result){
 			if(err){
 				callback(err, null);
