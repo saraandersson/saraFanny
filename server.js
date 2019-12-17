@@ -658,12 +658,12 @@ app.post('/sendToMarket', function(req,res){
 
       console.log(req.session.Users);
 
-      db_user.getBuffert(35, (err, result)=>{
+      db_user.getBuffert(req.session.Users, (err, result)=>{
         if(result[0].buffert > req.body.value){
 
           db_user.updateMarket(req.body.value);
           buffert_value = -(req.body.value);
-          db_user.updateBuffert(35, buffert_value);
+          db_user.updateBuffert(req.session.Users, buffert_value);
 
           var sendArr = [1];
 
