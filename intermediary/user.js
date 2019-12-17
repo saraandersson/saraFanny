@@ -623,7 +623,7 @@ function sendToMarket(value, callback){
 
     
 
-      callback(err,arr);
+      callback(null,arr);
            
 
       
