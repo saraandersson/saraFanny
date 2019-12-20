@@ -441,14 +441,13 @@ app.post('/createUser', function(req,res){
                 console.log(err);
               }
               else{
-               //console.log(req.file.originalname);
                 db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, req.body.password, req.file.originalname, req.body.area, 0, req.body.consumption);
                 db_user.getUserId(req.body.email, req.body.password, (error, results) =>{
                 db_user.addBlocked(results[0].id, 0, 0);
                 db_user.addSellBuy(results[0].id, 0.5 , 0.5);
                 db_user.addUserProduction(results[0].id);
                 });
-                //res.redirect('/website/login.html');
+                res.redirect(301, '/website/login.html');
                 send_(err, result, res);
               }
             });
@@ -458,10 +457,8 @@ app.post('/createUser', function(req,res){
             send_(err, result, res);
           }
         }
-        res.redirect('/website/login.html');
 
     })
-  //res.redirect('/website/login.html');
 
   });
 
