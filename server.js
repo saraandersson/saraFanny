@@ -452,14 +452,12 @@ app.post('/createUser', function(req,res){
             });
 
               
-          }
-          res.redirect(301, '/website/login.html');
-          else{
+          }else{
             console.log("Kommer till FAIL");
             send_(err, result, res);
           }
         }
-
+        res.redirect(301, '/website/login.html');
     })
 
   });
