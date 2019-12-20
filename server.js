@@ -448,7 +448,7 @@ app.post('/createUser', function(req,res){
                 db_user.addSellBuy(results[0].id, 0.5 , 0.5);
                 db_user.addUserProduction(results[0].id);
                 });
-                res.redirect('/login');
+                res.redirect('/website/login.html');
                 send_(err, result, res);
               }
             });
