@@ -429,7 +429,6 @@ const upload = multer({
 }).single('myImage');
 
 app.post('/createUser', function(req,res){
-
   db_user.emailAvailable(req.body.email,(err,result) =>{
         if(err){
           console.error(err);
@@ -457,7 +456,6 @@ app.post('/createUser', function(req,res){
             send_(err, result, res);
           }
         }
-        res.redirect(301, '/website/login.html');
     })
 
   });
