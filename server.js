@@ -457,8 +457,8 @@ app.post('/createUser', function(req,res){
             console.log("Kommer till FAIL");
             send_(err, result, res);
           }
-          res.redirect('/website/login.html');
         }
+        res.redirect('/website/login.html');
 
     })
   //res.redirect('/website/login.html');
