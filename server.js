@@ -459,7 +459,7 @@ app.post('/createUser', function(req,res){
           }
         }
     })
-  res.redirect('/website/login.html');
+  //res.redirect('/website/login.html');
 
   });
 
