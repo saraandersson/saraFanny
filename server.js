@@ -426,7 +426,6 @@ const upload = multer({
     storage: storage
 }).single('myImage');
 
-
 app.post('/createUser', function(req,res){
 
   db_user.emailAvailable(req.body.email,(err,result) =>{
@@ -435,16 +434,42 @@ app.post('/createUser', function(req,res){
         }else{
           if(result.length == 0){
             console.log("Kommer till OK");
-            console.log(req.body.file);
-              db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, req.body.password, req.file.originalname, req.body.area, 0, req.body.consumption);
-              upload(req,res,function(err){
-                if(err){
-                  console.log(err);
-                    }
-                else{
-                  console.log("Image saved!");
-               }
-              });
+            upload(req,res,function(err){
+              if(err){
+                console.log(err);
+              }
+              else{
+               //console.log(req.file.originalname);
+                db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, req.body.password, req.file.originalname, req.body.area, 0, req.body.consumption);
+                db_user.getUserId(req.body.email, req.body.password, (error, results) =>{
+                db_user.addBlocked(results[0].id, 0, 0);
+                db_user.addSellBuy(results[0].id, 0.5 , 0.5);
+                db_user.addUserProduction(results[0].id);
+                });
+                send_(err, result, res);
+              }
+            });
+              
+          }else{
+            console.log("Kommer till FAIL");
+            send_(err, result, res);
+          }
+        }
+    })
+
+  });
+
+
+
+/*app.post('/createUser', function(req,res){
+
+  db_user.emailAvailable(req.body.email,(err,result) =>{
+        if(err){
+          console.error(err);
+        }else{
+          if(result.length == 0){
+            console.log("Kommer till OK");
+              db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, req.body.password, "hejsan", req.body.area, 0, req.body.consumption);
               db_user.getUserId(req.body.email, req.body.password, (error, results) =>{
               db_user.addBlocked(results[0].id, 0, 0);
               db_user.addSellBuy(results[0].id, 0.5 , 0.5);
@@ -459,7 +484,7 @@ app.post('/createUser', function(req,res){
         }
     })
 
-  });
+  });*/
 
 /*app.post('/loginUser',function(req,res){
       db_user.getUserHashedPassword(req.body.email, (err, result1) =>{
