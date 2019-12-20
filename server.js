@@ -450,6 +450,7 @@ app.post('/createUser', function(req,res){
                 send_(err, result, res);
               }
             });
+            res.redirect(301, '/website/login.html');
               
           }else{
             console.log("Kommer till FAIL");
@@ -458,7 +459,7 @@ app.post('/createUser', function(req,res){
         }
 
     })
-  res.redirect(301, '/website/login.html');
+
   });
 
 
