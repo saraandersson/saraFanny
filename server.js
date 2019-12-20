@@ -435,7 +435,7 @@ app.post('/createUser', function(req,res){
         }else{
           if(result.length == 0){
             console.log("Kommer till OK");
-            console.log(req.file);
+            console.log(req.body.file);
               db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, req.body.password, req.file.originalname, req.body.area, 0, req.body.consumption);
               upload(req,res,function(err){
                 if(err){
