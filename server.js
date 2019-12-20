@@ -17,6 +17,7 @@ const multer = require('multer');
 
 app.use('/website',express.static('website'));
 app.use('/intermediary',express.static('intermediary'));
+app.use(express.static('public'));
 
 app.use(bodyParser.json({type: 'application/json'}));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -412,7 +413,6 @@ async function simulatorCall(id, number,  fn){
 
 }
 
-app.use(express.static('./public'));
 /*To store pictures on server*/
 
 const storage = multer.diskStorage({
