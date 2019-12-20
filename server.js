@@ -11,6 +11,8 @@ var session = require('express-session');
 const bcrypt = require('bcrypt');
 let saltRounds = 10; 
 
+const multer = require('multer');
+
 
 
 app.use('/website',express.static('website'));
@@ -409,6 +411,20 @@ async function simulatorCall(id, number,  fn){
     });
 
 }
+/*To store pictures on server*/
+
+const storage = multer.diskStorage({
+        destination: function(req,file,cb){
+            cb(null, 'public/uploads/')
+        },
+        filename: function(req,file,cb){
+            cb(null,file.originalname) 
+        }
+    });
+
+const upload = multer({
+    storage: storage
+}).single('myImage');
 
 
 app.post('/createUser', function(req,res){
@@ -419,7 +435,15 @@ app.post('/createUser', function(req,res){
         }else{
           if(result.length == 0){
             console.log("Kommer till OK");
-              db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, req.body.password, "hejsan", req.body.area, 0, req.body.consumption);
+              db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, req.body.password, req.file.originalname, req.body.area, 0, req.body.consumption);
+              upload(req,res,function(err){
+                if(err){
+                  console.log(err);
+                    }
+                else{
+                  console.log("Image saved!");
+               }
+              });
               db_user.getUserId(req.body.email, req.body.password, (error, results) =>{
               db_user.addBlocked(results[0].id, 0, 0);
               db_user.addSellBuy(results[0].id, 0.5 , 0.5);

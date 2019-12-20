@@ -46,10 +46,7 @@
       display:inline-block;
     
     }
-
     
-    
-
     /* Remove the navbar's default margin-bottom and rounded borders hej*/ 
     .navbar {
       margin-bottom: 0;
@@ -59,10 +56,9 @@
     /* Add a gray background color and some padding to the footer */
     footer {
       background-color: #f2f2f2;
-      position: relative;
-      bottom:0;
+      padding: 25px;
+      bottom: 0;
       width: 100%;
-      height: 50px;
 
     }
 
@@ -82,7 +78,10 @@
         document.getElementById("email").innerHTML=arr[0].email;
         document.getElementById("area").innerHTML= arr[0].area;
         document.getElementById("consumption").innerHTML=arr[0].consumption;
-        document.getElementById("house").innerHTML=arr[0].img;  
+        //document.getElementById("house").innerHTML=arr[0].img; 
+        var imgName=arr[0].img;
+        var img = document.querySelector('img');
+        img.src = "http://localhost:3000/uploads/"+imgName;
        });      
     });
 
@@ -167,7 +166,8 @@
             </div>
             <div class="form-group">
                 <label class="control-label">Your House</label>
-                <p id = "house" style="font-size:15px;"> </p>
+                <p style="font-size:15px;"></p>
+                <img src="#" id = "house" style="width:150px;height:150px;">
             </div>
             <div class="form-group_2">
               <div id = "changePasswordButton">
