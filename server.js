@@ -411,6 +411,8 @@ async function simulatorCall(id, number,  fn){
     });
 
 }
+
+app.use(express.static('./public'));
 /*To store pictures on server*/
 
 const storage = multer.diskStorage({
