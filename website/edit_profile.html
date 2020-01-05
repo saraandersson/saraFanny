@@ -88,9 +88,12 @@
         document.getElementById("consumption").placeholder=arr[0].consumption;
         old_consumption = arr[0].consumption;
 
-        document.getElementById("house").placeholder=arr[0].img;
-        old_img = arr[0].img;
+        /*document.getElementById("house").placeholder=arr[0].img;
+        old_img = arr[0].img;*/
 
+        var imgName=arr[0].img;
+        var img = document.querySelector('img');
+        img.src = "/uploads/"+imgName;
        });      
       });
 
@@ -125,9 +128,6 @@
           img = old_img;
         }
 
-        /*Kalla på funktion som skickar in de värden som ska uppdateras till databasen*/
-
-        
         editProfile(firstname, lastname, area, consumption, img);
 
       }
@@ -190,7 +190,8 @@ function logout(){
             
             <div class="form-group">
                 <label class="control-label">Your House</label>
-                <input type="text" placeholder="" name="house" maxlength="255" class="form-control text-box single-line" id = "house">
+                <img src="#" style="width:150px;height:150px;">
+                <input type="file" name="myImage" id = "myImage">
             </div>
           <div class="form-group_2">
               <div id = "saveButton">
