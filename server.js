@@ -604,7 +604,7 @@ app.post('/getUser', function(req,res){
 app.post('/changePassword', (req, res) => {
   db_user.getUser(req.session.Users,(err,result1)=>{
     db_user.getUserHashedPassword(result1[0].email,(err,result) =>{
-    const hash = result[0].password;
+    const hash = result[0].password.toString();
     bcrypt.compare(req.body.old_password, hash, function(err, response) {
       if(response==true){
         //if(req.body.old_password == result[0].password){ //Checks if the password is correct
@@ -619,6 +619,7 @@ app.post('/changePassword', (req, res) => {
 
         }
         else{
+          console.log('fel!');
           send_(err, result, res);
         }
 
