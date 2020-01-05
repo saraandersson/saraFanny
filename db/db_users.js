@@ -323,9 +323,9 @@ addSellBuy(user_id, sell, buy){
 
 
 
-getUserHashedPassword(id,callback){
-	var getSql =  `SELECT password FROM users WHERE id= ?`;
-		con.query(getSql, [id] , function(err, result){
+getUserHashedPassword(email,callback){
+	var getSql =  `SELECT password FROM users WHERE email= ?`;
+		con.query(getSql, [email] , function(err, result){
 		if(err){
 			callback(err, null);
 		}else{
