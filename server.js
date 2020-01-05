@@ -419,7 +419,7 @@ const storage = multer.diskStorage({
             cb(null, 'public/uploads/')
         },
         filename: function(req,file,cb){
-            cb(null,file.originalname+'+'+req.body.email);
+            cb(null,file.originalname+'-'+req.body.email);
         }
     });
 
@@ -445,7 +445,7 @@ app.post('/createUser', function(req,res){
                   if(err){
                   console.log(err);
                   }
-                db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, hash, req.file.originalname+'+'+req.body.email, req.body.area, 0, req.body.consumption);
+                db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, hash, req.file.originalname+'-'+req.body.email, req.body.area, 0, req.body.consumption);
                 db_user.getUserId(req.body.email, hash, (error, results) =>{
                 db_user.addBlocked(results[0].id, 0, 0);
                 db_user.addSellBuy(results[0].id, 0.5 , 0.5);
@@ -564,7 +564,12 @@ app.post('/logout', (req, res) => {
 });
 
 app.post('/updateProfile', (req, res) => {
-    db_user.updateProfile(req.session.Users, req.body.firstname, req.body.lastname, req.body.area, req.body.consumption, req.body.img);
+    db_user.getUser(req.session.Users,(err,result)=>{
+      upload(req,res,function(err){
+      db_user.updateProfile(req.session.Users, req.body.firstname, req.body.lastname, req.body.area, req.body.consumption, file.originalname+'-'+result[0].email);
+    }
+  });
+    //db_user.updateProfile(req.session.Users, req.body.firstname, req.body.lastname, req.body.area, req.body.consumption, req.body.img);
     res.send("{}");
 });
 
