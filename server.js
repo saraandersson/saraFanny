@@ -420,7 +420,7 @@ const storage = multer.diskStorage({
             cb(null, 'public/uploads/')
         },
         filename: function(req,file,cb){
-            cb(null,file.originalname) 
+            cb(null,file.originalname + '-' + Date.now()) 
         }
     });
 
@@ -428,19 +428,25 @@ const upload = multer({
     storage: storage
 }).single('myImage');
 
+
+/*Create user that hashes password*/
 app.post('/createUser', function(req,res){
   db_user.emailAvailable(req.body.email,(err,result) =>{
         if(err){
           console.error(err);
         }else{
           if(result.length == 0){
+            bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
+              if(err){
+                console.log(err);
+              }
             console.log("Kommer till OK");
             upload(req,res,function(err){
               if(err){
                 console.log(err);
               }
               else{
-                db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, req.body.password, req.file.originalname, req.body.area, 0, req.body.consumption);
+                db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, hash, req.file.originalname, req.body.area, 0, req.body.consumption);
                 db_user.getUserId(req.body.email, req.body.password, (error, results) =>{
                 db_user.addBlocked(results[0].id, 0, 0);
                 db_user.addSellBuy(results[0].id, 0.5 , 0.5);
@@ -449,6 +455,7 @@ app.post('/createUser', function(req,res){
                 return res.redirect('website/login.html');
                 //send_(err, result, res);
               }
+            });
             });
 
               
@@ -488,7 +495,9 @@ app.post('/createUser', function(req,res){
 
   });*/
 
-/*app.post('/loginUser',function(req,res){
+/*Login user with hashed password*/
+
+app.post('/loginUser',function(req,res){
       db_user.getUserHashedPassword(req.body.email, (err, result1) =>{
         const hash = result1[0].password.toString();
         //console.log("PASSWORD:" + hash);
@@ -518,9 +527,9 @@ app.post('/createUser', function(req,res){
 
       })
 
-  });*/
+  });
 
-app.post('/loginUser',function(req,res){
+/*app.post('/loginUser',function(req,res){
       db_user.checkLogin(req.body.email,req.body.password,(err,result) =>{
         if(err){
           console.error(err);
@@ -540,7 +549,7 @@ app.post('/loginUser',function(req,res){
         }
       })
 
-  });
+  });*/
 
 
 

@@ -159,6 +159,14 @@ function startCoalProduction(){
   if(production>1000){
     var time = 20; 
   } 
+
+  if(production>10000){
+    var time = 30;
+  }
+
+  if(production>1000000){
+    var time = 40; 
+  }
   startCoalSimulator(production,coal_id,time);
   window.location.reload();
 }
