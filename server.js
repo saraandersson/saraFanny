@@ -619,7 +619,8 @@ app.post('/changePassword', (req, res) => {
 
         }
         else{
-          console.log('fel!');
+          console.log('Wrong password!' + result);
+
           send_(err, result, res);
         }
 
