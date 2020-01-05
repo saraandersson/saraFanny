@@ -622,7 +622,7 @@ app.post('/changePassword', (req, res) => {
         else{
           console.log('Wrong password!' + result);
 
-          send_(err, result, res);
+          send_(err, false, res);
         }
 
     //  }
