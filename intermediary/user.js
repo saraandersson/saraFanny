@@ -195,6 +195,7 @@ function changePassword(old_password, new_password){
     if (this.readyState == 4 && this.status == 200) {
 
        var arr = JSON.parse(xhttp.responseText);
+       console.log(arr);
 
       if (arr.length > 0){
          window.location.replace("/profile");
