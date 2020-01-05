@@ -603,7 +603,7 @@ app.post('/getUser', function(req,res){
 
 app.post('/changePassword', (req, res) => {
   db_user.getUser(req.session.Users,(err,result) =>{
-    console.log(result[0].password);
+    console.log(result[0]);
     const hash = result[0].password.toString();
     bcrypt.compare(req.body.old_password, hash, function(err, response) {
       if(response==true){
