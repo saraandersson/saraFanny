@@ -323,14 +323,12 @@ addSellBuy(user_id, sell, buy){
 
 
 
-getUserHashedPassword(email,callback){
-	var getSql =  `SELECT password FROM users WHERE email= ?`;
-		con.query(getSql, [email] , function(err, result){
+getUserHashedPassword(id,callback){
+	var getSql =  `SELECT password FROM users WHERE id= ?`;
+		con.query(getSql, [id] , function(err, result){
 		if(err){
 			callback(err, null);
 		}else{
-			//console.log("SellBuy is fetched");
-			//console.log(result);
 			callback(err, result);
 		}
 	});
