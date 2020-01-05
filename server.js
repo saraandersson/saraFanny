@@ -419,7 +419,7 @@ const storage = multer.diskStorage({
             cb(null, 'public/uploads/')
         },
         filename: function(req,file,cb){
-            cb(null,file.originalname + '-' + Date.now());
+            cb(null,file.originalname+req.body.email);
         }
     });
 
@@ -445,7 +445,7 @@ app.post('/createUser', function(req,res){
                   if(err){
                   console.log(err);
                   }
-                db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, hash, req.file.originalname+ '-' + Date.now(), req.body.area, 0, req.body.consumption);
+                db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, hash, req.file.originalname+req.body.email, req.body.area, 0, req.body.consumption);
                 db_user.getUserId(req.body.email, hash, (error, results) =>{
                 db_user.addBlocked(results[0].id, 0, 0);
                 db_user.addSellBuy(results[0].id, 0.5 , 0.5);
