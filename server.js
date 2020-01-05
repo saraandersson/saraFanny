@@ -614,12 +614,12 @@ app.post('/changePassword', (req, res) => {
               console.log(err);
             }
             db_user.changePassword(req.session.Users, hash); //Change password
-            res.send("{}");
+            send_(err, result, res);
           });
 
         }
         else{
-          res.send("{}");
+          send_(err, result, res);
         }
 
     //  }
