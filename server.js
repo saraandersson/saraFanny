@@ -614,6 +614,7 @@ app.post('/changePassword', (req, res) => {
               console.log(err);
             }
             db_user.changePassword(req.session.Users, hash); //Change password
+            console.log('RESULT'+result);
             send_(err, result, res);
           });
 
