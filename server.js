@@ -228,7 +228,7 @@ const Db_user = require('./db/db_users.js');
 const db_user = new Db_user();
 
 
-/*app.post('/createUser', function(req,res){
+app.post('/createUser', function(req,res){
 
   db_user.emailAvailable(req.body.username,(err,result) =>{
         if(err){
@@ -240,7 +240,6 @@ const db_user = new Db_user();
                 console.log(err);
               }
               console.log("Hashed password: "+ hash);
-              //const password = hash; 
               db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, hash, "hejsan", req.body.area, 0, req.body.consumption);
               db_user.getUserId(req.body.email, hash, (error, results) =>{
               req.session.role_id = 0;
@@ -259,7 +258,7 @@ const db_user = new Db_user();
         }
     })
 
-  })*/
+  })
 
 
 /*Run the simulator and decide price*/
@@ -430,7 +429,7 @@ const upload = multer({
 
 
 /*Create user that hashes password*/
-app.post('/createUser', function(req,res){
+/*app.post('/createUser', function(req,res){
   db_user.emailAvailable(req.body.email,(err,result) =>{
         if(err){
           console.error(err);
@@ -466,7 +465,7 @@ app.post('/createUser', function(req,res){
         }
     })
 
-  });
+  });*/
 
 
 
