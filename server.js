@@ -441,7 +441,7 @@ app.post('/createUser', function(req,res){
                 console.log(err);
               }
               else{
-                bcrypt.hash(req.body.password, 10, function(err, hash) {
+                bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
                   if(err){
                   console.log(err);
                   }
@@ -586,8 +586,9 @@ app.post('/getUser', function(req,res){
     });
   });
 
+/*Change password utan hashad password*/
 
-app.post('/changePassword', (req, res) => {
+/*app.post('/changePassword', (req, res) => {
   db_user.checkPassword(req.session.Users, req.body.old_password,(err,result) =>{
     if(result.length > 0){ //Checks if the password is correct
         console.log(result[0].password);
@@ -598,9 +599,9 @@ app.post('/changePassword', (req, res) => {
     }
     });
   
-});
+});*/
 
-/*app.post('/changePassword', (req, res) => {
+app.post('/changePassword', (req, res) => {
   db_user.getUser(req.session.Users,(err,result) =>{
     const hash = result[0].password.toString();
     bcrypt.compare(req.body.old_password, hash, function(err, response) {
@@ -625,7 +626,7 @@ app.post('/changePassword', (req, res) => {
 
   });
   
-});*/
+});
 
 app.post('/getEnergy', function(req,res){
      db_user.getEnergy(req.session.Users,(err,result) =>{
