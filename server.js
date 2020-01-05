@@ -566,7 +566,7 @@ app.post('/logout', (req, res) => {
 app.post('/updateProfile', (req, res) => {
     db_user.getUser(req.session.Users,(err,result)=>{
       upload(req,res,function(err){
-      db_user.updateProfile(req.session.Users, req.body.firstname, req.body.lastname, req.body.area, req.body.consumption, file.originalname+'-'+result[0].email);
+      db_user.updateProfile(req.session.Users, req.body.firstname, req.body.lastname, req.body.area, req.body.consumption, req.file.originalname+'-'+result[0].email);
     });
   });
     //db_user.updateProfile(req.session.Users, req.body.firstname, req.body.lastname, req.body.area, req.body.consumption, req.body.img);
