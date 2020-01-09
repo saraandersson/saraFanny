@@ -495,8 +495,13 @@ app.post('/updateProfile', (req, res) => {
 });
 
 app.post('/updateProfileAdmin', (req, res) => {
-    db_user.updateProfileAdmin(req.session.Users, req.body.firstname, req.body.lastname, req.body.img);
-    res.send("{}");
+    //db_user.updateProfileAdmin(req.session.Users, req.body.firstname, req.body.lastname, req.body.img);
+    //res.send("{}");
+    upload(req,res,function(err){
+      db_user.updateProfileAdmin(req.session.Users, req.body.firstname, req.body.lastname, req.file.filename);
+  });
+    
+    res.redirect('/profile');
 });
 
 

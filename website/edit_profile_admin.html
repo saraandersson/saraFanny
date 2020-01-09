@@ -90,8 +90,9 @@
         old_lastname = arr[0].lastname;
 
         
-        document.getElementById("img").placeholder=arr[0].img;
-        old_img = arr[0].img;
+        var imgName=arr[0].img;
+        var img = document.querySelector('img');
+        img.src = "/uploads/"+imgName;
 
        });      
       });
@@ -166,6 +167,7 @@ function logout(){
   <div class="container body-content">
     <br>
         <div class="myBox">
+          <form action='/updateProfile' method='POST' enctype='multipart/form-data'>
             <div class="form-group">
                 <label class="control-label">Firstname:</label>
                 <input type="text" placeholder="" name="firstname" id = "firstname" maxlength="255" class="form-control text-box single-line">
@@ -176,7 +178,9 @@ function logout(){
             </div>
             <div class="form-group">
                 <label class="control-label">Profile picture:</label>
-                <input type="text" placeholder="" name="img" maxlength="255" class="form-control text-box single-line" id = "img">
+                <p style="font-size:15px;"></p>
+                <img src="#" style="width:150px;height:150px;">
+                <input type="file" name="myImage" id = "myImage">
             </div>
           <div class="form-group_2">
               <div id = "saveButton">
@@ -186,7 +190,8 @@ function logout(){
                   <form action="/profile" class="inline">
                   <button class="btn btn-default" >Back</button>
                 </div>
-            </div>   
+            </div> 
+            </form>  
         </div>
     </div>
   </div>
