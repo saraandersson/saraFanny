@@ -153,20 +153,9 @@ function closeFormStartCoalSim() {
 function startCoalProduction(){ 
   var production = document.getElementById("production").value;
   var coal_id = document.getElementById("coalId").innerHTML;
-  if (production <=1000){
-    var time = 10;
-  }
-  if(production>1000){
-    var time = 20; 
-  } 
+  
+  var time = production * 0.001;
 
-  if(production>10000){
-    var time = 30;
-  }
-
-  if(production>1000000){
-    var time = 40; 
-  }
   startCoalSimulator(production,coal_id,time);
   window.location.reload();
 }
