@@ -89,7 +89,12 @@
         document.getElementById("firstname").innerHTML= arr[0].firstname;
         document.getElementById("lastname").innerHTML= arr[0].lastname;
         document.getElementById("email").innerHTML=arr[0].email;
-        document.getElementById("img").innerHTML=arr[0].img;  
+
+        var imgName=arr[0].img;
+        console.log(imgName);
+        var img = document.querySelector('img');
+        img.src = "/uploads/"+imgName; 
+
        });      
     });
 
@@ -152,6 +157,7 @@
             <div class="form-group">
                 <label class="control-label">Profile picture:</label>
                 <p id = "img" style="font-size:15px;"> </p>
+                <img src="#" style="width:150px;height:150px;">
             </div>
             <div class="form-group_2">
               <div id = "changePasswordButton">
