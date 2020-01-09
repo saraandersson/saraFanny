@@ -503,7 +503,7 @@ app.post('/updateProfileAdmin', (req, res) => {
     });
   }
   else{
-    console.log(req); 
+    console.log(req.body.firstname); 
   }
     
     res.redirect('/profile');

@@ -89,6 +89,11 @@
         document.getElementById("lastname").placeholder= arr[0].lastname;
         old_lastname = arr[0].lastname;
 
+        document.getElementById("myImage").innerHTML= arr[0].img;
+        //old_lastname = arr[0].lastname;
+
+        
+
         
         var imgName=arr[0].img;
         var img = document.querySelector('img');
@@ -189,7 +194,7 @@ function logout(){
             </div> 
             </form>  
             <div id = "backButton">
-                  <form action="/profile" method='GET' class="inline">
+                  <form action="/profile" class="inline">
                   <button class="btn btn-default" >Back</button>
                 </form>
                 </div>
