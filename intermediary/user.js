@@ -66,8 +66,7 @@ function createUser(firstname, lastname, email, password, img, area, consumption
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-           // Typical action to be performed when the document is ready:
-           //alert(xhttp.responseText);
+           
       var arr = JSON.parse(xhttp.responseText);
 
       if (arr.length == 0){
@@ -172,8 +171,6 @@ function getUser(callback){
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-           // Typical action to be performed when the document is ready:
-           //alert(xhttp.responseText);
       var arr = JSON.parse(xhttp.responseText);
       callback(null, arr); 
       
@@ -204,10 +201,6 @@ function changePassword(old_password, new_password){
         
       }
 
-      //IF success
-        
-      //Else error message
-
     }
   }
 
@@ -224,11 +217,8 @@ function getUserSellBuy(callback){
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-           // Typical action to be performed when the document is ready:
-           //alert(xhttp.responseText);
       var arr = JSON.parse(xhttp.responseText);
       callback(null, arr); 
-      
   }
 }
     var data = {};
@@ -244,10 +234,6 @@ function updateUserProductionExcess(sell){
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-
-      //IF success
-        //window.location.replace("../website/profile_customer.html");
-      //Else error message
 
     }
   }
@@ -267,9 +253,6 @@ function updateUserProductionDeficit(buy){
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
 
-      //IF success
-        //window.location.replace("../website/profile_customer.html");
-      //Else error message
 
     }
   }
@@ -291,9 +274,6 @@ function blockUser(id, time){
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
 
-      //IF success
-        //window.location.replace("../website/profile_customer.html");
-      //Else error message
 
     }
   }
@@ -313,9 +293,6 @@ function unblockUser(id, time){
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
 
-      //IF success
-        //window.location.replace("../website/profile_customer.html");
-      //Else error message
 
     }
   }
@@ -371,8 +348,7 @@ function getAllProsumers(callback){
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-           // Typical action to be performed when the document is ready:
-           //alert(xhttp.responseText);
+
 
       var arr = JSON.parse(xhttp.responseText);
       callback(null, arr); 
@@ -390,8 +366,7 @@ function getMarket(callback){
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-           // Typical action to be performed when the document is ready:
-           //alert(xhttp.responseText);
+
 
       var arr = JSON.parse(xhttp.responseText);
       callback(null, arr); 
@@ -409,8 +384,7 @@ function getUserProduction(callback){
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-           // Typical action to be performed when the document is ready:
-           //alert(xhttp.responseText);
+
 
       var arr = JSON.parse(xhttp.responseText);
       callback(null, arr); 
@@ -428,8 +402,7 @@ function getAllUserProduction(callback){
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-           // Typical action to be performed when the document is ready:
-           //alert(xhttp.responseText);
+
 
       var arr = JSON.parse(xhttp.responseText);
       callback(null, arr); 
@@ -448,8 +421,7 @@ function getMarketDemand(old_amount, callback){
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-           // Typical action to be performed when the document is ready:
-           //alert(xhttp.responseText);
+
 
       var arr = JSON.parse(xhttp.responseText);
       callback(null, arr); 
@@ -487,8 +459,7 @@ function fetchWindData(callback){
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-           // Typical action to be performed when the document is ready:
-           //alert(xhttp.responseText);
+
 
       var arr = JSON.parse(xhttp.responseText);
       callback(null, arr); 
@@ -523,8 +494,7 @@ function getCoalSimulators(callback){
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-           // Typical action to be performed when the document is ready:
-           //alert(xhttp.responseText);
+
 
       var arr = JSON.parse(xhttp.responseText);
       callback(null, arr); 
@@ -543,11 +513,7 @@ function startCoalSimulator(production, coal_id, time){
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-           // Typical action to be performed when the document is ready:
-           //alert(xhttp.responseText);
 
-     // var arr = JSON.parse(xhttp.responseText);
-      //callback(null, arr); 
     }
   }
   var data = {production: production_val, coal_id: coal_id_val, time: time_val};
@@ -562,8 +528,7 @@ function stopCoalProduction(coal_id){
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-           // Typical action to be performed when the document is ready:
-           //alert(xhttp.responseText);
+           
 
       var arr = JSON.parse(xhttp.responseText);
       callback(null, arr); 
@@ -580,9 +545,7 @@ function getCoalProduction(coal_id, callback){
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-           // Typical action to be performed when the document is ready:
-           //alert(xhttp.responseText);
-
+           
       var arr = JSON.parse(xhttp.responseText);
       callback(null, arr); 
       }
@@ -599,10 +562,6 @@ function updateAdminProduction(market,buffert){
   xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-
-      //IF success
-        //window.location.replace("../website/profile_customer.html");
-      //Else error message
 
     }
   }
@@ -637,16 +596,3 @@ function sendToMarket(value, callback){
 }
 
 
-
-
-
-
-/*
-if(result[0].buffert == 0){
-        document.getElementById("errorMsg").innerHTML = '<br> You don´t have that much in your buffert.';
-        document.getElementById("okMsg").innerHTML = '';
-      }else{
-          document.getElementById("errorMsg").innerHTML = '';
-        document.getElementById("okMsg").innerHTML = '<br> Sent to market.';
-      }
-*/

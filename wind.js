@@ -56,7 +56,7 @@ class Wind {
 		}
 
 		var arr = [el_prod, this.price];
-		//var el_prod = (1/(Math.sqrt(2*3.1415*Math.pow(this.standard_dev,2))))*Math.pow(2.718,(-(Math.pow(this.windspeed - this.mean, 2))/(2*Math.pow(this.standard_dev,2))));
+		
 		return arr; //kilo watt / square meter
 	}
 }

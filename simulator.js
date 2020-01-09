@@ -4,7 +4,7 @@ const Wind = require('./wind.js');
 class Sim {
 
 	constructor() {
-		//WindSpeed wind = new WindSpeed();
+		
 		this.counter = 0; 
 		this.wind = 0;
 		this.windspeed = 0;

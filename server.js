@@ -228,37 +228,6 @@ const Db_user = require('./db/db_users.js');
 const db_user = new Db_user();
 
 
-/*app.post('/createUser', function(req,res){
-
-  db_user.emailAvailable(req.body.username,(err,result) =>{
-        if(err){
-          console.error(err);
-        }else{
-          if(result.length == 0){
-            bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
-              if(err){
-                console.log(err);
-              }
-              console.log("Hashed password: "+ hash);
-              db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, hash, "hejsan", req.body.area, 0, req.body.consumption);
-              db_user.getUserId(req.body.email, hash, (error, results) =>{
-              req.session.role_id = 0;
-              req.session.Users = results[0].id; 
-              db_user.setOnline(req.session.Users, 1);
-              db_user.addBlocked(req.session.Users, 0, 0);
-              db_user.addSellBuy(req.session.Users, 0.5 , 0.5);
-            });
-            
-            send_(err, result, res);
-            });
-
-          }else{
-            send_(err, result, res);
-          }
-        }
-    })
-
-  })*/
 
 
 /*Run the simulator and decide price*/
@@ -469,32 +438,6 @@ app.post('/createUser', function(req,res){
   });
 
 
-
-/*app.post('/createUser', function(req,res){
-
-  db_user.emailAvailable(req.body.email,(err,result) =>{
-        if(err){
-          console.error(err);
-        }else{
-          if(result.length == 0){
-            console.log("Kommer till OK");
-              db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, req.body.password, "hejsan", req.body.area, 0, req.body.consumption);
-              db_user.getUserId(req.body.email, req.body.password, (error, results) =>{
-              db_user.addBlocked(results[0].id, 0, 0);
-              db_user.addSellBuy(results[0].id, 0.5 , 0.5);
-              db_user.addUserProduction(results[0].id);
-            });
-            
-            send_(err, result, res);
-          }else{
-            console.log("Kommer till FAIL");
-            send_(err, result, res);
-          }
-        }
-    })
-
-  });*/
-
 /*Login user with hashed password*/
 
 app.post('/loginUser',function(req,res){
@@ -507,16 +450,16 @@ app.post('/loginUser',function(req,res){
               if(err){
                 console.error(err);
               }else{
-                console.log("SIZE:" + result.length);
+                
                 if(result.length > 0 && (result[0].role_id == 0||result[0].role_id == 1)){
                   req.session.role_id = result[0].role_id;
                   req.session.Users = result[0].id; 
-                  console.log("RESULTAT OK:" + result);
+                  
                   db_user.setOnline(result[0].id, 1);
 
                   send_(err, result, res); 
                 }else{
-                  console.log("RESULTAT EJ OK:" + result);
+                  
                   send_(err, result, res);
                   }
                 }
@@ -529,27 +472,7 @@ app.post('/loginUser',function(req,res){
 
   });
 
-/*app.post('/loginUser',function(req,res){
-      db_user.checkLogin(req.body.email,req.body.password,(err,result) =>{
-        if(err){
-          console.error(err);
-        }else{
-          
-          if(result.length > 0 ){
-            req.session.role_id = result[0].role_id;
-            req.session.Users = result[0].id; 
-            console.log("RESULTAT OK:" + result);
-            db_user.setOnline(result[0].id, 1);
 
-            send_(err, result, res);
-          }else{
-            console.log("RESULTAT EJ OK:" + result);
-            send_(err, result, res);
-          }
-        }
-      })
-
-  });*/
 
 
 
@@ -567,8 +490,7 @@ app.post('/updateProfile', (req, res) => {
       upload(req,res,function(err){
       db_user.updateProfile(req.session.Users, req.body.firstname, req.body.lastname, req.body.area, req.body.consumption, req.file.filename);
   });
-    //db_user.updateProfile(req.session.Users, req.body.firstname, req.body.lastname, req.body.area, req.body.consumption, req.body.img);
-    //res.send("{}");
+    
     res.redirect('/profile');
 });
 
@@ -586,20 +508,6 @@ app.post('/getUser', function(req,res){
     });
   });
 
-/*Change password utan hashad password*/
-
-/*app.post('/changePassword', (req, res) => {
-  db_user.checkPassword(req.session.Users, req.body.old_password,(err,result) =>{
-    if(result.length > 0){ //Checks if the password is correct
-        console.log(result[0].password);
-        db_user.changePassword(req.session.Users, req.body.new_password); //Change password
-        send_(err, result, res);
-    }else{
-        send_(err, result, res);
-    }
-    });
-  
-});*/
 
 app.post('/changePassword', (req, res) => {
   db_user.getUser(req.session.Users,(err,result1)=>{
@@ -767,71 +675,6 @@ app.post('/getProductionInfo', function(req,res){
 });
 
 
-/*
-
-app.post('/callSimulator', function(req,res){
-          db_user.getUser(req.session.Users,(err,result) =>{
-          sim.getTotalProductionPerDay(result[0].consumption, result[0].area, (results)=>{
-
-
-
-          //Update user production result
-          db_user.updateUserProduction(req.session.Users, results[1], results[2]);
-          //Surplus/Excess
-          if(results[2] > 0){
-            //Check if blocked, cant sell to market, only add to buffert
-              if(result[0].blocked == 1){
-              db_user.updateBuffert(req.session.Users, results[2]);
-              db_user.getUser(req.session.Users,(errbuffert ,buffert) =>{
-                  //Add buffert in results array
-                  results.push(buffert[0].buffert);
-                  send_(err, results, res);
-                }); 
-
-              }else{
-                db_user.getSellBuy(req.session.Users, (e,r)=>{
-              
-              //Set in to buffert and sell to market.
-              var value_buffert = results[2] * (1.00 - r[0].sell);
-              var value_market = results[2] * r[0].sell;
-              db_user.updateBuffert(req.session.Users, value_buffert);
-              db_user.updateMarket(value_market);
-              db_user.getUser(req.session.Users,(errbuffert ,buffert) =>{
-                //Add buffert in results array
-                  results.push(buffert[0].buffert);
-                  send_(err, results, res);
-                });
-              }); 
-              }
-              
-
-          //Loss/Deficit
-          }else{
-          
-            db_user.getSellBuy(req.session.Users, (e,r)=>{
-
-            //Take from buffert and buy from market. 
-            var value_buffert = results[2] * (1.00 -r[0].buy);
-            var value_market = results[2] * r[0].buy;
-            db_user.updateBuffert(req.session.Users, value_buffert);
-            db_user.updateMarket(value_market);
-
-             db_user.getUser(req.session.Users,(errbuffert ,buffert) =>{
-              //Add buffert in results array
-                  results.push(buffert[0].buffert);
-                  send_(err, results, res);
-              });
-
-
-          });
-          }
-          
-        });
-    });
-        
-  }); 
-
-*/
 
 
 app.post('/getMarketDemand', function(req,res){
@@ -897,15 +740,7 @@ app.post('/startCoalSimulator', function(req,res){
     },30*1000)
 });
 
-/*app.post('/startCoalProduction', function(req,res){
-    db_user.startCoalProduction(req.body.coal_id, req.body.time, req.body.production);
 
-    setTimeout(function(){
-      //stops the production
-      db_user.stopCoalProduction(req.body.coal_id);
-
-    },req.body.time*1000)
-});*/
 
 
 app.post('/stopCoalProduction', function(req,res){

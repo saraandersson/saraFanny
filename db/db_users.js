@@ -13,17 +13,6 @@ con.connect(function(err) {
 });
 
 
-/*
-
-const{Pool,Client} = require('pg')
-const connectionString = 'postgres://fannysara:fannysara@localhost:5432/fannySara'
-
-const client = new Client({
-	connectionString:connectionString
-})*/
-
-//client.connect()
-
 class Db_user {
 
 	constructor(){
@@ -124,7 +113,6 @@ class Db_user {
 		}
 
 	setHasPower(id, power){
-		console.log("Går in i setHasPower med : " + id + "AND : " + power);
 		var setsql=`UPDATE users SET has_power = ? WHERE id = ?`;
 		con.query(setsql, [power, id], function(err, result){
 				if(err){
@@ -153,7 +141,6 @@ class Db_user {
 	}
 
 	getBuffert(id, callback){
-		console.log("ID ÄR: " + id);
 		var getSql = `SELECT buffert FROM users WHERE id = ?`;
 		con.query(getSql, [id], function(err, result){
 			if(err){
@@ -294,7 +281,7 @@ addSellBuy(user_id, sell, buy){
 				con.query(setsql, [amount], function(error, result){
 				if(error){
 				}else{
-					console.log("Market amount uppdaterad");
+					//console.log("Market amount uppdaterad");
 				}});
 			}
 		});
@@ -305,7 +292,7 @@ addSellBuy(user_id, sell, buy){
 		con.query(setsql, [value], function(error, result){
 		if(error){
 			}else{
-				console.log("Market price uppdaterad");
+				//console.log("Market price uppdaterad");
 			}});
 			}
 
@@ -348,7 +335,6 @@ getSellBuy(id, callback){
 }
 
 updateSell(id, sell){
-	console.log("Går till updateSell");
 	var setSql=`UPDATE user_sell_buy SET sell = ? WHERE user_id = ?`;
 		con.query(setSql, [sell, id], function(err, res){
 			if(err){	
@@ -359,7 +345,6 @@ updateSell(id, sell){
 }
 
 updateBuy(id, buy){
-	console.log("Går till updateBuy");
 	var setSql=`UPDATE user_sell_buy SET buy = ? WHERE user_id = ?`;
 		con.query(setSql, [buy, id], function(err, res){
 			if(err){	
@@ -436,7 +421,7 @@ getAllUserProduction(callback){
 			if(err){
 				callback(err, null);
 			}else{
-				console.log("All user production is fetched");
+				//console.log("All user production is fetched");
 				callback(err, result);
 			}
 		});
