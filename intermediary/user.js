@@ -39,7 +39,6 @@ function checkLogin(email, password){
       if (arr.length > 0){
         window.location.replace("/index");
       }else{
-
         document.getElementById("errorMsg").innerHTML += '<br>Wrong email or password!';
 
       }

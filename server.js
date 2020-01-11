@@ -460,11 +460,14 @@ app.post('/loginUser',function(req,res){
 
                   send_(err, result, res); 
                 }else{
-                  send_(err, result, response);
+                  send_(err, result, res);
                   }
                 }
              })
 
+            }
+            else{
+              send_(err, result, response);
             }
         });
 
