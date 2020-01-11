@@ -524,6 +524,7 @@ app.post('/upload', upload.single('myImage'), (req,res)=>{
     else{
       console.log('file not uploaded');
       console.log(req.body.firstname);
+      res.redirect('/profile');
 
     }
 });
