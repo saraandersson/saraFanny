@@ -469,7 +469,6 @@ app.post('/loginUser',function(req,res){
                   }
                 }
              })
-
             }
             else{
               send_(err, response, res);
