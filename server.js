@@ -499,7 +499,14 @@ app.post('/updateProfileAdmin', (req, res) => {
     //res.send("{}");
    
     upload(req,res,function(err){
+      if(req.file.filename!=undefined){  
       db_user.updateProfileAdmin(req.session.Users, req.body.firstname, req.body.lastname, req.file.filename);
+      }
+      else{
+        db_user.getUser(req,session.Users,(err,result)=>{
+          db_user.updateProfileAdmin(req.session.Users, req.body.firstname, req.body.lastname, result[0].img);
+        }
+      }
     });
 
     
