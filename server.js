@@ -407,7 +407,7 @@ app.post('/createUser', function(req,res){
         }else{
           if(result.length == 0){
             console.log("Kommer till OK");
-            upload(req,res,function(err){
+            upload.single('myImage'),(req,res,function(err){
               if(err){
                 console.log(err);
               }
@@ -515,15 +515,18 @@ app.post('/updateProfile', (req, res) => {
     res.redirect('/profile');
 });*/
 
-app.post('/upload', upload.single('myImage'), (req,res)=>{
+app.post('/updateProfileAdmin', upload.single('myImage'), (req,res)=>{
     if(req.file){
       console.log("file uploaded");
-      var filename = req.file.filename;
+      //var filename = req.file.filename;
+      db_user.updateProfileAdmin(req.session.Users, req.body.firstname, req.body.lastname, req.file.filename);
+      res.redirect('/profile');
 
     }
     else{
       console.log('file not uploaded');
-      console.log(req.body.firstname);
+      console.log(req.body.myImage);
+
       res.redirect('/profile');
 
     }
