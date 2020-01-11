@@ -447,7 +447,7 @@ app.post('/loginUser',function(req,res){
         if(result.length==0){
            send_(err, result, res);
         }
-      });
+        else{
       db_user.getUserHashedPassword(req.body.email, (err, result1) =>{
         const hash = result1[0].password.toString();
         bcrypt.compare(req.body.password, hash, function(err, response) {
@@ -477,6 +477,8 @@ app.post('/loginUser',function(req,res){
         });
 
       })
+    }
+    });
 
   });
 
