@@ -525,8 +525,9 @@ app.post('/updateProfileAdmin', upload.single('myImage'), (req,res)=>{
     }
     else{
       console.log('file not uploaded');
-      console.log(req.body.myImage);
-
+      db_user.getUser(req,session.Users,(err,result)=>{
+          db_user.updateProfileAdmin(req.session.Users, req.body.firstname, req.body.lastname, result[0].img);
+        });
       res.redirect('/profile');
 
     }
