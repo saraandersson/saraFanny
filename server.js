@@ -496,12 +496,12 @@ app.post('/updateProfile', (req, res) => {
     res.redirect('/profile');
 });
 
-/*app.post('/updateProfileAdmin', (req, res) => {
+app.post('/updateProfileAdmin', (req, res) => {
     //db_user.updateProfileAdmin(req.session.Users, req.body.firstname, req.body.lastname, req.body.img);
     //res.send("{}");
    
     upload(req,res,function(err){
-      if(req.file.filename!=undefined){  
+      if(req.file){  
       db_user.updateProfileAdmin(req.session.Users, req.body.firstname, req.body.lastname, req.file.filename);
       }
       else{
@@ -513,9 +513,9 @@ app.post('/updateProfile', (req, res) => {
 
     
     res.redirect('/profile');
-});*/
+});
 
-app.post('/updateProfileAdmin', upload(req,res)=>{
+/*app.post('/updateProfileAdmin', upload,(req,res)=>{
     if(req.file){
       console.log("file uploaded");
       //var filename = req.file.filename;
@@ -531,7 +531,7 @@ app.post('/updateProfileAdmin', upload(req,res)=>{
       res.redirect('/profile');
 
     }
-});
+});*/
 
 
 
