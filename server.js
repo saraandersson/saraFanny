@@ -445,7 +445,6 @@ app.post('/createUser', function(req,res){
 app.post('/loginUser',function(req,res){
       db_user.getUserHashedPassword(req.body.email, (err, result1) =>{
         const hash = result1[0].password.toString();
-        //console.log("PASSWORD:" + hash);
         bcrypt.compare(req.body.password, hash, function(err, response) {
             if(response==true){
               db_user.checkLogin(req.body.email,hash,(err,result) =>{
@@ -461,8 +460,7 @@ app.post('/loginUser',function(req,res){
 
                   send_(err, result, res); 
                 }else{
-                  
-                  send_(err, result, res);
+                  send_(err, result, response);
                   }
                 }
              })
@@ -490,16 +488,20 @@ app.post('/logout', (req, res) => {
 
 app.post('/updateProfile', (req, res) => {
       upload(req,res,function(err){
-      db_user.updateProfile(req.session.Users, req.body.firstname, req.body.lastname, req.body.area, req.body.consumption, req.file.filename);
+        if(req.file){
+        db_user.updateProfile(req.session.Users, req.body.firstname, req.body.lastname, req.body.area, req.body.consumption, req.file.filename);
+      }
+      else{
+        db_user.getUser(req.session.Users,(err,result)=>{
+          db_user.updateProfil(req.session.Users, req.body.firstname, req.body.lastname, req.body.area, req.body.consumption, result[0].img);
+        });
+      }
   });
     
     res.redirect('/profile');
 });
 
 app.post('/updateProfileAdmin', (req, res) => {
-    //db_user.updateProfileAdmin(req.session.Users, req.body.firstname, req.body.lastname, req.body.img);
-    //res.send("{}");
-   
     upload(req,res,function(err){
       if(req.file){  
       db_user.updateProfileAdmin(req.session.Users, req.body.firstname, req.body.lastname, req.file.filename);
@@ -514,25 +516,6 @@ app.post('/updateProfileAdmin', (req, res) => {
     
     res.redirect('/profile');
 });
-
-/*app.post('/updateProfileAdmin', upload,(req,res)=>{
-    if(req.file){
-      console.log("file uploaded");
-      //var filename = req.file.filename;
-      db_user.updateProfileAdmin(req.session.Users, req.body.firstname, req.body.lastname, req.file.filename);
-      res.redirect('/profile');
-
-    }
-    else{
-      console.log('file not uploaded');
-      db_user.getUser(req.session.Users,(err,result)=>{
-          db_user.updateProfileAdmin(req.session.Users, req.body.firstname, req.body.lastname, result[0].img);
-        });
-      res.redirect('/profile');
-
-    }
-});*/
-
 
 
 app.post('/getUser', function(req,res){
