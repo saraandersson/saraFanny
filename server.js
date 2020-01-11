@@ -383,18 +383,20 @@ async function simulatorCall(id, number,  fn){
 
 /*To store pictures on server*/
 
-const storage = multer.diskStorage({
+/*const storage = multer.diskStorage({
         destination: function(req,file,cb){
             cb(null, 'public/uploads/')
         },
         filename: function(req,file,cb){
             cb(null,file.originalname+'-'+Date.now());
         }
-    });
+    });*/
 
-const upload = multer({
+/*const upload = multer({
     storage: storage
-}).single('myImage');
+}).single('myImage');*/
+
+const upload = multer({ dest: 'public/uploads/'  });
 
 
 /*Create user that hashes password*/
@@ -494,7 +496,7 @@ app.post('/updateProfile', (req, res) => {
     res.redirect('/profile');
 });
 
-app.post('/updateProfileAdmin', (req, res) => {
+/*app.post('/updateProfileAdmin', (req, res) => {
     //db_user.updateProfileAdmin(req.session.Users, req.body.firstname, req.body.lastname, req.body.img);
     //res.send("{}");
    
@@ -511,6 +513,19 @@ app.post('/updateProfileAdmin', (req, res) => {
 
     
     res.redirect('/profile');
+});*/
+
+app.post('/upload', upload.single('myImage'), (req,res)=>{
+    if(req.file){
+      console.log("file uploaded");
+      var filename = req.file.filename;
+
+    }
+    else{
+      console.log('file not uploaded');
+      console.log(req.body.firstname);
+
+    }
 });
 
 
