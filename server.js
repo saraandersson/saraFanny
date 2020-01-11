@@ -505,7 +505,7 @@ app.post('/updateProfileAdmin', (req, res) => {
       else{
         db_user.getUser(req,session.Users,(err,result)=>{
           db_user.updateProfileAdmin(req.session.Users, req.body.firstname, req.body.lastname, result[0].img);
-        }
+        });
       }
     });
 
