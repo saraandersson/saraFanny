@@ -34,6 +34,7 @@ function checkLogin(email, password){
            // Typical action to be performed when the document is ready:
            //alert(xhttp.responseText);
       var arr = JSON.parse(xhttp.responseText);
+      console.log('testar');
       console.log(arr);
       if (arr.length > 0){
         window.location.replace("/index");
