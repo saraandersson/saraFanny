@@ -383,20 +383,20 @@ async function simulatorCall(id, number,  fn){
 
 /*To store pictures on server*/
 
-/*const storage = multer.diskStorage({
+const storage = multer.diskStorage({
         destination: function(req,file,cb){
             cb(null, 'public/uploads/')
         },
         filename: function(req,file,cb){
             cb(null,file.originalname+'-'+Date.now());
         }
-    });*/
+    });
 
-/*const upload = multer({
+const upload = multer({
     storage: storage
-}).single('myImage');*/
+}).single('myImage');
 
-const upload = multer({ dest: 'public/uploads/'  });
+//const upload = multer({ dest: 'public/uploads/'  });
 
 
 /*Create user that hashes password*/
@@ -407,7 +407,7 @@ app.post('/createUser', function(req,res){
         }else{
           if(result.length == 0){
             console.log("Kommer till OK");
-            upload.single('myImage'),(req,res,function(err){
+            upload(req,res,function(err){
               if(err){
                 console.log(err);
               }
@@ -515,7 +515,7 @@ app.post('/updateProfile', (req, res) => {
     res.redirect('/profile');
 });*/
 
-app.post('/updateProfileAdmin', upload.single('myImage'), (req,res)=>{
+app.post('/updateProfileAdmin', upload(req,res)=>{
     if(req.file){
       console.log("file uploaded");
       //var filename = req.file.filename;
@@ -525,7 +525,7 @@ app.post('/updateProfileAdmin', upload.single('myImage'), (req,res)=>{
     }
     else{
       console.log('file not uploaded');
-      db_user.getUser(req,session.Users,(err,result)=>{
+      db_user.getUser(req.session.Users,(err,result)=>{
           db_user.updateProfileAdmin(req.session.Users, req.body.firstname, req.body.lastname, result[0].img);
         });
       res.redirect('/profile');
