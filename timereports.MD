@@ -22,6 +22,7 @@
 | 2019-12-17  | 8       | Added buffert and markets checks and prosumer blackout, fetch that data to manager, worked with links, some css, and added so the manager can send power from his/her buffert to market|
 | 2019-12-18  | 1.5       | Working with some bugs and start-page|
 | 2020-01-09  | 6       | Working with the report and cleaning up the code|
+| 2020-01-15  | 1       | Working with the report and submitted it|
  
 
 
@@ -51,3 +52,4 @@
 | 2019-12-15  | 6       | Working with the coal simulator for admin, admin can now produce and values are updated to admins market and buffert|
 | 2019-12-22  | 6       | Users can now upload images to their sites|
 | 2020-01-09  | 6       | Working with the report and cleaning up the code|
+| 2020-01-15  | 1       | Working with the report and submitted it|
