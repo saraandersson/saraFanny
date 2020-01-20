@@ -85,10 +85,6 @@ visibility: hidden;
             timeout: 600000,
             success: function (data) {
 
-                $("#result").text(data);
-                console.log("SUCCESS : ", data);
-                $("#btnSubmit").prop("disabled", false);
-
                 if(data.length==0){
                   window.location.replace("/login");
                 }
@@ -98,9 +94,6 @@ visibility: hidden;
 
             },
             error: function (e) {
-              window.alert('testar');
-              document.getElementById("errorMsg").innerHTML += '<br>Email already exist!';
-                
                 $("#result").text(e.responseText);
                 console.log("ERROR : ", e);
                 $("#btnSubmit").prop("disabled", false);
@@ -190,8 +183,8 @@ visibility: hidden;
                 <input type="text" placeholder="Enter your daily consumption" name="consumption" maxlength="255" class="form-control text-box single-line" id = "consumption">
             </div>
             <div class="form-group">
-               <!-- <button class="btn btn-default" type = "submit" name="submit" id ="submit" onclick='sendValues()'>Submit</button>-->
-               <input type="submit" value="Submit" id="btnSubmit"/>
+               <button class="btn btn-default" type = "submit" value = "submit"name="submit" id ="btnSubmit">Submit</button>
+               <!--<input type="submit" value="Submit" id="btnSubmit"/>-->
             </div>    
             <p id="errorMsg" style="color:red"></p>
             <div class="form-group">

@@ -461,6 +461,7 @@ const upload = multer({
               else{
                 db_user.emailAvailable(req.body.email,(err,result) =>{
                   if(result.length==0){
+                    console.log("Kommer till OK");
                   bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
                   if(err){
                   console.log(err);
@@ -477,8 +478,8 @@ const upload = multer({
                 db_user.addUserProduction(results[0].id);
                 });
                 });
-                return res.redirect('website/login.html');
-                //send_(err, result, res);
+                //return res.redirect('website/login.html');
+                send_(err, result, res);
               }
 
             else{
