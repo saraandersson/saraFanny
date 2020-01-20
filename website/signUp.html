@@ -56,6 +56,27 @@ visibility: hidden;
 
 <script type="text/javascript">
 
+  $(document).ready(function () {
+
+    var form = $('#myForm')[0];
+
+    var data = new FormData(form);
+
+    $.ajax({
+      type: "POST",
+      enctype: 'multipart/form-data',
+      url: "/createUser",
+      data: data,
+      success: function (data){
+
+      },
+      error: function (e){
+        document.getElementById("errorMsg").innerHTML += '<br>Email already exist!';
+      }
+    });
+  });
+
+
   function sendValues(){
     var firstname = document.getElementById("firstname");
     var lastname = document.getElementById("lastname");
@@ -85,7 +106,7 @@ visibility: hidden;
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><a href="/index">Home</a></li>
-        <li><a href="/market">Market:</a></li>
+        <li><a href="/market">Market</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -99,7 +120,8 @@ visibility: hidden;
         <div class='card-title'><h2 align = "center"> Sign up </h2></div>
     <div class="container body-content">
       <br>
-      <form action='/createUser' method='POST' enctype='multipart/form-data'>
+      <!--<form action='/createUser' method='POST' enctype='multipart/form-data'>-->
+        <form  method='POST' enctype='multipart/form-data' id = 'myForm'>
         <div class="myBox">
              <div class="form-group" id = "form">
                 <label class="control-label">Firstname</label>
