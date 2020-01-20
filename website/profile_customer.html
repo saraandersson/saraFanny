@@ -78,8 +78,14 @@
         
         var imgName=arr[0].img;
         console.log(imgName);
+        if(imgName!=""){
         var img = document.querySelector('img');
         img.src = "/uploads/"+imgName;
+        }
+        else{
+        var img = document.querySelector('img');
+        img.src = "";
+        }
        });      
     });
 
