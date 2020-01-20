@@ -450,6 +450,7 @@ app.post('/createUser', function(req,res){
 
 app.post('/loginUser',function(req,res){
       db_user.emailAvailable(req.body.email,(err,result) =>{
+        console.log("resultatlängd"+result.length);
         if(result.length==0){
           console.log("resultatlängd"+result.length);
            send_(err, result, res);
