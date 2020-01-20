@@ -441,7 +441,7 @@ app.post('/createUser', function(req,res){
             //send_(err, result, res);
           }
         }
-    })
+    });
 
   });
 
