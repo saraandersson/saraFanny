@@ -482,11 +482,11 @@ const upload = multer({
               }
 
             else{
-            console.log("Kommer till FAIL");
+              console.log("Kommer till FAIL");
             //document.getElementById("errorMsg").innerHTML += '<br>Email already exist!';
             //window.alert('Email already exist!');
             //send_(err, result, res);
-            res.render(body);
+            //res.render(body);
           }
             
             }); 
