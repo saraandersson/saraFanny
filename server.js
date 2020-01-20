@@ -483,7 +483,6 @@ const upload = multer({
 
             else{
             console.log("Kommer till FAIL");
-            res.message('test');
             //document.getElementById("errorMsg").innerHTML += '<br>Email already exist!';
             //window.alert('Email already exist!');
             //send_(err, result, res);
