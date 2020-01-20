@@ -89,9 +89,15 @@
         document.getElementById("lastname").placeholder= arr[0].lastname;
         old_lastname = arr[0].lastname;
 
+        //document.getElementById("myImage").placeholder= arr[0].img;
+        //old_lastname = arr[0].lastname;
+
         
-        document.getElementById("img").placeholder=arr[0].img;
-        old_img = arr[0].img;
+
+        
+        var imgName=arr[0].img;
+        var img = document.querySelector('img');
+        img.src = "/uploads/"+imgName;
 
        });      
       });
@@ -104,28 +110,6 @@
           });
       }
       
-
-      function updateUser(){
-        var firstname = document.getElementById("firstname").placeholder=document.getElementById("firstname").value;
-        if(firstname == ""){
-          firstname = old_firstname;
-        }
-        var lastname = document.getElementById("lastname").placeholder= document.getElementById("lastname").value;
-        if(lastname == ""){
-          lastname = old_lastname;
-        }
-               
-        
-        var img = document.getElementById("img").placeholder=document.getElementById("img").value;
-        if(img == ""){
-          img = old_img;
-        }
-
-        
-
-        editProfileAdmin(firstname, lastname, img);
-
-      }
 
 
 
@@ -166,6 +150,7 @@ function logout(){
   <div class="container body-content">
     <br>
         <div class="myBox">
+          <form action='/updateProfileAdmin' method='POST' enctype='multipart/form-data'>
             <div class="form-group">
                 <label class="control-label">Firstname:</label>
                 <input type="text" placeholder="" name="firstname" id = "firstname" maxlength="255" class="form-control text-box single-line">
@@ -176,17 +161,21 @@ function logout(){
             </div>
             <div class="form-group">
                 <label class="control-label">Profile picture:</label>
-                <input type="text" placeholder="" name="img" maxlength="255" class="form-control text-box single-line" id = "img">
+                <p style="font-size:15px;"></p>
+                <img src="#" style="width:150px;height:150px;">
+                <input type="file" placeholder="" name="myImage" id = "myImage">
             </div>
           <div class="form-group_2">
               <div id = "saveButton">
-                <button class="btn btn-default" type="submit" name="submit" onclick = "updateUser()">Save</button> 
+                <button class="btn btn-default" type="submit" name="submit">Save</button> 
               </div>
-              <div id = "backButton">
+            </form>  
+            <div id = "backButton">
                   <form action="/profile" class="inline">
                   <button class="btn btn-default" >Back</button>
+                </form>
                 </div>
-            </div>   
+                </div> 
         </div>
     </div>
   </div>

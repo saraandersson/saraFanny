@@ -34,10 +34,11 @@ function checkLogin(email, password){
            // Typical action to be performed when the document is ready:
            //alert(xhttp.responseText);
       var arr = JSON.parse(xhttp.responseText);
+      console.log('testar');
+      console.log(arr);
       if (arr.length > 0){
         window.location.replace("/index");
       }else{
-
         document.getElementById("errorMsg").innerHTML += '<br>Wrong email or password!';
 
       }
@@ -145,7 +146,7 @@ function editProfile(firstname, lastname, area, consumption, img){
 
 }
 
-function editProfileAdmin(firstname, lastname, img){
+/*function editProfileAdmin(firstname, lastname, img){
   var xhttp = new XMLHttpRequest();
   var firstname_val = firstname;
   var lastname_val = lastname;
@@ -155,6 +156,26 @@ function editProfileAdmin(firstname, lastname, img){
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
         window.location.replace("/profile");
+
+    }
+  }
+
+   var data = {firstname: firstname_val, lastname: lastname_val, img: img_val};
+
+  xhttp.send(JSON.stringify(data));
+
+}*/
+
+function editProfileAdmin(firstname, lastname, img){
+  var xhttp = new XMLHttpRequest();
+  var firstname_val = firstname;
+  var lastname_val = lastname;
+  var img_val = img;
+  xhttp.open("POST", "/profile", true);
+  xhttp.setRequestHeader('Content-Type', 'application/json');
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        //window.location.replace("/profile");
 
     }
   }
