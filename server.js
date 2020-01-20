@@ -414,7 +414,7 @@ app.post('/createUser', function(req,res){
                   if(err){
                   console.log(err);
                   }
-                db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, hash, req.file.filename, req.body.area, 0, req.body.consumption);
+                db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, hash, req.body.img, req.body.area, 0, req.body.consumption);
                 db_user.getUserId(req.body.email, hash, (error, results) =>{
                 db_user.addBlocked(results[0].id, 0, 0);
                 db_user.addSellBuy(results[0].id, 0.5 , 0.5);
