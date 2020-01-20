@@ -460,7 +460,6 @@ const upload = multer({
               }
               else{
                 db_user.emailAvailable(req.body.email,(err,result) =>{
-                  console.log("resultatlängd"+result.length);
                   if(result.length==0){
                 bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
                   if(err){
@@ -485,8 +484,8 @@ const upload = multer({
             else{
             console.log("Kommer till FAIL");
             //document.getElementById("errorMsg").innerHTML += '<br>Email already exist!';
-            window.alert('Email already exist!');
-            //send_(err, result, res);
+            //window.alert('Email already exist!');
+            send_(err, result, res);
           }
             
             }); 
