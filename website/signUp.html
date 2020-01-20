@@ -78,7 +78,7 @@ $(document).ready(function () {
             type: "POST",
             enctype: 'multipart/form-data',
             url: "http://18.212.138.12:3000/createUser",
-            data: data,
+            data: JSON.stringify(data),
             processData: false,
             contentType: false,
             cache: false,
