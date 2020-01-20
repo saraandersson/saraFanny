@@ -460,8 +460,6 @@ const upload = multer({
               }
               else{
                 db_user.emailAvailable(req.body.email,(err,result) =>{
-                  console.log(req.body.email);
-                  console.log(result.length);
                   if(result.length==0){
                   bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
                   if(err){
