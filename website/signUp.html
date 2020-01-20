@@ -55,53 +55,6 @@ visibility: hidden;
 <body>
 
 <script type="text/javascript">
-$(document).ready(function () {
-
-    $("#btnSubmit").click(function (event) {
-
-        //stop submit the form, we will post it manually.
-        event.preventDefault();
-
-        // Get form
-        var form = $('#fileUploadForm')[0];
-
-    // Create an FormData object 
-        var data = new FormData(form);
-
-    // If you want to add an extra field for the FormData
-        data.append("CustomField", "This is some extra data, testing");
-
-    // disabled the submit button
-        $("#btnSubmit").prop("disabled", true);
-
-        $.ajax({
-            type: "POST",
-            enctype: 'multipart/form-data',
-            url: "http://18.212.138.12:3000/createUser",
-            data: JSON.stringify(data),
-            processData: false,
-            contentType: false,
-            cache: false,
-            timeout: 600000,
-            success: function (data) {
-
-                $("#result").text(data);
-                console.log("SUCCESS : ", data);
-                $("#btnSubmit").prop("disabled", false);
-
-            },
-            error: function (e) {
-
-                $("#result").text(e.responseText);
-                console.log("ERROR : ", e);
-                $("#btnSubmit").prop("disabled", false);
-
-            }
-        });
-
-    });
-
-});
 
 
   function sendValues(){
@@ -147,8 +100,7 @@ $(document).ready(function () {
         <div class='card-title'><h2 align = "center"> Sign up </h2></div>
     <div class="container body-content">
       <br>
-      <!--<form action='/createUser' method='POST' enctype='multipart/form-data'>-->
-        <form  method='POST' enctype='multipart/form-data' id = 'myForm'>
+    <form action='/createUser' method='POST' enctype='multipart/form-data'>
         <div class="myBox">
              <div class="form-group" id = "form">
                 <label class="control-label">Firstname</label>
@@ -180,8 +132,7 @@ $(document).ready(function () {
                 <input type="text" placeholder="Enter your daily consumption" name="consumption" maxlength="255" class="form-control text-box single-line" id = "consumption">
             </div>
             <div class="form-group">
-                <!--<button class="btn btn-default" type = "submit" name="submit" id ="submit">Submit</button>-->
-                <input type="submit" value="Submit" id="btnSubmit"/>
+                <button class="btn btn-default" type = "submit" name="submit" id ="submit">Submit</button>
             </div>    
             <p id="errorMsg" style="color:red"></p>
             <div class="form-group">
