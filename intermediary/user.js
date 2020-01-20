@@ -64,8 +64,7 @@ function createUser(firstname, lastname, email, password, img, area, consumption
   var area_val = area;
   var consumption_val = consumption;
   xhttp.open("POST", "/createUser", true);
-  //xhttp.setRequestHeader('Content-Type', 'application/json');
-  xhttp.setRequestHeader('Content-Type', 'multipart/form-data; boundary=--------------------------966991448654339731356450');
+  xhttp.setRequestHeader('Content-Type', 'application/json');
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
            

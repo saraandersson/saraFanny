@@ -56,21 +56,65 @@ visibility: hidden;
 
 <script type="text/javascript">
 
+  $(document).ready(function () {
+
+    $("#btnSubmit").click(function (event) {
+
+        //stop submit the form, we will post it manually.
+        event.preventDefault();
+
+        // Get form
+        var form = $('#testar')[0];
+
+    // Create an FormData object 
+        var data = new FormData(form);
+
+    // If you want to add an extra field for the FormData
+
+    // disabled the submit button
+        $("#btnSubmit").prop("disabled", true);
+
+        $.ajax({
+            type: "POST",
+            enctype: 'multipart/form-data',
+            url: "/createUser",
+            data: data,
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            success: function (data) {
+
+                $("#result").text(data);
+                console.log("SUCCESS : ", data);
+                $("#btnSubmit").prop("disabled", false);
+
+            },
+            error: function (e) {
+
+                $("#result").text(e.responseText);
+                console.log("ERROR : ", e);
+                $("#btnSubmit").prop("disabled", false);
+
+            }
+        });
+
+    });
+
+});
+
 
   function sendValues(){
     var firstname = document.getElementById("firstname");
     var lastname = document.getElementById("lastname");
     var email = document.getElementById("email");
     var password = document.getElementById("password");
-    //var img = "hejsan";
+    var img = "hejsan";
 
-    var blobFile = $('#myImage').files[0];
-    var formData = new FormData();
-    formData.append("fileToUpload", blobFile);
     var area = document.getElementById("area");
     var consumption = document.getElementById("consumption");
 
-    createUser(firstname.value, lastname.value, email.value, password.value, formData, area.value, consumption.value);
+    createUser(firstname.value, lastname.value, email.value, password.value, img.value, area.value, consumption.value);
     //checkLogin(email.value,password.value);
   }
 
@@ -105,6 +149,7 @@ visibility: hidden;
     <div class="container body-content">
       <br>
     <!--<form action='/createUser' method='POST' enctype='multipart/form-data'>-->
+      <form method='POST' enctype='multipart/form-data' id = 'testar'>
         <div class="myBox">
              <div class="form-group" id = "form">
                 <label class="control-label">Firstname</label>
@@ -136,7 +181,8 @@ visibility: hidden;
                 <input type="text" placeholder="Enter your daily consumption" name="consumption" maxlength="255" class="form-control text-box single-line" id = "consumption">
             </div>
             <div class="form-group">
-                <button class="btn btn-default" type = "submit" name="submit" id ="submit" onclick='sendValues()'>Submit</button>
+               <!-- <button class="btn btn-default" type = "submit" name="submit" id ="submit" onclick='sendValues()'>Submit</button>-->
+               <input type="submit" value="Submit" id="btnSubmit"/>
             </div>    
             <p id="errorMsg" style="color:red"></p>
             <div class="form-group">
