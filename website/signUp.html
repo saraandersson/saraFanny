@@ -43,11 +43,23 @@
       background-color: white;
 }
 
+.invisible {
+display: none;
+visibility: hidden;
+   }
+
+
+
   </style>
 </head>
 <body>
 
 <script type="text/javascript">
+
+  if($('div#status').text()!='')
+      {
+                alert($('div#status').text());
+      }
 
   function sendValues(){
     var firstname = document.getElementById("firstname");
@@ -135,6 +147,8 @@
         </div>
     </div>
 <br>
+
+<div id='status' class='invisible'><%= errormessage %></div>
 
 <footer class="container-fluid text-center">
   <p></p>

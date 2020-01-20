@@ -485,7 +485,7 @@ const upload = multer({
             console.log("Kommer till FAIL");
             //document.getElementById("errorMsg").innerHTML += '<br>Email already exist!';
             //window.alert('Email already exist!');
-            res.render('/createUser', { errormessage: 'your message' });
+            res.render('view', { errormessage: 'your message' });
             //send_(err, result, res);
           }
             
