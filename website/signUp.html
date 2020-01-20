@@ -92,6 +92,8 @@ visibility: hidden;
             },
             error: function (e) {
 
+              document.getElementById("errorMsg").innerHTML += '<br>Email already exist!';
+                
                 $("#result").text(e.responseText);
                 console.log("ERROR : ", e);
                 $("#btnSubmit").prop("disabled", false);
