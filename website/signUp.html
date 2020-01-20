@@ -62,11 +62,15 @@ visibility: hidden;
     var lastname = document.getElementById("lastname");
     var email = document.getElementById("email");
     var password = document.getElementById("password");
-    var img = "hejsan";
+    //var img = "hejsan";
+
+    var blobFile = $('#myImage').files[0];
+    var formData = new FormData();
+    formData.append("fileToUpload", blobFile);
     var area = document.getElementById("area");
     var consumption = document.getElementById("consumption");
 
-    createUser(firstname.value, lastname.value, email.value, password.value, img.value, area.value, consumption.value);
+    createUser(firstname.value, lastname.value, email.value, password.value, formData, area.value, consumption.value);
     //checkLogin(email.value,password.value);
   }
 
@@ -100,7 +104,7 @@ visibility: hidden;
         <div class='card-title'><h2 align = "center"> Sign up </h2></div>
     <div class="container body-content">
       <br>
-    <form action='/createUser' method='POST' enctype='multipart/form-data'>
+    <!--<form action='/createUser' method='POST' enctype='multipart/form-data'>-->
         <div class="myBox">
              <div class="form-group" id = "form">
                 <label class="control-label">Firstname</label>
@@ -132,7 +136,7 @@ visibility: hidden;
                 <input type="text" placeholder="Enter your daily consumption" name="consumption" maxlength="255" class="form-control text-box single-line" id = "consumption">
             </div>
             <div class="form-group">
-                <button class="btn btn-default" type = "submit" name="submit" id ="submit">Submit</button>
+                <button class="btn btn-default" type = "submit" name="submit" id ="submit" onclick='sendValues()'>Submit</button>
             </div>    
             <p id="errorMsg" style="color:red"></p>
             <div class="form-group">
