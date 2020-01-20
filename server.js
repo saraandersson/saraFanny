@@ -405,7 +405,7 @@ app.post('/createUser', function(req,res){
         if(err){
           console.error(err);
         }else{
-          console.log("RESULTATLÄNGD"+result.length);
+          console.log("RESULTATLÄNGD"+result[0].length);
           if(result.length == 0){
             console.log("Kommer till OK");
             upload(req,res,function(err){
