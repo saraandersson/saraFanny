@@ -400,7 +400,7 @@ const upload = multer({
 
 
 /*Create user that hashes password*/
-app.post('/createUser', function(req,res){
+/*app.post('/createUser', function(req,res){
   db_user.emailAvailable(req.body.email,(err,result) =>{
         if(err){
           console.error(err);
@@ -440,6 +440,56 @@ app.post('/createUser', function(req,res){
             document.getElementById("errorMsg").innerHTML += '<br>Email already exist!';
             //send_(err, result, res);
           }
+        }
+    });
+
+  });*/
+
+
+  app.post('/createUser', function(req,res){
+ /* db_user.emailAvailable(req.body.email,(err,result) =>{
+        if(err){
+          console.error(err);
+        }else{
+          
+          if(result.length == 0){
+            console.log("Kommer till OK");*/
+            upload(req,res,function(err){
+              if(err){
+                console.log(err);
+              }
+              else{
+                db_user.emailAvailable(req.body.email,(err,result) =>{
+                  console.log("resultatlängd"+result.length);
+                  if(result.length==0){
+                bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
+                  if(err){
+                  console.log(err);
+                  }
+                if(req.file){
+                db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, hash, req.file.filename, req.body.area, 0, req.body.consumption);
+                }
+                else{
+                  db_user.addUser(0, 1 , req.body.firstname, req.body.lastname, req.body.email, hash, "", req.body.area, 0, req.body.consumption);
+                }
+                db_user.getUserId(req.body.email, hash, (error, results) =>{
+                db_user.addBlocked(results[0].id, 0, 0);
+                db_user.addSellBuy(results[0].id, 0.5 , 0.5);
+                db_user.addUserProduction(results[0].id);
+                });
+                });
+                return res.redirect('website/login.html');
+                //send_(err, result, res);
+              }
+
+            else{
+            console.log("Kommer till FAIL");
+            document.getElementById("errorMsg").innerHTML += '<br>Email already exist!';
+            //send_(err, result, res);
+          }
+            
+            }); 
+          
         }
     });
 

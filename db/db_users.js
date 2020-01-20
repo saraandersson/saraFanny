@@ -90,7 +90,6 @@ class Db_user {
 			if(err){
 				callback(err, null);
 			}else{
-				console.log(result.length);
 				callback(err, result);
 			}
 		});
