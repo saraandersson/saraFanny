@@ -89,9 +89,16 @@ visibility: hidden;
                 console.log("SUCCESS : ", data);
                 $("#btnSubmit").prop("disabled", false);
 
+                if(data.length==0){
+                  window.location.replace("/login");
+                }
+                else{
+                  document.getElementById("errorMsg").innerHTML += '<br>Email already exist!';
+                }
+
             },
             error: function (e) {
-
+              window.alert('testar');
               document.getElementById("errorMsg").innerHTML += '<br>Email already exist!';
                 
                 $("#result").text(e.responseText);
