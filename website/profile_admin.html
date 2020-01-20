@@ -88,9 +88,14 @@
         document.getElementById("email").innerHTML=arr[0].email;
 
         var imgName=arr[0].img;
-        console.log(imgName);
-        var img = document.querySelector('img');
-        img.src = "/uploads/"+imgName; 
+        if(imgName!=""){
+          var img = document.querySelector('img');
+          img.src = "/uploads/"+imgName;
+        }
+        else{
+          var img = document.querySelector('img');
+          img.src = "";
+        }
 
        });      
     });

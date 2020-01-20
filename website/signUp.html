@@ -84,7 +84,7 @@ visibility: hidden;
             cache: false,
             timeout: 600000,
             success: function (data) {
-
+              $("#btnSubmit").prop("disabled", false);
                 if(data.length==0){
                   window.location.replace("/login");
                 }
