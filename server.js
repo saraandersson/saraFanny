@@ -486,8 +486,8 @@ const upload = multer({
 
             //document.getElementById("errorMsg").innerHTML += '<br>Email already exist!';
             //window.alert('Email already exist!');
-            //send_(err, result, res);
-            res.render(body);
+            send_(err, result, res);
+            //res.render(body);
           }
             
             }); 
