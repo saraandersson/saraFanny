@@ -131,6 +131,34 @@ $(document).ready(function () {
 
     // Create an FormData object 
         var data = new FormData(form);
+
+        if(document.getElementById('firstname').value==""){
+          data.append(firstname, document.getElementById('firstname').placeholder);
+        }
+        else{
+          data.append(firstname, document.getElementById('firstname').value);
+        }
+
+        if(document.getElementById('lastname').value==""){
+          data.append(lastname, document.getElementById('lastname').placeholder);
+        }
+        else{
+          data.append(lastname, document.getElementById('lastname').value);
+        }
+
+        if(document.getElementById('area').value==""){
+          data.append(area, document.getElementById('area').placeholder);
+        }
+        else{
+          data.append(area, document.getElementById('area').value);
+        }
+
+        if(document.getElementById('consumption').value==""){
+          data.append(consumption, document.getElementById('consumption').placeholder);
+        }
+        else{
+          data.append(consumption, document.getElementById('consumption').value);
+        }
         
         $("#btnSubmit").prop("disabled", true);
 
