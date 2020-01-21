@@ -270,7 +270,7 @@ function setPrice(){
                   }
                   price = price / number;
                   //console.log("Sim priset blir: " + price);
-                  db_user.updateMarketPriceSim(final_price);
+                  db_user.updateMarketPriceSim(price);
                 });
               
           }
