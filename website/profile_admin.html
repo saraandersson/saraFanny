@@ -93,8 +93,10 @@
           img.src = "/uploads/"+imgName;
         }
         else{
-            document.getElementById("img").style.visibility = "hidden";
-            document.getElementById("noImg").innerHTML = "No picture uploaded";
+          document.getElementById("img").style.visibility = "hidden";
+          document.getElementById("noImg").innerHTML = "No picture uploaded";
+          document.getElementById("img").style.width="15px";
+          document.getElementById("img").style.height="15px";
         }
 
        });      
