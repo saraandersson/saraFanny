@@ -502,7 +502,9 @@ app.post('/updateProfile', (req, res) => {
         db_user.updateProfile(req.session.Users, req.body.firstname, req.body.lastname, req.body.area, req.body.consumption, req.file.filename);
       }
       else{
+        console.log("FIRST"+req.body.firstname);
         db_user.getUser(req.session.Users,(err,result)=>{
+          console.log("SECOND"+req.body.firstname);
           db_user.updateProfile(req.session.Users, req.body.firstname, req.body.lastname, req.body.area, req.body.consumption, result[0].img);
         });
       }
