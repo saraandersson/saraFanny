@@ -114,6 +114,51 @@
 function logout(){
   logOut();
 }
+
+
+$(document).ready(function () {
+
+    $("#btnSubmit").click(function (event) {
+
+        //stop submit the form, we will post it manually.
+        event.preventDefault();
+
+        // Get form
+        var form = $('#testar')[0];
+
+    // Create an FormData object 
+        var data = new FormData(form);
+        
+        $("#btnSubmit").prop("disabled", true);
+
+        $.ajax({
+            type: "POST",
+            enctype: 'multipart/form-data',
+            url: "/updateProfile",
+            data: data,
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            success: function (data) {
+              $("#btnSubmit").prop("disabled", false);
+              
+                  window.location.replace("/profile");
+                
+            
+
+            },
+            error: function (e) {
+                $("#result").text(e.responseText);
+                console.log("ERROR : ", e);
+                $("#btnSubmit").prop("disabled", false);
+
+            }
+        });
+
+    });
+
+});
       
 </script>
 
@@ -148,7 +193,8 @@ function logout(){
   <div class="container body-content">
     <br>
         <div class="myBox">
-          <form action='/updateProfile' method='POST' enctype='multipart/form-data'>
+        <!--  <form action='/updateProfile' method='POST' enctype='multipart/form-data'>-->
+          <form method='POST' enctype='multipart/form-data' id = "testar">
             <div class="form-group">
                 <label class="control-label">Firstname</label>
                 <input type="text" placeholder="" name="firstname" id = "firstname" maxlength="255" class="form-control text-box single-line">
@@ -174,7 +220,7 @@ function logout(){
             </div>
           <div class="form-group_2">
               <div id = "saveButton">
-                <button class="btn btn-default" type="submit" name="submit">Save</button> 
+                <button class="btn btn-default" type="submit" name="submit" id  ="btnSubmit" >Save</button> 
               </div>
             </form>  
             <div id = "backButton">
