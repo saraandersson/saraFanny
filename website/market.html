@@ -85,7 +85,7 @@ p{
 
 window.addEventListener("load", function () {
      getCurrentMarket(function(arr){ 
-       document.getElementById("market").innerHTML= arr[0].amount + " kWh";
+       document.getElementById("market").innerHTML= arr[0].amount.toPrecision(4) + " kWh";
        document.getElementById("marketprice").innerHTML= arr[0].price + " kr/kWh";
 
   
