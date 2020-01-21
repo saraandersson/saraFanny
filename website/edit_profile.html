@@ -160,6 +160,8 @@ $(document).ready(function () {
           data.append(consumption, document.getElementById('consumption').value);
         }
         
+        console.log(data);
+
         $("#btnSubmit").prop("disabled", true);
 
         $.ajax({
@@ -174,9 +176,7 @@ $(document).ready(function () {
             success: function (data) {
               $("#btnSubmit").prop("disabled", false);
               
-                  window.location.replace("/profile");
-
-                  console.log(data);
+                  //window.location.replace("/profile");
                 
             
 
