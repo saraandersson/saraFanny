@@ -260,7 +260,8 @@ function setPrice(){
       var temp_length = idarr.length;
 
       simulatorCall(idarr[j], j, function(arr_num){
-        
+
+
           if(arr_num == (temp_length - 1)){
               db_user.getProsumersProductionSimPrice((err, res) =>{
                   for(var k = 0; k < temp_length; k++){
@@ -269,7 +270,7 @@ function setPrice(){
                   }
                   price = price / number;
                   //console.log("Sim priset blir: " + price);
-                  db_user.updateMarketPriceSim(price);
+                  db_user.updateMarketPriceSim(final_price);
                 });
               
           }
@@ -283,6 +284,7 @@ function setPrice(){
 async function simulatorCall(id, number,  fn){
 
   db_user.getUser(id,(err,result) =>{
+      if(result.length > 0){
           sim.getTotalProductionPerDay(result[0].consumption, result[0].area, (results)=>{
 
           
@@ -374,10 +376,15 @@ async function simulatorCall(id, number,  fn){
             
 
           });
+
           }
           
         });
+        }else{
+          fn(0);
+        }
     });
+
 
 }
 
