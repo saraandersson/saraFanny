@@ -145,7 +145,7 @@ function updateValues(){
 
 
   getCurrentBuffert(function(arr){
-    document.getElementById('buffertValue').innerHTML=arr[0].buffert + " kWh";
+    document.getElementById('buffertValue').innerHTML=arr[0].buffert.toPrecision(4) + " kWh";
   });
 }
 
