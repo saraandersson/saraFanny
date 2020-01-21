@@ -93,8 +93,8 @@
           img.src = "/uploads/"+imgName;
         }
         else{
-          var img = document.querySelector('img');
-          img.src = "";
+            document.getElementById("img").style.visibility = "hidden";
+            document.getElementById("noImg").innerHTML = "No picture uploaded"
         }
 
        });      
@@ -158,8 +158,8 @@
             </div>
             <div class="form-group">
                 <label class="control-label">Profile picture:</label>
-                <p id = "img" style="font-size:15px;"> </p>
-                <img src="#" style="width:150px;height:150px;">
+                <p id = "noImg" style="font-size:15px;"> </p>
+                <img src="#" style="width:150px;height:150px;" id = "img">
             </div>
             <div class="form-group_2">
               <div id = "changePasswordButton">

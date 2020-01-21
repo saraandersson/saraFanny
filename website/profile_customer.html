@@ -79,11 +79,9 @@
         var imgName=arr[0].img;
         if(imgName!=""){
           var img = document.querySelector('img');
-         img.src = "/uploads/"+imgName;
+          img.src = "/uploads/"+imgName;
         }
         else{
-            //var img = document.querySelector('img');
-            //img.src = "";
             document.getElementById("img").style.visibility = "hidden";
             document.getElementById("noImg").innerHTML = "No picture uploaded";
         }
