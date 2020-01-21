@@ -522,7 +522,6 @@ app.post('/updateProfileAdmin', (req, res) => {
         });
       }
     });
-
     
     res.redirect('/profile');
 });
