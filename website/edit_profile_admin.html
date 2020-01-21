@@ -83,7 +83,7 @@
 
        getUserValues(function(arr){
         //console.log(arr);
-        document.getElementById("firstname").placeholder= arr[0].firstname;
+        document.getElementById("firstname").innerHTML= arr[0].firstname;
         old_firstname = arr[0].firstname;
 
         document.getElementById("lastname").placeholder= arr[0].lastname;
