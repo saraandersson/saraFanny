@@ -371,9 +371,6 @@ async function simulatorCall(id, number,  fn){
 
             });
             
-         
-          
-            
 
           });
 
