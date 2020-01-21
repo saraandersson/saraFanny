@@ -74,9 +74,9 @@
           currentMarket = currentMarket.toFixed(6);
           marketDemand = marketDemand.toFixed(6);
 
-          document.getElementById("market_amount").innerHTML= currentMarket.toPrecision(4) + " kWh";
-          document.getElementById("market_demand").innerHTML= marketDemand.toPrecision(4) + " kWh";
-          document.getElementById("procentage").innerHTML= procentage.toPrecision(4) + "%";
+          document.getElementById("market_amount").innerHTML= currentMarket + " kWh";
+          document.getElementById("market_demand").innerHTML= marketDemand + " kWh";
+          document.getElementById("procentage").innerHTML= procentage + "%";
           document.getElementById("sim_price").innerHTML= arr[3] + " kr/kWh";
 
 
